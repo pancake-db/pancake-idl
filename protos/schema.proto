@@ -1,0 +1,24 @@
+syntax = "proto3";
+package protos.schema;
+
+import "dtype.proto";
+import "partition_dtype.proto";
+
+option java_multiple_files = true;
+option java_package = "com.pancakedb.idl";
+
+message ColumnMeta {
+  string name = 1;
+  dtype.DataType dtype = 2;
+  uint32 nested_list_depth = 3;
+}
+
+message PartitionMeta {
+  string name = 1;
+  partition_dtype.PartitionDataType dtype = 2;
+}
+
+message Schema {
+  repeated PartitionMeta partitioning = 1;
+  repeated ColumnMeta columns = 2;
+}

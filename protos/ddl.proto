@@ -1,0 +1,36 @@
+syntax = "proto3";
+package protos.ddl;
+
+import "schema.proto";
+
+option java_multiple_files = true;
+option java_package = "com.pancakedb.idl";
+
+message CreateTableRequest {
+  enum SchemaMode {
+    FAIL_IF_EXISTS = 0;
+    OK_IF_EXACT = 1;
+  }
+
+  string table_name = 1;
+  schema.Schema schema = 2;
+  SchemaMode mode = 3;
+}
+
+message CreateTableResponse {
+  bool already_exists = 1;
+}
+
+message DropTableRequest {
+  string table_name = 1;
+}
+
+message DropTableResponse {}
+
+message GetSchemaRequest {
+  string table_name = 1;
+}
+
+message GetSchemaResponse {
+  schema.Schema schema = 1;
+}

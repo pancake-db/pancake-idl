@@ -1,0 +1,12 @@
+syntax = "proto3";
+package protos.partition_dtype;
+
+option java_multiple_files = true;
+option java_package = "com.pancakedb.idl";
+
+enum PartitionDataType {
+  STRING = 0;
+  INT64 = 1;
+  BOOL = 2;
+  TIMESTAMP_MINUTE = 3;
+}
