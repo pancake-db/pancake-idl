@@ -1,5 +1,7 @@
-.idea
-rust/libmain.rlib
-rust/target
+rust/src
+!rust/src/lib.rs
+
 java/dependency-reduced-pom.xml
-java/target
+
+.idea
+**/target

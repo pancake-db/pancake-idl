@@ -48,7 +48,7 @@ dependencies = [
 
 [[package]]
 name = "pancake-db-idl"
-version = "0.0.0"
+version = "0.0.0-alpha.0"
 dependencies = [
  "protobuf",
  "protoc-rust",
