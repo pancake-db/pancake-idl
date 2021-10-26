@@ -12,7 +12,7 @@ license = "Apache-2.0"
 repository = "https://github.com/pancake-db/pancake-idl/"
 
 [dependencies]
-protobuf = {git="https://github.com/stepancheg/rust-protobuf", rev="b3fe22932968995779e4046189becdf7be82ba1d", version="3.0.0-pre"}
+protobuf = "3.0.0-alpha.1"
 
 [build-dependencies]
-protoc-rust = {git="https://github.com/stepancheg/rust-protobuf", rev="b3fe22932968995779e4046189becdf7be82ba1d", version="3.0.0-pre"}
+protoc-rust = "3.0.0-alpha.1"

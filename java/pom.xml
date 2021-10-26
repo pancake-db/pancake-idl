@@ -6,7 +6,32 @@
   <groupId>com.pancakedb</groupId>
   <artifactId>idl</artifactId>
   <packaging>jar</packaging>
-  <version>0.0.0</version>
+  <version>0.0.0-alpha.0</version>
+
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>
+    Generated protobufs for interacting with PancakeDB
+  </description>
+  <url>https://github.com/pancake-db</url>
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:git:git://github.com/pancake-db/pancake-idl.git</connection>
+    <developerConnection>scm:git:ssh://github.com:pancake-db/pancake-idl.git</developerConnection>
+    <url>http://github.com/pancake-db/pancake-idl</url>
+  </scm>
+  <developers>
+    <developer>
+      <name>Martin Loncaric</name>
+      <email>martin@pancakedb.com</email>
+      <organization>PancakeDB</organization>
+      <organizationUrl>pancakedb.com</organizationUrl>
+    </developer>
+  </developers>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -15,21 +40,82 @@
 
   <build>
     <plugins>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-shade-plugin</artifactId>-->
+<!--        <version>3.2.4</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>package</phase>-->
+<!--            <goals>-->
+<!--              <goal>shade</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-          </execution>
-        </executions>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.8</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.2.1</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.3.0</version>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.6</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
@@ -38,4 +124,11 @@
       <version>3.17.3</version>
     </dependency>
   </dependencies>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
