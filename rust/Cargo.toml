@@ -1,18 +1,15 @@
+# note that we don't use a build script because it makes static analysis impossible
+
 [package]
 name = "pancake-db-idl"
 version = "0.0.0-alpha.0"
 edition = "2018"
-build = "rust/build.rs"
 
 authors = ["mwlon <m.w.loncaric@gmail.com>"]
 description = "API specification for PancakeDB"
-include = ["/rust", "/protos"]
 keywords = ["pancake", "idl", "protobuf"]
 license = "Apache-2.0"
 repository = "https://github.com/pancake-db/pancake-idl/"
-
-[lib]
-path = "rust/src/lib.rs"
 
 [dependencies]
 protobuf = "3.0.0-alpha.1"

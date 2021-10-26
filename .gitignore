@@ -1,6 +1,3 @@
-rust/src
-!rust/src/lib.rs
-
 java/dependency-reduced-pom.xml
 
 .idea

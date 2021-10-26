@@ -1,0 +1,10 @@
+# note that we don't use a build script because it makes static analysis impossible
+
+[package]
+name = "idl-builder"
+version = "0.0.0"
+edition = "2018"
+publish = false
+
+[dependencies]
+protoc-rust = "3.0.0-alpha.1"

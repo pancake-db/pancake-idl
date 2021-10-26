@@ -1,2 +1,2 @@
 sh generate_java.sh && \
-  cargo build;
+  cd rust_builder && cargo build;
