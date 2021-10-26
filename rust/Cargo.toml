@@ -13,6 +13,3 @@ repository = "https://github.com/pancake-db/pancake-idl/"
 
 [dependencies]
 protobuf = "3.0.0-alpha.1"
-
-[build-dependencies]
-protoc-rust = "3.0.0-alpha.1"
