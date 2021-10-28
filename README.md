@@ -90,7 +90,7 @@ sure each partition has a moderate amount of data.
 With PancakeDB, table design is liberated from those restrictions, and the
 developer can choose partitioning to match their filter query pattern instead.
 
-# Drop Table
+## Drop Table
 
 `POST /rest/drop_table`
 
@@ -113,7 +113,7 @@ At the moment, alter table or adding columns have not yet been implemented,
 so schema changes need to be done by creating a new table,
 copying the data over, and dropping the old one.
 
-# Get Schema
+## Get Schema
 
 `GET /rest/get_schema`
 
@@ -147,7 +147,7 @@ request response format:
 }
 ```
 
-# Write to Partition
+## Write to Partition
 
 `POST /rest/write_to_partition`
 
@@ -211,7 +211,7 @@ to send a field containing `[1,2,3]`,
 Another version of this route with simpler JSON encoding may be released in the
 future.
 
-# List Segments
+## List Segments
 
 `GET /rest/list_segments`
 
@@ -265,7 +265,7 @@ In the future, it will likely:
 * use a continuation token in case there is a very large number of segments
 * allow passing in parameters for distributed listing
 
-# Read Segment Column
+## Read Segment Column
 
 `GET /rest/read_segment_column`
 
@@ -307,7 +307,8 @@ with that continuation token (and so forth) until you have collected all the
 compressed and uncompressed data for the segment column.
 
 This API route is hard to use directly, so each client library
-also implements some sort of "decode" functionality to obtain deserialized
+also implements some sort of "decode" functionality,
+leveraging the core library, to obtain deserialized
 rows.
 
 
