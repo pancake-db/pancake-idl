@@ -1,8 +1,16 @@
+[![Crates.io][crates-badge]][crates-url]
+[![Maven Central][maven-badge]][maven-url]
+
+[crates-badge]: https://img.shields.io/crates/v/pancake-db-idl.svg
+[crates-url]: https://crates.io/crates/pancake-db-idl
+[maven-badge]: https://maven-badges.herokuapp.com/maven-central/com.pancakedb/idl/badge.svg
+[maven-url]: https://search.maven.org/artifact/com.pancakedb/idl
+
+
 # Using the PancakeDB API
 
 A typical PancakeDB use case involves
-* human-driven management of PancakeDB tables with `create_table`,
-`drop_table`
+* human-driven management of PancakeDB tables with `create_table`
 * writing incoming events or processed data as streams
 (up to 256 rows at a time) to PancakeDB with `write_to_partition`.
 * reading millions (or more) rows at a time, often in a distributed manner,
