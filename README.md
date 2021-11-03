@@ -3,7 +3,7 @@
 
 [crates-badge]: https://img.shields.io/crates/v/pancake-db-idl.svg
 [crates-url]: https://crates.io/crates/pancake-db-idl
-[maven-badge]: https://maven-badges.herokuapp.com/maven-central/com.pancakedb/idl/badge.svg
+[maven-badge]: https://maven-badges.herokuapp.com/maven-central/com.pancakedb/idl/badge.svg?gav=true
 [maven-url]: https://search.maven.org/artifact/com.pancakedb/idl
 
 
