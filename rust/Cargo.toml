@@ -7,6 +7,7 @@ edition = "2018"
 
 authors = ["PancakeDB <inquiries@pancakedb.com>"]
 description = "API specification for PancakeDB"
+homepage = "https://pancakedb.com"
 keywords = ["pancake", "idl", "protobuf"]
 license = "Apache-2.0"
 repository = "https://github.com/pancake-db/pancake-idl/"

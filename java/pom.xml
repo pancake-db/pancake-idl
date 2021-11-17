@@ -12,6 +12,10 @@
   <description>
     Generated protobufs for interacting with PancakeDB
   </description>
+  <organization>
+    <name>PancakeDB</name>
+    <url>https://pancakedb.com</url>
+  </organization>
   <url>https://github.com/pancake-db</url>
   <licenses>
     <license>
