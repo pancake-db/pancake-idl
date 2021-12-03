@@ -1771,6 +1771,718 @@ impl ::protobuf::reflect::ProtobufValue for RaftAppendEntriesResponse {
     type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
 }
 
+#[derive(PartialEq,Clone,Default)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+pub struct RaftInstallSnapshotRequest {
+    // message fields
+    pub term: u64,
+    pub leader_id: u64,
+    pub last_included_index: u64,
+    pub last_included_term: u64,
+    pub offset: u64,
+    pub data: ::std::vec::Vec<u8>,
+    pub done: bool,
+    // special fields
+    #[serde(skip)]
+    pub unknown_fields: ::protobuf::UnknownFields,
+    #[serde(skip)]
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a RaftInstallSnapshotRequest {
+    fn default() -> &'a RaftInstallSnapshotRequest {
+        <RaftInstallSnapshotRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl RaftInstallSnapshotRequest {
+    pub fn new() -> RaftInstallSnapshotRequest {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "term",
+            |m: &RaftInstallSnapshotRequest| { &m.term },
+            |m: &mut RaftInstallSnapshotRequest| { &mut m.term },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "leader_id",
+            |m: &RaftInstallSnapshotRequest| { &m.leader_id },
+            |m: &mut RaftInstallSnapshotRequest| { &mut m.leader_id },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "last_included_index",
+            |m: &RaftInstallSnapshotRequest| { &m.last_included_index },
+            |m: &mut RaftInstallSnapshotRequest| { &mut m.last_included_index },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "last_included_term",
+            |m: &RaftInstallSnapshotRequest| { &m.last_included_term },
+            |m: &mut RaftInstallSnapshotRequest| { &mut m.last_included_term },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "offset",
+            |m: &RaftInstallSnapshotRequest| { &m.offset },
+            |m: &mut RaftInstallSnapshotRequest| { &mut m.offset },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "data",
+            |m: &RaftInstallSnapshotRequest| { &m.data },
+            |m: &mut RaftInstallSnapshotRequest| { &mut m.data },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "done",
+            |m: &RaftInstallSnapshotRequest| { &m.done },
+            |m: &mut RaftInstallSnapshotRequest| { &mut m.done },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<RaftInstallSnapshotRequest>(
+            "RaftInstallSnapshotRequest",
+            9,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for RaftInstallSnapshotRequest {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.term = is.read_uint64()?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.leader_id = is.read_uint64()?;
+                },
+                3 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.last_included_index = is.read_uint64()?;
+                },
+                4 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.last_included_term = is.read_uint64()?;
+                },
+                5 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.offset = is.read_uint64()?;
+                },
+                6 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.data = is.read_bytes()?;
+                },
+                7 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.done = is.read_bool()?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if self.term != 0 {
+            my_size += ::protobuf::rt::value_size(1, self.term, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.leader_id != 0 {
+            my_size += ::protobuf::rt::value_size(2, self.leader_id, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.last_included_index != 0 {
+            my_size += ::protobuf::rt::value_size(3, self.last_included_index, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.last_included_term != 0 {
+            my_size += ::protobuf::rt::value_size(4, self.last_included_term, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.offset != 0 {
+            my_size += ::protobuf::rt::value_size(5, self.offset, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if !self.data.is_empty() {
+            my_size += ::protobuf::rt::bytes_size(6, &self.data);
+        }
+        if self.done != false {
+            my_size += 2;
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if self.term != 0 {
+            os.write_uint64(1, self.term)?;
+        }
+        if self.leader_id != 0 {
+            os.write_uint64(2, self.leader_id)?;
+        }
+        if self.last_included_index != 0 {
+            os.write_uint64(3, self.last_included_index)?;
+        }
+        if self.last_included_term != 0 {
+            os.write_uint64(4, self.last_included_term)?;
+        }
+        if self.offset != 0 {
+            os.write_uint64(5, self.offset)?;
+        }
+        if !self.data.is_empty() {
+            os.write_bytes(6, &self.data)?;
+        }
+        if self.done != false {
+            os.write_bool(7, self.done)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> RaftInstallSnapshotRequest {
+        RaftInstallSnapshotRequest::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 9)
+    }
+
+    fn default_instance() -> &'static RaftInstallSnapshotRequest {
+        static instance: RaftInstallSnapshotRequest = RaftInstallSnapshotRequest {
+            term: 0,
+            leader_id: 0,
+            last_included_index: 0,
+            last_included_term: 0,
+            offset: 0,
+            data: ::std::vec::Vec::new(),
+            done: false,
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for RaftInstallSnapshotRequest {
+    fn clear(&mut self) {
+        self.term = 0;
+        self.leader_id = 0;
+        self.last_included_index = 0;
+        self.last_included_term = 0;
+        self.offset = 0;
+        self.data.clear();
+        self.done = false;
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for RaftInstallSnapshotRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for RaftInstallSnapshotRequest {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
+#[derive(PartialEq,Clone,Default)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+pub struct RaftInstallSnapshotResponse {
+    // message fields
+    pub term: u64,
+    // special fields
+    #[serde(skip)]
+    pub unknown_fields: ::protobuf::UnknownFields,
+    #[serde(skip)]
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a RaftInstallSnapshotResponse {
+    fn default() -> &'a RaftInstallSnapshotResponse {
+        <RaftInstallSnapshotResponse as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl RaftInstallSnapshotResponse {
+    pub fn new() -> RaftInstallSnapshotResponse {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "term",
+            |m: &RaftInstallSnapshotResponse| { &m.term },
+            |m: &mut RaftInstallSnapshotResponse| { &mut m.term },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<RaftInstallSnapshotResponse>(
+            "RaftInstallSnapshotResponse",
+            10,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for RaftInstallSnapshotResponse {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.term = is.read_uint64()?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if self.term != 0 {
+            my_size += ::protobuf::rt::value_size(1, self.term, ::protobuf::wire_format::WireTypeVarint);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if self.term != 0 {
+            os.write_uint64(1, self.term)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> RaftInstallSnapshotResponse {
+        RaftInstallSnapshotResponse::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 10)
+    }
+
+    fn default_instance() -> &'static RaftInstallSnapshotResponse {
+        static instance: RaftInstallSnapshotResponse = RaftInstallSnapshotResponse {
+            term: 0,
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for RaftInstallSnapshotResponse {
+    fn clear(&mut self) {
+        self.term = 0;
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for RaftInstallSnapshotResponse {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for RaftInstallSnapshotResponse {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
+#[derive(PartialEq,Clone,Default)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+pub struct RaftVoteRequest {
+    // message fields
+    pub term: u64,
+    pub candidate_id: u64,
+    pub last_log_index: u64,
+    pub last_log_term: u64,
+    // special fields
+    #[serde(skip)]
+    pub unknown_fields: ::protobuf::UnknownFields,
+    #[serde(skip)]
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a RaftVoteRequest {
+    fn default() -> &'a RaftVoteRequest {
+        <RaftVoteRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl RaftVoteRequest {
+    pub fn new() -> RaftVoteRequest {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "term",
+            |m: &RaftVoteRequest| { &m.term },
+            |m: &mut RaftVoteRequest| { &mut m.term },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "candidate_id",
+            |m: &RaftVoteRequest| { &m.candidate_id },
+            |m: &mut RaftVoteRequest| { &mut m.candidate_id },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "last_log_index",
+            |m: &RaftVoteRequest| { &m.last_log_index },
+            |m: &mut RaftVoteRequest| { &mut m.last_log_index },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "last_log_term",
+            |m: &RaftVoteRequest| { &m.last_log_term },
+            |m: &mut RaftVoteRequest| { &mut m.last_log_term },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<RaftVoteRequest>(
+            "RaftVoteRequest",
+            11,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for RaftVoteRequest {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.term = is.read_uint64()?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.candidate_id = is.read_uint64()?;
+                },
+                3 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.last_log_index = is.read_uint64()?;
+                },
+                4 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.last_log_term = is.read_uint64()?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if self.term != 0 {
+            my_size += ::protobuf::rt::value_size(1, self.term, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.candidate_id != 0 {
+            my_size += ::protobuf::rt::value_size(2, self.candidate_id, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.last_log_index != 0 {
+            my_size += ::protobuf::rt::value_size(3, self.last_log_index, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.last_log_term != 0 {
+            my_size += ::protobuf::rt::value_size(4, self.last_log_term, ::protobuf::wire_format::WireTypeVarint);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if self.term != 0 {
+            os.write_uint64(1, self.term)?;
+        }
+        if self.candidate_id != 0 {
+            os.write_uint64(2, self.candidate_id)?;
+        }
+        if self.last_log_index != 0 {
+            os.write_uint64(3, self.last_log_index)?;
+        }
+        if self.last_log_term != 0 {
+            os.write_uint64(4, self.last_log_term)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> RaftVoteRequest {
+        RaftVoteRequest::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 11)
+    }
+
+    fn default_instance() -> &'static RaftVoteRequest {
+        static instance: RaftVoteRequest = RaftVoteRequest {
+            term: 0,
+            candidate_id: 0,
+            last_log_index: 0,
+            last_log_term: 0,
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for RaftVoteRequest {
+    fn clear(&mut self) {
+        self.term = 0;
+        self.candidate_id = 0;
+        self.last_log_index = 0;
+        self.last_log_term = 0;
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for RaftVoteRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for RaftVoteRequest {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
+#[derive(PartialEq,Clone,Default)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+pub struct RaftVoteResponse {
+    // message fields
+    pub term: u64,
+    pub vote_granted: bool,
+    // special fields
+    #[serde(skip)]
+    pub unknown_fields: ::protobuf::UnknownFields,
+    #[serde(skip)]
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a RaftVoteResponse {
+    fn default() -> &'a RaftVoteResponse {
+        <RaftVoteResponse as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl RaftVoteResponse {
+    pub fn new() -> RaftVoteResponse {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "term",
+            |m: &RaftVoteResponse| { &m.term },
+            |m: &mut RaftVoteResponse| { &mut m.term },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "vote_granted",
+            |m: &RaftVoteResponse| { &m.vote_granted },
+            |m: &mut RaftVoteResponse| { &mut m.vote_granted },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<RaftVoteResponse>(
+            "RaftVoteResponse",
+            12,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for RaftVoteResponse {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.term = is.read_uint64()?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.vote_granted = is.read_bool()?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if self.term != 0 {
+            my_size += ::protobuf::rt::value_size(1, self.term, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.vote_granted != false {
+            my_size += 2;
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if self.term != 0 {
+            os.write_uint64(1, self.term)?;
+        }
+        if self.vote_granted != false {
+            os.write_bool(2, self.vote_granted)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> RaftVoteResponse {
+        RaftVoteResponse::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 12)
+    }
+
+    fn default_instance() -> &'static RaftVoteResponse {
+        static instance: RaftVoteResponse = RaftVoteResponse {
+            term: 0,
+            vote_granted: false,
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for RaftVoteResponse {
+    fn clear(&mut self) {
+        self.term = 0;
+        self.vote_granted = false;
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for RaftVoteResponse {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for RaftVoteResponse {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\nraft.proto\x12\rprotos.schema\x1a\tdml.proto\"\x96\x01\n\x1fInternal\
     WriteToPartitionRequest\x129\n\x05inner\x18\x01\x20\x01(\x0b2#.protos.dm\
@@ -1801,7 +2513,20 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ndex\"\x89\x01\n\x19RaftAppendEntriesResponse\x12\x12\n\x04term\x18\x01\
     \x20\x01(\x04R\x04term\x12\x18\n\x07success\x18\x02\x20\x01(\x08R\x07suc\
     cess\x12>\n\x0bconflict_op\x18\x03\x20\x01(\x0b2\x1d.protos.schema.RaftC\
-    onflictOpR\nconflictOpb\x06proto3\
+    onflictOpR\nconflictOp\"\xeb\x01\n\x1aRaftInstallSnapshotRequest\x12\x12\
+    \n\x04term\x18\x01\x20\x01(\x04R\x04term\x12\x1b\n\tleader_id\x18\x02\
+    \x20\x01(\x04R\x08leaderId\x12.\n\x13last_included_index\x18\x03\x20\x01\
+    (\x04R\x11lastIncludedIndex\x12,\n\x12last_included_term\x18\x04\x20\x01\
+    (\x04R\x10lastIncludedTerm\x12\x16\n\x06offset\x18\x05\x20\x01(\x04R\x06\
+    offset\x12\x12\n\x04data\x18\x06\x20\x01(\x0cR\x04data\x12\x12\n\x04done\
+    \x18\x07\x20\x01(\x08R\x04done\"1\n\x1bRaftInstallSnapshotResponse\x12\
+    \x12\n\x04term\x18\x01\x20\x01(\x04R\x04term\"\x92\x01\n\x0fRaftVoteRequ\
+    est\x12\x12\n\x04term\x18\x01\x20\x01(\x04R\x04term\x12!\n\x0ccandidate_\
+    id\x18\x02\x20\x01(\x04R\x0bcandidateId\x12$\n\x0elast_log_index\x18\x03\
+    \x20\x01(\x04R\x0clastLogIndex\x12\"\n\rlast_log_term\x18\x04\x20\x01(\
+    \x04R\x0blastLogTerm\"I\n\x10RaftVoteResponse\x12\x12\n\x04term\x18\x01\
+    \x20\x01(\x04R\x04term\x12!\n\x0cvote_granted\x18\x02\x20\x01(\x08R\x0bv\
+    oteGrantedb\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
@@ -1828,6 +2553,10 @@ pub fn file_descriptor() -> ::protobuf::reflect::FileDescriptor {
         messages.push(RaftAppendEntriesRequest::generated_message_descriptor_data());
         messages.push(RaftConflictOp::generated_message_descriptor_data());
         messages.push(RaftAppendEntriesResponse::generated_message_descriptor_data());
+        messages.push(RaftInstallSnapshotRequest::generated_message_descriptor_data());
+        messages.push(RaftInstallSnapshotResponse::generated_message_descriptor_data());
+        messages.push(RaftVoteRequest::generated_message_descriptor_data());
+        messages.push(RaftVoteResponse::generated_message_descriptor_data());
         let mut enums = ::std::vec::Vec::new();
         ::protobuf::reflect::GeneratedFileDescriptor::new_generated(
             file_descriptor_proto(),
