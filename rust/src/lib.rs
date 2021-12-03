@@ -6,3 +6,7 @@ pub mod schema;
 pub mod ddl;
 pub mod dml;
 pub mod service;
+#[cfg(feature="raft")]
+pub mod raft;
+
+pub mod custom_impls;

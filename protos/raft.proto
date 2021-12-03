@@ -1,0 +1,59 @@
+syntax = "proto3";
+package protos.schema;
+
+import "dml.proto";
+
+message InternalWriteToPartitionRequest {
+  dml.WriteToPartitionRequest inner = 1;
+  string shard_id = 2;
+  string segment_id = 3;
+}
+
+message MutateRequest {
+  oneof value {
+    InternalWriteToPartitionRequest write_to_partition_request = 1;
+  }
+}
+
+message MutateResponse {}
+
+message MembershipConfig {
+  repeated uint64 members = 1;
+  bool has_members_after_consensus = 2;
+  repeated uint64 members_after_consensus = 3;
+}
+
+message SnapshotPointer {
+  string id = 1;
+  MembershipConfig membership = 2;
+}
+
+message RaftEntry {
+  uint64 term = 1;
+  uint64 index = 2;
+  oneof payload {
+    MutateRequest normal = 3;
+    MembershipConfig config_change = 4;
+    SnapshotPointer snapshot_pointer = 5;
+  }
+}
+
+message RaftAppendEntriesRequest {
+  uint64 term = 1;
+  uint64 leader_id = 2;
+  uint64 prev_log_index = 3;
+  uint64 prev_log_term = 4;
+  uint64 leader_commit = 5;
+  repeated RaftEntry entries = 6;
+}
+
+message RaftConflictOp {
+  uint64 term = 1;
+  uint64 index = 2;
+}
+
+message RaftAppendEntriesResponse {
+  uint64 term = 1;
+  bool success = 2;
+  RaftConflictOp conflict_op = 3;
+}
