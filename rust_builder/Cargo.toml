@@ -7,4 +7,4 @@ edition = "2018"
 publish = false
 
 [dependencies]
-protoc-rust = "3.0.0-alpha.1"
+protoc-rust = "=3.0.0-alpha.2"

@@ -10,6 +10,7 @@ message CreateTableRequest {
   enum SchemaMode {
     FAIL_IF_EXISTS = 0;
     OK_IF_EXACT = 1;
+    ADD_NEW_COLUMNS = 2;
   }
 
   string table_name = 1;
@@ -19,7 +20,15 @@ message CreateTableRequest {
 
 message CreateTableResponse {
   bool already_exists = 1;
+  repeated string columns_added = 2;
 }
+
+message AlterTableRequest {
+  string table_name = 1;
+  repeated schema.ColumnMeta new_columns = 2;
+}
+
+message AlterTableResponse {}
 
 message DropTableRequest {
   string table_name = 1;
