@@ -1123,6 +1123,363 @@ impl ::protobuf::reflect::ProtobufValue for GetSchemaResponse {
     type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
 }
 
+#[derive(PartialEq,Clone,Default)]
+pub struct TableInfo {
+    // message fields
+    pub table_name: ::std::string::String,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a TableInfo {
+    fn default() -> &'a TableInfo {
+        <TableInfo as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl TableInfo {
+    pub fn new() -> TableInfo {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "table_name",
+            |m: &TableInfo| { &m.table_name },
+            |m: &mut TableInfo| { &mut m.table_name },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<TableInfo>(
+            "TableInfo",
+            8,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for TableInfo {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.table_name = is.read_string()?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.table_name.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.table_name);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if !self.table_name.is_empty() {
+            os.write_string(1, &self.table_name)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> TableInfo {
+        TableInfo::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 8)
+    }
+
+    fn default_instance() -> &'static TableInfo {
+        static instance: TableInfo = TableInfo {
+            table_name: ::std::string::String::new(),
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for TableInfo {
+    fn clear(&mut self) {
+        self.table_name.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for TableInfo {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for TableInfo {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct ListTablesRequest {
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a ListTablesRequest {
+    fn default() -> &'a ListTablesRequest {
+        <ListTablesRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl ListTablesRequest {
+    pub fn new() -> ListTablesRequest {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ListTablesRequest>(
+            "ListTablesRequest",
+            9,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for ListTablesRequest {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> ListTablesRequest {
+        ListTablesRequest::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 9)
+    }
+
+    fn default_instance() -> &'static ListTablesRequest {
+        static instance: ListTablesRequest = ListTablesRequest {
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for ListTablesRequest {
+    fn clear(&mut self) {
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for ListTablesRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for ListTablesRequest {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct ListTablesResponse {
+    // message fields
+    pub tables: ::std::vec::Vec<TableInfo>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a ListTablesResponse {
+    fn default() -> &'a ListTablesResponse {
+        <ListTablesResponse as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl ListTablesResponse {
+    pub fn new() -> ListTablesResponse {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
+            "tables",
+            |m: &ListTablesResponse| { &m.tables },
+            |m: &mut ListTablesResponse| { &mut m.tables },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ListTablesResponse>(
+            "ListTablesResponse",
+            10,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for ListTablesResponse {
+    fn is_initialized(&self) -> bool {
+        for v in &self.tables {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_repeated_message_into_vec(wire_type, is, &mut self.tables)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        for value in &self.tables {
+            let len = value.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        };
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        for v in &self.tables {
+            ::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
+        };
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> ListTablesResponse {
+        ListTablesResponse::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 10)
+    }
+
+    fn default_instance() -> &'static ListTablesResponse {
+        static instance: ListTablesResponse = ListTablesResponse {
+            tables: ::std::vec::Vec::new(),
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for ListTablesResponse {
+    fn clear(&mut self) {
+        self.tables.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for ListTablesResponse {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for ListTablesResponse {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\tddl.proto\x12\nprotos.ddl\x1a\x0cschema.proto\"\xe9\x01\n\x12CreateT\
     ableRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12-\n\
@@ -1138,8 +1495,11 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\"\x13\n\x11DropTab\
     leResponse\"1\n\x10GetSchemaRequest\x12\x1d\n\ntable_name\x18\x01\x20\
     \x01(\tR\ttableName\"B\n\x11GetSchemaResponse\x12-\n\x06schema\x18\x01\
-    \x20\x01(\x0b2\x15.protos.schema.SchemaR\x06schemaB\x15\n\x11com.pancake\
-    db.idlP\x01b\x06proto3\
+    \x20\x01(\x0b2\x15.protos.schema.SchemaR\x06schema\"*\n\tTableInfo\x12\
+    \x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\"\x13\n\x11ListTablesR\
+    equest\"C\n\x12ListTablesResponse\x12-\n\x06tables\x18\x01\x20\x03(\x0b2\
+    \x15.protos.ddl.TableInfoR\x06tablesB\x15\n\x11com.pancakedb.idlP\x01b\
+    \x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
@@ -1165,6 +1525,9 @@ pub fn file_descriptor() -> ::protobuf::reflect::FileDescriptor {
         messages.push(DropTableResponse::generated_message_descriptor_data());
         messages.push(GetSchemaRequest::generated_message_descriptor_data());
         messages.push(GetSchemaResponse::generated_message_descriptor_data());
+        messages.push(TableInfo::generated_message_descriptor_data());
+        messages.push(ListTablesRequest::generated_message_descriptor_data());
+        messages.push(ListTablesResponse::generated_message_descriptor_data());
         let mut enums = ::std::vec::Vec::new();
         enums.push(create_table_request::SchemaMode::generated_enum_descriptor_data());
         ::protobuf::reflect::GeneratedFileDescriptor::new_generated(

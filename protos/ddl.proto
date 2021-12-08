@@ -43,3 +43,13 @@ message GetSchemaRequest {
 message GetSchemaResponse {
   schema.Schema schema = 1;
 }
+
+message TableInfo {
+  string table_name = 1;
+}
+
+message ListTablesRequest {}
+
+message ListTablesResponse {
+  repeated TableInfo tables = 1;
+}
