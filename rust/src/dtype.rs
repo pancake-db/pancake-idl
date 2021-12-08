@@ -33,6 +33,7 @@ pub enum DataType {
     BYTES = 3,
     FLOAT64 = 4,
     TIMESTAMP_MICROS = 5,
+    FLOAT32 = 6,
 }
 
 impl ::protobuf::ProtobufEnum for DataType {
@@ -48,6 +49,7 @@ impl ::protobuf::ProtobufEnum for DataType {
             3 => ::std::option::Option::Some(DataType::BYTES),
             4 => ::std::option::Option::Some(DataType::FLOAT64),
             5 => ::std::option::Option::Some(DataType::TIMESTAMP_MICROS),
+            6 => ::std::option::Option::Some(DataType::FLOAT32),
             _ => ::std::option::Option::None
         }
     }
@@ -60,6 +62,7 @@ impl ::protobuf::ProtobufEnum for DataType {
             DataType::BYTES,
             DataType::FLOAT64,
             DataType::TIMESTAMP_MICROS,
+            DataType::FLOAT32,
         ];
         values
     }
@@ -86,10 +89,11 @@ impl DataType {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x0bdtype.proto\x12\x0cprotos.dtype*Y\n\x08DataType\x12\n\n\x06STRING\
+    \n\x0bdtype.proto\x12\x0cprotos.dtype*f\n\x08DataType\x12\n\n\x06STRING\
     \x10\0\x12\t\n\x05INT64\x10\x01\x12\x08\n\x04BOOL\x10\x02\x12\t\n\x05BYT\
     ES\x10\x03\x12\x0b\n\x07FLOAT64\x10\x04\x12\x14\n\x10TIMESTAMP_MICROS\
-    \x10\x05B\x15\n\x11com.pancakedb.idlP\x01b\x06proto3\
+    \x10\x05\x12\x0b\n\x07FLOAT32\x10\x06B\x15\n\x11com.pancakedb.idlP\x01b\
+    \x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

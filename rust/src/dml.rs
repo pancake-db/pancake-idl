@@ -974,6 +974,31 @@ impl FieldValue {
         }
     }
 
+    // float float32_val = 8;
+
+    pub fn get_float32_val(&self) -> f32 {
+        match self.value {
+            ::std::option::Option::Some(field_value::Value::float32_val(v)) => v,
+            _ => 0.,
+        }
+    }
+
+    pub fn clear_float32_val(&mut self) {
+        self.value = ::std::option::Option::None;
+    }
+
+    pub fn has_float32_val(&self) -> bool {
+        match self.value {
+            ::std::option::Option::Some(field_value::Value::float32_val(..)) => true,
+            _ => false,
+        }
+    }
+
+    // Param is passed by value, moved
+    pub fn set_float32_val(&mut self, v: f32) {
+        self.value = ::std::option::Option::Some(field_value::Value::float32_val(v))
+    }
+
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, RepeatedFieldValue>(
@@ -1019,6 +1044,12 @@ impl FieldValue {
             FieldValue::get_timestamp_val,
             FieldValue::mut_timestamp_val,
             FieldValue::set_timestamp_val,
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
+            "float32_val",
+            FieldValue::has_float32_val,
+            FieldValue::get_float32_val,
+            FieldValue::set_float32_val,
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<FieldValue>(
             "FieldValue",
@@ -1089,6 +1120,12 @@ impl ::protobuf::Message for FieldValue {
                     }
                     self.value = ::std::option::Option::Some(field_value::Value::timestamp_val(is.read_message()?));
                 },
+                8 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeFixed32 {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.value = ::std::option::Option::Some(field_value::Value::float32_val(is.read_float()?));
+                },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
                 },
@@ -1126,6 +1163,9 @@ impl ::protobuf::Message for FieldValue {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
                 },
+                &field_value::Value::float32_val(v) => {
+                    my_size += 5;
+                },
             };
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
@@ -1156,6 +1196,9 @@ impl ::protobuf::Message for FieldValue {
                 },
                 &field_value::Value::timestamp_val(ref v) => {
                     ::protobuf::rt::write_message_field_with_cached_size(7, v, os)?;
+                },
+                &field_value::Value::float32_val(v) => {
+                    os.write_float(8, v)?;
                 },
             };
         }
@@ -1202,6 +1245,7 @@ impl ::protobuf::Clear for FieldValue {
         self.value = ::std::option::Option::None;
         self.value = ::std::option::Option::None;
         self.value = ::std::option::Option::None;
+        self.value = ::std::option::Option::None;
         self.unknown_fields.clear();
     }
 }
@@ -1228,6 +1272,7 @@ pub mod field_value {
         bytes_val(::std::vec::Vec<u8>),
         float64_val(f64),
         timestamp_val(::protobuf::well_known_types::Timestamp),
+        float32_val(f32),
     }
 
     impl ::protobuf::Oneof for Value {
@@ -3198,48 +3243,49 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \"@\n\x12RepeatedFieldValue\x12*\n\x04vals\x18\x01\x20\x03(\x0b2\x16.pro\
     tos.dml.FieldValueR\x04vals\"I\n\x05Field\x12\x12\n\x04name\x18\x01\x20\
     \x01(\tR\x04name\x12,\n\x05value\x18\x02\x20\x01(\x0b2\x16.protos.dml.Fi\
-    eldValueR\x05value\"\xb4\x02\n\nFieldValue\x12;\n\x08list_val\x18\x01\
+    eldValueR\x05value\"\xd7\x02\n\nFieldValue\x12;\n\x08list_val\x18\x01\
     \x20\x01(\x0b2\x1e.protos.dml.RepeatedFieldValueH\0R\x07listVal\x12\x1f\
     \n\nstring_val\x18\x02\x20\x01(\tH\0R\tstringVal\x12\x1d\n\tint64_val\
     \x18\x03\x20\x01(\x03H\0R\x08int64Val\x12\x1b\n\x08bool_val\x18\x04\x20\
     \x01(\x08H\0R\x07boolVal\x12\x1d\n\tbytes_val\x18\x05\x20\x01(\x0cH\0R\
     \x08bytesVal\x12!\n\x0bfloat64_val\x18\x06\x20\x01(\x01H\0R\nfloat64Val\
     \x12A\n\rtimestamp_val\x18\x07\x20\x01(\x0b2\x1a.google.protobuf.Timesta\
-    mpH\0R\x0ctimestampValB\x07\n\x05value\"0\n\x03Row\x12)\n\x06fields\x18\
-    \x01\x20\x03(\x0b2\x11.protos.dml.FieldR\x06fields\"\x97\x01\n\x17WriteT\
-    oPartitionRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\
-    \x128\n\tpartition\x18\x02\x20\x03(\x0b2\x1a.protos.dml.PartitionFieldR\
-    \tpartition\x12#\n\x04rows\x18\x03\x20\x03(\x0b2\x0f.protos.dml.RowR\x04\
-    rows\"\x1a\n\x18WriteToPartitionResponse\"\xd7\x02\n\x0fPartitionFilter\
-    \x127\n\x08equal_to\x18\x01\x20\x01(\x0b2\x1a.protos.dml.PartitionFieldH\
-    \0R\x07equalTo\x12?\n\rless_or_eq_to\x18\x02\x20\x01(\x0b2\x1a.protos.dm\
-    l.PartitionFieldH\0R\nlessOrEqTo\x129\n\tless_than\x18\x03\x20\x01(\x0b2\
-    \x1a.protos.dml.PartitionFieldH\0R\x08lessThan\x12E\n\x10greater_or_eq_t\
-    o\x18\x04\x20\x01(\x0b2\x1a.protos.dml.PartitionFieldH\0R\rgreaterOrEqTo\
-    \x12?\n\x0cgreater_than\x18\x05\x20\x01(\x0b2\x1a.protos.dml.PartitionFi\
-    eldH\0R\x0bgreaterThanB\x07\n\x05value\"\xa7\x01\n\x13ListSegmentsReques\
-    t\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12F\n\x10partiti\
-    on_filter\x18\x02\x20\x03(\x0b2\x1b.protos.dml.PartitionFilterR\x0fparti\
-    tionFilter\x12)\n\x10include_metadata\x18\x03\x20\x01(\x08R\x0fincludeMe\
-    tadata\"N\n\x0fSegmentMetadata\x12\x14\n\x05count\x18\x01\x20\x01(\rR\
-    \x05count\x12%\n\x0elatest_version\x18\x02\x20\x01(\x04R\rlatestVersion\
-    \"\x9b\x01\n\x07Segment\x128\n\tpartition\x18\x01\x20\x03(\x0b2\x1a.prot\
-    os.dml.PartitionFieldR\tpartition\x12\x1d\n\nsegment_id\x18\x02\x20\x01(\
-    \tR\tsegmentId\x127\n\x08metadata\x18\x03\x20\x01(\x0b2\x1b.protos.dml.S\
-    egmentMetadataR\x08metadata\"G\n\x14ListSegmentsResponse\x12/\n\x08segme\
-    nts\x18\x01\x20\x03(\x0b2\x13.protos.dml.SegmentR\x08segments\"\xe2\x01\
-    \n\x18ReadSegmentColumnRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\
-    \ttableName\x128\n\tpartition\x18\x02\x20\x03(\x0b2\x1a.protos.dml.Parti\
-    tionFieldR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegment\
-    Id\x12\x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\x12-\n\x12co\
-    ntinuation_token\x18\x05\x20\x01(\tR\x11continuationToken\"\x85\x02\n\
-    \x19ReadSegmentColumnResponse\x12\x14\n\x05codec\x18\x01\x20\x01(\tR\x05\
-    codec\x12'\n\x0fcompressed_data\x18\x02\x20\x01(\x0cR\x0ecompressedData\
-    \x12+\n\x11uncompressed_data\x18\x03\x20\x01(\x0cR\x10uncompressedData\
-    \x12-\n\x12continuation_token\x18\x04\x20\x01(\tR\x11continuationToken\
-    \x12\x1b\n\trow_count\x18\x05\x20\x01(\rR\x08rowCount\x120\n\x14implicit\
-    _nulls_count\x18\x06\x20\x01(\rR\x12implicitNullsCountB\x15\n\x11com.pan\
-    cakedb.idlP\x01b\x06proto3\
+    mpH\0R\x0ctimestampVal\x12!\n\x0bfloat32_val\x18\x08\x20\x01(\x02H\0R\nf\
+    loat32ValB\x07\n\x05value\"0\n\x03Row\x12)\n\x06fields\x18\x01\x20\x03(\
+    \x0b2\x11.protos.dml.FieldR\x06fields\"\x97\x01\n\x17WriteToPartitionReq\
+    uest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x128\n\tpartit\
+    ion\x18\x02\x20\x03(\x0b2\x1a.protos.dml.PartitionFieldR\tpartition\x12#\
+    \n\x04rows\x18\x03\x20\x03(\x0b2\x0f.protos.dml.RowR\x04rows\"\x1a\n\x18\
+    WriteToPartitionResponse\"\xd7\x02\n\x0fPartitionFilter\x127\n\x08equal_\
+    to\x18\x01\x20\x01(\x0b2\x1a.protos.dml.PartitionFieldH\0R\x07equalTo\
+    \x12?\n\rless_or_eq_to\x18\x02\x20\x01(\x0b2\x1a.protos.dml.PartitionFie\
+    ldH\0R\nlessOrEqTo\x129\n\tless_than\x18\x03\x20\x01(\x0b2\x1a.protos.dm\
+    l.PartitionFieldH\0R\x08lessThan\x12E\n\x10greater_or_eq_to\x18\x04\x20\
+    \x01(\x0b2\x1a.protos.dml.PartitionFieldH\0R\rgreaterOrEqTo\x12?\n\x0cgr\
+    eater_than\x18\x05\x20\x01(\x0b2\x1a.protos.dml.PartitionFieldH\0R\x0bgr\
+    eaterThanB\x07\n\x05value\"\xa7\x01\n\x13ListSegmentsRequest\x12\x1d\n\n\
+    table_name\x18\x01\x20\x01(\tR\ttableName\x12F\n\x10partition_filter\x18\
+    \x02\x20\x03(\x0b2\x1b.protos.dml.PartitionFilterR\x0fpartitionFilter\
+    \x12)\n\x10include_metadata\x18\x03\x20\x01(\x08R\x0fincludeMetadata\"N\
+    \n\x0fSegmentMetadata\x12\x14\n\x05count\x18\x01\x20\x01(\rR\x05count\
+    \x12%\n\x0elatest_version\x18\x02\x20\x01(\x04R\rlatestVersion\"\x9b\x01\
+    \n\x07Segment\x128\n\tpartition\x18\x01\x20\x03(\x0b2\x1a.protos.dml.Par\
+    titionFieldR\tpartition\x12\x1d\n\nsegment_id\x18\x02\x20\x01(\tR\tsegme\
+    ntId\x127\n\x08metadata\x18\x03\x20\x01(\x0b2\x1b.protos.dml.SegmentMeta\
+    dataR\x08metadata\"G\n\x14ListSegmentsResponse\x12/\n\x08segments\x18\
+    \x01\x20\x03(\x0b2\x13.protos.dml.SegmentR\x08segments\"\xe2\x01\n\x18Re\
+    adSegmentColumnRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableN\
+    ame\x128\n\tpartition\x18\x02\x20\x03(\x0b2\x1a.protos.dml.PartitionFiel\
+    dR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\x12\
+    \x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\x12-\n\x12continua\
+    tion_token\x18\x05\x20\x01(\tR\x11continuationToken\"\x85\x02\n\x19ReadS\
+    egmentColumnResponse\x12\x14\n\x05codec\x18\x01\x20\x01(\tR\x05codec\x12\
+    '\n\x0fcompressed_data\x18\x02\x20\x01(\x0cR\x0ecompressedData\x12+\n\
+    \x11uncompressed_data\x18\x03\x20\x01(\x0cR\x10uncompressedData\x12-\n\
+    \x12continuation_token\x18\x04\x20\x01(\tR\x11continuationToken\x12\x1b\
+    \n\trow_count\x18\x05\x20\x01(\rR\x08rowCount\x120\n\x14implicit_nulls_c\
+    ount\x18\x06\x20\x01(\rR\x12implicitNullsCountB\x15\n\x11com.pancakedb.i\
+    dlP\x01b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

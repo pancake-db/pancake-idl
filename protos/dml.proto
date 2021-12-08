@@ -34,6 +34,7 @@ message FieldValue {
     bytes bytes_val = 5;
     double float64_val = 6;
     google.protobuf.Timestamp timestamp_val = 7;
+    float float32_val = 8;
   }
 }
 
