@@ -2971,6 +2971,7 @@ pub struct ReadSegmentColumnResponse {
     pub uncompressed_data: ::std::vec::Vec<u8>,
     pub continuation_token: ::std::string::String,
     pub row_count: u32,
+    pub implicit_nulls_count: u32,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::rt::CachedSize,
@@ -3013,6 +3014,11 @@ impl ReadSegmentColumnResponse {
             "row_count",
             |m: &ReadSegmentColumnResponse| { &m.row_count },
             |m: &mut ReadSegmentColumnResponse| { &mut m.row_count },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "implicit_nulls_count",
+            |m: &ReadSegmentColumnResponse| { &m.implicit_nulls_count },
+            |m: &mut ReadSegmentColumnResponse| { &mut m.implicit_nulls_count },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ReadSegmentColumnResponse>(
             "ReadSegmentColumnResponse",
@@ -3061,6 +3067,12 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
                     }
                     self.row_count = is.read_uint32()?;
                 },
+                6 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.implicit_nulls_count = is.read_uint32()?;
+                },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
                 },
@@ -3088,6 +3100,9 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
         if self.row_count != 0 {
             my_size += ::protobuf::rt::value_size(5, self.row_count, ::protobuf::wire_format::WireTypeVarint);
         }
+        if self.implicit_nulls_count != 0 {
+            my_size += ::protobuf::rt::value_size(6, self.implicit_nulls_count, ::protobuf::wire_format::WireTypeVarint);
+        }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
@@ -3108,6 +3123,9 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
         }
         if self.row_count != 0 {
             os.write_uint32(5, self.row_count)?;
+        }
+        if self.implicit_nulls_count != 0 {
+            os.write_uint32(6, self.implicit_nulls_count)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -3140,6 +3158,7 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
             uncompressed_data: ::std::vec::Vec::new(),
             continuation_token: ::std::string::String::new(),
             row_count: 0,
+            implicit_nulls_count: 0,
             unknown_fields: ::protobuf::UnknownFields::new(),
             cached_size: ::protobuf::rt::CachedSize::new(),
         };
@@ -3154,6 +3173,7 @@ impl ::protobuf::Clear for ReadSegmentColumnResponse {
         self.uncompressed_data.clear();
         self.continuation_token.clear();
         self.row_count = 0;
+        self.implicit_nulls_count = 0;
         self.unknown_fields.clear();
     }
 }
@@ -3212,13 +3232,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \ttableName\x128\n\tpartition\x18\x02\x20\x03(\x0b2\x1a.protos.dml.Parti\
     tionFieldR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegment\
     Id\x12\x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\x12-\n\x12co\
-    ntinuation_token\x18\x05\x20\x01(\tR\x11continuationToken\"\xd3\x01\n\
+    ntinuation_token\x18\x05\x20\x01(\tR\x11continuationToken\"\x85\x02\n\
     \x19ReadSegmentColumnResponse\x12\x14\n\x05codec\x18\x01\x20\x01(\tR\x05\
     codec\x12'\n\x0fcompressed_data\x18\x02\x20\x01(\x0cR\x0ecompressedData\
     \x12+\n\x11uncompressed_data\x18\x03\x20\x01(\x0cR\x10uncompressedData\
     \x12-\n\x12continuation_token\x18\x04\x20\x01(\tR\x11continuationToken\
-    \x12\x1b\n\trow_count\x18\x05\x20\x01(\rR\x08rowCountB\x15\n\x11com.panc\
-    akedb.idlP\x01b\x06proto3\
+    \x12\x1b\n\trow_count\x18\x05\x20\x01(\rR\x08rowCount\x120\n\x14implicit\
+    _nulls_count\x18\x06\x20\x01(\rR\x12implicitNullsCountB\x15\n\x11com.pan\
+    cakedb.idlP\x01b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

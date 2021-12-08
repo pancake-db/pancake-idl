@@ -97,4 +97,5 @@ message ReadSegmentColumnResponse {
   bytes uncompressed_data = 3;
   string continuation_token = 4;
   uint32 row_count = 5;
+  uint32 implicit_nulls_count = 6;
 }
