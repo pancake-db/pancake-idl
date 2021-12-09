@@ -28,7 +28,6 @@ const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_0_0_ALPHA_2;
 #[derive(PartialEq,Clone,Default)]
 pub struct ColumnMeta {
     // message fields
-    pub name: ::std::string::String,
     pub dtype: ::protobuf::ProtobufEnumOrUnknown<super::dtype::DataType>,
     pub nested_list_depth: u32,
     // special fields
@@ -49,11 +48,6 @@ impl ColumnMeta {
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "name",
-            |m: &ColumnMeta| { &m.name },
-            |m: &mut ColumnMeta| { &mut m.name },
-        ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "dtype",
             |m: &ColumnMeta| { &m.dtype },
@@ -81,12 +75,6 @@ impl ::protobuf::Message for ColumnMeta {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
-                1 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.name = is.read_string()?;
-                },
                 2 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
@@ -111,9 +99,6 @@ impl ::protobuf::Message for ColumnMeta {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        if !self.name.is_empty() {
-            my_size += ::protobuf::rt::string_size(1, &self.name);
-        }
         if self.dtype != ::protobuf::ProtobufEnumOrUnknown::new(super::dtype::DataType::STRING) {
             my_size += ::protobuf::rt::enum_or_unknown_size(2, self.dtype);
         }
@@ -126,9 +111,6 @@ impl ::protobuf::Message for ColumnMeta {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
-        if !self.name.is_empty() {
-            os.write_string(1, &self.name)?;
-        }
         if self.dtype != ::protobuf::ProtobufEnumOrUnknown::new(super::dtype::DataType::STRING) {
             os.write_enum(2, ::protobuf::ProtobufEnumOrUnknown::value(&self.dtype))?;
         }
@@ -161,7 +143,6 @@ impl ::protobuf::Message for ColumnMeta {
 
     fn default_instance() -> &'static ColumnMeta {
         static instance: ColumnMeta = ColumnMeta {
-            name: ::std::string::String::new(),
             dtype: ::protobuf::ProtobufEnumOrUnknown::from_i32(0),
             nested_list_depth: 0,
             unknown_fields: ::protobuf::UnknownFields::new(),
@@ -173,7 +154,6 @@ impl ::protobuf::Message for ColumnMeta {
 
 impl ::protobuf::Clear for ColumnMeta {
     fn clear(&mut self) {
-        self.name.clear();
         self.dtype = ::protobuf::ProtobufEnumOrUnknown::new(super::dtype::DataType::STRING);
         self.nested_list_depth = 0;
         self.unknown_fields.clear();
@@ -193,7 +173,6 @@ impl ::protobuf::reflect::ProtobufValue for ColumnMeta {
 #[derive(PartialEq,Clone,Default)]
 pub struct PartitionMeta {
     // message fields
-    pub name: ::std::string::String,
     pub dtype: ::protobuf::ProtobufEnumOrUnknown<super::partition_dtype::PartitionDataType>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
@@ -213,11 +192,6 @@ impl PartitionMeta {
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "name",
-            |m: &PartitionMeta| { &m.name },
-            |m: &mut PartitionMeta| { &mut m.name },
-        ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "dtype",
             |m: &PartitionMeta| { &m.dtype },
@@ -240,12 +214,6 @@ impl ::protobuf::Message for PartitionMeta {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
-                1 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.name = is.read_string()?;
-                },
                 2 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
@@ -264,9 +232,6 @@ impl ::protobuf::Message for PartitionMeta {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        if !self.name.is_empty() {
-            my_size += ::protobuf::rt::string_size(1, &self.name);
-        }
         if self.dtype != ::protobuf::ProtobufEnumOrUnknown::new(super::partition_dtype::PartitionDataType::STRING) {
             my_size += ::protobuf::rt::enum_or_unknown_size(2, self.dtype);
         }
@@ -276,9 +241,6 @@ impl ::protobuf::Message for PartitionMeta {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
-        if !self.name.is_empty() {
-            os.write_string(1, &self.name)?;
-        }
         if self.dtype != ::protobuf::ProtobufEnumOrUnknown::new(super::partition_dtype::PartitionDataType::STRING) {
             os.write_enum(2, ::protobuf::ProtobufEnumOrUnknown::value(&self.dtype))?;
         }
@@ -308,7 +270,6 @@ impl ::protobuf::Message for PartitionMeta {
 
     fn default_instance() -> &'static PartitionMeta {
         static instance: PartitionMeta = PartitionMeta {
-            name: ::std::string::String::new(),
             dtype: ::protobuf::ProtobufEnumOrUnknown::from_i32(0),
             unknown_fields: ::protobuf::UnknownFields::new(),
             cached_size: ::protobuf::rt::CachedSize::new(),
@@ -319,7 +280,6 @@ impl ::protobuf::Message for PartitionMeta {
 
 impl ::protobuf::Clear for PartitionMeta {
     fn clear(&mut self) {
-        self.name.clear();
         self.dtype = ::protobuf::ProtobufEnumOrUnknown::new(super::partition_dtype::PartitionDataType::STRING);
         self.unknown_fields.clear();
     }
@@ -338,8 +298,8 @@ impl ::protobuf::reflect::ProtobufValue for PartitionMeta {
 #[derive(PartialEq,Clone,Default)]
 pub struct Schema {
     // message fields
-    pub partitioning: ::std::vec::Vec<PartitionMeta>,
-    pub columns: ::std::vec::Vec<ColumnMeta>,
+    pub partitioning: ::std::collections::HashMap<::std::string::String, PartitionMeta>,
+    pub columns: ::std::collections::HashMap<::std::string::String, ColumnMeta>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::rt::CachedSize,
@@ -358,12 +318,12 @@ impl Schema {
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
-        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
+        fields.push(::protobuf::reflect::rt::v2::make_map_simpler_accessor::<_, _, _>(
             "partitioning",
             |m: &Schema| { &m.partitioning },
             |m: &mut Schema| { &mut m.partitioning },
         ));
-        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
+        fields.push(::protobuf::reflect::rt::v2::make_map_simpler_accessor::<_, _, _>(
             "columns",
             |m: &Schema| { &m.columns },
             |m: &mut Schema| { &mut m.columns },
@@ -378,16 +338,6 @@ impl Schema {
 
 impl ::protobuf::Message for Schema {
     fn is_initialized(&self) -> bool {
-        for v in &self.partitioning {
-            if !v.is_initialized() {
-                return false;
-            }
-        };
-        for v in &self.columns {
-            if !v.is_initialized() {
-                return false;
-            }
-        };
         true
     }
 
@@ -396,10 +346,10 @@ impl ::protobuf::Message for Schema {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_repeated_message_into_vec(wire_type, is, &mut self.partitioning)?;
+                    ::protobuf::rt::read_map_into::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionMeta>>(wire_type, is, &mut self.partitioning)?;
                 },
                 2 => {
-                    ::protobuf::rt::read_repeated_message_into_vec(wire_type, is, &mut self.columns)?;
+                    ::protobuf::rt::read_map_into::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<ColumnMeta>>(wire_type, is, &mut self.columns)?;
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -413,26 +363,16 @@ impl ::protobuf::Message for Schema {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        for value in &self.partitioning {
-            let len = value.compute_size();
-            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        };
-        for value in &self.columns {
-            let len = value.compute_size();
-            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        };
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionMeta>>(1, &self.partitioning);
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<ColumnMeta>>(2, &self.columns);
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
-        for v in &self.partitioning {
-            ::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
-        };
-        for v in &self.columns {
-            ::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
-        };
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionMeta>>(1, &self.partitioning, os)?;
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<ColumnMeta>>(2, &self.columns, os)?;
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -458,13 +398,8 @@ impl ::protobuf::Message for Schema {
     }
 
     fn default_instance() -> &'static Schema {
-        static instance: Schema = Schema {
-            partitioning: ::std::vec::Vec::new(),
-            columns: ::std::vec::Vec::new(),
-            unknown_fields: ::protobuf::UnknownFields::new(),
-            cached_size: ::protobuf::rt::CachedSize::new(),
-        };
-        &instance
+        static instance: ::protobuf::rt::LazyV2<Schema> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(Schema::new)
     }
 }
 
@@ -488,15 +423,18 @@ impl ::protobuf::reflect::ProtobufValue for Schema {
 
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x0cschema.proto\x12\rprotos.schema\x1a\x0bdtype.proto\x1a\x15partitio\
-    n_dtype.proto\"z\n\nColumnMeta\x12\x12\n\x04name\x18\x01\x20\x01(\tR\x04\
-    name\x12,\n\x05dtype\x18\x02\x20\x01(\x0e2\x16.protos.dtype.DataTypeR\
-    \x05dtype\x12*\n\x11nested_list_depth\x18\x03\x20\x01(\rR\x0fnestedListD\
-    epth\"d\n\rPartitionMeta\x12\x12\n\x04name\x18\x01\x20\x01(\tR\x04name\
-    \x12?\n\x05dtype\x18\x02\x20\x01(\x0e2).protos.partition_dtype.Partition\
-    DataTypeR\x05dtype\"\x7f\n\x06Schema\x12@\n\x0cpartitioning\x18\x01\x20\
-    \x03(\x0b2\x1c.protos.schema.PartitionMetaR\x0cpartitioning\x123\n\x07co\
-    lumns\x18\x02\x20\x03(\x0b2\x19.protos.schema.ColumnMetaR\x07columnsB\
-    \x15\n\x11com.pancakedb.idlP\x01b\x06proto3\
+    n_dtype.proto\"f\n\nColumnMeta\x12,\n\x05dtype\x18\x02\x20\x01(\x0e2\x16\
+    .protos.dtype.DataTypeR\x05dtype\x12*\n\x11nested_list_depth\x18\x03\x20\
+    \x01(\rR\x0fnestedListDepth\"P\n\rPartitionMeta\x12?\n\x05dtype\x18\x02\
+    \x20\x01(\x0e2).protos.partition_dtype.PartitionDataTypeR\x05dtype\"\xc9\
+    \x02\n\x06Schema\x12K\n\x0cpartitioning\x18\x01\x20\x03(\x0b2'.protos.sc\
+    hema.Schema.PartitioningEntryR\x0cpartitioning\x12<\n\x07columns\x18\x02\
+    \x20\x03(\x0b2\".protos.schema.Schema.ColumnsEntryR\x07columns\x1a]\n\
+    \x11PartitioningEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x122\n\
+    \x05value\x18\x02\x20\x01(\x0b2\x1c.protos.schema.PartitionMetaR\x05valu\
+    e:\x028\x01\x1aU\n\x0cColumnsEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\
+    \x03key\x12/\n\x05value\x18\x02\x20\x01(\x0b2\x19.protos.schema.ColumnMe\
+    taR\x05value:\x028\x01B\x15\n\x11com.pancakedb.idlP\x01b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

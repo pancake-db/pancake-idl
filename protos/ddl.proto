@@ -25,7 +25,7 @@ message CreateTableResponse {
 
 message AlterTableRequest {
   string table_name = 1;
-  repeated schema.ColumnMeta new_columns = 2;
+  map<string, schema.ColumnMeta> new_columns = 2;
 }
 
 message AlterTableResponse {}
