@@ -96,32 +96,7 @@ impl PartitionField {
         }
     }
 
-    // int64 int64_val = 3;
-
-    pub fn get_int64_val(&self) -> i64 {
-        match self.value {
-            ::std::option::Option::Some(partition_field::Value::int64_val(v)) => v,
-            _ => 0,
-        }
-    }
-
-    pub fn clear_int64_val(&mut self) {
-        self.value = ::std::option::Option::None;
-    }
-
-    pub fn has_int64_val(&self) -> bool {
-        match self.value {
-            ::std::option::Option::Some(partition_field::Value::int64_val(..)) => true,
-            _ => false,
-        }
-    }
-
-    // Param is passed by value, moved
-    pub fn set_int64_val(&mut self, v: i64) {
-        self.value = ::std::option::Option::Some(partition_field::Value::int64_val(v))
-    }
-
-    // bool bool_val = 4;
+    // bool bool_val = 3;
 
     pub fn get_bool_val(&self) -> bool {
         match self.value {
@@ -144,6 +119,31 @@ impl PartitionField {
     // Param is passed by value, moved
     pub fn set_bool_val(&mut self, v: bool) {
         self.value = ::std::option::Option::Some(partition_field::Value::bool_val(v))
+    }
+
+    // int64 int64_val = 4;
+
+    pub fn get_int64_val(&self) -> i64 {
+        match self.value {
+            ::std::option::Option::Some(partition_field::Value::int64_val(v)) => v,
+            _ => 0,
+        }
+    }
+
+    pub fn clear_int64_val(&mut self) {
+        self.value = ::std::option::Option::None;
+    }
+
+    pub fn has_int64_val(&self) -> bool {
+        match self.value {
+            ::std::option::Option::Some(partition_field::Value::int64_val(..)) => true,
+            _ => false,
+        }
+    }
+
+    // Param is passed by value, moved
+    pub fn set_int64_val(&mut self, v: i64) {
+        self.value = ::std::option::Option::Some(partition_field::Value::int64_val(v))
     }
 
     // .google.protobuf.Timestamp timestamp_val = 5;
@@ -209,16 +209,16 @@ impl PartitionField {
             PartitionField::set_string_val,
         ));
         fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
-            "int64_val",
-            PartitionField::has_int64_val,
-            PartitionField::get_int64_val,
-            PartitionField::set_int64_val,
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
             "bool_val",
             PartitionField::has_bool_val,
             PartitionField::get_bool_val,
             PartitionField::set_bool_val,
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
+            "int64_val",
+            PartitionField::has_int64_val,
+            PartitionField::get_int64_val,
+            PartitionField::set_int64_val,
         ));
         fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, ::protobuf::well_known_types::Timestamp>(
             "timestamp_val",
@@ -265,13 +265,13 @@ impl ::protobuf::Message for PartitionField {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.value = ::std::option::Option::Some(partition_field::Value::int64_val(is.read_int64()?));
+                    self.value = ::std::option::Option::Some(partition_field::Value::bool_val(is.read_bool()?));
                 },
                 4 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.value = ::std::option::Option::Some(partition_field::Value::bool_val(is.read_bool()?));
+                    self.value = ::std::option::Option::Some(partition_field::Value::int64_val(is.read_int64()?));
                 },
                 5 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
@@ -299,11 +299,11 @@ impl ::protobuf::Message for PartitionField {
                 &partition_field::Value::string_val(ref v) => {
                     my_size += ::protobuf::rt::string_size(2, &v);
                 },
-                &partition_field::Value::int64_val(v) => {
-                    my_size += ::protobuf::rt::value_size(3, v, ::protobuf::wire_format::WireTypeVarint);
-                },
                 &partition_field::Value::bool_val(v) => {
                     my_size += 2;
+                },
+                &partition_field::Value::int64_val(v) => {
+                    my_size += ::protobuf::rt::value_size(4, v, ::protobuf::wire_format::WireTypeVarint);
                 },
                 &partition_field::Value::timestamp_val(ref v) => {
                     let len = v.compute_size();
@@ -325,11 +325,11 @@ impl ::protobuf::Message for PartitionField {
                 &partition_field::Value::string_val(ref v) => {
                     os.write_string(2, v)?;
                 },
-                &partition_field::Value::int64_val(v) => {
-                    os.write_int64(3, v)?;
-                },
                 &partition_field::Value::bool_val(v) => {
-                    os.write_bool(4, v)?;
+                    os.write_bool(3, v)?;
+                },
+                &partition_field::Value::int64_val(v) => {
+                    os.write_int64(4, v)?;
                 },
                 &partition_field::Value::timestamp_val(ref v) => {
                     ::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
@@ -398,8 +398,8 @@ pub mod partition_field {
     #[derive(Clone,PartialEq,Debug)]
     pub enum Value {
         string_val(::std::string::String),
-        int64_val(i64),
         bool_val(bool),
+        int64_val(i64),
         timestamp_val(::protobuf::well_known_types::Timestamp),
     }
 
@@ -801,32 +801,7 @@ impl FieldValue {
         }
     }
 
-    // int64 int64_val = 3;
-
-    pub fn get_int64_val(&self) -> i64 {
-        match self.value {
-            ::std::option::Option::Some(field_value::Value::int64_val(v)) => v,
-            _ => 0,
-        }
-    }
-
-    pub fn clear_int64_val(&mut self) {
-        self.value = ::std::option::Option::None;
-    }
-
-    pub fn has_int64_val(&self) -> bool {
-        match self.value {
-            ::std::option::Option::Some(field_value::Value::int64_val(..)) => true,
-            _ => false,
-        }
-    }
-
-    // Param is passed by value, moved
-    pub fn set_int64_val(&mut self, v: i64) {
-        self.value = ::std::option::Option::Some(field_value::Value::int64_val(v))
-    }
-
-    // bool bool_val = 4;
+    // bool bool_val = 3;
 
     pub fn get_bool_val(&self) -> bool {
         match self.value {
@@ -851,7 +826,7 @@ impl FieldValue {
         self.value = ::std::option::Option::Some(field_value::Value::bool_val(v))
     }
 
-    // bytes bytes_val = 5;
+    // bytes bytes_val = 4;
 
     pub fn get_bytes_val(&self) -> &[u8] {
         match self.value {
@@ -900,7 +875,57 @@ impl FieldValue {
         }
     }
 
-    // double float64_val = 6;
+    // int64 int64_val = 5;
+
+    pub fn get_int64_val(&self) -> i64 {
+        match self.value {
+            ::std::option::Option::Some(field_value::Value::int64_val(v)) => v,
+            _ => 0,
+        }
+    }
+
+    pub fn clear_int64_val(&mut self) {
+        self.value = ::std::option::Option::None;
+    }
+
+    pub fn has_int64_val(&self) -> bool {
+        match self.value {
+            ::std::option::Option::Some(field_value::Value::int64_val(..)) => true,
+            _ => false,
+        }
+    }
+
+    // Param is passed by value, moved
+    pub fn set_int64_val(&mut self, v: i64) {
+        self.value = ::std::option::Option::Some(field_value::Value::int64_val(v))
+    }
+
+    // float float32_val = 6;
+
+    pub fn get_float32_val(&self) -> f32 {
+        match self.value {
+            ::std::option::Option::Some(field_value::Value::float32_val(v)) => v,
+            _ => 0.,
+        }
+    }
+
+    pub fn clear_float32_val(&mut self) {
+        self.value = ::std::option::Option::None;
+    }
+
+    pub fn has_float32_val(&self) -> bool {
+        match self.value {
+            ::std::option::Option::Some(field_value::Value::float32_val(..)) => true,
+            _ => false,
+        }
+    }
+
+    // Param is passed by value, moved
+    pub fn set_float32_val(&mut self, v: f32) {
+        self.value = ::std::option::Option::Some(field_value::Value::float32_val(v))
+    }
+
+    // double float64_val = 7;
 
     pub fn get_float64_val(&self) -> f64 {
         match self.value {
@@ -925,7 +950,7 @@ impl FieldValue {
         self.value = ::std::option::Option::Some(field_value::Value::float64_val(v))
     }
 
-    // .google.protobuf.Timestamp timestamp_val = 7;
+    // .google.protobuf.Timestamp timestamp_val = 8;
 
     pub fn get_timestamp_val(&self) -> &::protobuf::well_known_types::Timestamp {
         match self.value {
@@ -974,31 +999,6 @@ impl FieldValue {
         }
     }
 
-    // float float32_val = 8;
-
-    pub fn get_float32_val(&self) -> f32 {
-        match self.value {
-            ::std::option::Option::Some(field_value::Value::float32_val(v)) => v,
-            _ => 0.,
-        }
-    }
-
-    pub fn clear_float32_val(&mut self) {
-        self.value = ::std::option::Option::None;
-    }
-
-    pub fn has_float32_val(&self) -> bool {
-        match self.value {
-            ::std::option::Option::Some(field_value::Value::float32_val(..)) => true,
-            _ => false,
-        }
-    }
-
-    // Param is passed by value, moved
-    pub fn set_float32_val(&mut self, v: f32) {
-        self.value = ::std::option::Option::Some(field_value::Value::float32_val(v))
-    }
-
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, RepeatedFieldValue>(
@@ -1015,12 +1015,6 @@ impl FieldValue {
             FieldValue::set_string_val,
         ));
         fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
-            "int64_val",
-            FieldValue::has_int64_val,
-            FieldValue::get_int64_val,
-            FieldValue::set_int64_val,
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
             "bool_val",
             FieldValue::has_bool_val,
             FieldValue::get_bool_val,
@@ -1031,6 +1025,18 @@ impl FieldValue {
             FieldValue::has_bytes_val,
             FieldValue::get_bytes_val,
             FieldValue::set_bytes_val,
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
+            "int64_val",
+            FieldValue::has_int64_val,
+            FieldValue::get_int64_val,
+            FieldValue::set_int64_val,
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
+            "float32_val",
+            FieldValue::has_float32_val,
+            FieldValue::get_float32_val,
+            FieldValue::set_float32_val,
         ));
         fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
             "float64_val",
@@ -1044,12 +1050,6 @@ impl FieldValue {
             FieldValue::get_timestamp_val,
             FieldValue::mut_timestamp_val,
             FieldValue::set_timestamp_val,
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
-            "float32_val",
-            FieldValue::has_float32_val,
-            FieldValue::get_float32_val,
-            FieldValue::set_float32_val,
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<FieldValue>(
             "FieldValue",
@@ -1094,37 +1094,37 @@ impl ::protobuf::Message for FieldValue {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.value = ::std::option::Option::Some(field_value::Value::int64_val(is.read_int64()?));
-                },
-                4 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
                     self.value = ::std::option::Option::Some(field_value::Value::bool_val(is.read_bool()?));
                 },
-                5 => {
+                4 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     self.value = ::std::option::Option::Some(field_value::Value::bytes_val(is.read_bytes()?));
                 },
+                5 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.value = ::std::option::Option::Some(field_value::Value::int64_val(is.read_int64()?));
+                },
                 6 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeFixed32 {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.value = ::std::option::Option::Some(field_value::Value::float32_val(is.read_float()?));
+                },
+                7 => {
                     if wire_type != ::protobuf::wire_format::WireTypeFixed64 {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     self.value = ::std::option::Option::Some(field_value::Value::float64_val(is.read_double()?));
                 },
-                7 => {
+                8 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     self.value = ::std::option::Option::Some(field_value::Value::timestamp_val(is.read_message()?));
-                },
-                8 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeFixed32 {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.value = ::std::option::Option::Some(field_value::Value::float32_val(is.read_float()?));
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -1147,14 +1147,17 @@ impl ::protobuf::Message for FieldValue {
                 &field_value::Value::string_val(ref v) => {
                     my_size += ::protobuf::rt::string_size(2, &v);
                 },
-                &field_value::Value::int64_val(v) => {
-                    my_size += ::protobuf::rt::value_size(3, v, ::protobuf::wire_format::WireTypeVarint);
-                },
                 &field_value::Value::bool_val(v) => {
                     my_size += 2;
                 },
                 &field_value::Value::bytes_val(ref v) => {
-                    my_size += ::protobuf::rt::bytes_size(5, &v);
+                    my_size += ::protobuf::rt::bytes_size(4, &v);
+                },
+                &field_value::Value::int64_val(v) => {
+                    my_size += ::protobuf::rt::value_size(5, v, ::protobuf::wire_format::WireTypeVarint);
+                },
+                &field_value::Value::float32_val(v) => {
+                    my_size += 5;
                 },
                 &field_value::Value::float64_val(v) => {
                     my_size += 9;
@@ -1162,9 +1165,6 @@ impl ::protobuf::Message for FieldValue {
                 &field_value::Value::timestamp_val(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                },
-                &field_value::Value::float32_val(v) => {
-                    my_size += 5;
                 },
             };
         }
@@ -1182,23 +1182,23 @@ impl ::protobuf::Message for FieldValue {
                 &field_value::Value::string_val(ref v) => {
                     os.write_string(2, v)?;
                 },
-                &field_value::Value::int64_val(v) => {
-                    os.write_int64(3, v)?;
-                },
                 &field_value::Value::bool_val(v) => {
-                    os.write_bool(4, v)?;
+                    os.write_bool(3, v)?;
                 },
                 &field_value::Value::bytes_val(ref v) => {
-                    os.write_bytes(5, v)?;
+                    os.write_bytes(4, v)?;
                 },
-                &field_value::Value::float64_val(v) => {
-                    os.write_double(6, v)?;
-                },
-                &field_value::Value::timestamp_val(ref v) => {
-                    ::protobuf::rt::write_message_field_with_cached_size(7, v, os)?;
+                &field_value::Value::int64_val(v) => {
+                    os.write_int64(5, v)?;
                 },
                 &field_value::Value::float32_val(v) => {
-                    os.write_float(8, v)?;
+                    os.write_float(6, v)?;
+                },
+                &field_value::Value::float64_val(v) => {
+                    os.write_double(7, v)?;
+                },
+                &field_value::Value::timestamp_val(ref v) => {
+                    ::protobuf::rt::write_message_field_with_cached_size(8, v, os)?;
                 },
             };
         }
@@ -1267,12 +1267,12 @@ pub mod field_value {
     pub enum Value {
         list_val(super::RepeatedFieldValue),
         string_val(::std::string::String),
-        int64_val(i64),
         bool_val(bool),
         bytes_val(::std::vec::Vec<u8>),
+        int64_val(i64),
+        float32_val(f32),
         float64_val(f64),
         timestamp_val(::protobuf::well_known_types::Timestamp),
-        float32_val(f32),
     }
 
     impl ::protobuf::Oneof for Value {
@@ -3236,22 +3236,22 @@ impl ::protobuf::reflect::ProtobufValue for ReadSegmentColumnResponse {
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\tdml.proto\x12\nprotos.dml\x1a\x1fgoogle/protobuf/timestamp.proto\"\
     \xcd\x01\n\x0ePartitionField\x12\x12\n\x04name\x18\x01\x20\x01(\tR\x04na\
-    me\x12\x1f\n\nstring_val\x18\x02\x20\x01(\tH\0R\tstringVal\x12\x1d\n\tin\
-    t64_val\x18\x03\x20\x01(\x03H\0R\x08int64Val\x12\x1b\n\x08bool_val\x18\
-    \x04\x20\x01(\x08H\0R\x07boolVal\x12A\n\rtimestamp_val\x18\x05\x20\x01(\
+    me\x12\x1f\n\nstring_val\x18\x02\x20\x01(\tH\0R\tstringVal\x12\x1b\n\x08\
+    bool_val\x18\x03\x20\x01(\x08H\0R\x07boolVal\x12\x1d\n\tint64_val\x18\
+    \x04\x20\x01(\x03H\0R\x08int64Val\x12A\n\rtimestamp_val\x18\x05\x20\x01(\
     \x0b2\x1a.google.protobuf.TimestampH\0R\x0ctimestampValB\x07\n\x05value\
     \"@\n\x12RepeatedFieldValue\x12*\n\x04vals\x18\x01\x20\x03(\x0b2\x16.pro\
     tos.dml.FieldValueR\x04vals\"I\n\x05Field\x12\x12\n\x04name\x18\x01\x20\
     \x01(\tR\x04name\x12,\n\x05value\x18\x02\x20\x01(\x0b2\x16.protos.dml.Fi\
     eldValueR\x05value\"\xd7\x02\n\nFieldValue\x12;\n\x08list_val\x18\x01\
     \x20\x01(\x0b2\x1e.protos.dml.RepeatedFieldValueH\0R\x07listVal\x12\x1f\
-    \n\nstring_val\x18\x02\x20\x01(\tH\0R\tstringVal\x12\x1d\n\tint64_val\
-    \x18\x03\x20\x01(\x03H\0R\x08int64Val\x12\x1b\n\x08bool_val\x18\x04\x20\
-    \x01(\x08H\0R\x07boolVal\x12\x1d\n\tbytes_val\x18\x05\x20\x01(\x0cH\0R\
-    \x08bytesVal\x12!\n\x0bfloat64_val\x18\x06\x20\x01(\x01H\0R\nfloat64Val\
-    \x12A\n\rtimestamp_val\x18\x07\x20\x01(\x0b2\x1a.google.protobuf.Timesta\
-    mpH\0R\x0ctimestampVal\x12!\n\x0bfloat32_val\x18\x08\x20\x01(\x02H\0R\nf\
-    loat32ValB\x07\n\x05value\"0\n\x03Row\x12)\n\x06fields\x18\x01\x20\x03(\
+    \n\nstring_val\x18\x02\x20\x01(\tH\0R\tstringVal\x12\x1b\n\x08bool_val\
+    \x18\x03\x20\x01(\x08H\0R\x07boolVal\x12\x1d\n\tbytes_val\x18\x04\x20\
+    \x01(\x0cH\0R\x08bytesVal\x12\x1d\n\tint64_val\x18\x05\x20\x01(\x03H\0R\
+    \x08int64Val\x12!\n\x0bfloat32_val\x18\x06\x20\x01(\x02H\0R\nfloat32Val\
+    \x12!\n\x0bfloat64_val\x18\x07\x20\x01(\x01H\0R\nfloat64Val\x12A\n\rtime\
+    stamp_val\x18\x08\x20\x01(\x0b2\x1a.google.protobuf.TimestampH\0R\x0ctim\
+    estampValB\x07\n\x05value\"0\n\x03Row\x12)\n\x06fields\x18\x01\x20\x03(\
     \x0b2\x11.protos.dml.FieldR\x06fields\"\x97\x01\n\x17WriteToPartitionReq\
     uest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x128\n\tpartit\
     ion\x18\x02\x20\x03(\x0b2\x1a.protos.dml.PartitionFieldR\tpartition\x12#\

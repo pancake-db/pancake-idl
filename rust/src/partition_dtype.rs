@@ -28,8 +28,8 @@ const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_0_0_ALPHA_2;
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 pub enum PartitionDataType {
     STRING = 0,
-    INT64 = 1,
-    BOOL = 2,
+    BOOL = 1,
+    INT64 = 2,
     TIMESTAMP_MINUTE = 3,
 }
 
@@ -41,8 +41,8 @@ impl ::protobuf::ProtobufEnum for PartitionDataType {
     fn from_i32(value: i32) -> ::std::option::Option<PartitionDataType> {
         match value {
             0 => ::std::option::Option::Some(PartitionDataType::STRING),
-            1 => ::std::option::Option::Some(PartitionDataType::INT64),
-            2 => ::std::option::Option::Some(PartitionDataType::BOOL),
+            1 => ::std::option::Option::Some(PartitionDataType::BOOL),
+            2 => ::std::option::Option::Some(PartitionDataType::INT64),
             3 => ::std::option::Option::Some(PartitionDataType::TIMESTAMP_MINUTE),
             _ => ::std::option::Option::None
         }
@@ -51,8 +51,8 @@ impl ::protobuf::ProtobufEnum for PartitionDataType {
     fn values() -> &'static [Self] {
         static values: &'static [PartitionDataType] = &[
             PartitionDataType::STRING,
-            PartitionDataType::INT64,
             PartitionDataType::BOOL,
+            PartitionDataType::INT64,
             PartitionDataType::TIMESTAMP_MINUTE,
         ];
         values
@@ -81,9 +81,9 @@ impl PartitionDataType {
 
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x15partition_dtype.proto\x12\x16protos.partition_dtype*J\n\x11Partiti\
-    onDataType\x12\n\n\x06STRING\x10\0\x12\t\n\x05INT64\x10\x01\x12\x08\n\
-    \x04BOOL\x10\x02\x12\x14\n\x10TIMESTAMP_MINUTE\x10\x03B\x15\n\x11com.pan\
-    cakedb.idlP\x01b\x06proto3\
+    onDataType\x12\n\n\x06STRING\x10\0\x12\x08\n\x04BOOL\x10\x01\x12\t\n\x05\
+    INT64\x10\x02\x12\x14\n\x10TIMESTAMP_MINUTE\x10\x03B\x15\n\x11com.pancak\
+    edb.idlP\x01b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

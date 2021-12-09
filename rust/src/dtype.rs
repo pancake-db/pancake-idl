@@ -28,12 +28,12 @@ const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_0_0_ALPHA_2;
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
 pub enum DataType {
     STRING = 0,
-    INT64 = 1,
-    BOOL = 2,
-    BYTES = 3,
-    FLOAT64 = 4,
-    TIMESTAMP_MICROS = 5,
-    FLOAT32 = 6,
+    BOOL = 1,
+    BYTES = 2,
+    INT64 = 3,
+    FLOAT32 = 4,
+    FLOAT64 = 5,
+    TIMESTAMP_MICROS = 6,
 }
 
 impl ::protobuf::ProtobufEnum for DataType {
@@ -44,12 +44,12 @@ impl ::protobuf::ProtobufEnum for DataType {
     fn from_i32(value: i32) -> ::std::option::Option<DataType> {
         match value {
             0 => ::std::option::Option::Some(DataType::STRING),
-            1 => ::std::option::Option::Some(DataType::INT64),
-            2 => ::std::option::Option::Some(DataType::BOOL),
-            3 => ::std::option::Option::Some(DataType::BYTES),
-            4 => ::std::option::Option::Some(DataType::FLOAT64),
-            5 => ::std::option::Option::Some(DataType::TIMESTAMP_MICROS),
-            6 => ::std::option::Option::Some(DataType::FLOAT32),
+            1 => ::std::option::Option::Some(DataType::BOOL),
+            2 => ::std::option::Option::Some(DataType::BYTES),
+            3 => ::std::option::Option::Some(DataType::INT64),
+            4 => ::std::option::Option::Some(DataType::FLOAT32),
+            5 => ::std::option::Option::Some(DataType::FLOAT64),
+            6 => ::std::option::Option::Some(DataType::TIMESTAMP_MICROS),
             _ => ::std::option::Option::None
         }
     }
@@ -57,12 +57,12 @@ impl ::protobuf::ProtobufEnum for DataType {
     fn values() -> &'static [Self] {
         static values: &'static [DataType] = &[
             DataType::STRING,
-            DataType::INT64,
             DataType::BOOL,
             DataType::BYTES,
+            DataType::INT64,
+            DataType::FLOAT32,
             DataType::FLOAT64,
             DataType::TIMESTAMP_MICROS,
-            DataType::FLOAT32,
         ];
         values
     }
@@ -90,10 +90,10 @@ impl DataType {
 
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x0bdtype.proto\x12\x0cprotos.dtype*f\n\x08DataType\x12\n\n\x06STRING\
-    \x10\0\x12\t\n\x05INT64\x10\x01\x12\x08\n\x04BOOL\x10\x02\x12\t\n\x05BYT\
-    ES\x10\x03\x12\x0b\n\x07FLOAT64\x10\x04\x12\x14\n\x10TIMESTAMP_MICROS\
-    \x10\x05\x12\x0b\n\x07FLOAT32\x10\x06B\x15\n\x11com.pancakedb.idlP\x01b\
-    \x06proto3\
+    \x10\0\x12\x08\n\x04BOOL\x10\x01\x12\t\n\x05BYTES\x10\x02\x12\t\n\x05INT\
+    64\x10\x03\x12\x0b\n\x07FLOAT32\x10\x04\x12\x0b\n\x07FLOAT64\x10\x05\x12\
+    \x14\n\x10TIMESTAMP_MICROS\x10\x06B\x15\n\x11com.pancakedb.idlP\x01b\x06\
+    proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

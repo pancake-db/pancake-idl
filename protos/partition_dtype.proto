@@ -6,7 +6,7 @@ option java_package = "com.pancakedb.idl";
 
 enum PartitionDataType {
   STRING = 0;
-  INT64 = 1;
-  BOOL = 2;
+  BOOL = 1;
+  INT64 = 2;
   TIMESTAMP_MINUTE = 3;
 }
