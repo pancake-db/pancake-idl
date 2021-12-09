@@ -10,8 +10,8 @@ message PartitionField {
   string name = 1;
   oneof value {
     string string_val = 2;
-    int64 int64_val = 3;
-    bool bool_val = 4;
+    bool bool_val = 3;
+    int64 int64_val = 4;
     google.protobuf.Timestamp timestamp_val = 5;
   }
 }
@@ -29,11 +29,12 @@ message FieldValue {
   oneof value {
     RepeatedFieldValue list_val = 1;
     string string_val = 2;
-    int64 int64_val = 3;
-    bool bool_val = 4;
-    bytes bytes_val = 5;
-    double float64_val = 6;
-    google.protobuf.Timestamp timestamp_val = 7;
+    bool bool_val = 3;
+    bytes bytes_val = 4;
+    int64 int64_val = 5;
+    float float32_val = 6;
+    double float64_val = 7;
+    google.protobuf.Timestamp timestamp_val = 8;
   }
 }
 
@@ -97,4 +98,5 @@ message ReadSegmentColumnResponse {
   bytes uncompressed_data = 3;
   string continuation_token = 4;
   uint32 row_count = 5;
+  uint32 implicit_nulls_count = 6;
 }
