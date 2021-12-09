@@ -3012,11 +3012,10 @@ impl ::protobuf::reflect::ProtobufValue for ReadSegmentColumnRequest {
 pub struct ReadSegmentColumnResponse {
     // message fields
     pub codec: ::std::string::String,
-    pub compressed_data: ::std::vec::Vec<u8>,
-    pub uncompressed_data: ::std::vec::Vec<u8>,
-    pub continuation_token: ::std::string::String,
+    pub data: ::std::vec::Vec<u8>,
     pub row_count: u32,
     pub implicit_nulls_count: u32,
+    pub continuation_token: ::std::string::String,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::rt::CachedSize,
@@ -3041,19 +3040,9 @@ impl ReadSegmentColumnResponse {
             |m: &mut ReadSegmentColumnResponse| { &mut m.codec },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "compressed_data",
-            |m: &ReadSegmentColumnResponse| { &m.compressed_data },
-            |m: &mut ReadSegmentColumnResponse| { &mut m.compressed_data },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "uncompressed_data",
-            |m: &ReadSegmentColumnResponse| { &m.uncompressed_data },
-            |m: &mut ReadSegmentColumnResponse| { &mut m.uncompressed_data },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "continuation_token",
-            |m: &ReadSegmentColumnResponse| { &m.continuation_token },
-            |m: &mut ReadSegmentColumnResponse| { &mut m.continuation_token },
+            "data",
+            |m: &ReadSegmentColumnResponse| { &m.data },
+            |m: &mut ReadSegmentColumnResponse| { &mut m.data },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "row_count",
@@ -3064,6 +3053,11 @@ impl ReadSegmentColumnResponse {
             "implicit_nulls_count",
             |m: &ReadSegmentColumnResponse| { &m.implicit_nulls_count },
             |m: &mut ReadSegmentColumnResponse| { &mut m.implicit_nulls_count },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "continuation_token",
+            |m: &ReadSegmentColumnResponse| { &m.continuation_token },
+            |m: &mut ReadSegmentColumnResponse| { &mut m.continuation_token },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ReadSegmentColumnResponse>(
             "ReadSegmentColumnResponse",
@@ -3092,31 +3086,25 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.compressed_data = is.read_bytes()?;
+                    self.data = is.read_bytes()?;
                 },
                 3 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.uncompressed_data = is.read_bytes()?;
-                },
-                4 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.continuation_token = is.read_string()?;
-                },
-                5 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     self.row_count = is.read_uint32()?;
                 },
-                6 => {
+                4 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     self.implicit_nulls_count = is.read_uint32()?;
+                },
+                5 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.continuation_token = is.read_string()?;
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -3133,20 +3121,17 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
         if !self.codec.is_empty() {
             my_size += ::protobuf::rt::string_size(1, &self.codec);
         }
-        if !self.compressed_data.is_empty() {
-            my_size += ::protobuf::rt::bytes_size(2, &self.compressed_data);
-        }
-        if !self.uncompressed_data.is_empty() {
-            my_size += ::protobuf::rt::bytes_size(3, &self.uncompressed_data);
-        }
-        if !self.continuation_token.is_empty() {
-            my_size += ::protobuf::rt::string_size(4, &self.continuation_token);
+        if !self.data.is_empty() {
+            my_size += ::protobuf::rt::bytes_size(2, &self.data);
         }
         if self.row_count != 0 {
-            my_size += ::protobuf::rt::value_size(5, self.row_count, ::protobuf::wire_format::WireTypeVarint);
+            my_size += ::protobuf::rt::value_size(3, self.row_count, ::protobuf::wire_format::WireTypeVarint);
         }
         if self.implicit_nulls_count != 0 {
-            my_size += ::protobuf::rt::value_size(6, self.implicit_nulls_count, ::protobuf::wire_format::WireTypeVarint);
+            my_size += ::protobuf::rt::value_size(4, self.implicit_nulls_count, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if !self.continuation_token.is_empty() {
+            my_size += ::protobuf::rt::string_size(5, &self.continuation_token);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
@@ -3157,20 +3142,17 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
         if !self.codec.is_empty() {
             os.write_string(1, &self.codec)?;
         }
-        if !self.compressed_data.is_empty() {
-            os.write_bytes(2, &self.compressed_data)?;
-        }
-        if !self.uncompressed_data.is_empty() {
-            os.write_bytes(3, &self.uncompressed_data)?;
-        }
-        if !self.continuation_token.is_empty() {
-            os.write_string(4, &self.continuation_token)?;
+        if !self.data.is_empty() {
+            os.write_bytes(2, &self.data)?;
         }
         if self.row_count != 0 {
-            os.write_uint32(5, self.row_count)?;
+            os.write_uint32(3, self.row_count)?;
         }
         if self.implicit_nulls_count != 0 {
-            os.write_uint32(6, self.implicit_nulls_count)?;
+            os.write_uint32(4, self.implicit_nulls_count)?;
+        }
+        if !self.continuation_token.is_empty() {
+            os.write_string(5, &self.continuation_token)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -3199,11 +3181,10 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
     fn default_instance() -> &'static ReadSegmentColumnResponse {
         static instance: ReadSegmentColumnResponse = ReadSegmentColumnResponse {
             codec: ::std::string::String::new(),
-            compressed_data: ::std::vec::Vec::new(),
-            uncompressed_data: ::std::vec::Vec::new(),
-            continuation_token: ::std::string::String::new(),
+            data: ::std::vec::Vec::new(),
             row_count: 0,
             implicit_nulls_count: 0,
+            continuation_token: ::std::string::String::new(),
             unknown_fields: ::protobuf::UnknownFields::new(),
             cached_size: ::protobuf::rt::CachedSize::new(),
         };
@@ -3214,11 +3195,10 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
 impl ::protobuf::Clear for ReadSegmentColumnResponse {
     fn clear(&mut self) {
         self.codec.clear();
-        self.compressed_data.clear();
-        self.uncompressed_data.clear();
-        self.continuation_token.clear();
+        self.data.clear();
         self.row_count = 0;
         self.implicit_nulls_count = 0;
+        self.continuation_token.clear();
         self.unknown_fields.clear();
     }
 }
@@ -3278,14 +3258,13 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ame\x128\n\tpartition\x18\x02\x20\x03(\x0b2\x1a.protos.dml.PartitionFiel\
     dR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\x12\
     \x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\x12-\n\x12continua\
-    tion_token\x18\x05\x20\x01(\tR\x11continuationToken\"\x85\x02\n\x19ReadS\
+    tion_token\x18\x05\x20\x01(\tR\x11continuationToken\"\xc3\x01\n\x19ReadS\
     egmentColumnResponse\x12\x14\n\x05codec\x18\x01\x20\x01(\tR\x05codec\x12\
-    '\n\x0fcompressed_data\x18\x02\x20\x01(\x0cR\x0ecompressedData\x12+\n\
-    \x11uncompressed_data\x18\x03\x20\x01(\x0cR\x10uncompressedData\x12-\n\
-    \x12continuation_token\x18\x04\x20\x01(\tR\x11continuationToken\x12\x1b\
-    \n\trow_count\x18\x05\x20\x01(\rR\x08rowCount\x120\n\x14implicit_nulls_c\
-    ount\x18\x06\x20\x01(\rR\x12implicitNullsCountB\x15\n\x11com.pancakedb.i\
-    dlP\x01b\x06proto3\
+    \x12\n\x04data\x18\x02\x20\x01(\x0cR\x04data\x12\x1b\n\trow_count\x18\
+    \x03\x20\x01(\rR\x08rowCount\x120\n\x14implicit_nulls_count\x18\x04\x20\
+    \x01(\rR\x12implicitNullsCount\x12-\n\x12continuation_token\x18\x05\x20\
+    \x01(\tR\x11continuationTokenB\x15\n\x11com.pancakedb.idlP\x01b\x06proto\
+    3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

@@ -43,6 +43,27 @@ curl \
   -d '{"table_name": "'$TABLE_NAME'"}'
 ```
 
+## List Tables
+
+`GET /rest/list_tables`
+
+request body format:
+```
+{}
+```
+
+response body format:
+```
+{
+  "tables": [
+    {"table_name": "..."},
+    ...
+  ]
+}
+```
+
+This lists all tables.
+
 ## Create Table
 
 `POST /rest/create_table`
@@ -62,27 +83,38 @@ request body format:
     "columns": [
       {
         "name": "...",
-        "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT64" | "TIMESTAMP_MICROS",
+        "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT32" | "FLOAT64" | "TIMESTAMP_MICROS",
         "nested_list_depth": int
       },
       ...
     ]
   },
-  "schema_mode": "FAIL_IF_EXISTS" | "OK_IF_EXACT"
+  "schema_mode": "FAIL_IF_EXISTS" | "OK_IF_EXACT" | "ADD_NEW_COLUMNS"
 }
 ```
 
 response body format:
 ```
 {
-  "already_exists": bool
+  "already_exists": bool,
+  "columns_added": ["...", ...]
 }
 ```
 
-This will ensure a table exists, creating a new one and returning
-`already_exists: false` if it did not exist, or changing nothing and returning
-`already_exists: true` if `schema_mode` is `OK_IF_EXACT` and the table already
-exists and matches the schema exactly.
+This will ensure a table exists following the behavior requested by
+`schema_mode`:
+* `FAIL_IF_EXISTS` works like most other databases' create table commands,
+returning an error if the table already exists.
+* `OK_IF_EXACT` will not give an error if the table already exists, as long as
+its schema is identical.
+* `ADD_NEW_COLUMNS` will not give an error if the table already exists, as long
+as the existing columns are a subset of the requested ones. Any new columns in
+the request will be added to the table.
+This is a declarative way to create a table.
+
+In a successful response, `already_exists` indicates whether the table already
+existed prior to the request, and `columns_added` is a list of the column names
+that were added by the request.
 
 Your schema is important.
 Partitioning is the only way to allow filtering your data.
@@ -97,6 +129,35 @@ at hourly or daily granularity to fit with the compaction schedule and make
 sure each partition has a moderate amount of data.
 With PancakeDB, table design is liberated from those restrictions, and the
 developer can choose partitioning to match their filter query pattern instead.
+
+There is a limit of 255 columns per table.
+If you find yourself needing more than that, it's probably
+time to rethink your data model.
+
+## Alter Table
+
+request body format:
+```
+{
+  "table_name": "...",
+  "new_columns": [
+    {
+      "name": "...",
+      "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT32" | "FLOAT64" | "TIMESTAMP_MICROS",
+      "nested_list_depth": int
+    },
+    ...
+  ]
+}
+```
+
+response body format:
+```
+{}
+```
+
+This will modify the schema by adding new columns.
+It will fail if any of the columns already exist.
 
 ## Drop Table
 
@@ -146,7 +207,7 @@ request response format:
     "columns": [
       {
         "name": "...",
-        "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT64" | "TIMESTAMP_MICROS",
+        "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT32" | "FLOAT64" | "TIMESTAMP_MICROS",
         "nested_list_depth": int
       },
       ...
@@ -299,6 +360,7 @@ response body format
 {
   "codec": "...",
   "row_count": int,
+  "implicit_nulls_count: int,
   "continuation_token": "..."
 }
 <newline character>

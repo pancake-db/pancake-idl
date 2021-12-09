@@ -94,9 +94,8 @@ message ReadSegmentColumnRequest {
 
 message ReadSegmentColumnResponse {
   string codec = 1;
-  bytes compressed_data = 2;
-  bytes uncompressed_data = 3;
-  string continuation_token = 4;
-  uint32 row_count = 5;
-  uint32 implicit_nulls_count = 6;
+  bytes data = 2;
+  uint32 row_count = 3;
+  uint32 implicit_nulls_count = 4;
+  string continuation_token = 5;
 }
