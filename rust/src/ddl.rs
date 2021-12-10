@@ -393,7 +393,7 @@ impl ::protobuf::reflect::ProtobufValue for CreateTableResponse {
 pub struct AlterTableRequest {
     // message fields
     pub table_name: ::std::string::String,
-    pub new_columns: ::std::vec::Vec<super::schema::ColumnMeta>,
+    pub new_columns: ::std::collections::HashMap<::std::string::String, super::schema::ColumnMeta>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::rt::CachedSize,
@@ -417,7 +417,7 @@ impl AlterTableRequest {
             |m: &AlterTableRequest| { &m.table_name },
             |m: &mut AlterTableRequest| { &mut m.table_name },
         ));
-        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
+        fields.push(::protobuf::reflect::rt::v2::make_map_simpler_accessor::<_, _, _>(
             "new_columns",
             |m: &AlterTableRequest| { &m.new_columns },
             |m: &mut AlterTableRequest| { &mut m.new_columns },
@@ -432,11 +432,6 @@ impl AlterTableRequest {
 
 impl ::protobuf::Message for AlterTableRequest {
     fn is_initialized(&self) -> bool {
-        for v in &self.new_columns {
-            if !v.is_initialized() {
-                return false;
-            }
-        };
         true
     }
 
@@ -451,7 +446,7 @@ impl ::protobuf::Message for AlterTableRequest {
                     self.table_name = is.read_string()?;
                 },
                 2 => {
-                    ::protobuf::rt::read_repeated_message_into_vec(wire_type, is, &mut self.new_columns)?;
+                    ::protobuf::rt::read_map_into::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<super::schema::ColumnMeta>>(wire_type, is, &mut self.new_columns)?;
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -468,10 +463,7 @@ impl ::protobuf::Message for AlterTableRequest {
         if !self.table_name.is_empty() {
             my_size += ::protobuf::rt::string_size(1, &self.table_name);
         }
-        for value in &self.new_columns {
-            let len = value.compute_size();
-            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        };
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<super::schema::ColumnMeta>>(2, &self.new_columns);
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
@@ -481,9 +473,7 @@ impl ::protobuf::Message for AlterTableRequest {
         if !self.table_name.is_empty() {
             os.write_string(1, &self.table_name)?;
         }
-        for v in &self.new_columns {
-            ::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
-        };
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<super::schema::ColumnMeta>>(2, &self.new_columns, os)?;
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -509,13 +499,8 @@ impl ::protobuf::Message for AlterTableRequest {
     }
 
     fn default_instance() -> &'static AlterTableRequest {
-        static instance: AlterTableRequest = AlterTableRequest {
-            table_name: ::std::string::String::new(),
-            new_columns: ::std::vec::Vec::new(),
-            unknown_fields: ::protobuf::UnknownFields::new(),
-            cached_size: ::protobuf::rt::CachedSize::new(),
-        };
-        &instance
+        static instance: ::protobuf::rt::LazyV2<AlterTableRequest> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(AlterTableRequest::new)
     }
 }
 
@@ -613,7 +598,7 @@ impl ::protobuf::Message for AlterTableResponse {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 3)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 4)
     }
 
     fn default_instance() -> &'static AlterTableResponse {
@@ -736,7 +721,7 @@ impl ::protobuf::Message for DropTableRequest {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 4)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 5)
     }
 
     fn default_instance() -> &'static DropTableRequest {
@@ -842,7 +827,7 @@ impl ::protobuf::Message for DropTableResponse {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 5)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 6)
     }
 
     fn default_instance() -> &'static DropTableResponse {
@@ -965,7 +950,7 @@ impl ::protobuf::Message for GetSchemaRequest {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 6)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 7)
     }
 
     fn default_instance() -> &'static GetSchemaRequest {
@@ -1093,7 +1078,7 @@ impl ::protobuf::Message for GetSchemaResponse {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 7)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 8)
     }
 
     fn default_instance() -> &'static GetSchemaResponse {
@@ -1218,7 +1203,7 @@ impl ::protobuf::Message for TableInfo {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 8)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 9)
     }
 
     fn default_instance() -> &'static TableInfo {
@@ -1324,7 +1309,7 @@ impl ::protobuf::Message for ListTablesRequest {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 9)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 10)
     }
 
     fn default_instance() -> &'static ListTablesRequest {
@@ -1450,7 +1435,7 @@ impl ::protobuf::Message for ListTablesResponse {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 10)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 11)
     }
 
     fn default_instance() -> &'static ListTablesResponse {
@@ -1488,18 +1473,20 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     odeR\x04mode\"F\n\nSchemaMode\x12\x12\n\x0eFAIL_IF_EXISTS\x10\0\x12\x0f\
     \n\x0bOK_IF_EXACT\x10\x01\x12\x13\n\x0fADD_NEW_COLUMNS\x10\x02\"a\n\x13C\
     reateTableResponse\x12%\n\x0ealready_exists\x18\x01\x20\x01(\x08R\ralrea\
-    dyExists\x12#\n\rcolumns_added\x18\x02\x20\x03(\tR\x0ccolumnsAdded\"n\n\
-    \x11AlterTableRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableNa\
-    me\x12:\n\x0bnew_columns\x18\x02\x20\x03(\x0b2\x19.protos.schema.ColumnM\
-    etaR\nnewColumns\"\x14\n\x12AlterTableResponse\"1\n\x10DropTableRequest\
-    \x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\"\x13\n\x11DropTab\
-    leResponse\"1\n\x10GetSchemaRequest\x12\x1d\n\ntable_name\x18\x01\x20\
-    \x01(\tR\ttableName\"B\n\x11GetSchemaResponse\x12-\n\x06schema\x18\x01\
-    \x20\x01(\x0b2\x15.protos.schema.SchemaR\x06schema\"*\n\tTableInfo\x12\
-    \x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\"\x13\n\x11ListTablesR\
-    equest\"C\n\x12ListTablesResponse\x12-\n\x06tables\x18\x01\x20\x03(\x0b2\
-    \x15.protos.ddl.TableInfoR\x06tablesB\x15\n\x11com.pancakedb.idlP\x01b\
-    \x06proto3\
+    dyExists\x12#\n\rcolumns_added\x18\x02\x20\x03(\tR\x0ccolumnsAdded\"\xdc\
+    \x01\n\x11AlterTableRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\tt\
+    ableName\x12N\n\x0bnew_columns\x18\x02\x20\x03(\x0b2-.protos.ddl.AlterTa\
+    bleRequest.NewColumnsEntryR\nnewColumns\x1aX\n\x0fNewColumnsEntry\x12\
+    \x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x12/\n\x05value\x18\x02\x20\x01\
+    (\x0b2\x19.protos.schema.ColumnMetaR\x05value:\x028\x01\"\x14\n\x12Alter\
+    TableResponse\"1\n\x10DropTableRequest\x12\x1d\n\ntable_name\x18\x01\x20\
+    \x01(\tR\ttableName\"\x13\n\x11DropTableResponse\"1\n\x10GetSchemaReques\
+    t\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\"B\n\x11GetSchema\
+    Response\x12-\n\x06schema\x18\x01\x20\x01(\x0b2\x15.protos.schema.Schema\
+    R\x06schema\"*\n\tTableInfo\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\tt\
+    ableName\"\x13\n\x11ListTablesRequest\"C\n\x12ListTablesResponse\x12-\n\
+    \x06tables\x18\x01\x20\x03(\x0b2\x15.protos.ddl.TableInfoR\x06tablesB\
+    \x15\n\x11com.pancakedb.idlP\x01b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

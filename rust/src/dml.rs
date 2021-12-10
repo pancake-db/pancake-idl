@@ -26,24 +26,22 @@
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_0_0_ALPHA_2;
 
 #[derive(PartialEq,Clone,Default)]
-pub struct PartitionField {
-    // message fields
-    pub name: ::std::string::String,
+pub struct PartitionFieldValue {
     // message oneof groups
-    pub value: ::std::option::Option<partition_field::Value>,
+    pub value: ::std::option::Option<partition_field_value::Value>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::rt::CachedSize,
 }
 
-impl<'a> ::std::default::Default for &'a PartitionField {
-    fn default() -> &'a PartitionField {
-        <PartitionField as ::protobuf::Message>::default_instance()
+impl<'a> ::std::default::Default for &'a PartitionFieldValue {
+    fn default() -> &'a PartitionFieldValue {
+        <PartitionFieldValue as ::protobuf::Message>::default_instance()
     }
 }
 
-impl PartitionField {
-    pub fn new() -> PartitionField {
+impl PartitionFieldValue {
+    pub fn new() -> PartitionFieldValue {
         ::std::default::Default::default()
     }
 
@@ -51,7 +49,7 @@ impl PartitionField {
 
     pub fn get_string_val(&self) -> &str {
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::string_val(ref v)) => v,
+            ::std::option::Option::Some(partition_field_value::Value::string_val(ref v)) => v,
             _ => "",
         }
     }
@@ -62,24 +60,24 @@ impl PartitionField {
 
     pub fn has_string_val(&self) -> bool {
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::string_val(..)) => true,
+            ::std::option::Option::Some(partition_field_value::Value::string_val(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
     pub fn set_string_val(&mut self, v: ::std::string::String) {
-        self.value = ::std::option::Option::Some(partition_field::Value::string_val(v))
+        self.value = ::std::option::Option::Some(partition_field_value::Value::string_val(v))
     }
 
     // Mutable pointer to the field.
     pub fn mut_string_val(&mut self) -> &mut ::std::string::String {
-        if let ::std::option::Option::Some(partition_field::Value::string_val(_)) = self.value {
+        if let ::std::option::Option::Some(partition_field_value::Value::string_val(_)) = self.value {
         } else {
-            self.value = ::std::option::Option::Some(partition_field::Value::string_val(::std::string::String::new()));
+            self.value = ::std::option::Option::Some(partition_field_value::Value::string_val(::std::string::String::new()));
         }
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::string_val(ref mut v)) => v,
+            ::std::option::Option::Some(partition_field_value::Value::string_val(ref mut v)) => v,
             _ => panic!(),
         }
     }
@@ -88,7 +86,7 @@ impl PartitionField {
     pub fn take_string_val(&mut self) -> ::std::string::String {
         if self.has_string_val() {
             match self.value.take() {
-                ::std::option::Option::Some(partition_field::Value::string_val(v)) => v,
+                ::std::option::Option::Some(partition_field_value::Value::string_val(v)) => v,
                 _ => panic!(),
             }
         } else {
@@ -100,7 +98,7 @@ impl PartitionField {
 
     pub fn get_bool_val(&self) -> bool {
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::bool_val(v)) => v,
+            ::std::option::Option::Some(partition_field_value::Value::bool_val(v)) => v,
             _ => false,
         }
     }
@@ -111,21 +109,21 @@ impl PartitionField {
 
     pub fn has_bool_val(&self) -> bool {
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::bool_val(..)) => true,
+            ::std::option::Option::Some(partition_field_value::Value::bool_val(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
     pub fn set_bool_val(&mut self, v: bool) {
-        self.value = ::std::option::Option::Some(partition_field::Value::bool_val(v))
+        self.value = ::std::option::Option::Some(partition_field_value::Value::bool_val(v))
     }
 
     // int64 int64_val = 4;
 
     pub fn get_int64_val(&self) -> i64 {
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::int64_val(v)) => v,
+            ::std::option::Option::Some(partition_field_value::Value::int64_val(v)) => v,
             _ => 0,
         }
     }
@@ -136,21 +134,21 @@ impl PartitionField {
 
     pub fn has_int64_val(&self) -> bool {
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::int64_val(..)) => true,
+            ::std::option::Option::Some(partition_field_value::Value::int64_val(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
     pub fn set_int64_val(&mut self, v: i64) {
-        self.value = ::std::option::Option::Some(partition_field::Value::int64_val(v))
+        self.value = ::std::option::Option::Some(partition_field_value::Value::int64_val(v))
     }
 
     // .google.protobuf.Timestamp timestamp_val = 5;
 
     pub fn get_timestamp_val(&self) -> &::protobuf::well_known_types::Timestamp {
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::timestamp_val(ref v)) => v,
+            ::std::option::Option::Some(partition_field_value::Value::timestamp_val(ref v)) => v,
             _ => <::protobuf::well_known_types::Timestamp as ::protobuf::Message>::default_instance(),
         }
     }
@@ -161,24 +159,24 @@ impl PartitionField {
 
     pub fn has_timestamp_val(&self) -> bool {
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::timestamp_val(..)) => true,
+            ::std::option::Option::Some(partition_field_value::Value::timestamp_val(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
     pub fn set_timestamp_val(&mut self, v: ::protobuf::well_known_types::Timestamp) {
-        self.value = ::std::option::Option::Some(partition_field::Value::timestamp_val(v))
+        self.value = ::std::option::Option::Some(partition_field_value::Value::timestamp_val(v))
     }
 
     // Mutable pointer to the field.
     pub fn mut_timestamp_val(&mut self) -> &mut ::protobuf::well_known_types::Timestamp {
-        if let ::std::option::Option::Some(partition_field::Value::timestamp_val(_)) = self.value {
+        if let ::std::option::Option::Some(partition_field_value::Value::timestamp_val(_)) = self.value {
         } else {
-            self.value = ::std::option::Option::Some(partition_field::Value::timestamp_val(::protobuf::well_known_types::Timestamp::new()));
+            self.value = ::std::option::Option::Some(partition_field_value::Value::timestamp_val(::protobuf::well_known_types::Timestamp::new()));
         }
         match self.value {
-            ::std::option::Option::Some(partition_field::Value::timestamp_val(ref mut v)) => v,
+            ::std::option::Option::Some(partition_field_value::Value::timestamp_val(ref mut v)) => v,
             _ => panic!(),
         }
     }
@@ -187,7 +185,7 @@ impl PartitionField {
     pub fn take_timestamp_val(&mut self) -> ::protobuf::well_known_types::Timestamp {
         if self.has_timestamp_val() {
             match self.value.take() {
-                ::std::option::Option::Some(partition_field::Value::timestamp_val(v)) => v,
+                ::std::option::Option::Some(partition_field_value::Value::timestamp_val(v)) => v,
                 _ => panic!(),
             }
         } else {
@@ -197,47 +195,42 @@ impl PartitionField {
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "name",
-            |m: &PartitionField| { &m.name },
-            |m: &mut PartitionField| { &mut m.name },
-        ));
         fields.push(::protobuf::reflect::rt::v2::make_oneof_deref_has_get_set_simpler_accessor::<_, _>(
             "string_val",
-            PartitionField::has_string_val,
-            PartitionField::get_string_val,
-            PartitionField::set_string_val,
+            PartitionFieldValue::has_string_val,
+            PartitionFieldValue::get_string_val,
+            PartitionFieldValue::set_string_val,
         ));
         fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
             "bool_val",
-            PartitionField::has_bool_val,
-            PartitionField::get_bool_val,
-            PartitionField::set_bool_val,
+            PartitionFieldValue::has_bool_val,
+            PartitionFieldValue::get_bool_val,
+            PartitionFieldValue::set_bool_val,
         ));
         fields.push(::protobuf::reflect::rt::v2::make_oneof_copy_has_get_set_simpler_accessors::<_, _>(
             "int64_val",
-            PartitionField::has_int64_val,
-            PartitionField::get_int64_val,
-            PartitionField::set_int64_val,
+            PartitionFieldValue::has_int64_val,
+            PartitionFieldValue::get_int64_val,
+            PartitionFieldValue::set_int64_val,
         ));
         fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, ::protobuf::well_known_types::Timestamp>(
             "timestamp_val",
-            PartitionField::has_timestamp_val,
-            PartitionField::get_timestamp_val,
-            PartitionField::mut_timestamp_val,
-            PartitionField::set_timestamp_val,
+            PartitionFieldValue::has_timestamp_val,
+            PartitionFieldValue::get_timestamp_val,
+            PartitionFieldValue::mut_timestamp_val,
+            PartitionFieldValue::set_timestamp_val,
         ));
-        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<PartitionField>(
-            "PartitionField",
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<PartitionFieldValue>(
+            "PartitionFieldValue",
             0,
             fields,
         )
     }
 }
 
-impl ::protobuf::Message for PartitionField {
+impl ::protobuf::Message for PartitionFieldValue {
     fn is_initialized(&self) -> bool {
-        if let Some(partition_field::Value::timestamp_val(ref v)) = self.value {
+        if let Some(partition_field_value::Value::timestamp_val(ref v)) = self.value {
             if !v.is_initialized() {
                 return false;
             }
@@ -249,35 +242,29 @@ impl ::protobuf::Message for PartitionField {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
-                1 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.name = is.read_string()?;
-                },
                 2 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.value = ::std::option::Option::Some(partition_field::Value::string_val(is.read_string()?));
+                    self.value = ::std::option::Option::Some(partition_field_value::Value::string_val(is.read_string()?));
                 },
                 3 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.value = ::std::option::Option::Some(partition_field::Value::bool_val(is.read_bool()?));
+                    self.value = ::std::option::Option::Some(partition_field_value::Value::bool_val(is.read_bool()?));
                 },
                 4 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.value = ::std::option::Option::Some(partition_field::Value::int64_val(is.read_int64()?));
+                    self.value = ::std::option::Option::Some(partition_field_value::Value::int64_val(is.read_int64()?));
                 },
                 5 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.value = ::std::option::Option::Some(partition_field::Value::timestamp_val(is.read_message()?));
+                    self.value = ::std::option::Option::Some(partition_field_value::Value::timestamp_val(is.read_message()?));
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -291,21 +278,18 @@ impl ::protobuf::Message for PartitionField {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        if !self.name.is_empty() {
-            my_size += ::protobuf::rt::string_size(1, &self.name);
-        }
         if let ::std::option::Option::Some(ref v) = self.value {
             match v {
-                &partition_field::Value::string_val(ref v) => {
+                &partition_field_value::Value::string_val(ref v) => {
                     my_size += ::protobuf::rt::string_size(2, &v);
                 },
-                &partition_field::Value::bool_val(v) => {
+                &partition_field_value::Value::bool_val(v) => {
                     my_size += 2;
                 },
-                &partition_field::Value::int64_val(v) => {
+                &partition_field_value::Value::int64_val(v) => {
                     my_size += ::protobuf::rt::value_size(4, v, ::protobuf::wire_format::WireTypeVarint);
                 },
-                &partition_field::Value::timestamp_val(ref v) => {
+                &partition_field_value::Value::timestamp_val(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
                 },
@@ -317,21 +301,18 @@ impl ::protobuf::Message for PartitionField {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
-        if !self.name.is_empty() {
-            os.write_string(1, &self.name)?;
-        }
         if let ::std::option::Option::Some(ref v) = self.value {
             match v {
-                &partition_field::Value::string_val(ref v) => {
+                &partition_field_value::Value::string_val(ref v) => {
                     os.write_string(2, v)?;
                 },
-                &partition_field::Value::bool_val(v) => {
+                &partition_field_value::Value::bool_val(v) => {
                     os.write_bool(3, v)?;
                 },
-                &partition_field::Value::int64_val(v) => {
+                &partition_field_value::Value::int64_val(v) => {
                     os.write_int64(4, v)?;
                 },
-                &partition_field::Value::timestamp_val(ref v) => {
+                &partition_field_value::Value::timestamp_val(ref v) => {
                     ::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
                 },
             };
@@ -352,17 +333,16 @@ impl ::protobuf::Message for PartitionField {
         &mut self.unknown_fields
     }
 
-    fn new() -> PartitionField {
-        PartitionField::new()
+    fn new() -> PartitionFieldValue {
+        PartitionFieldValue::new()
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
         ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 0)
     }
 
-    fn default_instance() -> &'static PartitionField {
-        static instance: PartitionField = PartitionField {
-            name: ::std::string::String::new(),
+    fn default_instance() -> &'static PartitionFieldValue {
+        static instance: PartitionFieldValue = PartitionFieldValue {
             value: ::std::option::Option::None,
             unknown_fields: ::protobuf::UnknownFields::new(),
             cached_size: ::protobuf::rt::CachedSize::new(),
@@ -371,9 +351,8 @@ impl ::protobuf::Message for PartitionField {
     }
 }
 
-impl ::protobuf::Clear for PartitionField {
+impl ::protobuf::Clear for PartitionFieldValue {
     fn clear(&mut self) {
-        self.name.clear();
         self.value = ::std::option::Option::None;
         self.value = ::std::option::Option::None;
         self.value = ::std::option::Option::None;
@@ -382,18 +361,18 @@ impl ::protobuf::Clear for PartitionField {
     }
 }
 
-impl ::std::fmt::Debug for PartitionField {
+impl ::std::fmt::Debug for PartitionFieldValue {
     fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for PartitionField {
+impl ::protobuf::reflect::ProtobufValue for PartitionFieldValue {
     type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
 }
 
-/// Nested message and enums of message `PartitionField`
-pub mod partition_field {
+/// Nested message and enums of message `PartitionFieldValue`
+pub mod partition_field_value {
 
     #[derive(Clone,PartialEq,Debug)]
     pub enum Value {
@@ -532,154 +511,6 @@ impl ::std::fmt::Debug for RepeatedFieldValue {
 }
 
 impl ::protobuf::reflect::ProtobufValue for RepeatedFieldValue {
-    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
-}
-
-#[derive(PartialEq,Clone,Default)]
-pub struct Field {
-    // message fields
-    pub name: ::std::string::String,
-    pub value: ::protobuf::MessageField<FieldValue>,
-    // special fields
-    pub unknown_fields: ::protobuf::UnknownFields,
-    pub cached_size: ::protobuf::rt::CachedSize,
-}
-
-impl<'a> ::std::default::Default for &'a Field {
-    fn default() -> &'a Field {
-        <Field as ::protobuf::Message>::default_instance()
-    }
-}
-
-impl Field {
-    pub fn new() -> Field {
-        ::std::default::Default::default()
-    }
-
-    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::new();
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "name",
-            |m: &Field| { &m.name },
-            |m: &mut Field| { &mut m.name },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_message_field_accessor::<_, FieldValue>(
-            "value",
-            |m: &Field| { &m.value },
-            |m: &mut Field| { &mut m.value },
-        ));
-        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<Field>(
-            "Field",
-            2,
-            fields,
-        )
-    }
-}
-
-impl ::protobuf::Message for Field {
-    fn is_initialized(&self) -> bool {
-        for v in &self.value {
-            if !v.is_initialized() {
-                return false;
-            }
-        };
-        true
-    }
-
-    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
-        while !is.eof()? {
-            let (field_number, wire_type) = is.read_tag_unpack()?;
-            match field_number {
-                1 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.name = is.read_string()?;
-                },
-                2 => {
-                    ::protobuf::rt::read_singular_message_into_field(wire_type, is, &mut self.value)?;
-                },
-                _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
-                },
-            };
-        }
-        ::std::result::Result::Ok(())
-    }
-
-    // Compute sizes of nested messages
-    #[allow(unused_variables)]
-    fn compute_size(&self) -> u32 {
-        let mut my_size = 0;
-        if !self.name.is_empty() {
-            my_size += ::protobuf::rt::string_size(1, &self.name);
-        }
-        if let Some(v) = self.value.as_ref() {
-            let len = v.compute_size();
-            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
-        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
-        self.cached_size.set(my_size);
-        my_size
-    }
-
-    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
-        if !self.name.is_empty() {
-            os.write_string(1, &self.name)?;
-        }
-        if let Some(v) = self.value.as_ref() {
-            ::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
-        }
-        os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
-    }
-
-    fn get_cached_size(&self) -> u32 {
-        self.cached_size.get()
-    }
-
-    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
-        &self.unknown_fields
-    }
-
-    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
-        &mut self.unknown_fields
-    }
-
-    fn new() -> Field {
-        Field::new()
-    }
-
-    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 2)
-    }
-
-    fn default_instance() -> &'static Field {
-        static instance: Field = Field {
-            name: ::std::string::String::new(),
-            value: ::protobuf::MessageField::none(),
-            unknown_fields: ::protobuf::UnknownFields::new(),
-            cached_size: ::protobuf::rt::CachedSize::new(),
-        };
-        &instance
-    }
-}
-
-impl ::protobuf::Clear for Field {
-    fn clear(&mut self) {
-        self.name.clear();
-        self.value.clear();
-        self.unknown_fields.clear();
-    }
-}
-
-impl ::std::fmt::Debug for Field {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-        ::protobuf::text_format::fmt(self, f)
-    }
-}
-
-impl ::protobuf::reflect::ProtobufValue for Field {
     type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
 }
 
@@ -1053,7 +884,7 @@ impl FieldValue {
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<FieldValue>(
             "FieldValue",
-            3,
+            2,
             fields,
         )
     }
@@ -1223,7 +1054,7 @@ impl ::protobuf::Message for FieldValue {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 3)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 2)
     }
 
     fn default_instance() -> &'static FieldValue {
@@ -1282,7 +1113,7 @@ pub mod field_value {
 #[derive(PartialEq,Clone,Default)]
 pub struct Row {
     // message fields
-    pub fields: ::std::vec::Vec<Field>,
+    pub fields: ::std::collections::HashMap<::std::string::String, FieldValue>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::rt::CachedSize,
@@ -1301,14 +1132,14 @@ impl Row {
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
-        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
+        fields.push(::protobuf::reflect::rt::v2::make_map_simpler_accessor::<_, _, _>(
             "fields",
             |m: &Row| { &m.fields },
             |m: &mut Row| { &mut m.fields },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<Row>(
             "Row",
-            4,
+            3,
             fields,
         )
     }
@@ -1316,11 +1147,6 @@ impl Row {
 
 impl ::protobuf::Message for Row {
     fn is_initialized(&self) -> bool {
-        for v in &self.fields {
-            if !v.is_initialized() {
-                return false;
-            }
-        };
         true
     }
 
@@ -1329,7 +1155,7 @@ impl ::protobuf::Message for Row {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_repeated_message_into_vec(wire_type, is, &mut self.fields)?;
+                    ::protobuf::rt::read_map_into::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<FieldValue>>(wire_type, is, &mut self.fields)?;
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -1343,19 +1169,14 @@ impl ::protobuf::Message for Row {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        for value in &self.fields {
-            let len = value.compute_size();
-            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        };
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<FieldValue>>(1, &self.fields);
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
-        for v in &self.fields {
-            ::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
-        };
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<FieldValue>>(1, &self.fields, os)?;
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -1377,16 +1198,12 @@ impl ::protobuf::Message for Row {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 4)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 3)
     }
 
     fn default_instance() -> &'static Row {
-        static instance: Row = Row {
-            fields: ::std::vec::Vec::new(),
-            unknown_fields: ::protobuf::UnknownFields::new(),
-            cached_size: ::protobuf::rt::CachedSize::new(),
-        };
-        &instance
+        static instance: ::protobuf::rt::LazyV2<Row> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(Row::new)
     }
 }
 
@@ -1411,7 +1228,7 @@ impl ::protobuf::reflect::ProtobufValue for Row {
 pub struct WriteToPartitionRequest {
     // message fields
     pub table_name: ::std::string::String,
-    pub partition: ::std::vec::Vec<PartitionField>,
+    pub partition: ::std::collections::HashMap<::std::string::String, PartitionFieldValue>,
     pub rows: ::std::vec::Vec<Row>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
@@ -1436,7 +1253,7 @@ impl WriteToPartitionRequest {
             |m: &WriteToPartitionRequest| { &m.table_name },
             |m: &mut WriteToPartitionRequest| { &mut m.table_name },
         ));
-        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
+        fields.push(::protobuf::reflect::rt::v2::make_map_simpler_accessor::<_, _, _>(
             "partition",
             |m: &WriteToPartitionRequest| { &m.partition },
             |m: &mut WriteToPartitionRequest| { &mut m.partition },
@@ -1448,7 +1265,7 @@ impl WriteToPartitionRequest {
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<WriteToPartitionRequest>(
             "WriteToPartitionRequest",
-            5,
+            4,
             fields,
         )
     }
@@ -1456,11 +1273,6 @@ impl WriteToPartitionRequest {
 
 impl ::protobuf::Message for WriteToPartitionRequest {
     fn is_initialized(&self) -> bool {
-        for v in &self.partition {
-            if !v.is_initialized() {
-                return false;
-            }
-        };
         for v in &self.rows {
             if !v.is_initialized() {
                 return false;
@@ -1480,7 +1292,7 @@ impl ::protobuf::Message for WriteToPartitionRequest {
                     self.table_name = is.read_string()?;
                 },
                 2 => {
-                    ::protobuf::rt::read_repeated_message_into_vec(wire_type, is, &mut self.partition)?;
+                    ::protobuf::rt::read_map_into::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(wire_type, is, &mut self.partition)?;
                 },
                 3 => {
                     ::protobuf::rt::read_repeated_message_into_vec(wire_type, is, &mut self.rows)?;
@@ -1500,10 +1312,7 @@ impl ::protobuf::Message for WriteToPartitionRequest {
         if !self.table_name.is_empty() {
             my_size += ::protobuf::rt::string_size(1, &self.table_name);
         }
-        for value in &self.partition {
-            let len = value.compute_size();
-            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        };
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(2, &self.partition);
         for value in &self.rows {
             let len = value.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
@@ -1517,9 +1326,7 @@ impl ::protobuf::Message for WriteToPartitionRequest {
         if !self.table_name.is_empty() {
             os.write_string(1, &self.table_name)?;
         }
-        for v in &self.partition {
-            ::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
-        };
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(2, &self.partition, os)?;
         for v in &self.rows {
             ::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
         };
@@ -1548,14 +1355,8 @@ impl ::protobuf::Message for WriteToPartitionRequest {
     }
 
     fn default_instance() -> &'static WriteToPartitionRequest {
-        static instance: WriteToPartitionRequest = WriteToPartitionRequest {
-            table_name: ::std::string::String::new(),
-            partition: ::std::vec::Vec::new(),
-            rows: ::std::vec::Vec::new(),
-            unknown_fields: ::protobuf::UnknownFields::new(),
-            cached_size: ::protobuf::rt::CachedSize::new(),
-        };
-        &instance
+        static instance: ::protobuf::rt::LazyV2<WriteToPartitionRequest> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(WriteToPartitionRequest::new)
     }
 }
 
@@ -1600,7 +1401,7 @@ impl WriteToPartitionResponse {
         let mut fields = ::std::vec::Vec::new();
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<WriteToPartitionResponse>(
             "WriteToPartitionResponse",
-            6,
+            5,
             fields,
         )
     }
@@ -1654,7 +1455,7 @@ impl ::protobuf::Message for WriteToPartitionResponse {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 6)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 7)
     }
 
     fn default_instance() -> &'static WriteToPartitionResponse {
@@ -1683,6 +1484,234 @@ impl ::protobuf::reflect::ProtobufValue for WriteToPartitionResponse {
 }
 
 #[derive(PartialEq,Clone,Default)]
+pub struct PartitionFieldComparison {
+    // message fields
+    pub name: ::std::string::String,
+    pub operator: ::protobuf::ProtobufEnumOrUnknown<partition_field_comparison::Operator>,
+    pub value: ::protobuf::MessageField<PartitionFieldValue>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a PartitionFieldComparison {
+    fn default() -> &'a PartitionFieldComparison {
+        <PartitionFieldComparison as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl PartitionFieldComparison {
+    pub fn new() -> PartitionFieldComparison {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "name",
+            |m: &PartitionFieldComparison| { &m.name },
+            |m: &mut PartitionFieldComparison| { &mut m.name },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "operator",
+            |m: &PartitionFieldComparison| { &m.operator },
+            |m: &mut PartitionFieldComparison| { &mut m.operator },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_message_field_accessor::<_, PartitionFieldValue>(
+            "value",
+            |m: &PartitionFieldComparison| { &m.value },
+            |m: &mut PartitionFieldComparison| { &mut m.value },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<PartitionFieldComparison>(
+            "PartitionFieldComparison",
+            6,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for PartitionFieldComparison {
+    fn is_initialized(&self) -> bool {
+        for v in &self.value {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.name = is.read_string()?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.operator = is.read_enum_or_unknown()?;
+                },
+                3 => {
+                    ::protobuf::rt::read_singular_message_into_field(wire_type, is, &mut self.value)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.name.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.name);
+        }
+        if self.operator != ::protobuf::ProtobufEnumOrUnknown::new(partition_field_comparison::Operator::EQ_TO) {
+            my_size += ::protobuf::rt::enum_or_unknown_size(2, self.operator);
+        }
+        if let Some(v) = self.value.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if !self.name.is_empty() {
+            os.write_string(1, &self.name)?;
+        }
+        if self.operator != ::protobuf::ProtobufEnumOrUnknown::new(partition_field_comparison::Operator::EQ_TO) {
+            os.write_enum(2, ::protobuf::ProtobufEnumOrUnknown::value(&self.operator))?;
+        }
+        if let Some(v) = self.value.as_ref() {
+            ::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> PartitionFieldComparison {
+        PartitionFieldComparison::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 8)
+    }
+
+    fn default_instance() -> &'static PartitionFieldComparison {
+        static instance: PartitionFieldComparison = PartitionFieldComparison {
+            name: ::std::string::String::new(),
+            operator: ::protobuf::ProtobufEnumOrUnknown::from_i32(0),
+            value: ::protobuf::MessageField::none(),
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for PartitionFieldComparison {
+    fn clear(&mut self) {
+        self.name.clear();
+        self.operator = ::protobuf::ProtobufEnumOrUnknown::new(partition_field_comparison::Operator::EQ_TO);
+        self.value.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for PartitionFieldComparison {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for PartitionFieldComparison {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
+/// Nested message and enums of message `PartitionFieldComparison`
+pub mod partition_field_comparison {
+    #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
+    pub enum Operator {
+        EQ_TO = 0,
+        LESS_OR_EQ_TO = 1,
+        LESS = 2,
+        GREATER_OR_EQ_TO = 3,
+        GREATER = 4,
+    }
+
+    impl ::protobuf::ProtobufEnum for Operator {
+        fn value(&self) -> i32 {
+            *self as i32
+        }
+
+        fn from_i32(value: i32) -> ::std::option::Option<Operator> {
+            match value {
+                0 => ::std::option::Option::Some(Operator::EQ_TO),
+                1 => ::std::option::Option::Some(Operator::LESS_OR_EQ_TO),
+                2 => ::std::option::Option::Some(Operator::LESS),
+                3 => ::std::option::Option::Some(Operator::GREATER_OR_EQ_TO),
+                4 => ::std::option::Option::Some(Operator::GREATER),
+                _ => ::std::option::Option::None
+            }
+        }
+
+        fn values() -> &'static [Self] {
+            static values: &'static [Operator] = &[
+                Operator::EQ_TO,
+                Operator::LESS_OR_EQ_TO,
+                Operator::LESS,
+                Operator::GREATER_OR_EQ_TO,
+                Operator::GREATER,
+            ];
+            values
+        }
+
+        fn enum_descriptor_static() -> ::protobuf::reflect::EnumDescriptor {
+            ::protobuf::reflect::EnumDescriptor::new_generated_2(super::file_descriptor(), 0)
+        }
+    }
+
+    impl ::std::default::Default for Operator {
+        fn default() -> Self {
+            Operator::EQ_TO
+        }
+    }
+
+    impl ::protobuf::reflect::ProtobufValue for Operator {
+        type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeEnum<Self>;
+    }
+
+    impl Operator {
+        pub(in super) fn generated_enum_descriptor_data() -> ::protobuf::reflect::GeneratedEnumDescriptorData {
+            ::protobuf::reflect::GeneratedEnumDescriptorData::new_2::<Operator>("PartitionFieldComparison.Operator", 0)
+        }
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
 pub struct PartitionFilter {
     // message oneof groups
     pub value: ::std::option::Option<partition_filter::Value>,
@@ -1702,287 +1731,63 @@ impl PartitionFilter {
         ::std::default::Default::default()
     }
 
-    // .protos.dml.PartitionField equal_to = 1;
+    // .protos.dml.PartitionFieldComparison comparison = 1;
 
-    pub fn get_equal_to(&self) -> &PartitionField {
+    pub fn get_comparison(&self) -> &PartitionFieldComparison {
         match self.value {
-            ::std::option::Option::Some(partition_filter::Value::equal_to(ref v)) => v,
-            _ => <PartitionField as ::protobuf::Message>::default_instance(),
+            ::std::option::Option::Some(partition_filter::Value::comparison(ref v)) => v,
+            _ => <PartitionFieldComparison as ::protobuf::Message>::default_instance(),
         }
     }
 
-    pub fn clear_equal_to(&mut self) {
+    pub fn clear_comparison(&mut self) {
         self.value = ::std::option::Option::None;
     }
 
-    pub fn has_equal_to(&self) -> bool {
+    pub fn has_comparison(&self) -> bool {
         match self.value {
-            ::std::option::Option::Some(partition_filter::Value::equal_to(..)) => true,
+            ::std::option::Option::Some(partition_filter::Value::comparison(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
-    pub fn set_equal_to(&mut self, v: PartitionField) {
-        self.value = ::std::option::Option::Some(partition_filter::Value::equal_to(v))
+    pub fn set_comparison(&mut self, v: PartitionFieldComparison) {
+        self.value = ::std::option::Option::Some(partition_filter::Value::comparison(v))
     }
 
     // Mutable pointer to the field.
-    pub fn mut_equal_to(&mut self) -> &mut PartitionField {
-        if let ::std::option::Option::Some(partition_filter::Value::equal_to(_)) = self.value {
+    pub fn mut_comparison(&mut self) -> &mut PartitionFieldComparison {
+        if let ::std::option::Option::Some(partition_filter::Value::comparison(_)) = self.value {
         } else {
-            self.value = ::std::option::Option::Some(partition_filter::Value::equal_to(PartitionField::new()));
+            self.value = ::std::option::Option::Some(partition_filter::Value::comparison(PartitionFieldComparison::new()));
         }
         match self.value {
-            ::std::option::Option::Some(partition_filter::Value::equal_to(ref mut v)) => v,
+            ::std::option::Option::Some(partition_filter::Value::comparison(ref mut v)) => v,
             _ => panic!(),
         }
     }
 
     // Take field
-    pub fn take_equal_to(&mut self) -> PartitionField {
-        if self.has_equal_to() {
+    pub fn take_comparison(&mut self) -> PartitionFieldComparison {
+        if self.has_comparison() {
             match self.value.take() {
-                ::std::option::Option::Some(partition_filter::Value::equal_to(v)) => v,
+                ::std::option::Option::Some(partition_filter::Value::comparison(v)) => v,
                 _ => panic!(),
             }
         } else {
-            PartitionField::new()
-        }
-    }
-
-    // .protos.dml.PartitionField less_or_eq_to = 2;
-
-    pub fn get_less_or_eq_to(&self) -> &PartitionField {
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::less_or_eq_to(ref v)) => v,
-            _ => <PartitionField as ::protobuf::Message>::default_instance(),
-        }
-    }
-
-    pub fn clear_less_or_eq_to(&mut self) {
-        self.value = ::std::option::Option::None;
-    }
-
-    pub fn has_less_or_eq_to(&self) -> bool {
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::less_or_eq_to(..)) => true,
-            _ => false,
-        }
-    }
-
-    // Param is passed by value, moved
-    pub fn set_less_or_eq_to(&mut self, v: PartitionField) {
-        self.value = ::std::option::Option::Some(partition_filter::Value::less_or_eq_to(v))
-    }
-
-    // Mutable pointer to the field.
-    pub fn mut_less_or_eq_to(&mut self) -> &mut PartitionField {
-        if let ::std::option::Option::Some(partition_filter::Value::less_or_eq_to(_)) = self.value {
-        } else {
-            self.value = ::std::option::Option::Some(partition_filter::Value::less_or_eq_to(PartitionField::new()));
-        }
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::less_or_eq_to(ref mut v)) => v,
-            _ => panic!(),
-        }
-    }
-
-    // Take field
-    pub fn take_less_or_eq_to(&mut self) -> PartitionField {
-        if self.has_less_or_eq_to() {
-            match self.value.take() {
-                ::std::option::Option::Some(partition_filter::Value::less_or_eq_to(v)) => v,
-                _ => panic!(),
-            }
-        } else {
-            PartitionField::new()
-        }
-    }
-
-    // .protos.dml.PartitionField less_than = 3;
-
-    pub fn get_less_than(&self) -> &PartitionField {
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::less_than(ref v)) => v,
-            _ => <PartitionField as ::protobuf::Message>::default_instance(),
-        }
-    }
-
-    pub fn clear_less_than(&mut self) {
-        self.value = ::std::option::Option::None;
-    }
-
-    pub fn has_less_than(&self) -> bool {
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::less_than(..)) => true,
-            _ => false,
-        }
-    }
-
-    // Param is passed by value, moved
-    pub fn set_less_than(&mut self, v: PartitionField) {
-        self.value = ::std::option::Option::Some(partition_filter::Value::less_than(v))
-    }
-
-    // Mutable pointer to the field.
-    pub fn mut_less_than(&mut self) -> &mut PartitionField {
-        if let ::std::option::Option::Some(partition_filter::Value::less_than(_)) = self.value {
-        } else {
-            self.value = ::std::option::Option::Some(partition_filter::Value::less_than(PartitionField::new()));
-        }
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::less_than(ref mut v)) => v,
-            _ => panic!(),
-        }
-    }
-
-    // Take field
-    pub fn take_less_than(&mut self) -> PartitionField {
-        if self.has_less_than() {
-            match self.value.take() {
-                ::std::option::Option::Some(partition_filter::Value::less_than(v)) => v,
-                _ => panic!(),
-            }
-        } else {
-            PartitionField::new()
-        }
-    }
-
-    // .protos.dml.PartitionField greater_or_eq_to = 4;
-
-    pub fn get_greater_or_eq_to(&self) -> &PartitionField {
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::greater_or_eq_to(ref v)) => v,
-            _ => <PartitionField as ::protobuf::Message>::default_instance(),
-        }
-    }
-
-    pub fn clear_greater_or_eq_to(&mut self) {
-        self.value = ::std::option::Option::None;
-    }
-
-    pub fn has_greater_or_eq_to(&self) -> bool {
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::greater_or_eq_to(..)) => true,
-            _ => false,
-        }
-    }
-
-    // Param is passed by value, moved
-    pub fn set_greater_or_eq_to(&mut self, v: PartitionField) {
-        self.value = ::std::option::Option::Some(partition_filter::Value::greater_or_eq_to(v))
-    }
-
-    // Mutable pointer to the field.
-    pub fn mut_greater_or_eq_to(&mut self) -> &mut PartitionField {
-        if let ::std::option::Option::Some(partition_filter::Value::greater_or_eq_to(_)) = self.value {
-        } else {
-            self.value = ::std::option::Option::Some(partition_filter::Value::greater_or_eq_to(PartitionField::new()));
-        }
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::greater_or_eq_to(ref mut v)) => v,
-            _ => panic!(),
-        }
-    }
-
-    // Take field
-    pub fn take_greater_or_eq_to(&mut self) -> PartitionField {
-        if self.has_greater_or_eq_to() {
-            match self.value.take() {
-                ::std::option::Option::Some(partition_filter::Value::greater_or_eq_to(v)) => v,
-                _ => panic!(),
-            }
-        } else {
-            PartitionField::new()
-        }
-    }
-
-    // .protos.dml.PartitionField greater_than = 5;
-
-    pub fn get_greater_than(&self) -> &PartitionField {
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::greater_than(ref v)) => v,
-            _ => <PartitionField as ::protobuf::Message>::default_instance(),
-        }
-    }
-
-    pub fn clear_greater_than(&mut self) {
-        self.value = ::std::option::Option::None;
-    }
-
-    pub fn has_greater_than(&self) -> bool {
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::greater_than(..)) => true,
-            _ => false,
-        }
-    }
-
-    // Param is passed by value, moved
-    pub fn set_greater_than(&mut self, v: PartitionField) {
-        self.value = ::std::option::Option::Some(partition_filter::Value::greater_than(v))
-    }
-
-    // Mutable pointer to the field.
-    pub fn mut_greater_than(&mut self) -> &mut PartitionField {
-        if let ::std::option::Option::Some(partition_filter::Value::greater_than(_)) = self.value {
-        } else {
-            self.value = ::std::option::Option::Some(partition_filter::Value::greater_than(PartitionField::new()));
-        }
-        match self.value {
-            ::std::option::Option::Some(partition_filter::Value::greater_than(ref mut v)) => v,
-            _ => panic!(),
-        }
-    }
-
-    // Take field
-    pub fn take_greater_than(&mut self) -> PartitionField {
-        if self.has_greater_than() {
-            match self.value.take() {
-                ::std::option::Option::Some(partition_filter::Value::greater_than(v)) => v,
-                _ => panic!(),
-            }
-        } else {
-            PartitionField::new()
+            PartitionFieldComparison::new()
         }
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
-        fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, PartitionField>(
-            "equal_to",
-            PartitionFilter::has_equal_to,
-            PartitionFilter::get_equal_to,
-            PartitionFilter::mut_equal_to,
-            PartitionFilter::set_equal_to,
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, PartitionField>(
-            "less_or_eq_to",
-            PartitionFilter::has_less_or_eq_to,
-            PartitionFilter::get_less_or_eq_to,
-            PartitionFilter::mut_less_or_eq_to,
-            PartitionFilter::set_less_or_eq_to,
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, PartitionField>(
-            "less_than",
-            PartitionFilter::has_less_than,
-            PartitionFilter::get_less_than,
-            PartitionFilter::mut_less_than,
-            PartitionFilter::set_less_than,
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, PartitionField>(
-            "greater_or_eq_to",
-            PartitionFilter::has_greater_or_eq_to,
-            PartitionFilter::get_greater_or_eq_to,
-            PartitionFilter::mut_greater_or_eq_to,
-            PartitionFilter::set_greater_or_eq_to,
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, PartitionField>(
-            "greater_than",
-            PartitionFilter::has_greater_than,
-            PartitionFilter::get_greater_than,
-            PartitionFilter::mut_greater_than,
-            PartitionFilter::set_greater_than,
+        fields.push(::protobuf::reflect::rt::v2::make_oneof_message_has_get_mut_set_accessor::<_, PartitionFieldComparison>(
+            "comparison",
+            PartitionFilter::has_comparison,
+            PartitionFilter::get_comparison,
+            PartitionFilter::mut_comparison,
+            PartitionFilter::set_comparison,
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<PartitionFilter>(
             "PartitionFilter",
@@ -1994,27 +1799,7 @@ impl PartitionFilter {
 
 impl ::protobuf::Message for PartitionFilter {
     fn is_initialized(&self) -> bool {
-        if let Some(partition_filter::Value::equal_to(ref v)) = self.value {
-            if !v.is_initialized() {
-                return false;
-            }
-        }
-        if let Some(partition_filter::Value::less_or_eq_to(ref v)) = self.value {
-            if !v.is_initialized() {
-                return false;
-            }
-        }
-        if let Some(partition_filter::Value::less_than(ref v)) = self.value {
-            if !v.is_initialized() {
-                return false;
-            }
-        }
-        if let Some(partition_filter::Value::greater_or_eq_to(ref v)) = self.value {
-            if !v.is_initialized() {
-                return false;
-            }
-        }
-        if let Some(partition_filter::Value::greater_than(ref v)) = self.value {
+        if let Some(partition_filter::Value::comparison(ref v)) = self.value {
             if !v.is_initialized() {
                 return false;
             }
@@ -2030,31 +1815,7 @@ impl ::protobuf::Message for PartitionFilter {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.value = ::std::option::Option::Some(partition_filter::Value::equal_to(is.read_message()?));
-                },
-                2 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.value = ::std::option::Option::Some(partition_filter::Value::less_or_eq_to(is.read_message()?));
-                },
-                3 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.value = ::std::option::Option::Some(partition_filter::Value::less_than(is.read_message()?));
-                },
-                4 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.value = ::std::option::Option::Some(partition_filter::Value::greater_or_eq_to(is.read_message()?));
-                },
-                5 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.value = ::std::option::Option::Some(partition_filter::Value::greater_than(is.read_message()?));
+                    self.value = ::std::option::Option::Some(partition_filter::Value::comparison(is.read_message()?));
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -2070,23 +1831,7 @@ impl ::protobuf::Message for PartitionFilter {
         let mut my_size = 0;
         if let ::std::option::Option::Some(ref v) = self.value {
             match v {
-                &partition_filter::Value::equal_to(ref v) => {
-                    let len = v.compute_size();
-                    my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                },
-                &partition_filter::Value::less_or_eq_to(ref v) => {
-                    let len = v.compute_size();
-                    my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                },
-                &partition_filter::Value::less_than(ref v) => {
-                    let len = v.compute_size();
-                    my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                },
-                &partition_filter::Value::greater_or_eq_to(ref v) => {
-                    let len = v.compute_size();
-                    my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                },
-                &partition_filter::Value::greater_than(ref v) => {
+                &partition_filter::Value::comparison(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
                 },
@@ -2100,20 +1845,8 @@ impl ::protobuf::Message for PartitionFilter {
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if let ::std::option::Option::Some(ref v) = self.value {
             match v {
-                &partition_filter::Value::equal_to(ref v) => {
+                &partition_filter::Value::comparison(ref v) => {
                     ::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
-                },
-                &partition_filter::Value::less_or_eq_to(ref v) => {
-                    ::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
-                },
-                &partition_filter::Value::less_than(ref v) => {
-                    ::protobuf::rt::write_message_field_with_cached_size(3, v, os)?;
-                },
-                &partition_filter::Value::greater_or_eq_to(ref v) => {
-                    ::protobuf::rt::write_message_field_with_cached_size(4, v, os)?;
-                },
-                &partition_filter::Value::greater_than(ref v) => {
-                    ::protobuf::rt::write_message_field_with_cached_size(5, v, os)?;
                 },
             };
         }
@@ -2138,7 +1871,7 @@ impl ::protobuf::Message for PartitionFilter {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 7)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 9)
     }
 
     fn default_instance() -> &'static PartitionFilter {
@@ -2153,10 +1886,6 @@ impl ::protobuf::Message for PartitionFilter {
 
 impl ::protobuf::Clear for PartitionFilter {
     fn clear(&mut self) {
-        self.value = ::std::option::Option::None;
-        self.value = ::std::option::Option::None;
-        self.value = ::std::option::Option::None;
-        self.value = ::std::option::Option::None;
         self.value = ::std::option::Option::None;
         self.unknown_fields.clear();
     }
@@ -2177,11 +1906,7 @@ pub mod partition_filter {
 
     #[derive(Clone,PartialEq,Debug)]
     pub enum Value {
-        equal_to(super::PartitionField),
-        less_or_eq_to(super::PartitionField),
-        less_than(super::PartitionField),
-        greater_or_eq_to(super::PartitionField),
-        greater_than(super::PartitionField),
+        comparison(super::PartitionFieldComparison),
     }
 
     impl ::protobuf::Oneof for Value {
@@ -2322,7 +2047,7 @@ impl ::protobuf::Message for ListSegmentsRequest {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 8)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 10)
     }
 
     fn default_instance() -> &'static ListSegmentsRequest {
@@ -2469,7 +2194,7 @@ impl ::protobuf::Message for SegmentMetadata {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 9)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 11)
     }
 
     fn default_instance() -> &'static SegmentMetadata {
@@ -2504,7 +2229,7 @@ impl ::protobuf::reflect::ProtobufValue for SegmentMetadata {
 #[derive(PartialEq,Clone,Default)]
 pub struct Segment {
     // message fields
-    pub partition: ::std::vec::Vec<PartitionField>,
+    pub partition: ::std::collections::HashMap<::std::string::String, PartitionFieldValue>,
     pub segment_id: ::std::string::String,
     pub metadata: ::protobuf::MessageField<SegmentMetadata>,
     // special fields
@@ -2525,7 +2250,7 @@ impl Segment {
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
-        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
+        fields.push(::protobuf::reflect::rt::v2::make_map_simpler_accessor::<_, _, _>(
             "partition",
             |m: &Segment| { &m.partition },
             |m: &mut Segment| { &mut m.partition },
@@ -2550,11 +2275,6 @@ impl Segment {
 
 impl ::protobuf::Message for Segment {
     fn is_initialized(&self) -> bool {
-        for v in &self.partition {
-            if !v.is_initialized() {
-                return false;
-            }
-        };
         for v in &self.metadata {
             if !v.is_initialized() {
                 return false;
@@ -2568,7 +2288,7 @@ impl ::protobuf::Message for Segment {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_repeated_message_into_vec(wire_type, is, &mut self.partition)?;
+                    ::protobuf::rt::read_map_into::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(wire_type, is, &mut self.partition)?;
                 },
                 2 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
@@ -2591,10 +2311,7 @@ impl ::protobuf::Message for Segment {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        for value in &self.partition {
-            let len = value.compute_size();
-            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        };
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(1, &self.partition);
         if !self.segment_id.is_empty() {
             my_size += ::protobuf::rt::string_size(2, &self.segment_id);
         }
@@ -2608,9 +2325,7 @@ impl ::protobuf::Message for Segment {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
-        for v in &self.partition {
-            ::protobuf::rt::write_message_field_with_cached_size(1, v, os)?;
-        };
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(1, &self.partition, os)?;
         if !self.segment_id.is_empty() {
             os.write_string(2, &self.segment_id)?;
         }
@@ -2638,18 +2353,12 @@ impl ::protobuf::Message for Segment {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 10)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 12)
     }
 
     fn default_instance() -> &'static Segment {
-        static instance: Segment = Segment {
-            partition: ::std::vec::Vec::new(),
-            segment_id: ::std::string::String::new(),
-            metadata: ::protobuf::MessageField::none(),
-            unknown_fields: ::protobuf::UnknownFields::new(),
-            cached_size: ::protobuf::rt::CachedSize::new(),
-        };
-        &instance
+        static instance: ::protobuf::rt::LazyV2<Segment> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(Segment::new)
     }
 }
 
@@ -2770,7 +2479,7 @@ impl ::protobuf::Message for ListSegmentsResponse {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 11)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 14)
     }
 
     fn default_instance() -> &'static ListSegmentsResponse {
@@ -2804,7 +2513,7 @@ impl ::protobuf::reflect::ProtobufValue for ListSegmentsResponse {
 pub struct ReadSegmentColumnRequest {
     // message fields
     pub table_name: ::std::string::String,
-    pub partition: ::std::vec::Vec<PartitionField>,
+    pub partition: ::std::collections::HashMap<::std::string::String, PartitionFieldValue>,
     pub segment_id: ::std::string::String,
     pub column_name: ::std::string::String,
     pub continuation_token: ::std::string::String,
@@ -2831,7 +2540,7 @@ impl ReadSegmentColumnRequest {
             |m: &ReadSegmentColumnRequest| { &m.table_name },
             |m: &mut ReadSegmentColumnRequest| { &mut m.table_name },
         ));
-        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
+        fields.push(::protobuf::reflect::rt::v2::make_map_simpler_accessor::<_, _, _>(
             "partition",
             |m: &ReadSegmentColumnRequest| { &m.partition },
             |m: &mut ReadSegmentColumnRequest| { &mut m.partition },
@@ -2861,11 +2570,6 @@ impl ReadSegmentColumnRequest {
 
 impl ::protobuf::Message for ReadSegmentColumnRequest {
     fn is_initialized(&self) -> bool {
-        for v in &self.partition {
-            if !v.is_initialized() {
-                return false;
-            }
-        };
         true
     }
 
@@ -2880,7 +2584,7 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
                     self.table_name = is.read_string()?;
                 },
                 2 => {
-                    ::protobuf::rt::read_repeated_message_into_vec(wire_type, is, &mut self.partition)?;
+                    ::protobuf::rt::read_map_into::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(wire_type, is, &mut self.partition)?;
                 },
                 3 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
@@ -2915,10 +2619,7 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
         if !self.table_name.is_empty() {
             my_size += ::protobuf::rt::string_size(1, &self.table_name);
         }
-        for value in &self.partition {
-            let len = value.compute_size();
-            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        };
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(2, &self.partition);
         if !self.segment_id.is_empty() {
             my_size += ::protobuf::rt::string_size(3, &self.segment_id);
         }
@@ -2937,9 +2638,7 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
         if !self.table_name.is_empty() {
             os.write_string(1, &self.table_name)?;
         }
-        for v in &self.partition {
-            ::protobuf::rt::write_message_field_with_cached_size(2, v, os)?;
-        };
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(2, &self.partition, os)?;
         if !self.segment_id.is_empty() {
             os.write_string(3, &self.segment_id)?;
         }
@@ -2970,20 +2669,12 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 12)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 15)
     }
 
     fn default_instance() -> &'static ReadSegmentColumnRequest {
-        static instance: ReadSegmentColumnRequest = ReadSegmentColumnRequest {
-            table_name: ::std::string::String::new(),
-            partition: ::std::vec::Vec::new(),
-            segment_id: ::std::string::String::new(),
-            column_name: ::std::string::String::new(),
-            continuation_token: ::std::string::String::new(),
-            unknown_fields: ::protobuf::UnknownFields::new(),
-            cached_size: ::protobuf::rt::CachedSize::new(),
-        };
-        &instance
+        static instance: ::protobuf::rt::LazyV2<ReadSegmentColumnRequest> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(ReadSegmentColumnRequest::new)
     }
 }
 
@@ -3175,7 +2866,7 @@ impl ::protobuf::Message for ReadSegmentColumnResponse {
     }
 
     fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
-        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 13)
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 17)
     }
 
     fn default_instance() -> &'static ReadSegmentColumnResponse {
@@ -3215,56 +2906,64 @@ impl ::protobuf::reflect::ProtobufValue for ReadSegmentColumnResponse {
 
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\tdml.proto\x12\nprotos.dml\x1a\x1fgoogle/protobuf/timestamp.proto\"\
-    \xcd\x01\n\x0ePartitionField\x12\x12\n\x04name\x18\x01\x20\x01(\tR\x04na\
-    me\x12\x1f\n\nstring_val\x18\x02\x20\x01(\tH\0R\tstringVal\x12\x1b\n\x08\
-    bool_val\x18\x03\x20\x01(\x08H\0R\x07boolVal\x12\x1d\n\tint64_val\x18\
-    \x04\x20\x01(\x03H\0R\x08int64Val\x12A\n\rtimestamp_val\x18\x05\x20\x01(\
-    \x0b2\x1a.google.protobuf.TimestampH\0R\x0ctimestampValB\x07\n\x05value\
-    \"@\n\x12RepeatedFieldValue\x12*\n\x04vals\x18\x01\x20\x03(\x0b2\x16.pro\
-    tos.dml.FieldValueR\x04vals\"I\n\x05Field\x12\x12\n\x04name\x18\x01\x20\
-    \x01(\tR\x04name\x12,\n\x05value\x18\x02\x20\x01(\x0b2\x16.protos.dml.Fi\
-    eldValueR\x05value\"\xd7\x02\n\nFieldValue\x12;\n\x08list_val\x18\x01\
-    \x20\x01(\x0b2\x1e.protos.dml.RepeatedFieldValueH\0R\x07listVal\x12\x1f\
-    \n\nstring_val\x18\x02\x20\x01(\tH\0R\tstringVal\x12\x1b\n\x08bool_val\
-    \x18\x03\x20\x01(\x08H\0R\x07boolVal\x12\x1d\n\tbytes_val\x18\x04\x20\
-    \x01(\x0cH\0R\x08bytesVal\x12\x1d\n\tint64_val\x18\x05\x20\x01(\x03H\0R\
-    \x08int64Val\x12!\n\x0bfloat32_val\x18\x06\x20\x01(\x02H\0R\nfloat32Val\
-    \x12!\n\x0bfloat64_val\x18\x07\x20\x01(\x01H\0R\nfloat64Val\x12A\n\rtime\
-    stamp_val\x18\x08\x20\x01(\x0b2\x1a.google.protobuf.TimestampH\0R\x0ctim\
-    estampValB\x07\n\x05value\"0\n\x03Row\x12)\n\x06fields\x18\x01\x20\x03(\
-    \x0b2\x11.protos.dml.FieldR\x06fields\"\x97\x01\n\x17WriteToPartitionReq\
-    uest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x128\n\tpartit\
-    ion\x18\x02\x20\x03(\x0b2\x1a.protos.dml.PartitionFieldR\tpartition\x12#\
-    \n\x04rows\x18\x03\x20\x03(\x0b2\x0f.protos.dml.RowR\x04rows\"\x1a\n\x18\
-    WriteToPartitionResponse\"\xd7\x02\n\x0fPartitionFilter\x127\n\x08equal_\
-    to\x18\x01\x20\x01(\x0b2\x1a.protos.dml.PartitionFieldH\0R\x07equalTo\
-    \x12?\n\rless_or_eq_to\x18\x02\x20\x01(\x0b2\x1a.protos.dml.PartitionFie\
-    ldH\0R\nlessOrEqTo\x129\n\tless_than\x18\x03\x20\x01(\x0b2\x1a.protos.dm\
-    l.PartitionFieldH\0R\x08lessThan\x12E\n\x10greater_or_eq_to\x18\x04\x20\
-    \x01(\x0b2\x1a.protos.dml.PartitionFieldH\0R\rgreaterOrEqTo\x12?\n\x0cgr\
-    eater_than\x18\x05\x20\x01(\x0b2\x1a.protos.dml.PartitionFieldH\0R\x0bgr\
-    eaterThanB\x07\n\x05value\"\xa7\x01\n\x13ListSegmentsRequest\x12\x1d\n\n\
-    table_name\x18\x01\x20\x01(\tR\ttableName\x12F\n\x10partition_filter\x18\
-    \x02\x20\x03(\x0b2\x1b.protos.dml.PartitionFilterR\x0fpartitionFilter\
-    \x12)\n\x10include_metadata\x18\x03\x20\x01(\x08R\x0fincludeMetadata\"N\
-    \n\x0fSegmentMetadata\x12\x14\n\x05count\x18\x01\x20\x01(\rR\x05count\
-    \x12%\n\x0elatest_version\x18\x02\x20\x01(\x04R\rlatestVersion\"\x9b\x01\
-    \n\x07Segment\x128\n\tpartition\x18\x01\x20\x03(\x0b2\x1a.protos.dml.Par\
-    titionFieldR\tpartition\x12\x1d\n\nsegment_id\x18\x02\x20\x01(\tR\tsegme\
-    ntId\x127\n\x08metadata\x18\x03\x20\x01(\x0b2\x1b.protos.dml.SegmentMeta\
-    dataR\x08metadata\"G\n\x14ListSegmentsResponse\x12/\n\x08segments\x18\
-    \x01\x20\x03(\x0b2\x13.protos.dml.SegmentR\x08segments\"\xe2\x01\n\x18Re\
-    adSegmentColumnRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableN\
-    ame\x128\n\tpartition\x18\x02\x20\x03(\x0b2\x1a.protos.dml.PartitionFiel\
-    dR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\x12\
+    \xbe\x01\n\x13PartitionFieldValue\x12\x1f\n\nstring_val\x18\x02\x20\x01(\
+    \tH\0R\tstringVal\x12\x1b\n\x08bool_val\x18\x03\x20\x01(\x08H\0R\x07bool\
+    Val\x12\x1d\n\tint64_val\x18\x04\x20\x01(\x03H\0R\x08int64Val\x12A\n\rti\
+    mestamp_val\x18\x05\x20\x01(\x0b2\x1a.google.protobuf.TimestampH\0R\x0ct\
+    imestampValB\x07\n\x05value\"@\n\x12RepeatedFieldValue\x12*\n\x04vals\
+    \x18\x01\x20\x03(\x0b2\x16.protos.dml.FieldValueR\x04vals\"\xd7\x02\n\nF\
+    ieldValue\x12;\n\x08list_val\x18\x01\x20\x01(\x0b2\x1e.protos.dml.Repeat\
+    edFieldValueH\0R\x07listVal\x12\x1f\n\nstring_val\x18\x02\x20\x01(\tH\0R\
+    \tstringVal\x12\x1b\n\x08bool_val\x18\x03\x20\x01(\x08H\0R\x07boolVal\
+    \x12\x1d\n\tbytes_val\x18\x04\x20\x01(\x0cH\0R\x08bytesVal\x12\x1d\n\tin\
+    t64_val\x18\x05\x20\x01(\x03H\0R\x08int64Val\x12!\n\x0bfloat32_val\x18\
+    \x06\x20\x01(\x02H\0R\nfloat32Val\x12!\n\x0bfloat64_val\x18\x07\x20\x01(\
+    \x01H\0R\nfloat64Val\x12A\n\rtimestamp_val\x18\x08\x20\x01(\x0b2\x1a.goo\
+    gle.protobuf.TimestampH\0R\x0ctimestampValB\x07\n\x05value\"\x8d\x01\n\
+    \x03Row\x123\n\x06fields\x18\x01\x20\x03(\x0b2\x1b.protos.dml.Row.Fields\
+    EntryR\x06fields\x1aQ\n\x0bFieldsEntry\x12\x10\n\x03key\x18\x01\x20\x01(\
+    \tR\x03key\x12,\n\x05value\x18\x02\x20\x01(\x0b2\x16.protos.dml.FieldVal\
+    ueR\x05value:\x028\x01\"\x8e\x02\n\x17WriteToPartitionRequest\x12\x1d\n\
+    \ntable_name\x18\x01\x20\x01(\tR\ttableName\x12P\n\tpartition\x18\x02\
+    \x20\x03(\x0b22.protos.dml.WriteToPartitionRequest.PartitionEntryR\tpart\
+    ition\x12#\n\x04rows\x18\x03\x20\x03(\x0b2\x0f.protos.dml.RowR\x04rows\
+    \x1a]\n\x0ePartitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\
+    \x125\n\x05value\x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValu\
+    eR\x05value:\x028\x01\"\x1a\n\x18WriteToPartitionResponse\"\x87\x02\n\
+    \x18PartitionFieldComparison\x12\x12\n\x04name\x18\x01\x20\x01(\tR\x04na\
+    me\x12I\n\x08operator\x18\x02\x20\x01(\x0e2-.protos.dml.PartitionFieldCo\
+    mparison.OperatorR\x08operator\x125\n\x05value\x18\x03\x20\x01(\x0b2\x1f\
+    .protos.dml.PartitionFieldValueR\x05value\"U\n\x08Operator\x12\t\n\x05EQ\
+    _TO\x10\0\x12\x11\n\rLESS_OR_EQ_TO\x10\x01\x12\x08\n\x04LESS\x10\x02\x12\
+    \x14\n\x10GREATER_OR_EQ_TO\x10\x03\x12\x0b\n\x07GREATER\x10\x04\"b\n\x0f\
+    PartitionFilter\x12F\n\ncomparison\x18\x01\x20\x01(\x0b2$.protos.dml.Par\
+    titionFieldComparisonH\0R\ncomparisonB\x07\n\x05value\"\xa7\x01\n\x13Lis\
+    tSegmentsRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\
+    \x12F\n\x10partition_filter\x18\x02\x20\x03(\x0b2\x1b.protos.dml.Partiti\
+    onFilterR\x0fpartitionFilter\x12)\n\x10include_metadata\x18\x03\x20\x01(\
+    \x08R\x0fincludeMetadata\"N\n\x0fSegmentMetadata\x12\x14\n\x05count\x18\
+    \x01\x20\x01(\rR\x05count\x12%\n\x0elatest_version\x18\x02\x20\x01(\x04R\
+    \rlatestVersion\"\x82\x02\n\x07Segment\x12@\n\tpartition\x18\x01\x20\x03\
+    (\x0b2\".protos.dml.Segment.PartitionEntryR\tpartition\x12\x1d\n\nsegmen\
+    t_id\x18\x02\x20\x01(\tR\tsegmentId\x127\n\x08metadata\x18\x03\x20\x01(\
+    \x0b2\x1b.protos.dml.SegmentMetadataR\x08metadata\x1a]\n\x0ePartitionEnt\
+    ry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\x18\x02\
+    \x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x028\x01\"G\
+    \n\x14ListSegmentsResponse\x12/\n\x08segments\x18\x01\x20\x03(\x0b2\x13.\
+    protos.dml.SegmentR\x08segments\"\xda\x02\n\x18ReadSegmentColumnRequest\
+    \x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12Q\n\tpartition\
+    \x18\x02\x20\x03(\x0b23.protos.dml.ReadSegmentColumnRequest.PartitionEnt\
+    ryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\x12\
     \x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\x12-\n\x12continua\
-    tion_token\x18\x05\x20\x01(\tR\x11continuationToken\"\xc3\x01\n\x19ReadS\
-    egmentColumnResponse\x12\x14\n\x05codec\x18\x01\x20\x01(\tR\x05codec\x12\
-    \x12\n\x04data\x18\x02\x20\x01(\x0cR\x04data\x12\x1b\n\trow_count\x18\
-    \x03\x20\x01(\rR\x08rowCount\x120\n\x14implicit_nulls_count\x18\x04\x20\
-    \x01(\rR\x12implicitNullsCount\x12-\n\x12continuation_token\x18\x05\x20\
-    \x01(\tR\x11continuationTokenB\x15\n\x11com.pancakedb.idlP\x01b\x06proto\
-    3\
+    tion_token\x18\x05\x20\x01(\tR\x11continuationToken\x1a]\n\x0ePartitionE\
+    ntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\x18\x02\
+    \x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x028\x01\"\
+    \xc3\x01\n\x19ReadSegmentColumnResponse\x12\x14\n\x05codec\x18\x01\x20\
+    \x01(\tR\x05codec\x12\x12\n\x04data\x18\x02\x20\x01(\x0cR\x04data\x12\
+    \x1b\n\trow_count\x18\x03\x20\x01(\rR\x08rowCount\x120\n\x14implicit_nul\
+    ls_count\x18\x04\x20\x01(\rR\x12implicitNullsCount\x12-\n\x12continuatio\
+    n_token\x18\x05\x20\x01(\tR\x11continuationTokenB\x15\n\x11com.pancakedb\
+    .idlP\x01b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
@@ -3282,13 +2981,13 @@ pub fn file_descriptor() -> ::protobuf::reflect::FileDescriptor {
         let mut deps = ::std::vec::Vec::new();
         deps.push(::protobuf::well_known_types::file_descriptors::timestamp());
         let mut messages = ::std::vec::Vec::new();
-        messages.push(PartitionField::generated_message_descriptor_data());
+        messages.push(PartitionFieldValue::generated_message_descriptor_data());
         messages.push(RepeatedFieldValue::generated_message_descriptor_data());
-        messages.push(Field::generated_message_descriptor_data());
         messages.push(FieldValue::generated_message_descriptor_data());
         messages.push(Row::generated_message_descriptor_data());
         messages.push(WriteToPartitionRequest::generated_message_descriptor_data());
         messages.push(WriteToPartitionResponse::generated_message_descriptor_data());
+        messages.push(PartitionFieldComparison::generated_message_descriptor_data());
         messages.push(PartitionFilter::generated_message_descriptor_data());
         messages.push(ListSegmentsRequest::generated_message_descriptor_data());
         messages.push(SegmentMetadata::generated_message_descriptor_data());
@@ -3297,6 +2996,7 @@ pub fn file_descriptor() -> ::protobuf::reflect::FileDescriptor {
         messages.push(ReadSegmentColumnRequest::generated_message_descriptor_data());
         messages.push(ReadSegmentColumnResponse::generated_message_descriptor_data());
         let mut enums = ::std::vec::Vec::new();
+        enums.push(partition_field_comparison::Operator::generated_enum_descriptor_data());
         ::protobuf::reflect::GeneratedFileDescriptor::new_generated(
             file_descriptor_proto(),
             deps,

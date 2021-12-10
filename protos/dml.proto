@@ -6,8 +6,7 @@ import "google/protobuf/timestamp.proto";
 option java_multiple_files = true;
 option java_package = "com.pancakedb.idl";
 
-message PartitionField {
-  string name = 1;
+message PartitionFieldValue {
   oneof value {
     string string_val = 2;
     bool bool_val = 3;
@@ -18,11 +17,6 @@ message PartitionField {
 
 message RepeatedFieldValue {
   repeated FieldValue vals = 1;
-}
-
-message Field {
-  string name = 1;
-  FieldValue value = 2;
 }
 
 message FieldValue {
@@ -39,26 +33,36 @@ message FieldValue {
 }
 
 message Row {
-  repeated Field fields = 1;
+  map<string, FieldValue> fields = 1;
 }
 
 //WRITING
 message WriteToPartitionRequest {
   string table_name = 1;
-  repeated PartitionField partition = 2;
+  map<string, PartitionFieldValue> partition = 2;
   repeated Row rows = 3;
 }
 
 message WriteToPartitionResponse {}
 
+message PartitionFieldComparison {
+  enum Operator {
+    EQ_TO = 0;
+    LESS_OR_EQ_TO = 1;
+    LESS = 2;
+    GREATER_OR_EQ_TO = 3;
+    GREATER = 4;
+  }
+
+  string name = 1;
+  Operator operator = 2;
+  PartitionFieldValue value = 3;
+}
+
 //LISTING SEGMENTS
 message PartitionFilter {
   oneof value {
-    PartitionField equal_to = 1;
-    PartitionField less_or_eq_to = 2;
-    PartitionField less_than = 3;
-    PartitionField greater_or_eq_to = 4;
-    PartitionField greater_than = 5;
+    PartitionFieldComparison comparison = 1;
   }
 }
 
@@ -74,7 +78,7 @@ message SegmentMetadata {
 }
 
 message Segment {
-  repeated PartitionField partition = 1;
+  map<string, PartitionFieldValue> partition = 1;
   string segment_id = 2;
   SegmentMetadata metadata = 3;
 }
@@ -86,7 +90,7 @@ message ListSegmentsResponse {
 //READING SEGMENTS
 message ReadSegmentColumnRequest {
   string table_name = 1;
-  repeated PartitionField partition = 2;
+  map<string, PartitionFieldValue> partition = 2;
   string segment_id = 3;
   string column_name = 4;
   string continuation_token = 5;
