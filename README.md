@@ -73,21 +73,19 @@ request body format:
 {
   "table_name": "...",
   "schema": {
-    "partitioning": [
-      {
-        "name": "...",
+    "partitioning": {
+      "...": {
         "dtype": "STRING" | "INT64" | "BOOL" | "TIMESTAMP_MINUTE"
       },
       ...
-    ],
-    "columns": [
-      {
-        "name": "...",
+    },
+    "columns": {
+      "...": {
         "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT32" | "FLOAT64" | "TIMESTAMP_MICROS",
         "nested_list_depth": int
       },
       ...
-    ]
+    }
   },
   "schema_mode": "FAIL_IF_EXISTS" | "OK_IF_EXACT" | "ADD_NEW_COLUMNS"
 }
@@ -100,6 +98,8 @@ response body format:
   "columns_added": ["...", ...]
 }
 ```
+
+The keys in the partitioning and columns objects are column names.
 
 This will ensure a table exists following the behavior requested by
 `schema_mode`:
@@ -140,14 +140,13 @@ request body format:
 ```
 {
   "table_name": "...",
-  "new_columns": [
-    {
-      "name": "...",
+  "new_columns": {
+    "...": {
       "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT32" | "FLOAT64" | "TIMESTAMP_MICROS",
       "nested_list_depth": int
     },
     ...
-  ]
+  }
 }
 ```
 
@@ -197,21 +196,19 @@ request response format:
 ```
 {
   "schema": {
-    "partitioning": [
-      {
-        "name": "...", 
+    "partitioning": {
+      "...": {
         "dtype": "STRING" | "INT64" | "BOOL" | "TIMESTAMP_MINUTE"
       },
       ...
-    ],
-    "columns": [
-      {
-        "name": "...",
+    },
+    "columns": {
+      "...": {
         "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT32" | "FLOAT64" | "TIMESTAMP_MICROS",
         "nested_list_depth": int
       },
       ...
-    ]
+    }
   },
 }
 ```
@@ -224,24 +221,22 @@ request body format:
 ```
 {
   "table_name": "...",
-  "partition": [
-    {
-      "name": "...",
+  "partition": {
+    "...": {
       "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
     },
     ...
-  ],
+  },
   "rows": [
     {
-      "fields": [
-        {
-          "name": "...",
+      "fields": {
+        "...": {
           "value": {
             "list_val": {"vals": [...]} | "string_val": "..." | "int64_val": int | "bool_val": bool | "bytes_val": [...] | "float64_val": float | "timestamp_val": "1970-01-01T00:00:00.000Z"
           }
         },
         ...
-      ]
+      }
     },
     ...
   ]
@@ -257,28 +252,43 @@ Each write to partition request may contain up to 256 rows.
 If you need to write to multiple partitions at once, you must send multiple
 requests.
 
-Note that in the case of a column with `nested_list_depth > 0`,
-`list_val`s contain a list of field value objects. For example,
-to send a field containing `[1,2,3]`,
+For most use cases, `write_to_partition_simple` is recommended instead due to
+its simpler JSON request.
+
+## Write to Partition, Simplified
+
+`POST /rest/write_to_partition_simple`
+
+request body format:
 ```
-"fields": [
-  {
-    "name": "my_list_column",
-    "value": {
-      "list_val": {
-        "vals": [
-          {"value": {"int64_val": 1}},
-          {"value": {"int64_val": 2}},
-          {"value": {"int64_val": 3}}
-        ]
-      }
-    }
-  }
-]
+{
+  "table_name": "...",
+  "partition": {
+    "...": <value>,
+    ...
+  },
+  "rows": [
+    {
+      "...": <value>,
+    },
+    ...
+  ]
+}
 ```
 
-Another version of this route with simpler JSON encoding may be released in the
-future.
+response body format:
+```
+{}
+```
+
+With this route, natural JSON encoding is used.
+For example, a valid row would be
+```
+{
+  "my_int_col": 33,
+  "my_nested_string_col": ["foo", "bar"]
+}
+```
 
 ## List Segments
 
@@ -291,9 +301,12 @@ request body format:
   "partition_filter": [
     {
       "value: {
-        "equal_to" | "less_than" | "greater_than" | "less_or_eq_to" | "greater_or_eq_to": {
+        "comparison": {
           "name": "...",
-          "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
+          "operator": "EQ_TO" | "LESS" | "LESS_OR_EQ_TO" | "GREATER" | "GREATER_OR_EQ_TO",
+          "value": {
+            "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
+          }
         }
       }
     }
@@ -307,9 +320,8 @@ response body format:
 {
   "segments": [
     {
-      "partition": [
-        {
-          "name": "...",
+      "partition": {
+        "...": {
           "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
         },
         ...
@@ -342,9 +354,8 @@ request body format
 ```
 {
   "table_name": "...",
-  "partition": [
-    {
-      "name": "...",
+  "partition": {
+    "...": {
       "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
     },
     ...
