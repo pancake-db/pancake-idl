@@ -2516,6 +2516,7 @@ pub struct ReadSegmentColumnRequest {
     pub partition: ::std::collections::HashMap<::std::string::String, PartitionFieldValue>,
     pub segment_id: ::std::string::String,
     pub column_name: ::std::string::String,
+    pub read_segment_id: ::std::string::String,
     pub continuation_token: ::std::string::String,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
@@ -2554,6 +2555,11 @@ impl ReadSegmentColumnRequest {
             "column_name",
             |m: &ReadSegmentColumnRequest| { &m.column_name },
             |m: &mut ReadSegmentColumnRequest| { &mut m.column_name },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "read_segment_id",
+            |m: &ReadSegmentColumnRequest| { &m.read_segment_id },
+            |m: &mut ReadSegmentColumnRequest| { &mut m.read_segment_id },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "continuation_token",
@@ -2602,6 +2608,12 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
+                    self.read_segment_id = is.read_string()?;
+                },
+                6 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
                     self.continuation_token = is.read_string()?;
                 },
                 _ => {
@@ -2626,8 +2638,11 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
         if !self.column_name.is_empty() {
             my_size += ::protobuf::rt::string_size(4, &self.column_name);
         }
+        if !self.read_segment_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(5, &self.read_segment_id);
+        }
         if !self.continuation_token.is_empty() {
-            my_size += ::protobuf::rt::string_size(5, &self.continuation_token);
+            my_size += ::protobuf::rt::string_size(6, &self.continuation_token);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
@@ -2645,8 +2660,11 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
         if !self.column_name.is_empty() {
             os.write_string(4, &self.column_name)?;
         }
+        if !self.read_segment_id.is_empty() {
+            os.write_string(5, &self.read_segment_id)?;
+        }
         if !self.continuation_token.is_empty() {
-            os.write_string(5, &self.continuation_token)?;
+            os.write_string(6, &self.continuation_token)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -2684,6 +2702,7 @@ impl ::protobuf::Clear for ReadSegmentColumnRequest {
         self.partition.clear();
         self.segment_id.clear();
         self.column_name.clear();
+        self.read_segment_id.clear();
         self.continuation_token.clear();
         self.unknown_fields.clear();
     }
@@ -2904,6 +2923,594 @@ impl ::protobuf::reflect::ProtobufValue for ReadSegmentColumnResponse {
     type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
 }
 
+#[derive(PartialEq,Clone,Default)]
+pub struct ReadDeletionsRequest {
+    // message fields
+    pub table_name: ::std::string::String,
+    pub partition: ::std::collections::HashMap<::std::string::String, PartitionFieldValue>,
+    pub segment_id: ::std::string::String,
+    pub read_segment_id: ::std::string::String,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a ReadDeletionsRequest {
+    fn default() -> &'a ReadDeletionsRequest {
+        <ReadDeletionsRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl ReadDeletionsRequest {
+    pub fn new() -> ReadDeletionsRequest {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "table_name",
+            |m: &ReadDeletionsRequest| { &m.table_name },
+            |m: &mut ReadDeletionsRequest| { &mut m.table_name },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_map_simpler_accessor::<_, _, _>(
+            "partition",
+            |m: &ReadDeletionsRequest| { &m.partition },
+            |m: &mut ReadDeletionsRequest| { &mut m.partition },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "segment_id",
+            |m: &ReadDeletionsRequest| { &m.segment_id },
+            |m: &mut ReadDeletionsRequest| { &mut m.segment_id },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "read_segment_id",
+            |m: &ReadDeletionsRequest| { &m.read_segment_id },
+            |m: &mut ReadDeletionsRequest| { &mut m.read_segment_id },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ReadDeletionsRequest>(
+            "ReadDeletionsRequest",
+            14,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for ReadDeletionsRequest {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.table_name = is.read_string()?;
+                },
+                2 => {
+                    ::protobuf::rt::read_map_into::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(wire_type, is, &mut self.partition)?;
+                },
+                3 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.segment_id = is.read_string()?;
+                },
+                4 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.read_segment_id = is.read_string()?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.table_name.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.table_name);
+        }
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(2, &self.partition);
+        if !self.segment_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(3, &self.segment_id);
+        }
+        if !self.read_segment_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(4, &self.read_segment_id);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if !self.table_name.is_empty() {
+            os.write_string(1, &self.table_name)?;
+        }
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(2, &self.partition, os)?;
+        if !self.segment_id.is_empty() {
+            os.write_string(3, &self.segment_id)?;
+        }
+        if !self.read_segment_id.is_empty() {
+            os.write_string(4, &self.read_segment_id)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> ReadDeletionsRequest {
+        ReadDeletionsRequest::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 18)
+    }
+
+    fn default_instance() -> &'static ReadDeletionsRequest {
+        static instance: ::protobuf::rt::LazyV2<ReadDeletionsRequest> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(ReadDeletionsRequest::new)
+    }
+}
+
+impl ::protobuf::Clear for ReadDeletionsRequest {
+    fn clear(&mut self) {
+        self.table_name.clear();
+        self.partition.clear();
+        self.segment_id.clear();
+        self.read_segment_id.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for ReadDeletionsRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for ReadDeletionsRequest {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct ReadDeletionsResponse {
+    // message fields
+    pub codec: ::std::string::String,
+    pub data: ::std::vec::Vec<u8>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a ReadDeletionsResponse {
+    fn default() -> &'a ReadDeletionsResponse {
+        <ReadDeletionsResponse as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl ReadDeletionsResponse {
+    pub fn new() -> ReadDeletionsResponse {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "codec",
+            |m: &ReadDeletionsResponse| { &m.codec },
+            |m: &mut ReadDeletionsResponse| { &mut m.codec },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "data",
+            |m: &ReadDeletionsResponse| { &m.data },
+            |m: &mut ReadDeletionsResponse| { &mut m.data },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ReadDeletionsResponse>(
+            "ReadDeletionsResponse",
+            15,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for ReadDeletionsResponse {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.codec = is.read_string()?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.data = is.read_bytes()?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.codec.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.codec);
+        }
+        if !self.data.is_empty() {
+            my_size += ::protobuf::rt::bytes_size(2, &self.data);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if !self.codec.is_empty() {
+            os.write_string(1, &self.codec)?;
+        }
+        if !self.data.is_empty() {
+            os.write_bytes(2, &self.data)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> ReadDeletionsResponse {
+        ReadDeletionsResponse::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 20)
+    }
+
+    fn default_instance() -> &'static ReadDeletionsResponse {
+        static instance: ReadDeletionsResponse = ReadDeletionsResponse {
+            codec: ::std::string::String::new(),
+            data: ::std::vec::Vec::new(),
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for ReadDeletionsResponse {
+    fn clear(&mut self) {
+        self.codec.clear();
+        self.data.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for ReadDeletionsResponse {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for ReadDeletionsResponse {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct DeleteFromSegmentRequest {
+    // message fields
+    pub table_name: ::std::string::String,
+    pub partition: ::std::collections::HashMap<::std::string::String, PartitionFieldValue>,
+    pub segment_id: ::std::string::String,
+    pub row_ids: ::std::vec::Vec<u32>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a DeleteFromSegmentRequest {
+    fn default() -> &'a DeleteFromSegmentRequest {
+        <DeleteFromSegmentRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl DeleteFromSegmentRequest {
+    pub fn new() -> DeleteFromSegmentRequest {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "table_name",
+            |m: &DeleteFromSegmentRequest| { &m.table_name },
+            |m: &mut DeleteFromSegmentRequest| { &mut m.table_name },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_map_simpler_accessor::<_, _, _>(
+            "partition",
+            |m: &DeleteFromSegmentRequest| { &m.partition },
+            |m: &mut DeleteFromSegmentRequest| { &mut m.partition },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+            "segment_id",
+            |m: &DeleteFromSegmentRequest| { &m.segment_id },
+            |m: &mut DeleteFromSegmentRequest| { &mut m.segment_id },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
+            "row_ids",
+            |m: &DeleteFromSegmentRequest| { &m.row_ids },
+            |m: &mut DeleteFromSegmentRequest| { &mut m.row_ids },
+        ));
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<DeleteFromSegmentRequest>(
+            "DeleteFromSegmentRequest",
+            16,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for DeleteFromSegmentRequest {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.table_name = is.read_string()?;
+                },
+                2 => {
+                    ::protobuf::rt::read_map_into::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(wire_type, is, &mut self.partition)?;
+                },
+                3 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.segment_id = is.read_string()?;
+                },
+                4 => {
+                    ::protobuf::rt::read_repeated_uint32_into(wire_type, is, &mut self.row_ids)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.table_name.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.table_name);
+        }
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(2, &self.partition);
+        if !self.segment_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(3, &self.segment_id);
+        }
+        for value in &self.row_ids {
+            my_size += ::protobuf::rt::value_size(4, *value, ::protobuf::wire_format::WireTypeVarint);
+        };
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if !self.table_name.is_empty() {
+            os.write_string(1, &self.table_name)?;
+        }
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::reflect::types::ProtobufTypeString, ::protobuf::reflect::types::ProtobufTypeMessage<PartitionFieldValue>>(2, &self.partition, os)?;
+        if !self.segment_id.is_empty() {
+            os.write_string(3, &self.segment_id)?;
+        }
+        for v in &self.row_ids {
+            os.write_uint32(4, *v)?;
+        };
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> DeleteFromSegmentRequest {
+        DeleteFromSegmentRequest::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 21)
+    }
+
+    fn default_instance() -> &'static DeleteFromSegmentRequest {
+        static instance: ::protobuf::rt::LazyV2<DeleteFromSegmentRequest> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(DeleteFromSegmentRequest::new)
+    }
+}
+
+impl ::protobuf::Clear for DeleteFromSegmentRequest {
+    fn clear(&mut self) {
+        self.table_name.clear();
+        self.partition.clear();
+        self.segment_id.clear();
+        self.row_ids.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for DeleteFromSegmentRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for DeleteFromSegmentRequest {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct DeleteFromSegmentResponse {
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::rt::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a DeleteFromSegmentResponse {
+    fn default() -> &'a DeleteFromSegmentResponse {
+        <DeleteFromSegmentResponse as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl DeleteFromSegmentResponse {
+    pub fn new() -> DeleteFromSegmentResponse {
+        ::std::default::Default::default()
+    }
+
+    fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
+        let mut fields = ::std::vec::Vec::new();
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<DeleteFromSegmentResponse>(
+            "DeleteFromSegmentResponse",
+            17,
+            fields,
+        )
+    }
+}
+
+impl ::protobuf::Message for DeleteFromSegmentResponse {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn new() -> DeleteFromSegmentResponse {
+        DeleteFromSegmentResponse::new()
+    }
+
+    fn descriptor_static() -> ::protobuf::reflect::MessageDescriptor {
+        ::protobuf::reflect::MessageDescriptor::new_generated_2(file_descriptor(), 23)
+    }
+
+    fn default_instance() -> &'static DeleteFromSegmentResponse {
+        static instance: DeleteFromSegmentResponse = DeleteFromSegmentResponse {
+            unknown_fields: ::protobuf::UnknownFields::new(),
+            cached_size: ::protobuf::rt::CachedSize::new(),
+        };
+        &instance
+    }
+}
+
+impl ::protobuf::Clear for DeleteFromSegmentResponse {
+    fn clear(&mut self) {
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for DeleteFromSegmentResponse {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for DeleteFromSegmentResponse {
+    type RuntimeType = ::protobuf::reflect::runtime_types::RuntimeTypeMessage<Self>;
+}
+
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\tdml.proto\x12\nprotos.dml\x1a\x1fgoogle/protobuf/timestamp.proto\"\
     \xbe\x01\n\x13PartitionFieldValue\x12\x1f\n\nstring_val\x18\x02\x20\x01(\
@@ -2950,20 +3557,36 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\x18\x02\
     \x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x028\x01\"G\
     \n\x14ListSegmentsResponse\x12/\n\x08segments\x18\x01\x20\x03(\x0b2\x13.\
-    protos.dml.SegmentR\x08segments\"\xda\x02\n\x18ReadSegmentColumnRequest\
+    protos.dml.SegmentR\x08segments\"\x82\x03\n\x18ReadSegmentColumnRequest\
     \x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12Q\n\tpartition\
     \x18\x02\x20\x03(\x0b23.protos.dml.ReadSegmentColumnRequest.PartitionEnt\
     ryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\x12\
-    \x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\x12-\n\x12continua\
-    tion_token\x18\x05\x20\x01(\tR\x11continuationToken\x1a]\n\x0ePartitionE\
-    ntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\x18\x02\
-    \x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x028\x01\"\
-    \xc3\x01\n\x19ReadSegmentColumnResponse\x12\x14\n\x05codec\x18\x01\x20\
-    \x01(\tR\x05codec\x12\x12\n\x04data\x18\x02\x20\x01(\x0cR\x04data\x12\
-    \x1b\n\trow_count\x18\x03\x20\x01(\rR\x08rowCount\x120\n\x14implicit_nul\
-    ls_count\x18\x04\x20\x01(\rR\x12implicitNullsCount\x12-\n\x12continuatio\
-    n_token\x18\x05\x20\x01(\tR\x11continuationTokenB\x15\n\x11com.pancakedb\
-    .idlP\x01b\x06proto3\
+    \x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\x12&\n\x0fread_seg\
+    ment_id\x18\x05\x20\x01(\tR\rreadSegmentId\x12-\n\x12continuation_token\
+    \x18\x06\x20\x01(\tR\x11continuationToken\x1a]\n\x0ePartitionEntry\x12\
+    \x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\x18\x02\x20\x01\
+    (\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x028\x01\"\xc3\x01\
+    \n\x19ReadSegmentColumnResponse\x12\x14\n\x05codec\x18\x01\x20\x01(\tR\
+    \x05codec\x12\x12\n\x04data\x18\x02\x20\x01(\x0cR\x04data\x12\x1b\n\trow\
+    _count\x18\x03\x20\x01(\rR\x08rowCount\x120\n\x14implicit_nulls_count\
+    \x18\x04\x20\x01(\rR\x12implicitNullsCount\x12-\n\x12continuation_token\
+    \x18\x05\x20\x01(\tR\x11continuationToken\"\xaa\x02\n\x14ReadDeletionsRe\
+    quest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12M\n\tparti\
+    tion\x18\x02\x20\x03(\x0b2/.protos.dml.ReadDeletionsRequest.PartitionEnt\
+    ryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\x12&\
+    \n\x0fread_segment_id\x18\x04\x20\x01(\tR\rreadSegmentId\x1a]\n\x0eParti\
+    tionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\
+    \x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x02\
+    8\x01\"A\n\x15ReadDeletionsResponse\x12\x14\n\x05codec\x18\x01\x20\x01(\
+    \tR\x05codec\x12\x12\n\x04data\x18\x02\x20\x01(\x0cR\x04data\"\xa3\x02\n\
+    \x18DeleteFromSegmentRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\t\
+    tableName\x12Q\n\tpartition\x18\x02\x20\x03(\x0b23.protos.dml.DeleteFrom\
+    SegmentRequest.PartitionEntryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\
+    \x20\x01(\tR\tsegmentId\x12\x17\n\x07row_ids\x18\x04\x20\x03(\rR\x06rowI\
+    ds\x1a]\n\x0ePartitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\
+    \x125\n\x05value\x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValu\
+    eR\x05value:\x028\x01\"\x1b\n\x19DeleteFromSegmentResponseB\x15\n\x11com\
+    .pancakedb.idlP\x01b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
@@ -2995,6 +3618,10 @@ pub fn file_descriptor() -> ::protobuf::reflect::FileDescriptor {
         messages.push(ListSegmentsResponse::generated_message_descriptor_data());
         messages.push(ReadSegmentColumnRequest::generated_message_descriptor_data());
         messages.push(ReadSegmentColumnResponse::generated_message_descriptor_data());
+        messages.push(ReadDeletionsRequest::generated_message_descriptor_data());
+        messages.push(ReadDeletionsResponse::generated_message_descriptor_data());
+        messages.push(DeleteFromSegmentRequest::generated_message_descriptor_data());
+        messages.push(DeleteFromSegmentResponse::generated_message_descriptor_data());
         let mut enums = ::std::vec::Vec::new();
         enums.push(partition_field_comparison::Operator::generated_enum_descriptor_data());
         ::protobuf::reflect::GeneratedFileDescriptor::new_generated(

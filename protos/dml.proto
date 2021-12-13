@@ -6,6 +6,7 @@ import "google/protobuf/timestamp.proto";
 option java_multiple_files = true;
 option java_package = "com.pancakedb.idl";
 
+//WRITING
 message PartitionFieldValue {
   oneof value {
     string string_val = 2;
@@ -36,7 +37,6 @@ message Row {
   map<string, FieldValue> fields = 1;
 }
 
-//WRITING
 message WriteToPartitionRequest {
   string table_name = 1;
   map<string, PartitionFieldValue> partition = 2;
@@ -45,6 +45,7 @@ message WriteToPartitionRequest {
 
 message WriteToPartitionResponse {}
 
+//LISTING SEGMENTS
 message PartitionFieldComparison {
   enum Operator {
     EQ_TO = 0;
@@ -59,7 +60,6 @@ message PartitionFieldComparison {
   PartitionFieldValue value = 3;
 }
 
-//LISTING SEGMENTS
 message PartitionFilter {
   oneof value {
     PartitionFieldComparison comparison = 1;
@@ -87,13 +87,14 @@ message ListSegmentsResponse {
   repeated Segment segments = 1;
 }
 
-//READING SEGMENTS
+//READING SEGMENT COLUMNS
 message ReadSegmentColumnRequest {
   string table_name = 1;
   map<string, PartitionFieldValue> partition = 2;
   string segment_id = 3;
   string column_name = 4;
-  string continuation_token = 5;
+  string read_segment_id = 5;
+  string continuation_token = 6;
 }
 
 message ReadSegmentColumnResponse {
@@ -103,3 +104,25 @@ message ReadSegmentColumnResponse {
   uint32 implicit_nulls_count = 4;
   string continuation_token = 5;
 }
+
+//READING DELETIONS
+message ReadDeletionsRequest {
+  string table_name = 1;
+  map<string, PartitionFieldValue> partition = 2;
+  string segment_id = 3;
+  string read_segment_id = 4;
+}
+
+message ReadDeletionsResponse {
+  bytes data = 1;
+}
+
+//DELETING
+message DeleteFromSegmentRequest {
+  string table_name = 1;
+  map<string, PartitionFieldValue> partition = 2;
+  string segment_id = 3;
+  repeated uint32 row_ids = 4;
+}
+
+message DeleteFromSegmentResponse {}
