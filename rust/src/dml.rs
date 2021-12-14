@@ -2084,7 +2084,7 @@ impl ::protobuf::reflect::ProtobufValue for ListSegmentsRequest {
 #[derive(PartialEq,Clone,Default)]
 pub struct SegmentMetadata {
     // message fields
-    pub count: u32,
+    pub row_count: u32,
     pub latest_version: u64,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
@@ -2105,9 +2105,9 @@ impl SegmentMetadata {
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::new();
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "count",
-            |m: &SegmentMetadata| { &m.count },
-            |m: &mut SegmentMetadata| { &mut m.count },
+            "row_count",
+            |m: &SegmentMetadata| { &m.row_count },
+            |m: &mut SegmentMetadata| { &mut m.row_count },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "latest_version",
@@ -2135,7 +2135,7 @@ impl ::protobuf::Message for SegmentMetadata {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.count = is.read_uint32()?;
+                    self.row_count = is.read_uint32()?;
                 },
                 2 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
@@ -2155,8 +2155,8 @@ impl ::protobuf::Message for SegmentMetadata {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        if self.count != 0 {
-            my_size += ::protobuf::rt::value_size(1, self.count, ::protobuf::wire_format::WireTypeVarint);
+        if self.row_count != 0 {
+            my_size += ::protobuf::rt::value_size(1, self.row_count, ::protobuf::wire_format::WireTypeVarint);
         }
         if self.latest_version != 0 {
             my_size += ::protobuf::rt::value_size(2, self.latest_version, ::protobuf::wire_format::WireTypeVarint);
@@ -2167,8 +2167,8 @@ impl ::protobuf::Message for SegmentMetadata {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
-        if self.count != 0 {
-            os.write_uint32(1, self.count)?;
+        if self.row_count != 0 {
+            os.write_uint32(1, self.row_count)?;
         }
         if self.latest_version != 0 {
             os.write_uint64(2, self.latest_version)?;
@@ -2199,7 +2199,7 @@ impl ::protobuf::Message for SegmentMetadata {
 
     fn default_instance() -> &'static SegmentMetadata {
         static instance: SegmentMetadata = SegmentMetadata {
-            count: 0,
+            row_count: 0,
             latest_version: 0,
             unknown_fields: ::protobuf::UnknownFields::new(),
             cached_size: ::protobuf::rt::CachedSize::new(),
@@ -2210,7 +2210,7 @@ impl ::protobuf::Message for SegmentMetadata {
 
 impl ::protobuf::Clear for SegmentMetadata {
     fn clear(&mut self) {
-        self.count = 0;
+        self.row_count = 0;
         self.latest_version = 0;
         self.unknown_fields.clear();
     }
@@ -3569,46 +3569,46 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     tSegmentsRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\
     \x12F\n\x10partition_filter\x18\x02\x20\x03(\x0b2\x1b.protos.dml.Partiti\
     onFilterR\x0fpartitionFilter\x12)\n\x10include_metadata\x18\x03\x20\x01(\
-    \x08R\x0fincludeMetadata\"N\n\x0fSegmentMetadata\x12\x14\n\x05count\x18\
-    \x01\x20\x01(\rR\x05count\x12%\n\x0elatest_version\x18\x02\x20\x01(\x04R\
-    \rlatestVersion\"\x82\x02\n\x07Segment\x12@\n\tpartition\x18\x01\x20\x03\
-    (\x0b2\".protos.dml.Segment.PartitionEntryR\tpartition\x12\x1d\n\nsegmen\
-    t_id\x18\x02\x20\x01(\tR\tsegmentId\x127\n\x08metadata\x18\x03\x20\x01(\
-    \x0b2\x1b.protos.dml.SegmentMetadataR\x08metadata\x1a]\n\x0ePartitionEnt\
-    ry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\x18\x02\
-    \x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x028\x01\"G\
-    \n\x14ListSegmentsResponse\x12/\n\x08segments\x18\x01\x20\x03(\x0b2\x13.\
-    protos.dml.SegmentR\x08segments\"\x82\x03\n\x18ReadSegmentColumnRequest\
-    \x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12Q\n\tpartition\
-    \x18\x02\x20\x03(\x0b23.protos.dml.ReadSegmentColumnRequest.PartitionEnt\
-    ryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\x12\
-    \x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\x12&\n\x0fread_seg\
-    ment_id\x18\x05\x20\x01(\tR\rreadSegmentId\x12-\n\x12continuation_token\
-    \x18\x06\x20\x01(\tR\x11continuationToken\x1a]\n\x0ePartitionEntry\x12\
-    \x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\x18\x02\x20\x01\
-    (\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x028\x01\"\xea\x01\
-    \n\x19ReadSegmentColumnResponse\x12\x14\n\x05codec\x18\x01\x20\x01(\tR\
-    \x05codec\x12\x12\n\x04data\x18\x02\x20\x01(\x0cR\x04data\x12\x1b\n\trow\
-    _count\x18\x03\x20\x01(\rR\x08rowCount\x12%\n\x0edeletion_count\x18\x04\
-    \x20\x01(\rR\rdeletionCount\x120\n\x14implicit_nulls_count\x18\x05\x20\
-    \x01(\rR\x12implicitNullsCount\x12-\n\x12continuation_token\x18\x06\x20\
-    \x01(\tR\x11continuationToken\"\xb8\x02\n\x1bReadSegmentDeletionsRequest\
-    \x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12T\n\tpartition\
-    \x18\x02\x20\x03(\x0b26.protos.dml.ReadSegmentDeletionsRequest.Partition\
-    EntryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\
-    \x12&\n\x0fread_segment_id\x18\x04\x20\x01(\tR\rreadSegmentId\x1a]\n\x0e\
-    PartitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05val\
-    ue\x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\
-    \x028\x01\"2\n\x1cReadSegmentDeletionsResponse\x12\x12\n\x04data\x18\x01\
-    \x20\x01(\x0cR\x04data\"\xa3\x02\n\x18DeleteFromSegmentRequest\x12\x1d\n\
-    \ntable_name\x18\x01\x20\x01(\tR\ttableName\x12Q\n\tpartition\x18\x02\
-    \x20\x03(\x0b23.protos.dml.DeleteFromSegmentRequest.PartitionEntryR\tpar\
-    tition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\x12\x17\n\
-    \x07row_ids\x18\x04\x20\x03(\rR\x06rowIds\x1a]\n\x0ePartitionEntry\x12\
-    \x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\x18\x02\x20\x01\
-    (\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x028\x01\"8\n\x19De\
-    leteFromSegmentResponse\x12\x1b\n\tn_deleted\x18\x01\x20\x01(\rR\x08nDel\
-    etedB\x15\n\x11com.pancakedb.idlP\x01b\x06proto3\
+    \x08R\x0fincludeMetadata\"U\n\x0fSegmentMetadata\x12\x1b\n\trow_count\
+    \x18\x01\x20\x01(\rR\x08rowCount\x12%\n\x0elatest_version\x18\x02\x20\
+    \x01(\x04R\rlatestVersion\"\x82\x02\n\x07Segment\x12@\n\tpartition\x18\
+    \x01\x20\x03(\x0b2\".protos.dml.Segment.PartitionEntryR\tpartition\x12\
+    \x1d\n\nsegment_id\x18\x02\x20\x01(\tR\tsegmentId\x127\n\x08metadata\x18\
+    \x03\x20\x01(\x0b2\x1b.protos.dml.SegmentMetadataR\x08metadata\x1a]\n\
+    \x0ePartitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\
+    \x05value\x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05v\
+    alue:\x028\x01\"G\n\x14ListSegmentsResponse\x12/\n\x08segments\x18\x01\
+    \x20\x03(\x0b2\x13.protos.dml.SegmentR\x08segments\"\x82\x03\n\x18ReadSe\
+    gmentColumnRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\
+    \x12Q\n\tpartition\x18\x02\x20\x03(\x0b23.protos.dml.ReadSegmentColumnRe\
+    quest.PartitionEntryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\
+    \tR\tsegmentId\x12\x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\
+    \x12&\n\x0fread_segment_id\x18\x05\x20\x01(\tR\rreadSegmentId\x12-\n\x12\
+    continuation_token\x18\x06\x20\x01(\tR\x11continuationToken\x1a]\n\x0ePa\
+    rtitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\
+    \x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x02\
+    8\x01\"\xea\x01\n\x19ReadSegmentColumnResponse\x12\x14\n\x05codec\x18\
+    \x01\x20\x01(\tR\x05codec\x12\x12\n\x04data\x18\x02\x20\x01(\x0cR\x04dat\
+    a\x12\x1b\n\trow_count\x18\x03\x20\x01(\rR\x08rowCount\x12%\n\x0edeletio\
+    n_count\x18\x04\x20\x01(\rR\rdeletionCount\x120\n\x14implicit_nulls_coun\
+    t\x18\x05\x20\x01(\rR\x12implicitNullsCount\x12-\n\x12continuation_token\
+    \x18\x06\x20\x01(\tR\x11continuationToken\"\xb8\x02\n\x1bReadSegmentDele\
+    tionsRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12T\n\
+    \tpartition\x18\x02\x20\x03(\x0b26.protos.dml.ReadSegmentDeletionsReques\
+    t.PartitionEntryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\t\
+    segmentId\x12&\n\x0fread_segment_id\x18\x04\x20\x01(\tR\rreadSegmentId\
+    \x1a]\n\x0ePartitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\
+    \x125\n\x05value\x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValu\
+    eR\x05value:\x028\x01\"2\n\x1cReadSegmentDeletionsResponse\x12\x12\n\x04\
+    data\x18\x01\x20\x01(\x0cR\x04data\"\xa3\x02\n\x18DeleteFromSegmentReque\
+    st\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12Q\n\tpartitio\
+    n\x18\x02\x20\x03(\x0b23.protos.dml.DeleteFromSegmentRequest.PartitionEn\
+    tryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\tsegmentId\x12\
+    \x17\n\x07row_ids\x18\x04\x20\x03(\rR\x06rowIds\x1a]\n\x0ePartitionEntry\
+    \x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\x18\x02\x20\
+    \x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x028\x01\"8\n\
+    \x19DeleteFromSegmentResponse\x12\x1b\n\tn_deleted\x18\x01\x20\x01(\rR\
+    \x08nDeletedB\x15\n\x11com.pancakedb.idlP\x01b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

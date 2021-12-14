@@ -73,7 +73,7 @@ message ListSegmentsRequest {
 }
 
 message SegmentMetadata {
-  uint32 count = 1;
+  uint32 row_count = 1;
   uint64 latest_version = 2;
 }
 
