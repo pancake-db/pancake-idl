@@ -74,7 +74,6 @@ message ListSegmentsRequest {
 
 message SegmentMetadata {
   uint32 row_count = 1;
-  uint64 latest_version = 2;
 }
 
 message Segment {
@@ -93,7 +92,7 @@ message ReadSegmentColumnRequest {
   map<string, PartitionFieldValue> partition = 2;
   string segment_id = 3;
   string column_name = 4;
-  string read_segment_id = 5;
+  string correlation_id = 5;
   string continuation_token = 6;
 }
 
@@ -111,7 +110,7 @@ message ReadSegmentDeletionsRequest {
   string table_name = 1;
   map<string, PartitionFieldValue> partition = 2;
   string segment_id = 3;
-  string read_segment_id = 4;
+  string correlation_id = 4;
 }
 
 message ReadSegmentDeletionsResponse {

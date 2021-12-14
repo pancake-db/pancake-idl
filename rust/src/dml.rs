@@ -2085,7 +2085,6 @@ impl ::protobuf::reflect::ProtobufValue for ListSegmentsRequest {
 pub struct SegmentMetadata {
     // message fields
     pub row_count: u32,
-    pub latest_version: u64,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::rt::CachedSize,
@@ -2108,11 +2107,6 @@ impl SegmentMetadata {
             "row_count",
             |m: &SegmentMetadata| { &m.row_count },
             |m: &mut SegmentMetadata| { &mut m.row_count },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "latest_version",
-            |m: &SegmentMetadata| { &m.latest_version },
-            |m: &mut SegmentMetadata| { &mut m.latest_version },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<SegmentMetadata>(
             "SegmentMetadata",
@@ -2137,12 +2131,6 @@ impl ::protobuf::Message for SegmentMetadata {
                     }
                     self.row_count = is.read_uint32()?;
                 },
-                2 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.latest_version = is.read_uint64()?;
-                },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
                 },
@@ -2158,9 +2146,6 @@ impl ::protobuf::Message for SegmentMetadata {
         if self.row_count != 0 {
             my_size += ::protobuf::rt::value_size(1, self.row_count, ::protobuf::wire_format::WireTypeVarint);
         }
-        if self.latest_version != 0 {
-            my_size += ::protobuf::rt::value_size(2, self.latest_version, ::protobuf::wire_format::WireTypeVarint);
-        }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
@@ -2169,9 +2154,6 @@ impl ::protobuf::Message for SegmentMetadata {
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if self.row_count != 0 {
             os.write_uint32(1, self.row_count)?;
-        }
-        if self.latest_version != 0 {
-            os.write_uint64(2, self.latest_version)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -2200,7 +2182,6 @@ impl ::protobuf::Message for SegmentMetadata {
     fn default_instance() -> &'static SegmentMetadata {
         static instance: SegmentMetadata = SegmentMetadata {
             row_count: 0,
-            latest_version: 0,
             unknown_fields: ::protobuf::UnknownFields::new(),
             cached_size: ::protobuf::rt::CachedSize::new(),
         };
@@ -2211,7 +2192,6 @@ impl ::protobuf::Message for SegmentMetadata {
 impl ::protobuf::Clear for SegmentMetadata {
     fn clear(&mut self) {
         self.row_count = 0;
-        self.latest_version = 0;
         self.unknown_fields.clear();
     }
 }
@@ -2516,7 +2496,7 @@ pub struct ReadSegmentColumnRequest {
     pub partition: ::std::collections::HashMap<::std::string::String, PartitionFieldValue>,
     pub segment_id: ::std::string::String,
     pub column_name: ::std::string::String,
-    pub read_segment_id: ::std::string::String,
+    pub correlation_id: ::std::string::String,
     pub continuation_token: ::std::string::String,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
@@ -2557,9 +2537,9 @@ impl ReadSegmentColumnRequest {
             |m: &mut ReadSegmentColumnRequest| { &mut m.column_name },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "read_segment_id",
-            |m: &ReadSegmentColumnRequest| { &m.read_segment_id },
-            |m: &mut ReadSegmentColumnRequest| { &mut m.read_segment_id },
+            "correlation_id",
+            |m: &ReadSegmentColumnRequest| { &m.correlation_id },
+            |m: &mut ReadSegmentColumnRequest| { &mut m.correlation_id },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "continuation_token",
@@ -2608,7 +2588,7 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.read_segment_id = is.read_string()?;
+                    self.correlation_id = is.read_string()?;
                 },
                 6 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
@@ -2638,8 +2618,8 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
         if !self.column_name.is_empty() {
             my_size += ::protobuf::rt::string_size(4, &self.column_name);
         }
-        if !self.read_segment_id.is_empty() {
-            my_size += ::protobuf::rt::string_size(5, &self.read_segment_id);
+        if !self.correlation_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(5, &self.correlation_id);
         }
         if !self.continuation_token.is_empty() {
             my_size += ::protobuf::rt::string_size(6, &self.continuation_token);
@@ -2660,8 +2640,8 @@ impl ::protobuf::Message for ReadSegmentColumnRequest {
         if !self.column_name.is_empty() {
             os.write_string(4, &self.column_name)?;
         }
-        if !self.read_segment_id.is_empty() {
-            os.write_string(5, &self.read_segment_id)?;
+        if !self.correlation_id.is_empty() {
+            os.write_string(5, &self.correlation_id)?;
         }
         if !self.continuation_token.is_empty() {
             os.write_string(6, &self.continuation_token)?;
@@ -2702,7 +2682,7 @@ impl ::protobuf::Clear for ReadSegmentColumnRequest {
         self.partition.clear();
         self.segment_id.clear();
         self.column_name.clear();
-        self.read_segment_id.clear();
+        self.correlation_id.clear();
         self.continuation_token.clear();
         self.unknown_fields.clear();
     }
@@ -2949,7 +2929,7 @@ pub struct ReadSegmentDeletionsRequest {
     pub table_name: ::std::string::String,
     pub partition: ::std::collections::HashMap<::std::string::String, PartitionFieldValue>,
     pub segment_id: ::std::string::String,
-    pub read_segment_id: ::std::string::String,
+    pub correlation_id: ::std::string::String,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::rt::CachedSize,
@@ -2984,9 +2964,9 @@ impl ReadSegmentDeletionsRequest {
             |m: &mut ReadSegmentDeletionsRequest| { &mut m.segment_id },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "read_segment_id",
-            |m: &ReadSegmentDeletionsRequest| { &m.read_segment_id },
-            |m: &mut ReadSegmentDeletionsRequest| { &mut m.read_segment_id },
+            "correlation_id",
+            |m: &ReadSegmentDeletionsRequest| { &m.correlation_id },
+            |m: &mut ReadSegmentDeletionsRequest| { &mut m.correlation_id },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ReadSegmentDeletionsRequest>(
             "ReadSegmentDeletionsRequest",
@@ -3024,7 +3004,7 @@ impl ::protobuf::Message for ReadSegmentDeletionsRequest {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.read_segment_id = is.read_string()?;
+                    self.correlation_id = is.read_string()?;
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -3045,8 +3025,8 @@ impl ::protobuf::Message for ReadSegmentDeletionsRequest {
         if !self.segment_id.is_empty() {
             my_size += ::protobuf::rt::string_size(3, &self.segment_id);
         }
-        if !self.read_segment_id.is_empty() {
-            my_size += ::protobuf::rt::string_size(4, &self.read_segment_id);
+        if !self.correlation_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(4, &self.correlation_id);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
@@ -3061,8 +3041,8 @@ impl ::protobuf::Message for ReadSegmentDeletionsRequest {
         if !self.segment_id.is_empty() {
             os.write_string(3, &self.segment_id)?;
         }
-        if !self.read_segment_id.is_empty() {
-            os.write_string(4, &self.read_segment_id)?;
+        if !self.correlation_id.is_empty() {
+            os.write_string(4, &self.correlation_id)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -3099,7 +3079,7 @@ impl ::protobuf::Clear for ReadSegmentDeletionsRequest {
         self.table_name.clear();
         self.partition.clear();
         self.segment_id.clear();
-        self.read_segment_id.clear();
+        self.correlation_id.clear();
         self.unknown_fields.clear();
     }
 }
@@ -3569,34 +3549,33 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     tSegmentsRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\
     \x12F\n\x10partition_filter\x18\x02\x20\x03(\x0b2\x1b.protos.dml.Partiti\
     onFilterR\x0fpartitionFilter\x12)\n\x10include_metadata\x18\x03\x20\x01(\
-    \x08R\x0fincludeMetadata\"U\n\x0fSegmentMetadata\x12\x1b\n\trow_count\
-    \x18\x01\x20\x01(\rR\x08rowCount\x12%\n\x0elatest_version\x18\x02\x20\
-    \x01(\x04R\rlatestVersion\"\x82\x02\n\x07Segment\x12@\n\tpartition\x18\
-    \x01\x20\x03(\x0b2\".protos.dml.Segment.PartitionEntryR\tpartition\x12\
-    \x1d\n\nsegment_id\x18\x02\x20\x01(\tR\tsegmentId\x127\n\x08metadata\x18\
-    \x03\x20\x01(\x0b2\x1b.protos.dml.SegmentMetadataR\x08metadata\x1a]\n\
-    \x0ePartitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\
+    \x08R\x0fincludeMetadata\".\n\x0fSegmentMetadata\x12\x1b\n\trow_count\
+    \x18\x01\x20\x01(\rR\x08rowCount\"\x82\x02\n\x07Segment\x12@\n\tpartitio\
+    n\x18\x01\x20\x03(\x0b2\".protos.dml.Segment.PartitionEntryR\tpartition\
+    \x12\x1d\n\nsegment_id\x18\x02\x20\x01(\tR\tsegmentId\x127\n\x08metadata\
+    \x18\x03\x20\x01(\x0b2\x1b.protos.dml.SegmentMetadataR\x08metadata\x1a]\
+    \n\x0ePartitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\
     \x05value\x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05v\
     alue:\x028\x01\"G\n\x14ListSegmentsResponse\x12/\n\x08segments\x18\x01\
-    \x20\x03(\x0b2\x13.protos.dml.SegmentR\x08segments\"\x82\x03\n\x18ReadSe\
+    \x20\x03(\x0b2\x13.protos.dml.SegmentR\x08segments\"\x81\x03\n\x18ReadSe\
     gmentColumnRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\
     \x12Q\n\tpartition\x18\x02\x20\x03(\x0b23.protos.dml.ReadSegmentColumnRe\
     quest.PartitionEntryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\
     \tR\tsegmentId\x12\x1f\n\x0bcolumn_name\x18\x04\x20\x01(\tR\ncolumnName\
-    \x12&\n\x0fread_segment_id\x18\x05\x20\x01(\tR\rreadSegmentId\x12-\n\x12\
-    continuation_token\x18\x06\x20\x01(\tR\x11continuationToken\x1a]\n\x0ePa\
-    rtitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\
+    \x12%\n\x0ecorrelation_id\x18\x05\x20\x01(\tR\rcorrelationId\x12-\n\x12c\
+    ontinuation_token\x18\x06\x20\x01(\tR\x11continuationToken\x1a]\n\x0ePar\
+    titionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\x125\n\x05value\
     \x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValueR\x05value:\x02\
     8\x01\"\xea\x01\n\x19ReadSegmentColumnResponse\x12\x14\n\x05codec\x18\
     \x01\x20\x01(\tR\x05codec\x12\x12\n\x04data\x18\x02\x20\x01(\x0cR\x04dat\
     a\x12\x1b\n\trow_count\x18\x03\x20\x01(\rR\x08rowCount\x12%\n\x0edeletio\
     n_count\x18\x04\x20\x01(\rR\rdeletionCount\x120\n\x14implicit_nulls_coun\
     t\x18\x05\x20\x01(\rR\x12implicitNullsCount\x12-\n\x12continuation_token\
-    \x18\x06\x20\x01(\tR\x11continuationToken\"\xb8\x02\n\x1bReadSegmentDele\
+    \x18\x06\x20\x01(\tR\x11continuationToken\"\xb7\x02\n\x1bReadSegmentDele\
     tionsRequest\x12\x1d\n\ntable_name\x18\x01\x20\x01(\tR\ttableName\x12T\n\
     \tpartition\x18\x02\x20\x03(\x0b26.protos.dml.ReadSegmentDeletionsReques\
     t.PartitionEntryR\tpartition\x12\x1d\n\nsegment_id\x18\x03\x20\x01(\tR\t\
-    segmentId\x12&\n\x0fread_segment_id\x18\x04\x20\x01(\tR\rreadSegmentId\
+    segmentId\x12%\n\x0ecorrelation_id\x18\x04\x20\x01(\tR\rcorrelationId\
     \x1a]\n\x0ePartitionEntry\x12\x10\n\x03key\x18\x01\x20\x01(\tR\x03key\
     \x125\n\x05value\x18\x02\x20\x01(\x0b2\x1f.protos.dml.PartitionFieldValu\
     eR\x05value:\x028\x01\"2\n\x1cReadSegmentDeletionsResponse\x12\x12\n\x04\
