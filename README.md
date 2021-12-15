@@ -6,7 +6,6 @@
 [maven-badge]: https://maven-badges.herokuapp.com/maven-central/com.pancakedb/idl/badge.svg?gav=true
 [maven-url]: https://search.maven.org/artifact/com.pancakedb/idl
 
-
 # Using the PancakeDB API
 
 A typical PancakeDB use case involves
@@ -290,6 +289,43 @@ For example, a valid row would be
 }
 ```
 
+## Delete From Segment
+
+`POST /rest/delete_from_segment`
+
+request body format
+```
+{
+  "table_name": "...",
+  "partition": {
+    "...": {
+      "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
+    },
+    ...
+  ],
+  "segment_id": "...",
+  "row_ids": [int, ...]
+}
+```
+
+response body format
+```
+{
+  "n_deleted": int
+}
+```
+
+This deletes rows from a segment, using row id.
+You can determine which row ids you want to delete
+by scanning the built-in `_row_id` column when you read
+a segment.
+
+Deleted rows will not immediately be removed from disk.
+They will persist until the segment is next compacted, which could be up to a
+day.
+It is necessary to call `read_segment_deletions` whenever reading a segment
+in order to get an accurate view of the data.
+
 ## List Segments
 
 `GET /rest/list_segments`
@@ -328,8 +364,7 @@ response body format:
       ],
       "segment_id": "...",
       (if include_metadata) "metadata": {
-        "count": int,
-        "latest_version": int
+        "row_count": int
       }
     }
   ]
@@ -362,6 +397,7 @@ request body format
   ],
   "segment_id": "...",
   "column_name": "...",
+  "correlation_id": "...",
   "continuation_token: "..."
 }
 ```
@@ -383,6 +419,11 @@ following the JSON blob is compressed; otherwise it is uncompressed.
 The data can be decoded with the
 [PancakeDB core library](https://github.com/pancake-db/pancake-core/tree/main/core).
 
+Either a correlation ID (for the first request for the segment column) or a
+continuation token (for each following request) is required.
+You should use the same correlation ID you are using for the segment's deletions
+(see below) and other columns.
+
 If a non-empty `continuation_token` is returned, you must make another request
 with that continuation token (and so forth) until you have collected all the
 compressed and uncompressed data for the segment column.
@@ -392,4 +433,42 @@ also implements some sort of "decode" functionality,
 leveraging the core library, to obtain deserialized
 rows.
 
+## Read Segment Deletions
 
+`GET /rest/read_segment_deletions`
+
+request body format
+```
+{
+  "table_name": "...",
+  "partition": {
+    "...": {
+      "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
+    },
+    ...
+  ],
+  "segment_id": "...",
+  "correlation_id": "..."
+}
+```
+
+response body format
+
+```
+{}
+<newline character>
+<byte data>
+```
+
+This returns compressed data for a list of booleans representing
+`is_deleted`.
+You must use the same correlation ID you are using for reading
+the segment's columns.
+
+This route is also hard to use directly, so it is better to use
+a client library's "decode" functionality.
+
+If you read a segment's columns without its deletions, you 
+will have an incorrect view of the data if any recent deletions
+have happened.
+The deletion data is very lightweight, so this step should not be skipped.
