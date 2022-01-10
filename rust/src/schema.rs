@@ -75,13 +75,13 @@ impl ::protobuf::Message for ColumnMeta {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
-                2 => {
+                1 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     self.dtype = is.read_enum_or_unknown()?;
                 },
-                3 => {
+                2 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
@@ -100,10 +100,10 @@ impl ::protobuf::Message for ColumnMeta {
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
         if self.dtype != ::protobuf::ProtobufEnumOrUnknown::new(super::dtype::DataType::STRING) {
-            my_size += ::protobuf::rt::enum_or_unknown_size(2, self.dtype);
+            my_size += ::protobuf::rt::enum_or_unknown_size(1, self.dtype);
         }
         if self.nested_list_depth != 0 {
-            my_size += ::protobuf::rt::value_size(3, self.nested_list_depth, ::protobuf::wire_format::WireTypeVarint);
+            my_size += ::protobuf::rt::value_size(2, self.nested_list_depth, ::protobuf::wire_format::WireTypeVarint);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
@@ -112,10 +112,10 @@ impl ::protobuf::Message for ColumnMeta {
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if self.dtype != ::protobuf::ProtobufEnumOrUnknown::new(super::dtype::DataType::STRING) {
-            os.write_enum(2, ::protobuf::ProtobufEnumOrUnknown::value(&self.dtype))?;
+            os.write_enum(1, ::protobuf::ProtobufEnumOrUnknown::value(&self.dtype))?;
         }
         if self.nested_list_depth != 0 {
-            os.write_uint32(3, self.nested_list_depth)?;
+            os.write_uint32(2, self.nested_list_depth)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -214,7 +214,7 @@ impl ::protobuf::Message for PartitionMeta {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
-                2 => {
+                1 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
@@ -233,7 +233,7 @@ impl ::protobuf::Message for PartitionMeta {
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
         if self.dtype != ::protobuf::ProtobufEnumOrUnknown::new(super::partition_dtype::PartitionDataType::STRING) {
-            my_size += ::protobuf::rt::enum_or_unknown_size(2, self.dtype);
+            my_size += ::protobuf::rt::enum_or_unknown_size(1, self.dtype);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
@@ -242,7 +242,7 @@ impl ::protobuf::Message for PartitionMeta {
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if self.dtype != ::protobuf::ProtobufEnumOrUnknown::new(super::partition_dtype::PartitionDataType::STRING) {
-            os.write_enum(2, ::protobuf::ProtobufEnumOrUnknown::value(&self.dtype))?;
+            os.write_enum(1, ::protobuf::ProtobufEnumOrUnknown::value(&self.dtype))?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -423,9 +423,9 @@ impl ::protobuf::reflect::ProtobufValue for Schema {
 
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x0cschema.proto\x12\rprotos.schema\x1a\x0bdtype.proto\x1a\x15partitio\
-    n_dtype.proto\"f\n\nColumnMeta\x12,\n\x05dtype\x18\x02\x20\x01(\x0e2\x16\
-    .protos.dtype.DataTypeR\x05dtype\x12*\n\x11nested_list_depth\x18\x03\x20\
-    \x01(\rR\x0fnestedListDepth\"P\n\rPartitionMeta\x12?\n\x05dtype\x18\x02\
+    n_dtype.proto\"f\n\nColumnMeta\x12,\n\x05dtype\x18\x01\x20\x01(\x0e2\x16\
+    .protos.dtype.DataTypeR\x05dtype\x12*\n\x11nested_list_depth\x18\x02\x20\
+    \x01(\rR\x0fnestedListDepth\"P\n\rPartitionMeta\x12?\n\x05dtype\x18\x01\
     \x20\x01(\x0e2).protos.partition_dtype.PartitionDataTypeR\x05dtype\"\xc9\
     \x02\n\x06Schema\x12K\n\x0cpartitioning\x18\x01\x20\x03(\x0b2'.protos.sc\
     hema.Schema.PartitioningEntryR\x0cpartitioning\x12<\n\x07columns\x18\x02\

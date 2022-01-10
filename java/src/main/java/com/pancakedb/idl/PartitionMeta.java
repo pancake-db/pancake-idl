@@ -49,7 +49,7 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 16: {
+          case 8: {
             int rawValue = input.readEnum();
 
             dtype_ = rawValue;
@@ -87,17 +87,17 @@ private static final long serialVersionUID = 0L;
             com.pancakedb.idl.PartitionMeta.class, com.pancakedb.idl.PartitionMeta.Builder.class);
   }
 
-  public static final int DTYPE_FIELD_NUMBER = 2;
+  public static final int DTYPE_FIELD_NUMBER = 1;
   private int dtype_;
   /**
-   * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
+   * <code>.protos.partition_dtype.PartitionDataType dtype = 1;</code>
    * @return The enum numeric value on the wire for dtype.
    */
   @java.lang.Override public int getDtypeValue() {
     return dtype_;
   }
   /**
-   * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
+   * <code>.protos.partition_dtype.PartitionDataType dtype = 1;</code>
    * @return The dtype.
    */
   @java.lang.Override public com.pancakedb.idl.PartitionDataType getDtype() {
@@ -121,7 +121,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (dtype_ != com.pancakedb.idl.PartitionDataType.STRING.getNumber()) {
-      output.writeEnum(2, dtype_);
+      output.writeEnum(1, dtype_);
     }
     unknownFields.writeTo(output);
   }
@@ -134,7 +134,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (dtype_ != com.pancakedb.idl.PartitionDataType.STRING.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(2, dtype_);
+        .computeEnumSize(1, dtype_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -409,14 +409,14 @@ private static final long serialVersionUID = 0L;
 
     private int dtype_ = 0;
     /**
-     * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
+     * <code>.protos.partition_dtype.PartitionDataType dtype = 1;</code>
      * @return The enum numeric value on the wire for dtype.
      */
     @java.lang.Override public int getDtypeValue() {
       return dtype_;
     }
     /**
-     * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
+     * <code>.protos.partition_dtype.PartitionDataType dtype = 1;</code>
      * @param value The enum numeric value on the wire for dtype to set.
      * @return This builder for chaining.
      */
@@ -427,7 +427,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
+     * <code>.protos.partition_dtype.PartitionDataType dtype = 1;</code>
      * @return The dtype.
      */
     @java.lang.Override
@@ -437,7 +437,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? com.pancakedb.idl.PartitionDataType.UNRECOGNIZED : result;
     }
     /**
-     * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
+     * <code>.protos.partition_dtype.PartitionDataType dtype = 1;</code>
      * @param value The dtype to set.
      * @return This builder for chaining.
      */
@@ -451,7 +451,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
+     * <code>.protos.partition_dtype.PartitionDataType dtype = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearDtype() {

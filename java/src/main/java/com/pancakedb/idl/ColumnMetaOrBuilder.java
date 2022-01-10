@@ -8,18 +8,18 @@ public interface ColumnMetaOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.protos.dtype.DataType dtype = 2;</code>
+   * <code>.protos.dtype.DataType dtype = 1;</code>
    * @return The enum numeric value on the wire for dtype.
    */
   int getDtypeValue();
   /**
-   * <code>.protos.dtype.DataType dtype = 2;</code>
+   * <code>.protos.dtype.DataType dtype = 1;</code>
    * @return The dtype.
    */
   com.pancakedb.idl.DataType getDtype();
 
   /**
-   * <code>uint32 nested_list_depth = 3;</code>
+   * <code>uint32 nested_list_depth = 2;</code>
    * @return The nestedListDepth.
    */
   int getNestedListDepth();

@@ -8,12 +8,12 @@ public interface PartitionMetaOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
+   * <code>.protos.partition_dtype.PartitionDataType dtype = 1;</code>
    * @return The enum numeric value on the wire for dtype.
    */
   int getDtypeValue();
   /**
-   * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
+   * <code>.protos.partition_dtype.PartitionDataType dtype = 1;</code>
    * @return The dtype.
    */
   com.pancakedb.idl.PartitionDataType getDtype();

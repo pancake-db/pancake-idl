@@ -49,13 +49,13 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 16: {
+          case 8: {
             int rawValue = input.readEnum();
 
             dtype_ = rawValue;
             break;
           }
-          case 24: {
+          case 16: {
 
             nestedListDepth_ = input.readUInt32();
             break;
@@ -92,17 +92,17 @@ private static final long serialVersionUID = 0L;
             com.pancakedb.idl.ColumnMeta.class, com.pancakedb.idl.ColumnMeta.Builder.class);
   }
 
-  public static final int DTYPE_FIELD_NUMBER = 2;
+  public static final int DTYPE_FIELD_NUMBER = 1;
   private int dtype_;
   /**
-   * <code>.protos.dtype.DataType dtype = 2;</code>
+   * <code>.protos.dtype.DataType dtype = 1;</code>
    * @return The enum numeric value on the wire for dtype.
    */
   @java.lang.Override public int getDtypeValue() {
     return dtype_;
   }
   /**
-   * <code>.protos.dtype.DataType dtype = 2;</code>
+   * <code>.protos.dtype.DataType dtype = 1;</code>
    * @return The dtype.
    */
   @java.lang.Override public com.pancakedb.idl.DataType getDtype() {
@@ -111,10 +111,10 @@ private static final long serialVersionUID = 0L;
     return result == null ? com.pancakedb.idl.DataType.UNRECOGNIZED : result;
   }
 
-  public static final int NESTED_LIST_DEPTH_FIELD_NUMBER = 3;
+  public static final int NESTED_LIST_DEPTH_FIELD_NUMBER = 2;
   private int nestedListDepth_;
   /**
-   * <code>uint32 nested_list_depth = 3;</code>
+   * <code>uint32 nested_list_depth = 2;</code>
    * @return The nestedListDepth.
    */
   @java.lang.Override
@@ -137,10 +137,10 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (dtype_ != com.pancakedb.idl.DataType.STRING.getNumber()) {
-      output.writeEnum(2, dtype_);
+      output.writeEnum(1, dtype_);
     }
     if (nestedListDepth_ != 0) {
-      output.writeUInt32(3, nestedListDepth_);
+      output.writeUInt32(2, nestedListDepth_);
     }
     unknownFields.writeTo(output);
   }
@@ -153,11 +153,11 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (dtype_ != com.pancakedb.idl.DataType.STRING.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(2, dtype_);
+        .computeEnumSize(1, dtype_);
     }
     if (nestedListDepth_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(3, nestedListDepth_);
+        .computeUInt32Size(2, nestedListDepth_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -442,14 +442,14 @@ private static final long serialVersionUID = 0L;
 
     private int dtype_ = 0;
     /**
-     * <code>.protos.dtype.DataType dtype = 2;</code>
+     * <code>.protos.dtype.DataType dtype = 1;</code>
      * @return The enum numeric value on the wire for dtype.
      */
     @java.lang.Override public int getDtypeValue() {
       return dtype_;
     }
     /**
-     * <code>.protos.dtype.DataType dtype = 2;</code>
+     * <code>.protos.dtype.DataType dtype = 1;</code>
      * @param value The enum numeric value on the wire for dtype to set.
      * @return This builder for chaining.
      */
@@ -460,7 +460,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.protos.dtype.DataType dtype = 2;</code>
+     * <code>.protos.dtype.DataType dtype = 1;</code>
      * @return The dtype.
      */
     @java.lang.Override
@@ -470,7 +470,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? com.pancakedb.idl.DataType.UNRECOGNIZED : result;
     }
     /**
-     * <code>.protos.dtype.DataType dtype = 2;</code>
+     * <code>.protos.dtype.DataType dtype = 1;</code>
      * @param value The dtype to set.
      * @return This builder for chaining.
      */
@@ -484,7 +484,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.protos.dtype.DataType dtype = 2;</code>
+     * <code>.protos.dtype.DataType dtype = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearDtype() {
@@ -496,7 +496,7 @@ private static final long serialVersionUID = 0L;
 
     private int nestedListDepth_ ;
     /**
-     * <code>uint32 nested_list_depth = 3;</code>
+     * <code>uint32 nested_list_depth = 2;</code>
      * @return The nestedListDepth.
      */
     @java.lang.Override
@@ -504,7 +504,7 @@ private static final long serialVersionUID = 0L;
       return nestedListDepth_;
     }
     /**
-     * <code>uint32 nested_list_depth = 3;</code>
+     * <code>uint32 nested_list_depth = 2;</code>
      * @param value The nestedListDepth to set.
      * @return This builder for chaining.
      */
@@ -515,7 +515,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint32 nested_list_depth = 3;</code>
+     * <code>uint32 nested_list_depth = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearNestedListDepth() {

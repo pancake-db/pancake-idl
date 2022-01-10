@@ -50,9 +50,9 @@ public final class SchemaOuterClass {
     java.lang.String[] descriptorData = {
       "\n\014schema.proto\022\rprotos.schema\032\013dtype.pro" +
       "to\032\025partition_dtype.proto\"N\n\nColumnMeta\022" +
-      "%\n\005dtype\030\002 \001(\0162\026.protos.dtype.DataType\022\031" +
-      "\n\021nested_list_depth\030\003 \001(\r\"I\n\rPartitionMe" +
-      "ta\0228\n\005dtype\030\002 \001(\0162).protos.partition_dty" +
+      "%\n\005dtype\030\001 \001(\0162\026.protos.dtype.DataType\022\031" +
+      "\n\021nested_list_depth\030\002 \001(\r\"I\n\rPartitionMe" +
+      "ta\0228\n\005dtype\030\001 \001(\0162).protos.partition_dty" +
       "pe.PartitionDataType\"\232\002\n\006Schema\022=\n\014parti" +
       "tioning\030\001 \003(\0132\'.protos.schema.Schema.Par" +
       "titioningEntry\0223\n\007columns\030\002 \003(\0132\".protos" +
