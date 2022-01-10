@@ -16,8 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Schema() {
-    partitioning_ = java.util.Collections.emptyList();
-    columns_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -53,20 +51,28 @@ private static final long serialVersionUID = 0L;
             break;
           case 10: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              partitioning_ = new java.util.ArrayList<com.pancakedb.idl.PartitionMeta>();
+              partitioning_ = com.google.protobuf.MapField.newMapField(
+                  PartitioningDefaultEntryHolder.defaultEntry);
               mutable_bitField0_ |= 0x00000001;
             }
-            partitioning_.add(
-                input.readMessage(com.pancakedb.idl.PartitionMeta.parser(), extensionRegistry));
+            com.google.protobuf.MapEntry<java.lang.String, com.pancakedb.idl.PartitionMeta>
+            partitioning__ = input.readMessage(
+                PartitioningDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            partitioning_.getMutableMap().put(
+                partitioning__.getKey(), partitioning__.getValue());
             break;
           }
           case 18: {
             if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-              columns_ = new java.util.ArrayList<com.pancakedb.idl.ColumnMeta>();
+              columns_ = com.google.protobuf.MapField.newMapField(
+                  ColumnsDefaultEntryHolder.defaultEntry);
               mutable_bitField0_ |= 0x00000002;
             }
-            columns_.add(
-                input.readMessage(com.pancakedb.idl.ColumnMeta.parser(), extensionRegistry));
+            com.google.protobuf.MapEntry<java.lang.String, com.pancakedb.idl.ColumnMeta>
+            columns__ = input.readMessage(
+                ColumnsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            columns_.getMutableMap().put(
+                columns__.getKey(), columns__.getValue());
             break;
           }
           default: {
@@ -84,12 +90,6 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        partitioning_ = java.util.Collections.unmodifiableList(partitioning_);
-      }
-      if (((mutable_bitField0_ & 0x00000002) != 0)) {
-        columns_ = java.util.Collections.unmodifiableList(columns_);
-      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -99,6 +99,20 @@ private static final long serialVersionUID = 0L;
     return com.pancakedb.idl.SchemaOuterClass.internal_static_protos_schema_Schema_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
+    switch (number) {
+      case 1:
+        return internalGetPartitioning();
+      case 2:
+        return internalGetColumns();
+      default:
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
+    }
+  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -108,83 +122,165 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int PARTITIONING_FIELD_NUMBER = 1;
-  private java.util.List<com.pancakedb.idl.PartitionMeta> partitioning_;
-  /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-   */
-  @java.lang.Override
-  public java.util.List<com.pancakedb.idl.PartitionMeta> getPartitioningList() {
+  private static final class PartitioningDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.String, com.pancakedb.idl.PartitionMeta> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.String, com.pancakedb.idl.PartitionMeta>newDefaultInstance(
+                com.pancakedb.idl.SchemaOuterClass.internal_static_protos_schema_Schema_PartitioningEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.STRING,
+                "",
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                com.pancakedb.idl.PartitionMeta.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.String, com.pancakedb.idl.PartitionMeta> partitioning_;
+  private com.google.protobuf.MapField<java.lang.String, com.pancakedb.idl.PartitionMeta>
+  internalGetPartitioning() {
+    if (partitioning_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          PartitioningDefaultEntryHolder.defaultEntry);
+    }
     return partitioning_;
   }
-  /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-   */
-  @java.lang.Override
-  public java.util.List<? extends com.pancakedb.idl.PartitionMetaOrBuilder> 
-      getPartitioningOrBuilderList() {
-    return partitioning_;
-  }
-  /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-   */
-  @java.lang.Override
+
   public int getPartitioningCount() {
-    return partitioning_.size();
+    return internalGetPartitioning().getMap().size();
   }
   /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+   * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
    */
+
   @java.lang.Override
-  public com.pancakedb.idl.PartitionMeta getPartitioning(int index) {
-    return partitioning_.get(index);
+  public boolean containsPartitioning(
+      java.lang.String key) {
+    if (key == null) { throw new java.lang.NullPointerException(); }
+    return internalGetPartitioning().getMap().containsKey(key);
   }
   /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+   * Use {@link #getPartitioningMap()} instead.
    */
   @java.lang.Override
-  public com.pancakedb.idl.PartitionMetaOrBuilder getPartitioningOrBuilder(
-      int index) {
-    return partitioning_.get(index);
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta> getPartitioning() {
+    return getPartitioningMap();
+  }
+  /**
+   * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta> getPartitioningMap() {
+    return internalGetPartitioning().getMap();
+  }
+  /**
+   * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
+   */
+  @java.lang.Override
+
+  public com.pancakedb.idl.PartitionMeta getPartitioningOrDefault(
+      java.lang.String key,
+      com.pancakedb.idl.PartitionMeta defaultValue) {
+    if (key == null) { throw new java.lang.NullPointerException(); }
+    java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta> map =
+        internalGetPartitioning().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
+   */
+  @java.lang.Override
+
+  public com.pancakedb.idl.PartitionMeta getPartitioningOrThrow(
+      java.lang.String key) {
+    if (key == null) { throw new java.lang.NullPointerException(); }
+    java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta> map =
+        internalGetPartitioning().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
   }
 
   public static final int COLUMNS_FIELD_NUMBER = 2;
-  private java.util.List<com.pancakedb.idl.ColumnMeta> columns_;
-  /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-   */
-  @java.lang.Override
-  public java.util.List<com.pancakedb.idl.ColumnMeta> getColumnsList() {
+  private static final class ColumnsDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.String, com.pancakedb.idl.ColumnMeta> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.String, com.pancakedb.idl.ColumnMeta>newDefaultInstance(
+                com.pancakedb.idl.SchemaOuterClass.internal_static_protos_schema_Schema_ColumnsEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.STRING,
+                "",
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                com.pancakedb.idl.ColumnMeta.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.String, com.pancakedb.idl.ColumnMeta> columns_;
+  private com.google.protobuf.MapField<java.lang.String, com.pancakedb.idl.ColumnMeta>
+  internalGetColumns() {
+    if (columns_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          ColumnsDefaultEntryHolder.defaultEntry);
+    }
     return columns_;
   }
-  /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-   */
-  @java.lang.Override
-  public java.util.List<? extends com.pancakedb.idl.ColumnMetaOrBuilder> 
-      getColumnsOrBuilderList() {
-    return columns_;
-  }
-  /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-   */
-  @java.lang.Override
+
   public int getColumnsCount() {
-    return columns_.size();
+    return internalGetColumns().getMap().size();
   }
   /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+   * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
    */
+
   @java.lang.Override
-  public com.pancakedb.idl.ColumnMeta getColumns(int index) {
-    return columns_.get(index);
+  public boolean containsColumns(
+      java.lang.String key) {
+    if (key == null) { throw new java.lang.NullPointerException(); }
+    return internalGetColumns().getMap().containsKey(key);
   }
   /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+   * Use {@link #getColumnsMap()} instead.
    */
   @java.lang.Override
-  public com.pancakedb.idl.ColumnMetaOrBuilder getColumnsOrBuilder(
-      int index) {
-    return columns_.get(index);
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta> getColumns() {
+    return getColumnsMap();
+  }
+  /**
+   * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta> getColumnsMap() {
+    return internalGetColumns().getMap();
+  }
+  /**
+   * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
+   */
+  @java.lang.Override
+
+  public com.pancakedb.idl.ColumnMeta getColumnsOrDefault(
+      java.lang.String key,
+      com.pancakedb.idl.ColumnMeta defaultValue) {
+    if (key == null) { throw new java.lang.NullPointerException(); }
+    java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta> map =
+        internalGetColumns().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
+   */
+  @java.lang.Override
+
+  public com.pancakedb.idl.ColumnMeta getColumnsOrThrow(
+      java.lang.String key) {
+    if (key == null) { throw new java.lang.NullPointerException(); }
+    java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta> map =
+        internalGetColumns().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -201,12 +297,18 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < partitioning_.size(); i++) {
-      output.writeMessage(1, partitioning_.get(i));
-    }
-    for (int i = 0; i < columns_.size(); i++) {
-      output.writeMessage(2, columns_.get(i));
-    }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeStringMapTo(
+        output,
+        internalGetPartitioning(),
+        PartitioningDefaultEntryHolder.defaultEntry,
+        1);
+    com.google.protobuf.GeneratedMessageV3
+      .serializeStringMapTo(
+        output,
+        internalGetColumns(),
+        ColumnsDefaultEntryHolder.defaultEntry,
+        2);
     unknownFields.writeTo(output);
   }
 
@@ -216,13 +318,25 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < partitioning_.size(); i++) {
+    for (java.util.Map.Entry<java.lang.String, com.pancakedb.idl.PartitionMeta> entry
+         : internalGetPartitioning().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, com.pancakedb.idl.PartitionMeta>
+      partitioning__ = PartitioningDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, partitioning_.get(i));
+          .computeMessageSize(1, partitioning__);
     }
-    for (int i = 0; i < columns_.size(); i++) {
+    for (java.util.Map.Entry<java.lang.String, com.pancakedb.idl.ColumnMeta> entry
+         : internalGetColumns().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, com.pancakedb.idl.ColumnMeta>
+      columns__ = ColumnsDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, columns_.get(i));
+          .computeMessageSize(2, columns__);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -239,10 +353,10 @@ private static final long serialVersionUID = 0L;
     }
     com.pancakedb.idl.Schema other = (com.pancakedb.idl.Schema) obj;
 
-    if (!getPartitioningList()
-        .equals(other.getPartitioningList())) return false;
-    if (!getColumnsList()
-        .equals(other.getColumnsList())) return false;
+    if (!internalGetPartitioning().equals(
+        other.internalGetPartitioning())) return false;
+    if (!internalGetColumns().equals(
+        other.internalGetColumns())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -254,13 +368,13 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getPartitioningCount() > 0) {
+    if (!internalGetPartitioning().getMap().isEmpty()) {
       hash = (37 * hash) + PARTITIONING_FIELD_NUMBER;
-      hash = (53 * hash) + getPartitioningList().hashCode();
+      hash = (53 * hash) + internalGetPartitioning().hashCode();
     }
-    if (getColumnsCount() > 0) {
+    if (!internalGetColumns().getMap().isEmpty()) {
       hash = (37 * hash) + COLUMNS_FIELD_NUMBER;
-      hash = (53 * hash) + getColumnsList().hashCode();
+      hash = (53 * hash) + internalGetColumns().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -369,6 +483,32 @@ private static final long serialVersionUID = 0L;
       return com.pancakedb.idl.SchemaOuterClass.internal_static_protos_schema_Schema_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetPartitioning();
+        case 2:
+          return internalGetColumns();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetMutablePartitioning();
+        case 2:
+          return internalGetMutableColumns();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -390,25 +530,13 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getPartitioningFieldBuilder();
-        getColumnsFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (partitioningBuilder_ == null) {
-        partitioning_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        partitioningBuilder_.clear();
-      }
-      if (columnsBuilder_ == null) {
-        columns_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-      } else {
-        columnsBuilder_.clear();
-      }
+      internalGetMutablePartitioning().clear();
+      internalGetMutableColumns().clear();
       return this;
     }
 
@@ -436,24 +564,10 @@ private static final long serialVersionUID = 0L;
     public com.pancakedb.idl.Schema buildPartial() {
       com.pancakedb.idl.Schema result = new com.pancakedb.idl.Schema(this);
       int from_bitField0_ = bitField0_;
-      if (partitioningBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          partitioning_ = java.util.Collections.unmodifiableList(partitioning_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.partitioning_ = partitioning_;
-      } else {
-        result.partitioning_ = partitioningBuilder_.build();
-      }
-      if (columnsBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) != 0)) {
-          columns_ = java.util.Collections.unmodifiableList(columns_);
-          bitField0_ = (bitField0_ & ~0x00000002);
-        }
-        result.columns_ = columns_;
-      } else {
-        result.columns_ = columnsBuilder_.build();
-      }
+      result.partitioning_ = internalGetPartitioning();
+      result.partitioning_.makeImmutable();
+      result.columns_ = internalGetColumns();
+      result.columns_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -502,58 +616,10 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.pancakedb.idl.Schema other) {
       if (other == com.pancakedb.idl.Schema.getDefaultInstance()) return this;
-      if (partitioningBuilder_ == null) {
-        if (!other.partitioning_.isEmpty()) {
-          if (partitioning_.isEmpty()) {
-            partitioning_ = other.partitioning_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensurePartitioningIsMutable();
-            partitioning_.addAll(other.partitioning_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.partitioning_.isEmpty()) {
-          if (partitioningBuilder_.isEmpty()) {
-            partitioningBuilder_.dispose();
-            partitioningBuilder_ = null;
-            partitioning_ = other.partitioning_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            partitioningBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getPartitioningFieldBuilder() : null;
-          } else {
-            partitioningBuilder_.addAllMessages(other.partitioning_);
-          }
-        }
-      }
-      if (columnsBuilder_ == null) {
-        if (!other.columns_.isEmpty()) {
-          if (columns_.isEmpty()) {
-            columns_ = other.columns_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-          } else {
-            ensureColumnsIsMutable();
-            columns_.addAll(other.columns_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.columns_.isEmpty()) {
-          if (columnsBuilder_.isEmpty()) {
-            columnsBuilder_.dispose();
-            columnsBuilder_ = null;
-            columns_ = other.columns_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-            columnsBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getColumnsFieldBuilder() : null;
-          } else {
-            columnsBuilder_.addAllMessages(other.columns_);
-          }
-        }
-      }
+      internalGetMutablePartitioning().mergeFrom(
+          other.internalGetPartitioning());
+      internalGetMutableColumns().mergeFrom(
+          other.internalGetColumns());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -584,484 +650,260 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<com.pancakedb.idl.PartitionMeta> partitioning_ =
-      java.util.Collections.emptyList();
-    private void ensurePartitioningIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        partitioning_ = new java.util.ArrayList<com.pancakedb.idl.PartitionMeta>(partitioning_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.pancakedb.idl.PartitionMeta, com.pancakedb.idl.PartitionMeta.Builder, com.pancakedb.idl.PartitionMetaOrBuilder> partitioningBuilder_;
-
-    /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-     */
-    public java.util.List<com.pancakedb.idl.PartitionMeta> getPartitioningList() {
-      if (partitioningBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(partitioning_);
-      } else {
-        return partitioningBuilder_.getMessageList();
+    private com.google.protobuf.MapField<
+        java.lang.String, com.pancakedb.idl.PartitionMeta> partitioning_;
+    private com.google.protobuf.MapField<java.lang.String, com.pancakedb.idl.PartitionMeta>
+    internalGetPartitioning() {
+      if (partitioning_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            PartitioningDefaultEntryHolder.defaultEntry);
       }
+      return partitioning_;
     }
-    /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-     */
+    private com.google.protobuf.MapField<java.lang.String, com.pancakedb.idl.PartitionMeta>
+    internalGetMutablePartitioning() {
+      onChanged();;
+      if (partitioning_ == null) {
+        partitioning_ = com.google.protobuf.MapField.newMapField(
+            PartitioningDefaultEntryHolder.defaultEntry);
+      }
+      if (!partitioning_.isMutable()) {
+        partitioning_ = partitioning_.copy();
+      }
+      return partitioning_;
+    }
+
     public int getPartitioningCount() {
-      if (partitioningBuilder_ == null) {
-        return partitioning_.size();
-      } else {
-        return partitioningBuilder_.getCount();
-      }
+      return internalGetPartitioning().getMap().size();
     }
     /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+     * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
      */
-    public com.pancakedb.idl.PartitionMeta getPartitioning(int index) {
-      if (partitioningBuilder_ == null) {
-        return partitioning_.get(index);
-      } else {
-        return partitioningBuilder_.getMessage(index);
-      }
+
+    @java.lang.Override
+    public boolean containsPartitioning(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetPartitioning().getMap().containsKey(key);
     }
     /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+     * Use {@link #getPartitioningMap()} instead.
      */
-    public Builder setPartitioning(
-        int index, com.pancakedb.idl.PartitionMeta value) {
-      if (partitioningBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensurePartitioningIsMutable();
-        partitioning_.set(index, value);
-        onChanged();
-      } else {
-        partitioningBuilder_.setMessage(index, value);
-      }
-      return this;
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta> getPartitioning() {
+      return getPartitioningMap();
     }
     /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+     * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
      */
-    public Builder setPartitioning(
-        int index, com.pancakedb.idl.PartitionMeta.Builder builderForValue) {
-      if (partitioningBuilder_ == null) {
-        ensurePartitioningIsMutable();
-        partitioning_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        partitioningBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
+    @java.lang.Override
+
+    public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta> getPartitioningMap() {
+      return internalGetPartitioning().getMap();
     }
     /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+     * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
      */
-    public Builder addPartitioning(com.pancakedb.idl.PartitionMeta value) {
-      if (partitioningBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensurePartitioningIsMutable();
-        partitioning_.add(value);
-        onChanged();
-      } else {
-        partitioningBuilder_.addMessage(value);
-      }
-      return this;
+    @java.lang.Override
+
+    public com.pancakedb.idl.PartitionMeta getPartitioningOrDefault(
+        java.lang.String key,
+        com.pancakedb.idl.PartitionMeta defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta> map =
+          internalGetPartitioning().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+     * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
      */
-    public Builder addPartitioning(
-        int index, com.pancakedb.idl.PartitionMeta value) {
-      if (partitioningBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensurePartitioningIsMutable();
-        partitioning_.add(index, value);
-        onChanged();
-      } else {
-        partitioningBuilder_.addMessage(index, value);
+    @java.lang.Override
+
+    public com.pancakedb.idl.PartitionMeta getPartitioningOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta> map =
+          internalGetPartitioning().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
       }
-      return this;
+      return map.get(key);
     }
-    /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-     */
-    public Builder addPartitioning(
-        com.pancakedb.idl.PartitionMeta.Builder builderForValue) {
-      if (partitioningBuilder_ == null) {
-        ensurePartitioningIsMutable();
-        partitioning_.add(builderForValue.build());
-        onChanged();
-      } else {
-        partitioningBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-     */
-    public Builder addPartitioning(
-        int index, com.pancakedb.idl.PartitionMeta.Builder builderForValue) {
-      if (partitioningBuilder_ == null) {
-        ensurePartitioningIsMutable();
-        partitioning_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        partitioningBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-     */
-    public Builder addAllPartitioning(
-        java.lang.Iterable<? extends com.pancakedb.idl.PartitionMeta> values) {
-      if (partitioningBuilder_ == null) {
-        ensurePartitioningIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, partitioning_);
-        onChanged();
-      } else {
-        partitioningBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-     */
+
     public Builder clearPartitioning() {
-      if (partitioningBuilder_ == null) {
-        partitioning_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        partitioningBuilder_.clear();
-      }
+      internalGetMutablePartitioning().getMutableMap()
+          .clear();
       return this;
     }
     /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+     * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
      */
-    public Builder removePartitioning(int index) {
-      if (partitioningBuilder_ == null) {
-        ensurePartitioningIsMutable();
-        partitioning_.remove(index);
-        onChanged();
-      } else {
-        partitioningBuilder_.remove(index);
-      }
+
+    public Builder removePartitioning(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutablePartitioning().getMutableMap()
+          .remove(key);
       return this;
     }
     /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+     * Use alternate mutation accessors instead.
      */
-    public com.pancakedb.idl.PartitionMeta.Builder getPartitioningBuilder(
-        int index) {
-      return getPartitioningFieldBuilder().getBuilder(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta>
+    getMutablePartitioning() {
+      return internalGetMutablePartitioning().getMutableMap();
     }
     /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+     * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
      */
-    public com.pancakedb.idl.PartitionMetaOrBuilder getPartitioningOrBuilder(
-        int index) {
-      if (partitioningBuilder_ == null) {
-        return partitioning_.get(index);  } else {
-        return partitioningBuilder_.getMessageOrBuilder(index);
-      }
+    public Builder putPartitioning(
+        java.lang.String key,
+        com.pancakedb.idl.PartitionMeta value) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutablePartitioning().getMutableMap()
+          .put(key, value);
+      return this;
     }
     /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+     * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
      */
-    public java.util.List<? extends com.pancakedb.idl.PartitionMetaOrBuilder> 
-         getPartitioningOrBuilderList() {
-      if (partitioningBuilder_ != null) {
-        return partitioningBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(partitioning_);
-      }
-    }
-    /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-     */
-    public com.pancakedb.idl.PartitionMeta.Builder addPartitioningBuilder() {
-      return getPartitioningFieldBuilder().addBuilder(
-          com.pancakedb.idl.PartitionMeta.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-     */
-    public com.pancakedb.idl.PartitionMeta.Builder addPartitioningBuilder(
-        int index) {
-      return getPartitioningFieldBuilder().addBuilder(
-          index, com.pancakedb.idl.PartitionMeta.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-     */
-    public java.util.List<com.pancakedb.idl.PartitionMeta.Builder> 
-         getPartitioningBuilderList() {
-      return getPartitioningFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.pancakedb.idl.PartitionMeta, com.pancakedb.idl.PartitionMeta.Builder, com.pancakedb.idl.PartitionMetaOrBuilder> 
-        getPartitioningFieldBuilder() {
-      if (partitioningBuilder_ == null) {
-        partitioningBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.pancakedb.idl.PartitionMeta, com.pancakedb.idl.PartitionMeta.Builder, com.pancakedb.idl.PartitionMetaOrBuilder>(
-                partitioning_,
-                ((bitField0_ & 0x00000001) != 0),
-                getParentForChildren(),
-                isClean());
-        partitioning_ = null;
-      }
-      return partitioningBuilder_;
+
+    public Builder putAllPartitioning(
+        java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta> values) {
+      internalGetMutablePartitioning().getMutableMap()
+          .putAll(values);
+      return this;
     }
 
-    private java.util.List<com.pancakedb.idl.ColumnMeta> columns_ =
-      java.util.Collections.emptyList();
-    private void ensureColumnsIsMutable() {
-      if (!((bitField0_ & 0x00000002) != 0)) {
-        columns_ = new java.util.ArrayList<com.pancakedb.idl.ColumnMeta>(columns_);
-        bitField0_ |= 0x00000002;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.pancakedb.idl.ColumnMeta, com.pancakedb.idl.ColumnMeta.Builder, com.pancakedb.idl.ColumnMetaOrBuilder> columnsBuilder_;
-
-    /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-     */
-    public java.util.List<com.pancakedb.idl.ColumnMeta> getColumnsList() {
-      if (columnsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(columns_);
-      } else {
-        return columnsBuilder_.getMessageList();
+    private com.google.protobuf.MapField<
+        java.lang.String, com.pancakedb.idl.ColumnMeta> columns_;
+    private com.google.protobuf.MapField<java.lang.String, com.pancakedb.idl.ColumnMeta>
+    internalGetColumns() {
+      if (columns_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            ColumnsDefaultEntryHolder.defaultEntry);
       }
+      return columns_;
     }
-    /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-     */
+    private com.google.protobuf.MapField<java.lang.String, com.pancakedb.idl.ColumnMeta>
+    internalGetMutableColumns() {
+      onChanged();;
+      if (columns_ == null) {
+        columns_ = com.google.protobuf.MapField.newMapField(
+            ColumnsDefaultEntryHolder.defaultEntry);
+      }
+      if (!columns_.isMutable()) {
+        columns_ = columns_.copy();
+      }
+      return columns_;
+    }
+
     public int getColumnsCount() {
-      if (columnsBuilder_ == null) {
-        return columns_.size();
-      } else {
-        return columnsBuilder_.getCount();
-      }
+      return internalGetColumns().getMap().size();
     }
     /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+     * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
      */
-    public com.pancakedb.idl.ColumnMeta getColumns(int index) {
-      if (columnsBuilder_ == null) {
-        return columns_.get(index);
-      } else {
-        return columnsBuilder_.getMessage(index);
-      }
+
+    @java.lang.Override
+    public boolean containsColumns(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetColumns().getMap().containsKey(key);
     }
     /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+     * Use {@link #getColumnsMap()} instead.
      */
-    public Builder setColumns(
-        int index, com.pancakedb.idl.ColumnMeta value) {
-      if (columnsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureColumnsIsMutable();
-        columns_.set(index, value);
-        onChanged();
-      } else {
-        columnsBuilder_.setMessage(index, value);
-      }
-      return this;
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta> getColumns() {
+      return getColumnsMap();
     }
     /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+     * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
      */
-    public Builder setColumns(
-        int index, com.pancakedb.idl.ColumnMeta.Builder builderForValue) {
-      if (columnsBuilder_ == null) {
-        ensureColumnsIsMutable();
-        columns_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        columnsBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
+    @java.lang.Override
+
+    public java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta> getColumnsMap() {
+      return internalGetColumns().getMap();
     }
     /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+     * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
      */
-    public Builder addColumns(com.pancakedb.idl.ColumnMeta value) {
-      if (columnsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureColumnsIsMutable();
-        columns_.add(value);
-        onChanged();
-      } else {
-        columnsBuilder_.addMessage(value);
-      }
-      return this;
+    @java.lang.Override
+
+    public com.pancakedb.idl.ColumnMeta getColumnsOrDefault(
+        java.lang.String key,
+        com.pancakedb.idl.ColumnMeta defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta> map =
+          internalGetColumns().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+     * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
      */
-    public Builder addColumns(
-        int index, com.pancakedb.idl.ColumnMeta value) {
-      if (columnsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureColumnsIsMutable();
-        columns_.add(index, value);
-        onChanged();
-      } else {
-        columnsBuilder_.addMessage(index, value);
+    @java.lang.Override
+
+    public com.pancakedb.idl.ColumnMeta getColumnsOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta> map =
+          internalGetColumns().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
       }
-      return this;
+      return map.get(key);
     }
-    /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-     */
-    public Builder addColumns(
-        com.pancakedb.idl.ColumnMeta.Builder builderForValue) {
-      if (columnsBuilder_ == null) {
-        ensureColumnsIsMutable();
-        columns_.add(builderForValue.build());
-        onChanged();
-      } else {
-        columnsBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-     */
-    public Builder addColumns(
-        int index, com.pancakedb.idl.ColumnMeta.Builder builderForValue) {
-      if (columnsBuilder_ == null) {
-        ensureColumnsIsMutable();
-        columns_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        columnsBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-     */
-    public Builder addAllColumns(
-        java.lang.Iterable<? extends com.pancakedb.idl.ColumnMeta> values) {
-      if (columnsBuilder_ == null) {
-        ensureColumnsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, columns_);
-        onChanged();
-      } else {
-        columnsBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-     */
+
     public Builder clearColumns() {
-      if (columnsBuilder_ == null) {
-        columns_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-      } else {
-        columnsBuilder_.clear();
-      }
+      internalGetMutableColumns().getMutableMap()
+          .clear();
       return this;
     }
     /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+     * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
      */
-    public Builder removeColumns(int index) {
-      if (columnsBuilder_ == null) {
-        ensureColumnsIsMutable();
-        columns_.remove(index);
-        onChanged();
-      } else {
-        columnsBuilder_.remove(index);
-      }
+
+    public Builder removeColumns(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableColumns().getMutableMap()
+          .remove(key);
       return this;
     }
     /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+     * Use alternate mutation accessors instead.
      */
-    public com.pancakedb.idl.ColumnMeta.Builder getColumnsBuilder(
-        int index) {
-      return getColumnsFieldBuilder().getBuilder(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta>
+    getMutableColumns() {
+      return internalGetMutableColumns().getMutableMap();
     }
     /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+     * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
      */
-    public com.pancakedb.idl.ColumnMetaOrBuilder getColumnsOrBuilder(
-        int index) {
-      if (columnsBuilder_ == null) {
-        return columns_.get(index);  } else {
-        return columnsBuilder_.getMessageOrBuilder(index);
-      }
+    public Builder putColumns(
+        java.lang.String key,
+        com.pancakedb.idl.ColumnMeta value) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableColumns().getMutableMap()
+          .put(key, value);
+      return this;
     }
     /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+     * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
      */
-    public java.util.List<? extends com.pancakedb.idl.ColumnMetaOrBuilder> 
-         getColumnsOrBuilderList() {
-      if (columnsBuilder_ != null) {
-        return columnsBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(columns_);
-      }
-    }
-    /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-     */
-    public com.pancakedb.idl.ColumnMeta.Builder addColumnsBuilder() {
-      return getColumnsFieldBuilder().addBuilder(
-          com.pancakedb.idl.ColumnMeta.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-     */
-    public com.pancakedb.idl.ColumnMeta.Builder addColumnsBuilder(
-        int index) {
-      return getColumnsFieldBuilder().addBuilder(
-          index, com.pancakedb.idl.ColumnMeta.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-     */
-    public java.util.List<com.pancakedb.idl.ColumnMeta.Builder> 
-         getColumnsBuilderList() {
-      return getColumnsFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.pancakedb.idl.ColumnMeta, com.pancakedb.idl.ColumnMeta.Builder, com.pancakedb.idl.ColumnMetaOrBuilder> 
-        getColumnsFieldBuilder() {
-      if (columnsBuilder_ == null) {
-        columnsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.pancakedb.idl.ColumnMeta, com.pancakedb.idl.ColumnMeta.Builder, com.pancakedb.idl.ColumnMetaOrBuilder>(
-                columns_,
-                ((bitField0_ & 0x00000002) != 0),
-                getParentForChildren(),
-                isClean());
-        columns_ = null;
-      }
-      return columnsBuilder_;
+
+    public Builder putAllColumns(
+        java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta> values) {
+      internalGetMutableColumns().getMutableMap()
+          .putAll(values);
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

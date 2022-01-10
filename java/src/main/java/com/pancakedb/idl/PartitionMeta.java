@@ -16,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private PartitionMeta() {
-    name_ = "";
     dtype_ = 0;
   }
 
@@ -50,12 +49,6 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            name_ = s;
-            break;
-          }
           case 16: {
             int rawValue = input.readEnum();
 
@@ -94,44 +87,6 @@ private static final long serialVersionUID = 0L;
             com.pancakedb.idl.PartitionMeta.class, com.pancakedb.idl.PartitionMeta.Builder.class);
   }
 
-  public static final int NAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object name_;
-  /**
-   * <code>string name = 1;</code>
-   * @return The name.
-   */
-  @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      name_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string name = 1;</code>
-   * @return The bytes for name.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNameBytes() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int DTYPE_FIELD_NUMBER = 2;
   private int dtype_;
   /**
@@ -165,9 +120,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
-    }
     if (dtype_ != com.pancakedb.idl.PartitionDataType.STRING.getNumber()) {
       output.writeEnum(2, dtype_);
     }
@@ -180,9 +132,6 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-    }
     if (dtype_ != com.pancakedb.idl.PartitionDataType.STRING.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, dtype_);
@@ -202,8 +151,6 @@ private static final long serialVersionUID = 0L;
     }
     com.pancakedb.idl.PartitionMeta other = (com.pancakedb.idl.PartitionMeta) obj;
 
-    if (!getName()
-        .equals(other.getName())) return false;
     if (dtype_ != other.dtype_) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
@@ -216,8 +163,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + DTYPE_FIELD_NUMBER;
     hash = (53 * hash) + dtype_;
     hash = (29 * hash) + unknownFields.hashCode();
@@ -353,8 +298,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      name_ = "";
-
       dtype_ = 0;
 
       return this;
@@ -383,7 +326,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.pancakedb.idl.PartitionMeta buildPartial() {
       com.pancakedb.idl.PartitionMeta result = new com.pancakedb.idl.PartitionMeta(this);
-      result.name_ = name_;
       result.dtype_ = dtype_;
       onBuilt();
       return result;
@@ -433,10 +375,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.pancakedb.idl.PartitionMeta other) {
       if (other == com.pancakedb.idl.PartitionMeta.getDefaultInstance()) return this;
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
-        onChanged();
-      }
       if (other.dtype_ != 0) {
         setDtypeValue(other.getDtypeValue());
       }
@@ -466,82 +404,6 @@ private static final long serialVersionUID = 0L;
           mergeFrom(parsedMessage);
         }
       }
-      return this;
-    }
-
-    private java.lang.Object name_ = "";
-    /**
-     * <code>string name = 1;</code>
-     * @return The name.
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @param value The name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setName(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      name_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearName() {
-      
-      name_ = getDefaultInstance().getName();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @param value The bytes for name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      name_ = value;
-      onChanged();
       return this;
     }
 

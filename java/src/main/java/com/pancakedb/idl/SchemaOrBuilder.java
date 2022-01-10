@@ -8,50 +8,70 @@ public interface SchemaOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-   */
-  java.util.List<com.pancakedb.idl.PartitionMeta> 
-      getPartitioningList();
-  /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
-   */
-  com.pancakedb.idl.PartitionMeta getPartitioning(int index);
-  /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+   * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
    */
   int getPartitioningCount();
   /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+   * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
    */
-  java.util.List<? extends com.pancakedb.idl.PartitionMetaOrBuilder> 
-      getPartitioningOrBuilderList();
+  boolean containsPartitioning(
+      java.lang.String key);
   /**
-   * <code>repeated .protos.schema.PartitionMeta partitioning = 1;</code>
+   * Use {@link #getPartitioningMap()} instead.
    */
-  com.pancakedb.idl.PartitionMetaOrBuilder getPartitioningOrBuilder(
-      int index);
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta>
+  getPartitioning();
+  /**
+   * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
+   */
+  java.util.Map<java.lang.String, com.pancakedb.idl.PartitionMeta>
+  getPartitioningMap();
+  /**
+   * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
+   */
+
+  com.pancakedb.idl.PartitionMeta getPartitioningOrDefault(
+      java.lang.String key,
+      com.pancakedb.idl.PartitionMeta defaultValue);
+  /**
+   * <code>map&lt;string, .protos.schema.PartitionMeta&gt; partitioning = 1;</code>
+   */
+
+  com.pancakedb.idl.PartitionMeta getPartitioningOrThrow(
+      java.lang.String key);
 
   /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-   */
-  java.util.List<com.pancakedb.idl.ColumnMeta> 
-      getColumnsList();
-  /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
-   */
-  com.pancakedb.idl.ColumnMeta getColumns(int index);
-  /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+   * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
    */
   int getColumnsCount();
   /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+   * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
    */
-  java.util.List<? extends com.pancakedb.idl.ColumnMetaOrBuilder> 
-      getColumnsOrBuilderList();
+  boolean containsColumns(
+      java.lang.String key);
   /**
-   * <code>repeated .protos.schema.ColumnMeta columns = 2;</code>
+   * Use {@link #getColumnsMap()} instead.
    */
-  com.pancakedb.idl.ColumnMetaOrBuilder getColumnsOrBuilder(
-      int index);
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta>
+  getColumns();
+  /**
+   * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
+   */
+  java.util.Map<java.lang.String, com.pancakedb.idl.ColumnMeta>
+  getColumnsMap();
+  /**
+   * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
+   */
+
+  com.pancakedb.idl.ColumnMeta getColumnsOrDefault(
+      java.lang.String key,
+      com.pancakedb.idl.ColumnMeta defaultValue);
+  /**
+   * <code>map&lt;string, .protos.schema.ColumnMeta&gt; columns = 2;</code>
+   */
+
+  com.pancakedb.idl.ColumnMeta getColumnsOrThrow(
+      java.lang.String key);
 }

@@ -8,12 +8,12 @@ option java_multiple_files = true;
 option java_package = "com.pancakedb.idl";
 
 message ColumnMeta {
-  dtype.DataType dtype = 2;
-  uint32 nested_list_depth = 3;
+  dtype.DataType dtype = 1;
+  uint32 nested_list_depth = 2;
 }
 
 message PartitionMeta {
-  partition_dtype.PartitionDataType dtype = 2;
+  partition_dtype.PartitionDataType dtype = 1;
 }
 
 message Schema {

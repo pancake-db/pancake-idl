@@ -8,14 +8,8 @@ public interface SegmentMetadataOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint32 count = 1;</code>
-   * @return The count.
+   * <code>uint32 row_count = 1;</code>
+   * @return The rowCount.
    */
-  int getCount();
-
-  /**
-   * <code>uint64 latest_version = 2;</code>
-   * @return The latestVersion.
-   */
-  long getLatestVersion();
+  int getRowCount();
 }

@@ -4,10 +4,6 @@
 package com.pancakedb.idl;
 
 /**
- * <pre>
- *LISTING SEGMENTS
- * </pre>
- *
  * Protobuf type {@code protos.dml.PartitionFilter}
  */
 public final class PartitionFilter extends
@@ -53,73 +49,17 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
-            com.pancakedb.idl.PartitionField.Builder subBuilder = null;
+            com.pancakedb.idl.PartitionFieldComparison.Builder subBuilder = null;
             if (valueCase_ == 1) {
-              subBuilder = ((com.pancakedb.idl.PartitionField) value_).toBuilder();
+              subBuilder = ((com.pancakedb.idl.PartitionFieldComparison) value_).toBuilder();
             }
             value_ =
-                input.readMessage(com.pancakedb.idl.PartitionField.parser(), extensionRegistry);
+                input.readMessage(com.pancakedb.idl.PartitionFieldComparison.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom((com.pancakedb.idl.PartitionField) value_);
+              subBuilder.mergeFrom((com.pancakedb.idl.PartitionFieldComparison) value_);
               value_ = subBuilder.buildPartial();
             }
             valueCase_ = 1;
-            break;
-          }
-          case 18: {
-            com.pancakedb.idl.PartitionField.Builder subBuilder = null;
-            if (valueCase_ == 2) {
-              subBuilder = ((com.pancakedb.idl.PartitionField) value_).toBuilder();
-            }
-            value_ =
-                input.readMessage(com.pancakedb.idl.PartitionField.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((com.pancakedb.idl.PartitionField) value_);
-              value_ = subBuilder.buildPartial();
-            }
-            valueCase_ = 2;
-            break;
-          }
-          case 26: {
-            com.pancakedb.idl.PartitionField.Builder subBuilder = null;
-            if (valueCase_ == 3) {
-              subBuilder = ((com.pancakedb.idl.PartitionField) value_).toBuilder();
-            }
-            value_ =
-                input.readMessage(com.pancakedb.idl.PartitionField.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((com.pancakedb.idl.PartitionField) value_);
-              value_ = subBuilder.buildPartial();
-            }
-            valueCase_ = 3;
-            break;
-          }
-          case 34: {
-            com.pancakedb.idl.PartitionField.Builder subBuilder = null;
-            if (valueCase_ == 4) {
-              subBuilder = ((com.pancakedb.idl.PartitionField) value_).toBuilder();
-            }
-            value_ =
-                input.readMessage(com.pancakedb.idl.PartitionField.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((com.pancakedb.idl.PartitionField) value_);
-              value_ = subBuilder.buildPartial();
-            }
-            valueCase_ = 4;
-            break;
-          }
-          case 42: {
-            com.pancakedb.idl.PartitionField.Builder subBuilder = null;
-            if (valueCase_ == 5) {
-              subBuilder = ((com.pancakedb.idl.PartitionField) value_).toBuilder();
-            }
-            value_ =
-                input.readMessage(com.pancakedb.idl.PartitionField.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((com.pancakedb.idl.PartitionField) value_);
-              value_ = subBuilder.buildPartial();
-            }
-            valueCase_ = 5;
             break;
           }
           default: {
@@ -159,11 +99,7 @@ private static final long serialVersionUID = 0L;
   public enum ValueCase
       implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-    EQUAL_TO(1),
-    LESS_OR_EQ_TO(2),
-    LESS_THAN(3),
-    GREATER_OR_EQ_TO(4),
-    GREATER_THAN(5),
+    COMPARISON(1),
     VALUE_NOT_SET(0);
     private final int value;
     private ValueCase(int value) {
@@ -181,11 +117,7 @@ private static final long serialVersionUID = 0L;
 
     public static ValueCase forNumber(int value) {
       switch (value) {
-        case 1: return EQUAL_TO;
-        case 2: return LESS_OR_EQ_TO;
-        case 3: return LESS_THAN;
-        case 4: return GREATER_OR_EQ_TO;
-        case 5: return GREATER_THAN;
+        case 1: return COMPARISON;
         case 0: return VALUE_NOT_SET;
         default: return null;
       }
@@ -201,159 +133,35 @@ private static final long serialVersionUID = 0L;
         valueCase_);
   }
 
-  public static final int EQUAL_TO_FIELD_NUMBER = 1;
+  public static final int COMPARISON_FIELD_NUMBER = 1;
   /**
-   * <code>.protos.dml.PartitionField equal_to = 1;</code>
-   * @return Whether the equalTo field is set.
+   * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
+   * @return Whether the comparison field is set.
    */
   @java.lang.Override
-  public boolean hasEqualTo() {
+  public boolean hasComparison() {
     return valueCase_ == 1;
   }
   /**
-   * <code>.protos.dml.PartitionField equal_to = 1;</code>
-   * @return The equalTo.
+   * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
+   * @return The comparison.
    */
   @java.lang.Override
-  public com.pancakedb.idl.PartitionField getEqualTo() {
+  public com.pancakedb.idl.PartitionFieldComparison getComparison() {
     if (valueCase_ == 1) {
-       return (com.pancakedb.idl.PartitionField) value_;
+       return (com.pancakedb.idl.PartitionFieldComparison) value_;
     }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
+    return com.pancakedb.idl.PartitionFieldComparison.getDefaultInstance();
   }
   /**
-   * <code>.protos.dml.PartitionField equal_to = 1;</code>
+   * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
    */
   @java.lang.Override
-  public com.pancakedb.idl.PartitionFieldOrBuilder getEqualToOrBuilder() {
+  public com.pancakedb.idl.PartitionFieldComparisonOrBuilder getComparisonOrBuilder() {
     if (valueCase_ == 1) {
-       return (com.pancakedb.idl.PartitionField) value_;
+       return (com.pancakedb.idl.PartitionFieldComparison) value_;
     }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
-  }
-
-  public static final int LESS_OR_EQ_TO_FIELD_NUMBER = 2;
-  /**
-   * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-   * @return Whether the lessOrEqTo field is set.
-   */
-  @java.lang.Override
-  public boolean hasLessOrEqTo() {
-    return valueCase_ == 2;
-  }
-  /**
-   * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-   * @return The lessOrEqTo.
-   */
-  @java.lang.Override
-  public com.pancakedb.idl.PartitionField getLessOrEqTo() {
-    if (valueCase_ == 2) {
-       return (com.pancakedb.idl.PartitionField) value_;
-    }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
-  }
-  /**
-   * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-   */
-  @java.lang.Override
-  public com.pancakedb.idl.PartitionFieldOrBuilder getLessOrEqToOrBuilder() {
-    if (valueCase_ == 2) {
-       return (com.pancakedb.idl.PartitionField) value_;
-    }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
-  }
-
-  public static final int LESS_THAN_FIELD_NUMBER = 3;
-  /**
-   * <code>.protos.dml.PartitionField less_than = 3;</code>
-   * @return Whether the lessThan field is set.
-   */
-  @java.lang.Override
-  public boolean hasLessThan() {
-    return valueCase_ == 3;
-  }
-  /**
-   * <code>.protos.dml.PartitionField less_than = 3;</code>
-   * @return The lessThan.
-   */
-  @java.lang.Override
-  public com.pancakedb.idl.PartitionField getLessThan() {
-    if (valueCase_ == 3) {
-       return (com.pancakedb.idl.PartitionField) value_;
-    }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
-  }
-  /**
-   * <code>.protos.dml.PartitionField less_than = 3;</code>
-   */
-  @java.lang.Override
-  public com.pancakedb.idl.PartitionFieldOrBuilder getLessThanOrBuilder() {
-    if (valueCase_ == 3) {
-       return (com.pancakedb.idl.PartitionField) value_;
-    }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
-  }
-
-  public static final int GREATER_OR_EQ_TO_FIELD_NUMBER = 4;
-  /**
-   * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-   * @return Whether the greaterOrEqTo field is set.
-   */
-  @java.lang.Override
-  public boolean hasGreaterOrEqTo() {
-    return valueCase_ == 4;
-  }
-  /**
-   * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-   * @return The greaterOrEqTo.
-   */
-  @java.lang.Override
-  public com.pancakedb.idl.PartitionField getGreaterOrEqTo() {
-    if (valueCase_ == 4) {
-       return (com.pancakedb.idl.PartitionField) value_;
-    }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
-  }
-  /**
-   * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-   */
-  @java.lang.Override
-  public com.pancakedb.idl.PartitionFieldOrBuilder getGreaterOrEqToOrBuilder() {
-    if (valueCase_ == 4) {
-       return (com.pancakedb.idl.PartitionField) value_;
-    }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
-  }
-
-  public static final int GREATER_THAN_FIELD_NUMBER = 5;
-  /**
-   * <code>.protos.dml.PartitionField greater_than = 5;</code>
-   * @return Whether the greaterThan field is set.
-   */
-  @java.lang.Override
-  public boolean hasGreaterThan() {
-    return valueCase_ == 5;
-  }
-  /**
-   * <code>.protos.dml.PartitionField greater_than = 5;</code>
-   * @return The greaterThan.
-   */
-  @java.lang.Override
-  public com.pancakedb.idl.PartitionField getGreaterThan() {
-    if (valueCase_ == 5) {
-       return (com.pancakedb.idl.PartitionField) value_;
-    }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
-  }
-  /**
-   * <code>.protos.dml.PartitionField greater_than = 5;</code>
-   */
-  @java.lang.Override
-  public com.pancakedb.idl.PartitionFieldOrBuilder getGreaterThanOrBuilder() {
-    if (valueCase_ == 5) {
-       return (com.pancakedb.idl.PartitionField) value_;
-    }
-    return com.pancakedb.idl.PartitionField.getDefaultInstance();
+    return com.pancakedb.idl.PartitionFieldComparison.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -371,19 +179,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (valueCase_ == 1) {
-      output.writeMessage(1, (com.pancakedb.idl.PartitionField) value_);
-    }
-    if (valueCase_ == 2) {
-      output.writeMessage(2, (com.pancakedb.idl.PartitionField) value_);
-    }
-    if (valueCase_ == 3) {
-      output.writeMessage(3, (com.pancakedb.idl.PartitionField) value_);
-    }
-    if (valueCase_ == 4) {
-      output.writeMessage(4, (com.pancakedb.idl.PartitionField) value_);
-    }
-    if (valueCase_ == 5) {
-      output.writeMessage(5, (com.pancakedb.idl.PartitionField) value_);
+      output.writeMessage(1, (com.pancakedb.idl.PartitionFieldComparison) value_);
     }
     unknownFields.writeTo(output);
   }
@@ -396,23 +192,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (valueCase_ == 1) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, (com.pancakedb.idl.PartitionField) value_);
-    }
-    if (valueCase_ == 2) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, (com.pancakedb.idl.PartitionField) value_);
-    }
-    if (valueCase_ == 3) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, (com.pancakedb.idl.PartitionField) value_);
-    }
-    if (valueCase_ == 4) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, (com.pancakedb.idl.PartitionField) value_);
-    }
-    if (valueCase_ == 5) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, (com.pancakedb.idl.PartitionField) value_);
+        .computeMessageSize(1, (com.pancakedb.idl.PartitionFieldComparison) value_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -432,24 +212,8 @@ private static final long serialVersionUID = 0L;
     if (!getValueCase().equals(other.getValueCase())) return false;
     switch (valueCase_) {
       case 1:
-        if (!getEqualTo()
-            .equals(other.getEqualTo())) return false;
-        break;
-      case 2:
-        if (!getLessOrEqTo()
-            .equals(other.getLessOrEqTo())) return false;
-        break;
-      case 3:
-        if (!getLessThan()
-            .equals(other.getLessThan())) return false;
-        break;
-      case 4:
-        if (!getGreaterOrEqTo()
-            .equals(other.getGreaterOrEqTo())) return false;
-        break;
-      case 5:
-        if (!getGreaterThan()
-            .equals(other.getGreaterThan())) return false;
+        if (!getComparison()
+            .equals(other.getComparison())) return false;
         break;
       case 0:
       default:
@@ -467,24 +231,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     switch (valueCase_) {
       case 1:
-        hash = (37 * hash) + EQUAL_TO_FIELD_NUMBER;
-        hash = (53 * hash) + getEqualTo().hashCode();
-        break;
-      case 2:
-        hash = (37 * hash) + LESS_OR_EQ_TO_FIELD_NUMBER;
-        hash = (53 * hash) + getLessOrEqTo().hashCode();
-        break;
-      case 3:
-        hash = (37 * hash) + LESS_THAN_FIELD_NUMBER;
-        hash = (53 * hash) + getLessThan().hashCode();
-        break;
-      case 4:
-        hash = (37 * hash) + GREATER_OR_EQ_TO_FIELD_NUMBER;
-        hash = (53 * hash) + getGreaterOrEqTo().hashCode();
-        break;
-      case 5:
-        hash = (37 * hash) + GREATER_THAN_FIELD_NUMBER;
-        hash = (53 * hash) + getGreaterThan().hashCode();
+        hash = (37 * hash) + COMPARISON_FIELD_NUMBER;
+        hash = (53 * hash) + getComparison().hashCode();
         break;
       case 0:
       default:
@@ -585,10 +333,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *LISTING SEGMENTS
-   * </pre>
-   *
    * Protobuf type {@code protos.dml.PartitionFilter}
    */
   public static final class Builder extends
@@ -655,38 +399,10 @@ private static final long serialVersionUID = 0L;
     public com.pancakedb.idl.PartitionFilter buildPartial() {
       com.pancakedb.idl.PartitionFilter result = new com.pancakedb.idl.PartitionFilter(this);
       if (valueCase_ == 1) {
-        if (equalToBuilder_ == null) {
+        if (comparisonBuilder_ == null) {
           result.value_ = value_;
         } else {
-          result.value_ = equalToBuilder_.build();
-        }
-      }
-      if (valueCase_ == 2) {
-        if (lessOrEqToBuilder_ == null) {
-          result.value_ = value_;
-        } else {
-          result.value_ = lessOrEqToBuilder_.build();
-        }
-      }
-      if (valueCase_ == 3) {
-        if (lessThanBuilder_ == null) {
-          result.value_ = value_;
-        } else {
-          result.value_ = lessThanBuilder_.build();
-        }
-      }
-      if (valueCase_ == 4) {
-        if (greaterOrEqToBuilder_ == null) {
-          result.value_ = value_;
-        } else {
-          result.value_ = greaterOrEqToBuilder_.build();
-        }
-      }
-      if (valueCase_ == 5) {
-        if (greaterThanBuilder_ == null) {
-          result.value_ = value_;
-        } else {
-          result.value_ = greaterThanBuilder_.build();
+          result.value_ = comparisonBuilder_.build();
         }
       }
       result.valueCase_ = valueCase_;
@@ -739,24 +455,8 @@ private static final long serialVersionUID = 0L;
     public Builder mergeFrom(com.pancakedb.idl.PartitionFilter other) {
       if (other == com.pancakedb.idl.PartitionFilter.getDefaultInstance()) return this;
       switch (other.getValueCase()) {
-        case EQUAL_TO: {
-          mergeEqualTo(other.getEqualTo());
-          break;
-        }
-        case LESS_OR_EQ_TO: {
-          mergeLessOrEqTo(other.getLessOrEqTo());
-          break;
-        }
-        case LESS_THAN: {
-          mergeLessThan(other.getLessThan());
-          break;
-        }
-        case GREATER_OR_EQ_TO: {
-          mergeGreaterOrEqTo(other.getGreaterOrEqTo());
-          break;
-        }
-        case GREATER_THAN: {
-          mergeGreaterThan(other.getGreaterThan());
+        case COMPARISON: {
+          mergeComparison(other.getComparison());
           break;
         }
         case VALUE_NOT_SET: {
@@ -808,71 +508,71 @@ private static final long serialVersionUID = 0L;
 
 
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> equalToBuilder_;
+        com.pancakedb.idl.PartitionFieldComparison, com.pancakedb.idl.PartitionFieldComparison.Builder, com.pancakedb.idl.PartitionFieldComparisonOrBuilder> comparisonBuilder_;
     /**
-     * <code>.protos.dml.PartitionField equal_to = 1;</code>
-     * @return Whether the equalTo field is set.
+     * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
+     * @return Whether the comparison field is set.
      */
     @java.lang.Override
-    public boolean hasEqualTo() {
+    public boolean hasComparison() {
       return valueCase_ == 1;
     }
     /**
-     * <code>.protos.dml.PartitionField equal_to = 1;</code>
-     * @return The equalTo.
+     * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
+     * @return The comparison.
      */
     @java.lang.Override
-    public com.pancakedb.idl.PartitionField getEqualTo() {
-      if (equalToBuilder_ == null) {
+    public com.pancakedb.idl.PartitionFieldComparison getComparison() {
+      if (comparisonBuilder_ == null) {
         if (valueCase_ == 1) {
-          return (com.pancakedb.idl.PartitionField) value_;
+          return (com.pancakedb.idl.PartitionFieldComparison) value_;
         }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
+        return com.pancakedb.idl.PartitionFieldComparison.getDefaultInstance();
       } else {
         if (valueCase_ == 1) {
-          return equalToBuilder_.getMessage();
+          return comparisonBuilder_.getMessage();
         }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
+        return com.pancakedb.idl.PartitionFieldComparison.getDefaultInstance();
       }
     }
     /**
-     * <code>.protos.dml.PartitionField equal_to = 1;</code>
+     * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
      */
-    public Builder setEqualTo(com.pancakedb.idl.PartitionField value) {
-      if (equalToBuilder_ == null) {
+    public Builder setComparison(com.pancakedb.idl.PartitionFieldComparison value) {
+      if (comparisonBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
         value_ = value;
         onChanged();
       } else {
-        equalToBuilder_.setMessage(value);
+        comparisonBuilder_.setMessage(value);
       }
       valueCase_ = 1;
       return this;
     }
     /**
-     * <code>.protos.dml.PartitionField equal_to = 1;</code>
+     * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
      */
-    public Builder setEqualTo(
-        com.pancakedb.idl.PartitionField.Builder builderForValue) {
-      if (equalToBuilder_ == null) {
+    public Builder setComparison(
+        com.pancakedb.idl.PartitionFieldComparison.Builder builderForValue) {
+      if (comparisonBuilder_ == null) {
         value_ = builderForValue.build();
         onChanged();
       } else {
-        equalToBuilder_.setMessage(builderForValue.build());
+        comparisonBuilder_.setMessage(builderForValue.build());
       }
       valueCase_ = 1;
       return this;
     }
     /**
-     * <code>.protos.dml.PartitionField equal_to = 1;</code>
+     * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
      */
-    public Builder mergeEqualTo(com.pancakedb.idl.PartitionField value) {
-      if (equalToBuilder_ == null) {
+    public Builder mergeComparison(com.pancakedb.idl.PartitionFieldComparison value) {
+      if (comparisonBuilder_ == null) {
         if (valueCase_ == 1 &&
-            value_ != com.pancakedb.idl.PartitionField.getDefaultInstance()) {
-          value_ = com.pancakedb.idl.PartitionField.newBuilder((com.pancakedb.idl.PartitionField) value_)
+            value_ != com.pancakedb.idl.PartitionFieldComparison.getDefaultInstance()) {
+          value_ = com.pancakedb.idl.PartitionFieldComparison.newBuilder((com.pancakedb.idl.PartitionFieldComparison) value_)
               .mergeFrom(value).buildPartial();
         } else {
           value_ = value;
@@ -880,18 +580,18 @@ private static final long serialVersionUID = 0L;
         onChanged();
       } else {
         if (valueCase_ == 1) {
-          equalToBuilder_.mergeFrom(value);
+          comparisonBuilder_.mergeFrom(value);
         }
-        equalToBuilder_.setMessage(value);
+        comparisonBuilder_.setMessage(value);
       }
       valueCase_ = 1;
       return this;
     }
     /**
-     * <code>.protos.dml.PartitionField equal_to = 1;</code>
+     * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
      */
-    public Builder clearEqualTo() {
-      if (equalToBuilder_ == null) {
+    public Builder clearComparison() {
+      if (comparisonBuilder_ == null) {
         if (valueCase_ == 1) {
           valueCase_ = 0;
           value_ = null;
@@ -902,614 +602,50 @@ private static final long serialVersionUID = 0L;
           valueCase_ = 0;
           value_ = null;
         }
-        equalToBuilder_.clear();
+        comparisonBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>.protos.dml.PartitionField equal_to = 1;</code>
+     * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
      */
-    public com.pancakedb.idl.PartitionField.Builder getEqualToBuilder() {
-      return getEqualToFieldBuilder().getBuilder();
+    public com.pancakedb.idl.PartitionFieldComparison.Builder getComparisonBuilder() {
+      return getComparisonFieldBuilder().getBuilder();
     }
     /**
-     * <code>.protos.dml.PartitionField equal_to = 1;</code>
+     * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
      */
     @java.lang.Override
-    public com.pancakedb.idl.PartitionFieldOrBuilder getEqualToOrBuilder() {
-      if ((valueCase_ == 1) && (equalToBuilder_ != null)) {
-        return equalToBuilder_.getMessageOrBuilder();
+    public com.pancakedb.idl.PartitionFieldComparisonOrBuilder getComparisonOrBuilder() {
+      if ((valueCase_ == 1) && (comparisonBuilder_ != null)) {
+        return comparisonBuilder_.getMessageOrBuilder();
       } else {
         if (valueCase_ == 1) {
-          return (com.pancakedb.idl.PartitionField) value_;
+          return (com.pancakedb.idl.PartitionFieldComparison) value_;
         }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
+        return com.pancakedb.idl.PartitionFieldComparison.getDefaultInstance();
       }
     }
     /**
-     * <code>.protos.dml.PartitionField equal_to = 1;</code>
+     * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> 
-        getEqualToFieldBuilder() {
-      if (equalToBuilder_ == null) {
+        com.pancakedb.idl.PartitionFieldComparison, com.pancakedb.idl.PartitionFieldComparison.Builder, com.pancakedb.idl.PartitionFieldComparisonOrBuilder> 
+        getComparisonFieldBuilder() {
+      if (comparisonBuilder_ == null) {
         if (!(valueCase_ == 1)) {
-          value_ = com.pancakedb.idl.PartitionField.getDefaultInstance();
+          value_ = com.pancakedb.idl.PartitionFieldComparison.getDefaultInstance();
         }
-        equalToBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder>(
-                (com.pancakedb.idl.PartitionField) value_,
+        comparisonBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.pancakedb.idl.PartitionFieldComparison, com.pancakedb.idl.PartitionFieldComparison.Builder, com.pancakedb.idl.PartitionFieldComparisonOrBuilder>(
+                (com.pancakedb.idl.PartitionFieldComparison) value_,
                 getParentForChildren(),
                 isClean());
         value_ = null;
       }
       valueCase_ = 1;
       onChanged();;
-      return equalToBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> lessOrEqToBuilder_;
-    /**
-     * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-     * @return Whether the lessOrEqTo field is set.
-     */
-    @java.lang.Override
-    public boolean hasLessOrEqTo() {
-      return valueCase_ == 2;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-     * @return The lessOrEqTo.
-     */
-    @java.lang.Override
-    public com.pancakedb.idl.PartitionField getLessOrEqTo() {
-      if (lessOrEqToBuilder_ == null) {
-        if (valueCase_ == 2) {
-          return (com.pancakedb.idl.PartitionField) value_;
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      } else {
-        if (valueCase_ == 2) {
-          return lessOrEqToBuilder_.getMessage();
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-     */
-    public Builder setLessOrEqTo(com.pancakedb.idl.PartitionField value) {
-      if (lessOrEqToBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        value_ = value;
-        onChanged();
-      } else {
-        lessOrEqToBuilder_.setMessage(value);
-      }
-      valueCase_ = 2;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-     */
-    public Builder setLessOrEqTo(
-        com.pancakedb.idl.PartitionField.Builder builderForValue) {
-      if (lessOrEqToBuilder_ == null) {
-        value_ = builderForValue.build();
-        onChanged();
-      } else {
-        lessOrEqToBuilder_.setMessage(builderForValue.build());
-      }
-      valueCase_ = 2;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-     */
-    public Builder mergeLessOrEqTo(com.pancakedb.idl.PartitionField value) {
-      if (lessOrEqToBuilder_ == null) {
-        if (valueCase_ == 2 &&
-            value_ != com.pancakedb.idl.PartitionField.getDefaultInstance()) {
-          value_ = com.pancakedb.idl.PartitionField.newBuilder((com.pancakedb.idl.PartitionField) value_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          value_ = value;
-        }
-        onChanged();
-      } else {
-        if (valueCase_ == 2) {
-          lessOrEqToBuilder_.mergeFrom(value);
-        }
-        lessOrEqToBuilder_.setMessage(value);
-      }
-      valueCase_ = 2;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-     */
-    public Builder clearLessOrEqTo() {
-      if (lessOrEqToBuilder_ == null) {
-        if (valueCase_ == 2) {
-          valueCase_ = 0;
-          value_ = null;
-          onChanged();
-        }
-      } else {
-        if (valueCase_ == 2) {
-          valueCase_ = 0;
-          value_ = null;
-        }
-        lessOrEqToBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-     */
-    public com.pancakedb.idl.PartitionField.Builder getLessOrEqToBuilder() {
-      return getLessOrEqToFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-     */
-    @java.lang.Override
-    public com.pancakedb.idl.PartitionFieldOrBuilder getLessOrEqToOrBuilder() {
-      if ((valueCase_ == 2) && (lessOrEqToBuilder_ != null)) {
-        return lessOrEqToBuilder_.getMessageOrBuilder();
-      } else {
-        if (valueCase_ == 2) {
-          return (com.pancakedb.idl.PartitionField) value_;
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> 
-        getLessOrEqToFieldBuilder() {
-      if (lessOrEqToBuilder_ == null) {
-        if (!(valueCase_ == 2)) {
-          value_ = com.pancakedb.idl.PartitionField.getDefaultInstance();
-        }
-        lessOrEqToBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder>(
-                (com.pancakedb.idl.PartitionField) value_,
-                getParentForChildren(),
-                isClean());
-        value_ = null;
-      }
-      valueCase_ = 2;
-      onChanged();;
-      return lessOrEqToBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> lessThanBuilder_;
-    /**
-     * <code>.protos.dml.PartitionField less_than = 3;</code>
-     * @return Whether the lessThan field is set.
-     */
-    @java.lang.Override
-    public boolean hasLessThan() {
-      return valueCase_ == 3;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_than = 3;</code>
-     * @return The lessThan.
-     */
-    @java.lang.Override
-    public com.pancakedb.idl.PartitionField getLessThan() {
-      if (lessThanBuilder_ == null) {
-        if (valueCase_ == 3) {
-          return (com.pancakedb.idl.PartitionField) value_;
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      } else {
-        if (valueCase_ == 3) {
-          return lessThanBuilder_.getMessage();
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_than = 3;</code>
-     */
-    public Builder setLessThan(com.pancakedb.idl.PartitionField value) {
-      if (lessThanBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        value_ = value;
-        onChanged();
-      } else {
-        lessThanBuilder_.setMessage(value);
-      }
-      valueCase_ = 3;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_than = 3;</code>
-     */
-    public Builder setLessThan(
-        com.pancakedb.idl.PartitionField.Builder builderForValue) {
-      if (lessThanBuilder_ == null) {
-        value_ = builderForValue.build();
-        onChanged();
-      } else {
-        lessThanBuilder_.setMessage(builderForValue.build());
-      }
-      valueCase_ = 3;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_than = 3;</code>
-     */
-    public Builder mergeLessThan(com.pancakedb.idl.PartitionField value) {
-      if (lessThanBuilder_ == null) {
-        if (valueCase_ == 3 &&
-            value_ != com.pancakedb.idl.PartitionField.getDefaultInstance()) {
-          value_ = com.pancakedb.idl.PartitionField.newBuilder((com.pancakedb.idl.PartitionField) value_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          value_ = value;
-        }
-        onChanged();
-      } else {
-        if (valueCase_ == 3) {
-          lessThanBuilder_.mergeFrom(value);
-        }
-        lessThanBuilder_.setMessage(value);
-      }
-      valueCase_ = 3;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_than = 3;</code>
-     */
-    public Builder clearLessThan() {
-      if (lessThanBuilder_ == null) {
-        if (valueCase_ == 3) {
-          valueCase_ = 0;
-          value_ = null;
-          onChanged();
-        }
-      } else {
-        if (valueCase_ == 3) {
-          valueCase_ = 0;
-          value_ = null;
-        }
-        lessThanBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_than = 3;</code>
-     */
-    public com.pancakedb.idl.PartitionField.Builder getLessThanBuilder() {
-      return getLessThanFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_than = 3;</code>
-     */
-    @java.lang.Override
-    public com.pancakedb.idl.PartitionFieldOrBuilder getLessThanOrBuilder() {
-      if ((valueCase_ == 3) && (lessThanBuilder_ != null)) {
-        return lessThanBuilder_.getMessageOrBuilder();
-      } else {
-        if (valueCase_ == 3) {
-          return (com.pancakedb.idl.PartitionField) value_;
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.protos.dml.PartitionField less_than = 3;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> 
-        getLessThanFieldBuilder() {
-      if (lessThanBuilder_ == null) {
-        if (!(valueCase_ == 3)) {
-          value_ = com.pancakedb.idl.PartitionField.getDefaultInstance();
-        }
-        lessThanBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder>(
-                (com.pancakedb.idl.PartitionField) value_,
-                getParentForChildren(),
-                isClean());
-        value_ = null;
-      }
-      valueCase_ = 3;
-      onChanged();;
-      return lessThanBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> greaterOrEqToBuilder_;
-    /**
-     * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-     * @return Whether the greaterOrEqTo field is set.
-     */
-    @java.lang.Override
-    public boolean hasGreaterOrEqTo() {
-      return valueCase_ == 4;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-     * @return The greaterOrEqTo.
-     */
-    @java.lang.Override
-    public com.pancakedb.idl.PartitionField getGreaterOrEqTo() {
-      if (greaterOrEqToBuilder_ == null) {
-        if (valueCase_ == 4) {
-          return (com.pancakedb.idl.PartitionField) value_;
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      } else {
-        if (valueCase_ == 4) {
-          return greaterOrEqToBuilder_.getMessage();
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-     */
-    public Builder setGreaterOrEqTo(com.pancakedb.idl.PartitionField value) {
-      if (greaterOrEqToBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        value_ = value;
-        onChanged();
-      } else {
-        greaterOrEqToBuilder_.setMessage(value);
-      }
-      valueCase_ = 4;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-     */
-    public Builder setGreaterOrEqTo(
-        com.pancakedb.idl.PartitionField.Builder builderForValue) {
-      if (greaterOrEqToBuilder_ == null) {
-        value_ = builderForValue.build();
-        onChanged();
-      } else {
-        greaterOrEqToBuilder_.setMessage(builderForValue.build());
-      }
-      valueCase_ = 4;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-     */
-    public Builder mergeGreaterOrEqTo(com.pancakedb.idl.PartitionField value) {
-      if (greaterOrEqToBuilder_ == null) {
-        if (valueCase_ == 4 &&
-            value_ != com.pancakedb.idl.PartitionField.getDefaultInstance()) {
-          value_ = com.pancakedb.idl.PartitionField.newBuilder((com.pancakedb.idl.PartitionField) value_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          value_ = value;
-        }
-        onChanged();
-      } else {
-        if (valueCase_ == 4) {
-          greaterOrEqToBuilder_.mergeFrom(value);
-        }
-        greaterOrEqToBuilder_.setMessage(value);
-      }
-      valueCase_ = 4;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-     */
-    public Builder clearGreaterOrEqTo() {
-      if (greaterOrEqToBuilder_ == null) {
-        if (valueCase_ == 4) {
-          valueCase_ = 0;
-          value_ = null;
-          onChanged();
-        }
-      } else {
-        if (valueCase_ == 4) {
-          valueCase_ = 0;
-          value_ = null;
-        }
-        greaterOrEqToBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-     */
-    public com.pancakedb.idl.PartitionField.Builder getGreaterOrEqToBuilder() {
-      return getGreaterOrEqToFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-     */
-    @java.lang.Override
-    public com.pancakedb.idl.PartitionFieldOrBuilder getGreaterOrEqToOrBuilder() {
-      if ((valueCase_ == 4) && (greaterOrEqToBuilder_ != null)) {
-        return greaterOrEqToBuilder_.getMessageOrBuilder();
-      } else {
-        if (valueCase_ == 4) {
-          return (com.pancakedb.idl.PartitionField) value_;
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> 
-        getGreaterOrEqToFieldBuilder() {
-      if (greaterOrEqToBuilder_ == null) {
-        if (!(valueCase_ == 4)) {
-          value_ = com.pancakedb.idl.PartitionField.getDefaultInstance();
-        }
-        greaterOrEqToBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder>(
-                (com.pancakedb.idl.PartitionField) value_,
-                getParentForChildren(),
-                isClean());
-        value_ = null;
-      }
-      valueCase_ = 4;
-      onChanged();;
-      return greaterOrEqToBuilder_;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> greaterThanBuilder_;
-    /**
-     * <code>.protos.dml.PartitionField greater_than = 5;</code>
-     * @return Whether the greaterThan field is set.
-     */
-    @java.lang.Override
-    public boolean hasGreaterThan() {
-      return valueCase_ == 5;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_than = 5;</code>
-     * @return The greaterThan.
-     */
-    @java.lang.Override
-    public com.pancakedb.idl.PartitionField getGreaterThan() {
-      if (greaterThanBuilder_ == null) {
-        if (valueCase_ == 5) {
-          return (com.pancakedb.idl.PartitionField) value_;
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      } else {
-        if (valueCase_ == 5) {
-          return greaterThanBuilder_.getMessage();
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_than = 5;</code>
-     */
-    public Builder setGreaterThan(com.pancakedb.idl.PartitionField value) {
-      if (greaterThanBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        value_ = value;
-        onChanged();
-      } else {
-        greaterThanBuilder_.setMessage(value);
-      }
-      valueCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_than = 5;</code>
-     */
-    public Builder setGreaterThan(
-        com.pancakedb.idl.PartitionField.Builder builderForValue) {
-      if (greaterThanBuilder_ == null) {
-        value_ = builderForValue.build();
-        onChanged();
-      } else {
-        greaterThanBuilder_.setMessage(builderForValue.build());
-      }
-      valueCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_than = 5;</code>
-     */
-    public Builder mergeGreaterThan(com.pancakedb.idl.PartitionField value) {
-      if (greaterThanBuilder_ == null) {
-        if (valueCase_ == 5 &&
-            value_ != com.pancakedb.idl.PartitionField.getDefaultInstance()) {
-          value_ = com.pancakedb.idl.PartitionField.newBuilder((com.pancakedb.idl.PartitionField) value_)
-              .mergeFrom(value).buildPartial();
-        } else {
-          value_ = value;
-        }
-        onChanged();
-      } else {
-        if (valueCase_ == 5) {
-          greaterThanBuilder_.mergeFrom(value);
-        }
-        greaterThanBuilder_.setMessage(value);
-      }
-      valueCase_ = 5;
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_than = 5;</code>
-     */
-    public Builder clearGreaterThan() {
-      if (greaterThanBuilder_ == null) {
-        if (valueCase_ == 5) {
-          valueCase_ = 0;
-          value_ = null;
-          onChanged();
-        }
-      } else {
-        if (valueCase_ == 5) {
-          valueCase_ = 0;
-          value_ = null;
-        }
-        greaterThanBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_than = 5;</code>
-     */
-    public com.pancakedb.idl.PartitionField.Builder getGreaterThanBuilder() {
-      return getGreaterThanFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_than = 5;</code>
-     */
-    @java.lang.Override
-    public com.pancakedb.idl.PartitionFieldOrBuilder getGreaterThanOrBuilder() {
-      if ((valueCase_ == 5) && (greaterThanBuilder_ != null)) {
-        return greaterThanBuilder_.getMessageOrBuilder();
-      } else {
-        if (valueCase_ == 5) {
-          return (com.pancakedb.idl.PartitionField) value_;
-        }
-        return com.pancakedb.idl.PartitionField.getDefaultInstance();
-      }
-    }
-    /**
-     * <code>.protos.dml.PartitionField greater_than = 5;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> 
-        getGreaterThanFieldBuilder() {
-      if (greaterThanBuilder_ == null) {
-        if (!(valueCase_ == 5)) {
-          value_ = com.pancakedb.idl.PartitionField.getDefaultInstance();
-        }
-        greaterThanBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder>(
-                (com.pancakedb.idl.PartitionField) value_,
-                getParentForChildren(),
-                isClean());
-        value_ = null;
-      }
-      valueCase_ = 5;
-      onChanged();;
-      return greaterThanBuilder_;
+      return comparisonBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

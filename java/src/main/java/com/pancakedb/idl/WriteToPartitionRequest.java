@@ -4,10 +4,6 @@
 package com.pancakedb.idl;
 
 /**
- * <pre>
- *WRITING
- * </pre>
- *
  * Protobuf type {@code protos.dml.WriteToPartitionRequest}
  */
 public final class WriteToPartitionRequest extends
@@ -21,7 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private WriteToPartitionRequest() {
     tableName_ = "";
-    partition_ = java.util.Collections.emptyList();
     rows_ = java.util.Collections.emptyList();
   }
 
@@ -64,11 +59,15 @@ private static final long serialVersionUID = 0L;
           }
           case 18: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              partition_ = new java.util.ArrayList<com.pancakedb.idl.PartitionField>();
+              partition_ = com.google.protobuf.MapField.newMapField(
+                  PartitionDefaultEntryHolder.defaultEntry);
               mutable_bitField0_ |= 0x00000001;
             }
-            partition_.add(
-                input.readMessage(com.pancakedb.idl.PartitionField.parser(), extensionRegistry));
+            com.google.protobuf.MapEntry<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+            partition__ = input.readMessage(
+                PartitionDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            partition_.getMutableMap().put(
+                partition__.getKey(), partition__.getValue());
             break;
           }
           case 26: {
@@ -95,9 +94,6 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        partition_ = java.util.Collections.unmodifiableList(partition_);
-      }
       if (((mutable_bitField0_ & 0x00000002) != 0)) {
         rows_ = java.util.Collections.unmodifiableList(rows_);
       }
@@ -110,6 +106,18 @@ private static final long serialVersionUID = 0L;
     return com.pancakedb.idl.Dml.internal_static_protos_dml_WriteToPartitionRequest_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
+    switch (number) {
+      case 2:
+        return internalGetPartition();
+      default:
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
+    }
+  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -157,43 +165,84 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int PARTITION_FIELD_NUMBER = 2;
-  private java.util.List<com.pancakedb.idl.PartitionField> partition_;
-  /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-   */
-  @java.lang.Override
-  public java.util.List<com.pancakedb.idl.PartitionField> getPartitionList() {
+  private static final class PartitionDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.String, com.pancakedb.idl.PartitionFieldValue> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.String, com.pancakedb.idl.PartitionFieldValue>newDefaultInstance(
+                com.pancakedb.idl.Dml.internal_static_protos_dml_WriteToPartitionRequest_PartitionEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.STRING,
+                "",
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                com.pancakedb.idl.PartitionFieldValue.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.String, com.pancakedb.idl.PartitionFieldValue> partition_;
+  private com.google.protobuf.MapField<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+  internalGetPartition() {
+    if (partition_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          PartitionDefaultEntryHolder.defaultEntry);
+    }
     return partition_;
   }
-  /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-   */
-  @java.lang.Override
-  public java.util.List<? extends com.pancakedb.idl.PartitionFieldOrBuilder> 
-      getPartitionOrBuilderList() {
-    return partition_;
-  }
-  /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-   */
-  @java.lang.Override
+
   public int getPartitionCount() {
-    return partition_.size();
+    return internalGetPartition().getMap().size();
   }
   /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
    */
+
   @java.lang.Override
-  public com.pancakedb.idl.PartitionField getPartition(int index) {
-    return partition_.get(index);
+  public boolean containsPartition(
+      java.lang.String key) {
+    if (key == null) { throw new java.lang.NullPointerException(); }
+    return internalGetPartition().getMap().containsKey(key);
   }
   /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+   * Use {@link #getPartitionMap()} instead.
    */
   @java.lang.Override
-  public com.pancakedb.idl.PartitionFieldOrBuilder getPartitionOrBuilder(
-      int index) {
-    return partition_.get(index);
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue> getPartition() {
+    return getPartitionMap();
+  }
+  /**
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue> getPartitionMap() {
+    return internalGetPartition().getMap();
+  }
+  /**
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
+   */
+  @java.lang.Override
+
+  public com.pancakedb.idl.PartitionFieldValue getPartitionOrDefault(
+      java.lang.String key,
+      com.pancakedb.idl.PartitionFieldValue defaultValue) {
+    if (key == null) { throw new java.lang.NullPointerException(); }
+    java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue> map =
+        internalGetPartition().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
+   */
+  @java.lang.Override
+
+  public com.pancakedb.idl.PartitionFieldValue getPartitionOrThrow(
+      java.lang.String key) {
+    if (key == null) { throw new java.lang.NullPointerException(); }
+    java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue> map =
+        internalGetPartition().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
   }
 
   public static final int ROWS_FIELD_NUMBER = 3;
@@ -253,9 +302,12 @@ private static final long serialVersionUID = 0L;
     if (!getTableNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tableName_);
     }
-    for (int i = 0; i < partition_.size(); i++) {
-      output.writeMessage(2, partition_.get(i));
-    }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeStringMapTo(
+        output,
+        internalGetPartition(),
+        PartitionDefaultEntryHolder.defaultEntry,
+        2);
     for (int i = 0; i < rows_.size(); i++) {
       output.writeMessage(3, rows_.get(i));
     }
@@ -271,9 +323,15 @@ private static final long serialVersionUID = 0L;
     if (!getTableNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tableName_);
     }
-    for (int i = 0; i < partition_.size(); i++) {
+    for (java.util.Map.Entry<java.lang.String, com.pancakedb.idl.PartitionFieldValue> entry
+         : internalGetPartition().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+      partition__ = PartitionDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, partition_.get(i));
+          .computeMessageSize(2, partition__);
     }
     for (int i = 0; i < rows_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
@@ -296,8 +354,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getTableName()
         .equals(other.getTableName())) return false;
-    if (!getPartitionList()
-        .equals(other.getPartitionList())) return false;
+    if (!internalGetPartition().equals(
+        other.internalGetPartition())) return false;
     if (!getRowsList()
         .equals(other.getRowsList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -313,9 +371,9 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TABLE_NAME_FIELD_NUMBER;
     hash = (53 * hash) + getTableName().hashCode();
-    if (getPartitionCount() > 0) {
+    if (!internalGetPartition().getMap().isEmpty()) {
       hash = (37 * hash) + PARTITION_FIELD_NUMBER;
-      hash = (53 * hash) + getPartitionList().hashCode();
+      hash = (53 * hash) + internalGetPartition().hashCode();
     }
     if (getRowsCount() > 0) {
       hash = (37 * hash) + ROWS_FIELD_NUMBER;
@@ -417,10 +475,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *WRITING
-   * </pre>
-   *
    * Protobuf type {@code protos.dml.WriteToPartitionRequest}
    */
   public static final class Builder extends
@@ -432,6 +486,28 @@ private static final long serialVersionUID = 0L;
       return com.pancakedb.idl.Dml.internal_static_protos_dml_WriteToPartitionRequest_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 2:
+          return internalGetPartition();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
+      switch (number) {
+        case 2:
+          return internalGetMutablePartition();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -453,7 +529,6 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getPartitionFieldBuilder();
         getRowsFieldBuilder();
       }
     }
@@ -462,12 +537,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       tableName_ = "";
 
-      if (partitionBuilder_ == null) {
-        partition_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        partitionBuilder_.clear();
-      }
+      internalGetMutablePartition().clear();
       if (rowsBuilder_ == null) {
         rows_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -502,15 +572,8 @@ private static final long serialVersionUID = 0L;
       com.pancakedb.idl.WriteToPartitionRequest result = new com.pancakedb.idl.WriteToPartitionRequest(this);
       int from_bitField0_ = bitField0_;
       result.tableName_ = tableName_;
-      if (partitionBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          partition_ = java.util.Collections.unmodifiableList(partition_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.partition_ = partition_;
-      } else {
-        result.partition_ = partitionBuilder_.build();
-      }
+      result.partition_ = internalGetPartition();
+      result.partition_.makeImmutable();
       if (rowsBuilder_ == null) {
         if (((bitField0_ & 0x00000002) != 0)) {
           rows_ = java.util.Collections.unmodifiableList(rows_);
@@ -572,32 +635,8 @@ private static final long serialVersionUID = 0L;
         tableName_ = other.tableName_;
         onChanged();
       }
-      if (partitionBuilder_ == null) {
-        if (!other.partition_.isEmpty()) {
-          if (partition_.isEmpty()) {
-            partition_ = other.partition_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensurePartitionIsMutable();
-            partition_.addAll(other.partition_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.partition_.isEmpty()) {
-          if (partitionBuilder_.isEmpty()) {
-            partitionBuilder_.dispose();
-            partitionBuilder_ = null;
-            partition_ = other.partition_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            partitionBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getPartitionFieldBuilder() : null;
-          } else {
-            partitionBuilder_.addAllMessages(other.partition_);
-          }
-        }
-      }
+      internalGetMutablePartition().mergeFrom(
+          other.internalGetPartition());
       if (rowsBuilder_ == null) {
         if (!other.rows_.isEmpty()) {
           if (rows_.isEmpty()) {
@@ -730,244 +769,132 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<com.pancakedb.idl.PartitionField> partition_ =
-      java.util.Collections.emptyList();
-    private void ensurePartitionIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        partition_ = new java.util.ArrayList<com.pancakedb.idl.PartitionField>(partition_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> partitionBuilder_;
-
-    /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-     */
-    public java.util.List<com.pancakedb.idl.PartitionField> getPartitionList() {
-      if (partitionBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(partition_);
-      } else {
-        return partitionBuilder_.getMessageList();
+    private com.google.protobuf.MapField<
+        java.lang.String, com.pancakedb.idl.PartitionFieldValue> partition_;
+    private com.google.protobuf.MapField<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+    internalGetPartition() {
+      if (partition_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            PartitionDefaultEntryHolder.defaultEntry);
       }
+      return partition_;
     }
-    /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-     */
+    private com.google.protobuf.MapField<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+    internalGetMutablePartition() {
+      onChanged();;
+      if (partition_ == null) {
+        partition_ = com.google.protobuf.MapField.newMapField(
+            PartitionDefaultEntryHolder.defaultEntry);
+      }
+      if (!partition_.isMutable()) {
+        partition_ = partition_.copy();
+      }
+      return partition_;
+    }
+
     public int getPartitionCount() {
-      if (partitionBuilder_ == null) {
-        return partition_.size();
-      } else {
-        return partitionBuilder_.getCount();
-      }
+      return internalGetPartition().getMap().size();
     }
     /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+     * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
      */
-    public com.pancakedb.idl.PartitionField getPartition(int index) {
-      if (partitionBuilder_ == null) {
-        return partition_.get(index);
-      } else {
-        return partitionBuilder_.getMessage(index);
-      }
+
+    @java.lang.Override
+    public boolean containsPartition(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetPartition().getMap().containsKey(key);
     }
     /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+     * Use {@link #getPartitionMap()} instead.
      */
-    public Builder setPartition(
-        int index, com.pancakedb.idl.PartitionField value) {
-      if (partitionBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensurePartitionIsMutable();
-        partition_.set(index, value);
-        onChanged();
-      } else {
-        partitionBuilder_.setMessage(index, value);
-      }
-      return this;
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue> getPartition() {
+      return getPartitionMap();
     }
     /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+     * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
      */
-    public Builder setPartition(
-        int index, com.pancakedb.idl.PartitionField.Builder builderForValue) {
-      if (partitionBuilder_ == null) {
-        ensurePartitionIsMutable();
-        partition_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        partitionBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
+    @java.lang.Override
+
+    public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue> getPartitionMap() {
+      return internalGetPartition().getMap();
     }
     /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+     * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
      */
-    public Builder addPartition(com.pancakedb.idl.PartitionField value) {
-      if (partitionBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensurePartitionIsMutable();
-        partition_.add(value);
-        onChanged();
-      } else {
-        partitionBuilder_.addMessage(value);
-      }
-      return this;
+    @java.lang.Override
+
+    public com.pancakedb.idl.PartitionFieldValue getPartitionOrDefault(
+        java.lang.String key,
+        com.pancakedb.idl.PartitionFieldValue defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue> map =
+          internalGetPartition().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+     * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
      */
-    public Builder addPartition(
-        int index, com.pancakedb.idl.PartitionField value) {
-      if (partitionBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensurePartitionIsMutable();
-        partition_.add(index, value);
-        onChanged();
-      } else {
-        partitionBuilder_.addMessage(index, value);
+    @java.lang.Override
+
+    public com.pancakedb.idl.PartitionFieldValue getPartitionOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue> map =
+          internalGetPartition().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
       }
-      return this;
+      return map.get(key);
     }
-    /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-     */
-    public Builder addPartition(
-        com.pancakedb.idl.PartitionField.Builder builderForValue) {
-      if (partitionBuilder_ == null) {
-        ensurePartitionIsMutable();
-        partition_.add(builderForValue.build());
-        onChanged();
-      } else {
-        partitionBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-     */
-    public Builder addPartition(
-        int index, com.pancakedb.idl.PartitionField.Builder builderForValue) {
-      if (partitionBuilder_ == null) {
-        ensurePartitionIsMutable();
-        partition_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        partitionBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-     */
-    public Builder addAllPartition(
-        java.lang.Iterable<? extends com.pancakedb.idl.PartitionField> values) {
-      if (partitionBuilder_ == null) {
-        ensurePartitionIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, partition_);
-        onChanged();
-      } else {
-        partitionBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-     */
+
     public Builder clearPartition() {
-      if (partitionBuilder_ == null) {
-        partition_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        partitionBuilder_.clear();
-      }
+      internalGetMutablePartition().getMutableMap()
+          .clear();
       return this;
     }
     /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+     * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
      */
-    public Builder removePartition(int index) {
-      if (partitionBuilder_ == null) {
-        ensurePartitionIsMutable();
-        partition_.remove(index);
-        onChanged();
-      } else {
-        partitionBuilder_.remove(index);
-      }
+
+    public Builder removePartition(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutablePartition().getMutableMap()
+          .remove(key);
       return this;
     }
     /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+     * Use alternate mutation accessors instead.
      */
-    public com.pancakedb.idl.PartitionField.Builder getPartitionBuilder(
-        int index) {
-      return getPartitionFieldBuilder().getBuilder(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+    getMutablePartition() {
+      return internalGetMutablePartition().getMutableMap();
     }
     /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+     * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
      */
-    public com.pancakedb.idl.PartitionFieldOrBuilder getPartitionOrBuilder(
-        int index) {
-      if (partitionBuilder_ == null) {
-        return partition_.get(index);  } else {
-        return partitionBuilder_.getMessageOrBuilder(index);
-      }
+    public Builder putPartition(
+        java.lang.String key,
+        com.pancakedb.idl.PartitionFieldValue value) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutablePartition().getMutableMap()
+          .put(key, value);
+      return this;
     }
     /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+     * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
      */
-    public java.util.List<? extends com.pancakedb.idl.PartitionFieldOrBuilder> 
-         getPartitionOrBuilderList() {
-      if (partitionBuilder_ != null) {
-        return partitionBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(partition_);
-      }
-    }
-    /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-     */
-    public com.pancakedb.idl.PartitionField.Builder addPartitionBuilder() {
-      return getPartitionFieldBuilder().addBuilder(
-          com.pancakedb.idl.PartitionField.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-     */
-    public com.pancakedb.idl.PartitionField.Builder addPartitionBuilder(
-        int index) {
-      return getPartitionFieldBuilder().addBuilder(
-          index, com.pancakedb.idl.PartitionField.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-     */
-    public java.util.List<com.pancakedb.idl.PartitionField.Builder> 
-         getPartitionBuilderList() {
-      return getPartitionFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder> 
-        getPartitionFieldBuilder() {
-      if (partitionBuilder_ == null) {
-        partitionBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.pancakedb.idl.PartitionField, com.pancakedb.idl.PartitionField.Builder, com.pancakedb.idl.PartitionFieldOrBuilder>(
-                partition_,
-                ((bitField0_ & 0x00000001) != 0),
-                getParentForChildren(),
-                isClean());
-        partition_ = null;
-      }
-      return partitionBuilder_;
+
+    public Builder putAllPartition(
+        java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue> values) {
+      internalGetMutablePartition().getMutableMap()
+          .putAll(values);
+      return this;
     }
 
     private java.util.List<com.pancakedb.idl.Row> rows_ =

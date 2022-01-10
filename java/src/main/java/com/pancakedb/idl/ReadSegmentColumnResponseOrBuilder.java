@@ -20,32 +20,38 @@ public interface ReadSegmentColumnResponseOrBuilder extends
       getCodecBytes();
 
   /**
-   * <code>bytes compressed_data = 2;</code>
-   * @return The compressedData.
+   * <code>bytes data = 2;</code>
+   * @return The data.
    */
-  com.google.protobuf.ByteString getCompressedData();
+  com.google.protobuf.ByteString getData();
 
   /**
-   * <code>bytes uncompressed_data = 3;</code>
-   * @return The uncompressedData.
+   * <code>uint32 row_count = 3;</code>
+   * @return The rowCount.
    */
-  com.google.protobuf.ByteString getUncompressedData();
+  int getRowCount();
 
   /**
-   * <code>string continuation_token = 4;</code>
+   * <code>uint32 deletion_count = 4;</code>
+   * @return The deletionCount.
+   */
+  int getDeletionCount();
+
+  /**
+   * <code>uint32 implicit_nulls_count = 5;</code>
+   * @return The implicitNullsCount.
+   */
+  int getImplicitNullsCount();
+
+  /**
+   * <code>string continuation_token = 6;</code>
    * @return The continuationToken.
    */
   java.lang.String getContinuationToken();
   /**
-   * <code>string continuation_token = 4;</code>
+   * <code>string continuation_token = 6;</code>
    * @return The bytes for continuationToken.
    */
   com.google.protobuf.ByteString
       getContinuationTokenBytes();
-
-  /**
-   * <code>uint32 row_count = 5;</code>
-   * @return The rowCount.
-   */
-  int getRowCount();
 }

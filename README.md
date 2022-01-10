@@ -39,7 +39,7 @@ curl \
   -XGET \
   -H "Content-Type: application/json" \
   $IP:$PORT/rest/list_segments \
-  -d '{"table_name": "'$TABLE_NAME'"}'
+  -d '{"tableName": "'$TABLE_NAME'"}'
 ```
 
 ## List Tables
@@ -55,7 +55,7 @@ response body format:
 ```
 {
   "tables": [
-    {"table_name": "..."},
+    {"tableName": "..."},
     ...
   ]
 }
@@ -70,7 +70,7 @@ This lists all tables.
 request body format:
 ```
 {
-  "table_name": "...",
+  "tableName": "...",
   "schema": {
     "partitioning": {
       "...": {
@@ -81,12 +81,12 @@ request body format:
     "columns": {
       "...": {
         "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT32" | "FLOAT64" | "TIMESTAMP_MICROS",
-        "nested_list_depth": int
+        "nestedListDepth": int
       },
       ...
     }
   },
-  "schema_mode": "FAIL_IF_EXISTS" | "OK_IF_EXACT" | "ADD_NEW_COLUMNS"
+  "schemaMode": "FAIL_IF_EXISTS" | "OK_IF_EXACT" | "ADD_NEW_COLUMNS"
 }
 ```
 
@@ -138,11 +138,11 @@ time to rethink your data model.
 request body format:
 ```
 {
-  "table_name": "...",
-  "new_columns": {
+  "tableName": "...",
+  "newColumns": {
     "...": {
       "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT32" | "FLOAT64" | "TIMESTAMP_MICROS",
-      "nested_list_depth": int
+      "nestedListDepth": int
     },
     ...
   }
@@ -164,7 +164,7 @@ It will fail if any of the columns already exist.
 request body format:
 ```
 {
-  "table_name": "..."
+  "tableName": "..."
 }
 ```
 
@@ -187,7 +187,7 @@ copying the data over, and dropping the old one.
 request body format:
 ```
 {
-  "table_name": "..."
+  "tableName": "..."
 }
 ```
 
@@ -204,7 +204,7 @@ request response format:
     "columns": {
       "...": {
         "dtype": "STRING" | "INT64" | "BOOL" | "BYTES" | "FLOAT32" | "FLOAT64" | "TIMESTAMP_MICROS",
-        "nested_list_depth": int
+        "nestedListDepth": int
       },
       ...
     }
@@ -219,7 +219,7 @@ request response format:
 request body format:
 ```
 {
-  "table_name": "...",
+  "tableName": "...",
   "partition": {
     "...": {
       "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
@@ -231,7 +231,7 @@ request body format:
       "fields": {
         "...": {
           "value": {
-            "list_val": {"vals": [...]} | "string_val": "..." | "int64_val": int | "bool_val": bool | "bytes_val": [...] | "float64_val": float | "timestamp_val": "1970-01-01T00:00:00.000Z"
+            "listVal": {"vals": [...]} | "stringVal": "..." | "int64Val": int | "boolVal": bool | "bytes_val": [...] | "float64Val": float | "timestampVal": "1970-01-01T00:00:00.000Z"
           }
         },
         ...
@@ -261,7 +261,7 @@ its simpler JSON request.
 request body format:
 ```
 {
-  "table_name": "...",
+  "tableName": "...",
   "partition": {
     "...": <value>,
     ...
@@ -285,7 +285,8 @@ For example, a valid row would be
 ```
 {
   "my_int_col": 33,
-  "my_nested_string_col": ["foo", "bar"]
+  "my_nested_string_col": ["foo", "bar"],
+  "my_timestamp_col": {"timestamp": "2022-01-01T00:00:00Z"}
 }
 ```
 
@@ -296,22 +297,22 @@ For example, a valid row would be
 request body format
 ```
 {
-  "table_name": "...",
+  "tableName": "...",
   "partition": {
     "...": {
-      "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
+      "stringVal": "..." | "int64Val": int | "boolVal": bool | "timestampVal": "1970-01-01T00:00:00.000Z"
     },
     ...
   ],
-  "segment_id": "...",
-  "row_ids": [int, ...]
+  "segmentId": "...",
+  "rowIds": [int, ...]
 }
 ```
 
 response body format
 ```
 {
-  "n_deleted": int
+  "nDeleted": int
 }
 ```
 
@@ -333,21 +334,21 @@ in order to get an accurate view of the data.
 request body format:
 ```
 {
-  "table_name": "...",
-  "partition_filter": [
+  "tableName": "...",
+  "partitionFilter": [
     {
       "value: {
         "comparison": {
           "name": "...",
           "operator": "EQ_TO" | "LESS" | "LESS_OR_EQ_TO" | "GREATER" | "GREATER_OR_EQ_TO",
           "value": {
-            "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
+            "stringVal": "..." | "int64Val": int | "boolVal": bool | "timestampVal": "1970-01-01T00:00:00.000Z"
           }
         }
       }
     }
   ],
-  "include_metadata": bool
+  "includeMetadata": bool
 }
 ```
 
@@ -358,13 +359,13 @@ response body format:
     {
       "partition": {
         "...": {
-          "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
+          "stringVal": "..." | "int64Val": int | "boolVal": bool | "timestampVal": "1970-01-01T00:00:00.000Z"
         },
         ...
       ],
-      "segment_id": "...",
-      (if include_metadata) "metadata": {
-        "row_count": int
+      "segmentId": "...",
+      (if includeMetadata) "metadata": {
+        "rowCount": int
       }
     }
   ]
@@ -388,17 +389,17 @@ In the future, it will likely:
 request body format
 ```
 {
-  "table_name": "...",
+  "tableName": "...",
   "partition": {
     "...": {
-      "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
+      "stringVal": "..." | "int64Val": int | "boolVal": bool | "timestampVal": "1970-01-01T00:00:00.000Z"
     },
     ...
   ],
-  "segment_id": "...",
-  "column_name": "...",
-  "correlation_id": "...",
-  "continuation_token: "..."
+  "segmentId": "...",
+  "columnName": "...",
+  "correlationId": "...",
+  "continuationToken: "..."
 }
 ```
 
@@ -406,9 +407,9 @@ response body format
 ```
 {
   "codec": "...",
-  "row_count": int,
-  "implicit_nulls_count: int,
-  "continuation_token": "..."
+  "rowCount": int,
+  "implicitNullsCount: int,
+  "continuationToken": "..."
 }
 <newline character>
 <byte data>
@@ -424,7 +425,7 @@ continuation token (for each following request) is required.
 You should use the same correlation ID you are using for the segment's deletions
 (see below) and other columns.
 
-If a non-empty `continuation_token` is returned, you must make another request
+If a non-empty `continuationToken` is returned, you must make another request
 with that continuation token (and so forth) until you have collected all the
 compressed and uncompressed data for the segment column.
 
@@ -440,15 +441,15 @@ rows.
 request body format
 ```
 {
-  "table_name": "...",
+  "tableName": "...",
   "partition": {
     "...": {
-      "string_val": "..." | "int64_val": int | "bool_val": bool | "timestamp_val": "1970-01-01T00:00:00.000Z"
+      "stringVal": "..." | "int64Val": int | "boolVal": bool | "timestampVal": "1970-01-01T00:00:00.000Z"
     },
     ...
   ],
-  "segment_id": "...",
-  "correlation_id": "..."
+  "segmentId": "...",
+  "correlationId": "..."
 }
 ```
 

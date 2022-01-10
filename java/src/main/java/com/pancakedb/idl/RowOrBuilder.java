@@ -8,26 +8,36 @@ public interface RowOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .protos.dml.Field fields = 1;</code>
-   */
-  java.util.List<com.pancakedb.idl.Field> 
-      getFieldsList();
-  /**
-   * <code>repeated .protos.dml.Field fields = 1;</code>
-   */
-  com.pancakedb.idl.Field getFields(int index);
-  /**
-   * <code>repeated .protos.dml.Field fields = 1;</code>
+   * <code>map&lt;string, .protos.dml.FieldValue&gt; fields = 1;</code>
    */
   int getFieldsCount();
   /**
-   * <code>repeated .protos.dml.Field fields = 1;</code>
+   * <code>map&lt;string, .protos.dml.FieldValue&gt; fields = 1;</code>
    */
-  java.util.List<? extends com.pancakedb.idl.FieldOrBuilder> 
-      getFieldsOrBuilderList();
+  boolean containsFields(
+      java.lang.String key);
   /**
-   * <code>repeated .protos.dml.Field fields = 1;</code>
+   * Use {@link #getFieldsMap()} instead.
    */
-  com.pancakedb.idl.FieldOrBuilder getFieldsOrBuilder(
-      int index);
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, com.pancakedb.idl.FieldValue>
+  getFields();
+  /**
+   * <code>map&lt;string, .protos.dml.FieldValue&gt; fields = 1;</code>
+   */
+  java.util.Map<java.lang.String, com.pancakedb.idl.FieldValue>
+  getFieldsMap();
+  /**
+   * <code>map&lt;string, .protos.dml.FieldValue&gt; fields = 1;</code>
+   */
+
+  com.pancakedb.idl.FieldValue getFieldsOrDefault(
+      java.lang.String key,
+      com.pancakedb.idl.FieldValue defaultValue);
+  /**
+   * <code>map&lt;string, .protos.dml.FieldValue&gt; fields = 1;</code>
+   */
+
+  com.pancakedb.idl.FieldValue getFieldsOrThrow(
+      java.lang.String key);
 }

@@ -15,20 +15,15 @@ public final class Dml {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protos_dml_PartitionField_descriptor;
+    internal_static_protos_dml_PartitionFieldValue_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protos_dml_PartitionField_fieldAccessorTable;
+      internal_static_protos_dml_PartitionFieldValue_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protos_dml_RepeatedFieldValue_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protos_dml_RepeatedFieldValue_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protos_dml_Field_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protos_dml_Field_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protos_dml_FieldValue_descriptor;
   static final 
@@ -40,15 +35,30 @@ public final class Dml {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protos_dml_Row_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_Row_FieldsEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_Row_FieldsEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protos_dml_WriteToPartitionRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protos_dml_WriteToPartitionRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_WriteToPartitionRequest_PartitionEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_WriteToPartitionRequest_PartitionEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protos_dml_WriteToPartitionResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protos_dml_WriteToPartitionResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_PartitionFieldComparison_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_PartitionFieldComparison_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protos_dml_PartitionFilter_descriptor;
   static final 
@@ -70,6 +80,11 @@ public final class Dml {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protos_dml_Segment_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_Segment_PartitionEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_Segment_PartitionEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protos_dml_ListSegmentsResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -80,10 +95,45 @@ public final class Dml {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protos_dml_ReadSegmentColumnRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_ReadSegmentColumnRequest_PartitionEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_ReadSegmentColumnRequest_PartitionEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protos_dml_ReadSegmentColumnResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protos_dml_ReadSegmentColumnResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_ReadSegmentDeletionsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_ReadSegmentDeletionsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_ReadSegmentDeletionsRequest_PartitionEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_ReadSegmentDeletionsRequest_PartitionEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_ReadSegmentDeletionsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_ReadSegmentDeletionsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_DeleteFromSegmentRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_DeleteFromSegmentRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_DeleteFromSegmentRequest_PartitionEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_DeleteFromSegmentRequest_PartitionEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protos_dml_DeleteFromSegmentResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protos_dml_DeleteFromSegmentResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -94,104 +144,140 @@ public final class Dml {
   static {
     java.lang.String[] descriptorData = {
       "\n\tdml.proto\022\nprotos.dml\032\037google/protobuf" +
-      "/timestamp.proto\"\233\001\n\016PartitionField\022\014\n\004n" +
-      "ame\030\001 \001(\t\022\024\n\nstring_val\030\002 \001(\tH\000\022\023\n\tint64" +
-      "_val\030\003 \001(\003H\000\022\022\n\010bool_val\030\004 \001(\010H\000\0223\n\rtime" +
-      "stamp_val\030\005 \001(\0132\032.google.protobuf.Timest" +
-      "ampH\000B\007\n\005value\":\n\022RepeatedFieldValue\022$\n\004" +
-      "vals\030\001 \003(\0132\026.protos.dml.FieldValue\"<\n\005Fi" +
-      "eld\022\014\n\004name\030\001 \001(\t\022%\n\005value\030\002 \001(\0132\026.proto" +
-      "s.dml.FieldValue\"\351\001\n\nFieldValue\0222\n\010list_" +
-      "val\030\001 \001(\0132\036.protos.dml.RepeatedFieldValu" +
-      "eH\000\022\024\n\nstring_val\030\002 \001(\tH\000\022\023\n\tint64_val\030\003" +
-      " \001(\003H\000\022\022\n\010bool_val\030\004 \001(\010H\000\022\023\n\tbytes_val\030" +
-      "\005 \001(\014H\000\022\025\n\013float64_val\030\006 \001(\001H\000\0223\n\rtimest" +
-      "amp_val\030\007 \001(\0132\032.google.protobuf.Timestam" +
-      "pH\000B\007\n\005value\"(\n\003Row\022!\n\006fields\030\001 \003(\0132\021.pr" +
-      "otos.dml.Field\"{\n\027WriteToPartitionReques" +
-      "t\022\022\n\ntable_name\030\001 \001(\t\022-\n\tpartition\030\002 \003(\013" +
-      "2\032.protos.dml.PartitionField\022\035\n\004rows\030\003 \003" +
-      "(\0132\017.protos.dml.Row\"\032\n\030WriteToPartitionR" +
-      "esponse\"\234\002\n\017PartitionFilter\022.\n\010equal_to\030" +
-      "\001 \001(\0132\032.protos.dml.PartitionFieldH\000\0223\n\rl" +
-      "ess_or_eq_to\030\002 \001(\0132\032.protos.dml.Partitio" +
-      "nFieldH\000\022/\n\tless_than\030\003 \001(\0132\032.protos.dml" +
-      ".PartitionFieldH\000\0226\n\020greater_or_eq_to\030\004 " +
-      "\001(\0132\032.protos.dml.PartitionFieldH\000\0222\n\014gre" +
-      "ater_than\030\005 \001(\0132\032.protos.dml.PartitionFi" +
-      "eldH\000B\007\n\005value\"z\n\023ListSegmentsRequest\022\022\n" +
-      "\ntable_name\030\001 \001(\t\0225\n\020partition_filter\030\002 " +
-      "\003(\0132\033.protos.dml.PartitionFilter\022\030\n\020incl" +
-      "ude_metadata\030\003 \001(\010\"8\n\017SegmentMetadata\022\r\n" +
-      "\005count\030\001 \001(\r\022\026\n\016latest_version\030\002 \001(\004\"{\n\007" +
-      "Segment\022-\n\tpartition\030\001 \003(\0132\032.protos.dml." +
-      "PartitionField\022\022\n\nsegment_id\030\002 \001(\t\022-\n\010me" +
-      "tadata\030\003 \001(\0132\033.protos.dml.SegmentMetadat" +
-      "a\"=\n\024ListSegmentsResponse\022%\n\010segments\030\001 " +
-      "\003(\0132\023.protos.dml.Segment\"\242\001\n\030ReadSegment" +
-      "ColumnRequest\022\022\n\ntable_name\030\001 \001(\t\022-\n\tpar" +
-      "tition\030\002 \003(\0132\032.protos.dml.PartitionField" +
-      "\022\022\n\nsegment_id\030\003 \001(\t\022\023\n\013column_name\030\004 \001(" +
-      "\t\022\032\n\022continuation_token\030\005 \001(\t\"\215\001\n\031ReadSe" +
-      "gmentColumnResponse\022\r\n\005codec\030\001 \001(\t\022\027\n\017co" +
-      "mpressed_data\030\002 \001(\014\022\031\n\021uncompressed_data" +
-      "\030\003 \001(\014\022\032\n\022continuation_token\030\004 \001(\t\022\021\n\tro" +
-      "w_count\030\005 \001(\rB\025\n\021com.pancakedb.idlP\001b\006pr" +
-      "oto3"
+      "/timestamp.proto\"\222\001\n\023PartitionFieldValue" +
+      "\022\024\n\nstring_val\030\002 \001(\tH\000\022\022\n\010bool_val\030\003 \001(\010" +
+      "H\000\022\023\n\tint64_val\030\004 \001(\003H\000\0223\n\rtimestamp_val" +
+      "\030\005 \001(\0132\032.google.protobuf.TimestampH\000B\007\n\005" +
+      "value\":\n\022RepeatedFieldValue\022$\n\004vals\030\001 \003(" +
+      "\0132\026.protos.dml.FieldValue\"\200\002\n\nFieldValue" +
+      "\0222\n\010list_val\030\001 \001(\0132\036.protos.dml.Repeated" +
+      "FieldValueH\000\022\024\n\nstring_val\030\002 \001(\tH\000\022\022\n\010bo" +
+      "ol_val\030\003 \001(\010H\000\022\023\n\tbytes_val\030\004 \001(\014H\000\022\023\n\ti" +
+      "nt64_val\030\005 \001(\003H\000\022\025\n\013float32_val\030\006 \001(\002H\000\022" +
+      "\025\n\013float64_val\030\007 \001(\001H\000\0223\n\rtimestamp_val\030" +
+      "\010 \001(\0132\032.google.protobuf.TimestampH\000B\007\n\005v" +
+      "alue\"y\n\003Row\022+\n\006fields\030\001 \003(\0132\033.protos.dml" +
+      ".Row.FieldsEntry\032E\n\013FieldsEntry\022\013\n\003key\030\001" +
+      " \001(\t\022%\n\005value\030\002 \001(\0132\026.protos.dml.FieldVa" +
+      "lue:\0028\001\"\346\001\n\027WriteToPartitionRequest\022\022\n\nt" +
+      "able_name\030\001 \001(\t\022E\n\tpartition\030\002 \003(\01322.pro" +
+      "tos.dml.WriteToPartitionRequest.Partitio" +
+      "nEntry\022\035\n\004rows\030\003 \003(\0132\017.protos.dml.Row\032Q\n" +
+      "\016PartitionEntry\022\013\n\003key\030\001 \001(\t\022.\n\005value\030\002 " +
+      "\001(\0132\037.protos.dml.PartitionFieldValue:\0028\001" +
+      "\"\032\n\030WriteToPartitionResponse\"\360\001\n\030Partiti" +
+      "onFieldComparison\022\014\n\004name\030\001 \001(\t\022?\n\010opera" +
+      "tor\030\002 \001(\0162-.protos.dml.PartitionFieldCom" +
+      "parison.Operator\022.\n\005value\030\003 \001(\0132\037.protos" +
+      ".dml.PartitionFieldValue\"U\n\010Operator\022\t\n\005" +
+      "EQ_TO\020\000\022\021\n\rLESS_OR_EQ_TO\020\001\022\010\n\004LESS\020\002\022\024\n\020" +
+      "GREATER_OR_EQ_TO\020\003\022\013\n\007GREATER\020\004\"V\n\017Parti" +
+      "tionFilter\022:\n\ncomparison\030\001 \001(\0132$.protos." +
+      "dml.PartitionFieldComparisonH\000B\007\n\005value\"" +
+      "z\n\023ListSegmentsRequest\022\022\n\ntable_name\030\001 \001" +
+      "(\t\0225\n\020partition_filter\030\002 \003(\0132\033.protos.dm" +
+      "l.PartitionFilter\022\030\n\020include_metadata\030\003 " +
+      "\001(\010\"$\n\017SegmentMetadata\022\021\n\trow_count\030\001 \001(" +
+      "\r\"\326\001\n\007Segment\0225\n\tpartition\030\001 \003(\0132\".proto" +
+      "s.dml.Segment.PartitionEntry\022\022\n\nsegment_" +
+      "id\030\002 \001(\t\022-\n\010metadata\030\003 \001(\0132\033.protos.dml." +
+      "SegmentMetadata\032Q\n\016PartitionEntry\022\013\n\003key" +
+      "\030\001 \001(\t\022.\n\005value\030\002 \001(\0132\037.protos.dml.Parti" +
+      "tionFieldValue:\0028\001\"=\n\024ListSegmentsRespon" +
+      "se\022%\n\010segments\030\001 \003(\0132\023.protos.dml.Segmen" +
+      "t\"\246\002\n\030ReadSegmentColumnRequest\022\022\n\ntable_" +
+      "name\030\001 \001(\t\022F\n\tpartition\030\002 \003(\01323.protos.d" +
+      "ml.ReadSegmentColumnRequest.PartitionEnt" +
+      "ry\022\022\n\nsegment_id\030\003 \001(\t\022\023\n\013column_name\030\004 " +
+      "\001(\t\022\026\n\016correlation_id\030\005 \001(\t\022\032\n\022continuat" +
+      "ion_token\030\006 \001(\t\032Q\n\016PartitionEntry\022\013\n\003key" +
+      "\030\001 \001(\t\022.\n\005value\030\002 \001(\0132\037.protos.dml.Parti" +
+      "tionFieldValue:\0028\001\"\235\001\n\031ReadSegmentColumn" +
+      "Response\022\r\n\005codec\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\022\021\n" +
+      "\trow_count\030\003 \001(\r\022\026\n\016deletion_count\030\004 \001(\r" +
+      "\022\034\n\024implicit_nulls_count\030\005 \001(\r\022\032\n\022contin" +
+      "uation_token\030\006 \001(\t\"\373\001\n\033ReadSegmentDeleti" +
+      "onsRequest\022\022\n\ntable_name\030\001 \001(\t\022I\n\tpartit" +
+      "ion\030\002 \003(\01326.protos.dml.ReadSegmentDeleti" +
+      "onsRequest.PartitionEntry\022\022\n\nsegment_id\030" +
+      "\003 \001(\t\022\026\n\016correlation_id\030\004 \001(\t\032Q\n\016Partiti" +
+      "onEntry\022\013\n\003key\030\001 \001(\t\022.\n\005value\030\002 \001(\0132\037.pr" +
+      "otos.dml.PartitionFieldValue:\0028\001\",\n\034Read" +
+      "SegmentDeletionsResponse\022\014\n\004data\030\001 \001(\014\"\356" +
+      "\001\n\030DeleteFromSegmentRequest\022\022\n\ntable_nam" +
+      "e\030\001 \001(\t\022F\n\tpartition\030\002 \003(\01323.protos.dml." +
+      "DeleteFromSegmentRequest.PartitionEntry\022" +
+      "\022\n\nsegment_id\030\003 \001(\t\022\017\n\007row_ids\030\004 \003(\r\032Q\n\016" +
+      "PartitionEntry\022\013\n\003key\030\001 \001(\t\022.\n\005value\030\002 \001" +
+      "(\0132\037.protos.dml.PartitionFieldValue:\0028\001\"" +
+      ".\n\031DeleteFromSegmentResponse\022\021\n\tn_delete" +
+      "d\030\001 \001(\rB\025\n\021com.pancakedb.idlP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
         });
-    internal_static_protos_dml_PartitionField_descriptor =
+    internal_static_protos_dml_PartitionFieldValue_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_protos_dml_PartitionField_fieldAccessorTable = new
+    internal_static_protos_dml_PartitionFieldValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protos_dml_PartitionField_descriptor,
-        new java.lang.String[] { "Name", "StringVal", "Int64Val", "BoolVal", "TimestampVal", "Value", });
+        internal_static_protos_dml_PartitionFieldValue_descriptor,
+        new java.lang.String[] { "StringVal", "BoolVal", "Int64Val", "TimestampVal", "Value", });
     internal_static_protos_dml_RepeatedFieldValue_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_protos_dml_RepeatedFieldValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_RepeatedFieldValue_descriptor,
         new java.lang.String[] { "Vals", });
-    internal_static_protos_dml_Field_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_protos_dml_Field_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protos_dml_Field_descriptor,
-        new java.lang.String[] { "Name", "Value", });
     internal_static_protos_dml_FieldValue_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_protos_dml_FieldValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_FieldValue_descriptor,
-        new java.lang.String[] { "ListVal", "StringVal", "Int64Val", "BoolVal", "BytesVal", "Float64Val", "TimestampVal", "Value", });
+        new java.lang.String[] { "ListVal", "StringVal", "BoolVal", "BytesVal", "Int64Val", "Float32Val", "Float64Val", "TimestampVal", "Value", });
     internal_static_protos_dml_Row_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_protos_dml_Row_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_Row_descriptor,
         new java.lang.String[] { "Fields", });
+    internal_static_protos_dml_Row_FieldsEntry_descriptor =
+      internal_static_protos_dml_Row_descriptor.getNestedTypes().get(0);
+    internal_static_protos_dml_Row_FieldsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_Row_FieldsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_protos_dml_WriteToPartitionRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_protos_dml_WriteToPartitionRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_WriteToPartitionRequest_descriptor,
         new java.lang.String[] { "TableName", "Partition", "Rows", });
+    internal_static_protos_dml_WriteToPartitionRequest_PartitionEntry_descriptor =
+      internal_static_protos_dml_WriteToPartitionRequest_descriptor.getNestedTypes().get(0);
+    internal_static_protos_dml_WriteToPartitionRequest_PartitionEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_WriteToPartitionRequest_PartitionEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_protos_dml_WriteToPartitionResponse_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_protos_dml_WriteToPartitionResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_WriteToPartitionResponse_descriptor,
         new java.lang.String[] { });
+    internal_static_protos_dml_PartitionFieldComparison_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_protos_dml_PartitionFieldComparison_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_PartitionFieldComparison_descriptor,
+        new java.lang.String[] { "Name", "Operator", "Value", });
     internal_static_protos_dml_PartitionFilter_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_protos_dml_PartitionFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_PartitionFilter_descriptor,
-        new java.lang.String[] { "EqualTo", "LessOrEqTo", "LessThan", "GreaterOrEqTo", "GreaterThan", "Value", });
+        new java.lang.String[] { "Comparison", "Value", });
     internal_static_protos_dml_ListSegmentsRequest_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_protos_dml_ListSegmentsRequest_fieldAccessorTable = new
@@ -203,13 +289,19 @@ public final class Dml {
     internal_static_protos_dml_SegmentMetadata_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_SegmentMetadata_descriptor,
-        new java.lang.String[] { "Count", "LatestVersion", });
+        new java.lang.String[] { "RowCount", });
     internal_static_protos_dml_Segment_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_protos_dml_Segment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_Segment_descriptor,
         new java.lang.String[] { "Partition", "SegmentId", "Metadata", });
+    internal_static_protos_dml_Segment_PartitionEntry_descriptor =
+      internal_static_protos_dml_Segment_descriptor.getNestedTypes().get(0);
+    internal_static_protos_dml_Segment_PartitionEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_Segment_PartitionEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_protos_dml_ListSegmentsResponse_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_protos_dml_ListSegmentsResponse_fieldAccessorTable = new
@@ -221,13 +313,55 @@ public final class Dml {
     internal_static_protos_dml_ReadSegmentColumnRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_ReadSegmentColumnRequest_descriptor,
-        new java.lang.String[] { "TableName", "Partition", "SegmentId", "ColumnName", "ContinuationToken", });
+        new java.lang.String[] { "TableName", "Partition", "SegmentId", "ColumnName", "CorrelationId", "ContinuationToken", });
+    internal_static_protos_dml_ReadSegmentColumnRequest_PartitionEntry_descriptor =
+      internal_static_protos_dml_ReadSegmentColumnRequest_descriptor.getNestedTypes().get(0);
+    internal_static_protos_dml_ReadSegmentColumnRequest_PartitionEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_ReadSegmentColumnRequest_PartitionEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_protos_dml_ReadSegmentColumnResponse_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_protos_dml_ReadSegmentColumnResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_dml_ReadSegmentColumnResponse_descriptor,
-        new java.lang.String[] { "Codec", "CompressedData", "UncompressedData", "ContinuationToken", "RowCount", });
+        new java.lang.String[] { "Codec", "Data", "RowCount", "DeletionCount", "ImplicitNullsCount", "ContinuationToken", });
+    internal_static_protos_dml_ReadSegmentDeletionsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_protos_dml_ReadSegmentDeletionsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_ReadSegmentDeletionsRequest_descriptor,
+        new java.lang.String[] { "TableName", "Partition", "SegmentId", "CorrelationId", });
+    internal_static_protos_dml_ReadSegmentDeletionsRequest_PartitionEntry_descriptor =
+      internal_static_protos_dml_ReadSegmentDeletionsRequest_descriptor.getNestedTypes().get(0);
+    internal_static_protos_dml_ReadSegmentDeletionsRequest_PartitionEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_ReadSegmentDeletionsRequest_PartitionEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_protos_dml_ReadSegmentDeletionsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_protos_dml_ReadSegmentDeletionsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_ReadSegmentDeletionsResponse_descriptor,
+        new java.lang.String[] { "Data", });
+    internal_static_protos_dml_DeleteFromSegmentRequest_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_protos_dml_DeleteFromSegmentRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_DeleteFromSegmentRequest_descriptor,
+        new java.lang.String[] { "TableName", "Partition", "SegmentId", "RowIds", });
+    internal_static_protos_dml_DeleteFromSegmentRequest_PartitionEntry_descriptor =
+      internal_static_protos_dml_DeleteFromSegmentRequest_descriptor.getNestedTypes().get(0);
+    internal_static_protos_dml_DeleteFromSegmentRequest_PartitionEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_DeleteFromSegmentRequest_PartitionEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_protos_dml_DeleteFromSegmentResponse_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_protos_dml_DeleteFromSegmentResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protos_dml_DeleteFromSegmentResponse_descriptor,
+        new java.lang.String[] { "NDeleted", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

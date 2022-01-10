@@ -120,6 +120,10 @@ private static final long serialVersionUID = 0L;
      * <code>OK_IF_EXACT = 1;</code>
      */
     OK_IF_EXACT(1),
+    /**
+     * <code>ADD_NEW_COLUMNS = 2;</code>
+     */
+    ADD_NEW_COLUMNS(2),
     UNRECOGNIZED(-1),
     ;
 
@@ -131,6 +135,10 @@ private static final long serialVersionUID = 0L;
      * <code>OK_IF_EXACT = 1;</code>
      */
     public static final int OK_IF_EXACT_VALUE = 1;
+    /**
+     * <code>ADD_NEW_COLUMNS = 2;</code>
+     */
+    public static final int ADD_NEW_COLUMNS_VALUE = 2;
 
 
     public final int getNumber() {
@@ -159,6 +167,7 @@ private static final long serialVersionUID = 0L;
       switch (value) {
         case 0: return FAIL_IF_EXISTS;
         case 1: return OK_IF_EXACT;
+        case 2: return ADD_NEW_COLUMNS;
         default: return null;
       }
     }

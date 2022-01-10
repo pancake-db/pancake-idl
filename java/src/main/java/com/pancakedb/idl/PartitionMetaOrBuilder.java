@@ -8,18 +8,6 @@ public interface PartitionMetaOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string name = 1;</code>
-   * @return The name.
-   */
-  java.lang.String getName();
-  /**
-   * <code>string name = 1;</code>
-   * @return The bytes for name.
-   */
-  com.google.protobuf.ByteString
-      getNameBytes();
-
-  /**
    * <code>.protos.partition_dtype.PartitionDataType dtype = 2;</code>
    * @return The enum numeric value on the wire for dtype.
    */

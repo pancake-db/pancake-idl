@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private CreateTableResponse() {
+    columnsAdded_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -38,6 +39,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -51,6 +53,15 @@ private static final long serialVersionUID = 0L;
           case 8: {
 
             alreadyExists_ = input.readBool();
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              columnsAdded_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            columnsAdded_.add(s);
             break;
           }
           default: {
@@ -68,6 +79,9 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        columnsAdded_ = columnsAdded_.getUnmodifiableView();
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -96,6 +110,41 @@ private static final long serialVersionUID = 0L;
     return alreadyExists_;
   }
 
+  public static final int COLUMNS_ADDED_FIELD_NUMBER = 2;
+  private com.google.protobuf.LazyStringList columnsAdded_;
+  /**
+   * <code>repeated string columns_added = 2;</code>
+   * @return A list containing the columnsAdded.
+   */
+  public com.google.protobuf.ProtocolStringList
+      getColumnsAddedList() {
+    return columnsAdded_;
+  }
+  /**
+   * <code>repeated string columns_added = 2;</code>
+   * @return The count of columnsAdded.
+   */
+  public int getColumnsAddedCount() {
+    return columnsAdded_.size();
+  }
+  /**
+   * <code>repeated string columns_added = 2;</code>
+   * @param index The index of the element to return.
+   * @return The columnsAdded at the given index.
+   */
+  public java.lang.String getColumnsAdded(int index) {
+    return columnsAdded_.get(index);
+  }
+  /**
+   * <code>repeated string columns_added = 2;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the columnsAdded at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getColumnsAddedBytes(int index) {
+    return columnsAdded_.getByteString(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -113,6 +162,9 @@ private static final long serialVersionUID = 0L;
     if (alreadyExists_ != false) {
       output.writeBool(1, alreadyExists_);
     }
+    for (int i = 0; i < columnsAdded_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, columnsAdded_.getRaw(i));
+    }
     unknownFields.writeTo(output);
   }
 
@@ -125,6 +177,14 @@ private static final long serialVersionUID = 0L;
     if (alreadyExists_ != false) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(1, alreadyExists_);
+    }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < columnsAdded_.size(); i++) {
+        dataSize += computeStringSizeNoTag(columnsAdded_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getColumnsAddedList().size();
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -143,6 +203,8 @@ private static final long serialVersionUID = 0L;
 
     if (getAlreadyExists()
         != other.getAlreadyExists()) return false;
+    if (!getColumnsAddedList()
+        .equals(other.getColumnsAddedList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -157,6 +219,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ALREADY_EXISTS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getAlreadyExists());
+    if (getColumnsAddedCount() > 0) {
+      hash = (37 * hash) + COLUMNS_ADDED_FIELD_NUMBER;
+      hash = (53 * hash) + getColumnsAddedList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -292,6 +358,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       alreadyExists_ = false;
 
+      columnsAdded_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -318,7 +386,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.pancakedb.idl.CreateTableResponse buildPartial() {
       com.pancakedb.idl.CreateTableResponse result = new com.pancakedb.idl.CreateTableResponse(this);
+      int from_bitField0_ = bitField0_;
       result.alreadyExists_ = alreadyExists_;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        columnsAdded_ = columnsAdded_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.columnsAdded_ = columnsAdded_;
       onBuilt();
       return result;
     }
@@ -370,6 +444,16 @@ private static final long serialVersionUID = 0L;
       if (other.getAlreadyExists() != false) {
         setAlreadyExists(other.getAlreadyExists());
       }
+      if (!other.columnsAdded_.isEmpty()) {
+        if (columnsAdded_.isEmpty()) {
+          columnsAdded_ = other.columnsAdded_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensureColumnsAddedIsMutable();
+          columnsAdded_.addAll(other.columnsAdded_);
+        }
+        onChanged();
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -398,6 +482,7 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
 
     private boolean alreadyExists_ ;
     /**
@@ -426,6 +511,116 @@ private static final long serialVersionUID = 0L;
     public Builder clearAlreadyExists() {
       
       alreadyExists_ = false;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.LazyStringList columnsAdded_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private void ensureColumnsAddedIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        columnsAdded_ = new com.google.protobuf.LazyStringArrayList(columnsAdded_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+    /**
+     * <code>repeated string columns_added = 2;</code>
+     * @return A list containing the columnsAdded.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getColumnsAddedList() {
+      return columnsAdded_.getUnmodifiableView();
+    }
+    /**
+     * <code>repeated string columns_added = 2;</code>
+     * @return The count of columnsAdded.
+     */
+    public int getColumnsAddedCount() {
+      return columnsAdded_.size();
+    }
+    /**
+     * <code>repeated string columns_added = 2;</code>
+     * @param index The index of the element to return.
+     * @return The columnsAdded at the given index.
+     */
+    public java.lang.String getColumnsAdded(int index) {
+      return columnsAdded_.get(index);
+    }
+    /**
+     * <code>repeated string columns_added = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the columnsAdded at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getColumnsAddedBytes(int index) {
+      return columnsAdded_.getByteString(index);
+    }
+    /**
+     * <code>repeated string columns_added = 2;</code>
+     * @param index The index to set the value at.
+     * @param value The columnsAdded to set.
+     * @return This builder for chaining.
+     */
+    public Builder setColumnsAdded(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureColumnsAddedIsMutable();
+      columnsAdded_.set(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string columns_added = 2;</code>
+     * @param value The columnsAdded to add.
+     * @return This builder for chaining.
+     */
+    public Builder addColumnsAdded(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureColumnsAddedIsMutable();
+      columnsAdded_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string columns_added = 2;</code>
+     * @param values The columnsAdded to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllColumnsAdded(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureColumnsAddedIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, columnsAdded_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string columns_added = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearColumnsAdded() {
+      columnsAdded_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string columns_added = 2;</code>
+     * @param value The bytes of the columnsAdded to add.
+     * @return This builder for chaining.
+     */
+    public Builder addColumnsAddedBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureColumnsAddedIsMutable();
+      columnsAdded_.add(value);
       onChanged();
       return this;
     }

@@ -8,28 +8,38 @@ public interface SegmentOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .protos.dml.PartitionField partition = 1;</code>
-   */
-  java.util.List<com.pancakedb.idl.PartitionField> 
-      getPartitionList();
-  /**
-   * <code>repeated .protos.dml.PartitionField partition = 1;</code>
-   */
-  com.pancakedb.idl.PartitionField getPartition(int index);
-  /**
-   * <code>repeated .protos.dml.PartitionField partition = 1;</code>
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 1;</code>
    */
   int getPartitionCount();
   /**
-   * <code>repeated .protos.dml.PartitionField partition = 1;</code>
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 1;</code>
    */
-  java.util.List<? extends com.pancakedb.idl.PartitionFieldOrBuilder> 
-      getPartitionOrBuilderList();
+  boolean containsPartition(
+      java.lang.String key);
   /**
-   * <code>repeated .protos.dml.PartitionField partition = 1;</code>
+   * Use {@link #getPartitionMap()} instead.
    */
-  com.pancakedb.idl.PartitionFieldOrBuilder getPartitionOrBuilder(
-      int index);
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+  getPartition();
+  /**
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 1;</code>
+   */
+  java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+  getPartitionMap();
+  /**
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 1;</code>
+   */
+
+  com.pancakedb.idl.PartitionFieldValue getPartitionOrDefault(
+      java.lang.String key,
+      com.pancakedb.idl.PartitionFieldValue defaultValue);
+  /**
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 1;</code>
+   */
+
+  com.pancakedb.idl.PartitionFieldValue getPartitionOrThrow(
+      java.lang.String key);
 
   /**
    * <code>string segment_id = 2;</code>

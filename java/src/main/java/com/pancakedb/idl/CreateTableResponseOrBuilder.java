@@ -12,4 +12,29 @@ public interface CreateTableResponseOrBuilder extends
    * @return The alreadyExists.
    */
   boolean getAlreadyExists();
+
+  /**
+   * <code>repeated string columns_added = 2;</code>
+   * @return A list containing the columnsAdded.
+   */
+  java.util.List<java.lang.String>
+      getColumnsAddedList();
+  /**
+   * <code>repeated string columns_added = 2;</code>
+   * @return The count of columnsAdded.
+   */
+  int getColumnsAddedCount();
+  /**
+   * <code>repeated string columns_added = 2;</code>
+   * @param index The index of the element to return.
+   * @return The columnsAdded at the given index.
+   */
+  java.lang.String getColumnsAdded(int index);
+  /**
+   * <code>repeated string columns_added = 2;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the columnsAdded at the given index.
+   */
+  com.google.protobuf.ByteString
+      getColumnsAddedBytes(int index);
 }

@@ -8,79 +8,19 @@ public interface PartitionFilterOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.protos.dml.PartitionField equal_to = 1;</code>
-   * @return Whether the equalTo field is set.
+   * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
+   * @return Whether the comparison field is set.
    */
-  boolean hasEqualTo();
+  boolean hasComparison();
   /**
-   * <code>.protos.dml.PartitionField equal_to = 1;</code>
-   * @return The equalTo.
+   * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
+   * @return The comparison.
    */
-  com.pancakedb.idl.PartitionField getEqualTo();
+  com.pancakedb.idl.PartitionFieldComparison getComparison();
   /**
-   * <code>.protos.dml.PartitionField equal_to = 1;</code>
+   * <code>.protos.dml.PartitionFieldComparison comparison = 1;</code>
    */
-  com.pancakedb.idl.PartitionFieldOrBuilder getEqualToOrBuilder();
-
-  /**
-   * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-   * @return Whether the lessOrEqTo field is set.
-   */
-  boolean hasLessOrEqTo();
-  /**
-   * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-   * @return The lessOrEqTo.
-   */
-  com.pancakedb.idl.PartitionField getLessOrEqTo();
-  /**
-   * <code>.protos.dml.PartitionField less_or_eq_to = 2;</code>
-   */
-  com.pancakedb.idl.PartitionFieldOrBuilder getLessOrEqToOrBuilder();
-
-  /**
-   * <code>.protos.dml.PartitionField less_than = 3;</code>
-   * @return Whether the lessThan field is set.
-   */
-  boolean hasLessThan();
-  /**
-   * <code>.protos.dml.PartitionField less_than = 3;</code>
-   * @return The lessThan.
-   */
-  com.pancakedb.idl.PartitionField getLessThan();
-  /**
-   * <code>.protos.dml.PartitionField less_than = 3;</code>
-   */
-  com.pancakedb.idl.PartitionFieldOrBuilder getLessThanOrBuilder();
-
-  /**
-   * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-   * @return Whether the greaterOrEqTo field is set.
-   */
-  boolean hasGreaterOrEqTo();
-  /**
-   * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-   * @return The greaterOrEqTo.
-   */
-  com.pancakedb.idl.PartitionField getGreaterOrEqTo();
-  /**
-   * <code>.protos.dml.PartitionField greater_or_eq_to = 4;</code>
-   */
-  com.pancakedb.idl.PartitionFieldOrBuilder getGreaterOrEqToOrBuilder();
-
-  /**
-   * <code>.protos.dml.PartitionField greater_than = 5;</code>
-   * @return Whether the greaterThan field is set.
-   */
-  boolean hasGreaterThan();
-  /**
-   * <code>.protos.dml.PartitionField greater_than = 5;</code>
-   * @return The greaterThan.
-   */
-  com.pancakedb.idl.PartitionField getGreaterThan();
-  /**
-   * <code>.protos.dml.PartitionField greater_than = 5;</code>
-   */
-  com.pancakedb.idl.PartitionFieldOrBuilder getGreaterThanOrBuilder();
+  com.pancakedb.idl.PartitionFieldComparisonOrBuilder getComparisonOrBuilder();
 
   public com.pancakedb.idl.PartitionFilter.ValueCase getValueCase();
 }

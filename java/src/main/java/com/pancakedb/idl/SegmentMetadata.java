@@ -50,12 +50,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            count_ = input.readUInt32();
-            break;
-          }
-          case 16: {
-
-            latestVersion_ = input.readUInt64();
+            rowCount_ = input.readUInt32();
             break;
           }
           default: {
@@ -90,26 +85,15 @@ private static final long serialVersionUID = 0L;
             com.pancakedb.idl.SegmentMetadata.class, com.pancakedb.idl.SegmentMetadata.Builder.class);
   }
 
-  public static final int COUNT_FIELD_NUMBER = 1;
-  private int count_;
+  public static final int ROW_COUNT_FIELD_NUMBER = 1;
+  private int rowCount_;
   /**
-   * <code>uint32 count = 1;</code>
-   * @return The count.
+   * <code>uint32 row_count = 1;</code>
+   * @return The rowCount.
    */
   @java.lang.Override
-  public int getCount() {
-    return count_;
-  }
-
-  public static final int LATEST_VERSION_FIELD_NUMBER = 2;
-  private long latestVersion_;
-  /**
-   * <code>uint64 latest_version = 2;</code>
-   * @return The latestVersion.
-   */
-  @java.lang.Override
-  public long getLatestVersion() {
-    return latestVersion_;
+  public int getRowCount() {
+    return rowCount_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -126,11 +110,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (count_ != 0) {
-      output.writeUInt32(1, count_);
-    }
-    if (latestVersion_ != 0L) {
-      output.writeUInt64(2, latestVersion_);
+    if (rowCount_ != 0) {
+      output.writeUInt32(1, rowCount_);
     }
     unknownFields.writeTo(output);
   }
@@ -141,13 +122,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (count_ != 0) {
+    if (rowCount_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(1, count_);
-    }
-    if (latestVersion_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, latestVersion_);
+        .computeUInt32Size(1, rowCount_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -164,10 +141,8 @@ private static final long serialVersionUID = 0L;
     }
     com.pancakedb.idl.SegmentMetadata other = (com.pancakedb.idl.SegmentMetadata) obj;
 
-    if (getCount()
-        != other.getCount()) return false;
-    if (getLatestVersion()
-        != other.getLatestVersion()) return false;
+    if (getRowCount()
+        != other.getRowCount()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -179,11 +154,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + COUNT_FIELD_NUMBER;
-    hash = (53 * hash) + getCount();
-    hash = (37 * hash) + LATEST_VERSION_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getLatestVersion());
+    hash = (37 * hash) + ROW_COUNT_FIELD_NUMBER;
+    hash = (53 * hash) + getRowCount();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -317,9 +289,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      count_ = 0;
-
-      latestVersion_ = 0L;
+      rowCount_ = 0;
 
       return this;
     }
@@ -347,8 +317,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.pancakedb.idl.SegmentMetadata buildPartial() {
       com.pancakedb.idl.SegmentMetadata result = new com.pancakedb.idl.SegmentMetadata(this);
-      result.count_ = count_;
-      result.latestVersion_ = latestVersion_;
+      result.rowCount_ = rowCount_;
       onBuilt();
       return result;
     }
@@ -397,11 +366,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.pancakedb.idl.SegmentMetadata other) {
       if (other == com.pancakedb.idl.SegmentMetadata.getDefaultInstance()) return this;
-      if (other.getCount() != 0) {
-        setCount(other.getCount());
-      }
-      if (other.getLatestVersion() != 0L) {
-        setLatestVersion(other.getLatestVersion());
+      if (other.getRowCount() != 0) {
+        setRowCount(other.getRowCount());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -432,64 +398,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int count_ ;
+    private int rowCount_ ;
     /**
-     * <code>uint32 count = 1;</code>
-     * @return The count.
+     * <code>uint32 row_count = 1;</code>
+     * @return The rowCount.
      */
     @java.lang.Override
-    public int getCount() {
-      return count_;
+    public int getRowCount() {
+      return rowCount_;
     }
     /**
-     * <code>uint32 count = 1;</code>
-     * @param value The count to set.
+     * <code>uint32 row_count = 1;</code>
+     * @param value The rowCount to set.
      * @return This builder for chaining.
      */
-    public Builder setCount(int value) {
+    public Builder setRowCount(int value) {
       
-      count_ = value;
+      rowCount_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint32 count = 1;</code>
+     * <code>uint32 row_count = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCount() {
+    public Builder clearRowCount() {
       
-      count_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private long latestVersion_ ;
-    /**
-     * <code>uint64 latest_version = 2;</code>
-     * @return The latestVersion.
-     */
-    @java.lang.Override
-    public long getLatestVersion() {
-      return latestVersion_;
-    }
-    /**
-     * <code>uint64 latest_version = 2;</code>
-     * @param value The latestVersion to set.
-     * @return This builder for chaining.
-     */
-    public Builder setLatestVersion(long value) {
-      
-      latestVersion_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 latest_version = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearLatestVersion() {
-      
-      latestVersion_ = 0L;
+      rowCount_ = 0;
       onChanged();
       return this;
     }

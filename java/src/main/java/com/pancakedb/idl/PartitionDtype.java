@@ -25,7 +25,7 @@ public final class PartitionDtype {
     java.lang.String[] descriptorData = {
       "\n\025partition_dtype.proto\022\026protos.partitio" +
       "n_dtype*J\n\021PartitionDataType\022\n\n\006STRING\020\000" +
-      "\022\t\n\005INT64\020\001\022\010\n\004BOOL\020\002\022\024\n\020TIMESTAMP_MINUT" +
+      "\022\010\n\004BOOL\020\001\022\t\n\005INT64\020\002\022\024\n\020TIMESTAMP_MINUT" +
       "E\020\003B\025\n\021com.pancakedb.idlP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

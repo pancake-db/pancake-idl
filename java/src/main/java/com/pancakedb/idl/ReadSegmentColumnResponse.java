@@ -17,8 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private ReadSegmentColumnResponse() {
     codec_ = "";
-    compressedData_ = com.google.protobuf.ByteString.EMPTY;
-    uncompressedData_ = com.google.protobuf.ByteString.EMPTY;
+    data_ = com.google.protobuf.ByteString.EMPTY;
     continuationToken_ = "";
   }
 
@@ -60,23 +59,28 @@ private static final long serialVersionUID = 0L;
           }
           case 18: {
 
-            compressedData_ = input.readBytes();
+            data_ = input.readBytes();
             break;
           }
-          case 26: {
+          case 24: {
 
-            uncompressedData_ = input.readBytes();
+            rowCount_ = input.readUInt32();
             break;
           }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 32: {
 
-            continuationToken_ = s;
+            deletionCount_ = input.readUInt32();
             break;
           }
           case 40: {
 
-            rowCount_ = input.readUInt32();
+            implicitNullsCount_ = input.readUInt32();
+            break;
+          }
+          case 50: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            continuationToken_ = s;
             break;
           }
           default: {
@@ -149,32 +153,54 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int COMPRESSED_DATA_FIELD_NUMBER = 2;
-  private com.google.protobuf.ByteString compressedData_;
+  public static final int DATA_FIELD_NUMBER = 2;
+  private com.google.protobuf.ByteString data_;
   /**
-   * <code>bytes compressed_data = 2;</code>
-   * @return The compressedData.
+   * <code>bytes data = 2;</code>
+   * @return The data.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getCompressedData() {
-    return compressedData_;
+  public com.google.protobuf.ByteString getData() {
+    return data_;
   }
 
-  public static final int UNCOMPRESSED_DATA_FIELD_NUMBER = 3;
-  private com.google.protobuf.ByteString uncompressedData_;
+  public static final int ROW_COUNT_FIELD_NUMBER = 3;
+  private int rowCount_;
   /**
-   * <code>bytes uncompressed_data = 3;</code>
-   * @return The uncompressedData.
+   * <code>uint32 row_count = 3;</code>
+   * @return The rowCount.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getUncompressedData() {
-    return uncompressedData_;
+  public int getRowCount() {
+    return rowCount_;
   }
 
-  public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 4;
+  public static final int DELETION_COUNT_FIELD_NUMBER = 4;
+  private int deletionCount_;
+  /**
+   * <code>uint32 deletion_count = 4;</code>
+   * @return The deletionCount.
+   */
+  @java.lang.Override
+  public int getDeletionCount() {
+    return deletionCount_;
+  }
+
+  public static final int IMPLICIT_NULLS_COUNT_FIELD_NUMBER = 5;
+  private int implicitNullsCount_;
+  /**
+   * <code>uint32 implicit_nulls_count = 5;</code>
+   * @return The implicitNullsCount.
+   */
+  @java.lang.Override
+  public int getImplicitNullsCount() {
+    return implicitNullsCount_;
+  }
+
+  public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 6;
   private volatile java.lang.Object continuationToken_;
   /**
-   * <code>string continuation_token = 4;</code>
+   * <code>string continuation_token = 6;</code>
    * @return The continuationToken.
    */
   @java.lang.Override
@@ -191,7 +217,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string continuation_token = 4;</code>
+   * <code>string continuation_token = 6;</code>
    * @return The bytes for continuationToken.
    */
   @java.lang.Override
@@ -207,17 +233,6 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
-  }
-
-  public static final int ROW_COUNT_FIELD_NUMBER = 5;
-  private int rowCount_;
-  /**
-   * <code>uint32 row_count = 5;</code>
-   * @return The rowCount.
-   */
-  @java.lang.Override
-  public int getRowCount() {
-    return rowCount_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -237,17 +252,20 @@ private static final long serialVersionUID = 0L;
     if (!getCodecBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, codec_);
     }
-    if (!compressedData_.isEmpty()) {
-      output.writeBytes(2, compressedData_);
-    }
-    if (!uncompressedData_.isEmpty()) {
-      output.writeBytes(3, uncompressedData_);
-    }
-    if (!getContinuationTokenBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, continuationToken_);
+    if (!data_.isEmpty()) {
+      output.writeBytes(2, data_);
     }
     if (rowCount_ != 0) {
-      output.writeUInt32(5, rowCount_);
+      output.writeUInt32(3, rowCount_);
+    }
+    if (deletionCount_ != 0) {
+      output.writeUInt32(4, deletionCount_);
+    }
+    if (implicitNullsCount_ != 0) {
+      output.writeUInt32(5, implicitNullsCount_);
+    }
+    if (!getContinuationTokenBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, continuationToken_);
     }
     unknownFields.writeTo(output);
   }
@@ -261,20 +279,24 @@ private static final long serialVersionUID = 0L;
     if (!getCodecBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, codec_);
     }
-    if (!compressedData_.isEmpty()) {
+    if (!data_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(2, compressedData_);
-    }
-    if (!uncompressedData_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(3, uncompressedData_);
-    }
-    if (!getContinuationTokenBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, continuationToken_);
+        .computeBytesSize(2, data_);
     }
     if (rowCount_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(5, rowCount_);
+        .computeUInt32Size(3, rowCount_);
+    }
+    if (deletionCount_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt32Size(4, deletionCount_);
+    }
+    if (implicitNullsCount_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt32Size(5, implicitNullsCount_);
+    }
+    if (!getContinuationTokenBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, continuationToken_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -293,14 +315,16 @@ private static final long serialVersionUID = 0L;
 
     if (!getCodec()
         .equals(other.getCodec())) return false;
-    if (!getCompressedData()
-        .equals(other.getCompressedData())) return false;
-    if (!getUncompressedData()
-        .equals(other.getUncompressedData())) return false;
-    if (!getContinuationToken()
-        .equals(other.getContinuationToken())) return false;
+    if (!getData()
+        .equals(other.getData())) return false;
     if (getRowCount()
         != other.getRowCount()) return false;
+    if (getDeletionCount()
+        != other.getDeletionCount()) return false;
+    if (getImplicitNullsCount()
+        != other.getImplicitNullsCount()) return false;
+    if (!getContinuationToken()
+        .equals(other.getContinuationToken())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -314,14 +338,16 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + CODEC_FIELD_NUMBER;
     hash = (53 * hash) + getCodec().hashCode();
-    hash = (37 * hash) + COMPRESSED_DATA_FIELD_NUMBER;
-    hash = (53 * hash) + getCompressedData().hashCode();
-    hash = (37 * hash) + UNCOMPRESSED_DATA_FIELD_NUMBER;
-    hash = (53 * hash) + getUncompressedData().hashCode();
-    hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
-    hash = (53 * hash) + getContinuationToken().hashCode();
+    hash = (37 * hash) + DATA_FIELD_NUMBER;
+    hash = (53 * hash) + getData().hashCode();
     hash = (37 * hash) + ROW_COUNT_FIELD_NUMBER;
     hash = (53 * hash) + getRowCount();
+    hash = (37 * hash) + DELETION_COUNT_FIELD_NUMBER;
+    hash = (53 * hash) + getDeletionCount();
+    hash = (37 * hash) + IMPLICIT_NULLS_COUNT_FIELD_NUMBER;
+    hash = (53 * hash) + getImplicitNullsCount();
+    hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + getContinuationToken().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -457,13 +483,15 @@ private static final long serialVersionUID = 0L;
       super.clear();
       codec_ = "";
 
-      compressedData_ = com.google.protobuf.ByteString.EMPTY;
-
-      uncompressedData_ = com.google.protobuf.ByteString.EMPTY;
-
-      continuationToken_ = "";
+      data_ = com.google.protobuf.ByteString.EMPTY;
 
       rowCount_ = 0;
+
+      deletionCount_ = 0;
+
+      implicitNullsCount_ = 0;
+
+      continuationToken_ = "";
 
       return this;
     }
@@ -492,10 +520,11 @@ private static final long serialVersionUID = 0L;
     public com.pancakedb.idl.ReadSegmentColumnResponse buildPartial() {
       com.pancakedb.idl.ReadSegmentColumnResponse result = new com.pancakedb.idl.ReadSegmentColumnResponse(this);
       result.codec_ = codec_;
-      result.compressedData_ = compressedData_;
-      result.uncompressedData_ = uncompressedData_;
-      result.continuationToken_ = continuationToken_;
+      result.data_ = data_;
       result.rowCount_ = rowCount_;
+      result.deletionCount_ = deletionCount_;
+      result.implicitNullsCount_ = implicitNullsCount_;
+      result.continuationToken_ = continuationToken_;
       onBuilt();
       return result;
     }
@@ -548,18 +577,21 @@ private static final long serialVersionUID = 0L;
         codec_ = other.codec_;
         onChanged();
       }
-      if (other.getCompressedData() != com.google.protobuf.ByteString.EMPTY) {
-        setCompressedData(other.getCompressedData());
+      if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
+        setData(other.getData());
       }
-      if (other.getUncompressedData() != com.google.protobuf.ByteString.EMPTY) {
-        setUncompressedData(other.getUncompressedData());
+      if (other.getRowCount() != 0) {
+        setRowCount(other.getRowCount());
+      }
+      if (other.getDeletionCount() != 0) {
+        setDeletionCount(other.getDeletionCount());
+      }
+      if (other.getImplicitNullsCount() != 0) {
+        setImplicitNullsCount(other.getImplicitNullsCount());
       }
       if (!other.getContinuationToken().isEmpty()) {
         continuationToken_ = other.continuationToken_;
         onChanged();
-      }
-      if (other.getRowCount() != 0) {
-        setRowCount(other.getRowCount());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -666,77 +698,136 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.ByteString compressedData_ = com.google.protobuf.ByteString.EMPTY;
+    private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>bytes compressed_data = 2;</code>
-     * @return The compressedData.
+     * <code>bytes data = 2;</code>
+     * @return The data.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getCompressedData() {
-      return compressedData_;
+    public com.google.protobuf.ByteString getData() {
+      return data_;
     }
     /**
-     * <code>bytes compressed_data = 2;</code>
-     * @param value The compressedData to set.
+     * <code>bytes data = 2;</code>
+     * @param value The data to set.
      * @return This builder for chaining.
      */
-    public Builder setCompressedData(com.google.protobuf.ByteString value) {
+    public Builder setData(com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      compressedData_ = value;
+      data_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>bytes compressed_data = 2;</code>
+     * <code>bytes data = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCompressedData() {
+    public Builder clearData() {
       
-      compressedData_ = getDefaultInstance().getCompressedData();
+      data_ = getDefaultInstance().getData();
       onChanged();
       return this;
     }
 
-    private com.google.protobuf.ByteString uncompressedData_ = com.google.protobuf.ByteString.EMPTY;
+    private int rowCount_ ;
     /**
-     * <code>bytes uncompressed_data = 3;</code>
-     * @return The uncompressedData.
+     * <code>uint32 row_count = 3;</code>
+     * @return The rowCount.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getUncompressedData() {
-      return uncompressedData_;
+    public int getRowCount() {
+      return rowCount_;
     }
     /**
-     * <code>bytes uncompressed_data = 3;</code>
-     * @param value The uncompressedData to set.
+     * <code>uint32 row_count = 3;</code>
+     * @param value The rowCount to set.
      * @return This builder for chaining.
      */
-    public Builder setUncompressedData(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      uncompressedData_ = value;
+    public Builder setRowCount(int value) {
+      
+      rowCount_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>bytes uncompressed_data = 3;</code>
+     * <code>uint32 row_count = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder clearUncompressedData() {
+    public Builder clearRowCount() {
       
-      uncompressedData_ = getDefaultInstance().getUncompressedData();
+      rowCount_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int deletionCount_ ;
+    /**
+     * <code>uint32 deletion_count = 4;</code>
+     * @return The deletionCount.
+     */
+    @java.lang.Override
+    public int getDeletionCount() {
+      return deletionCount_;
+    }
+    /**
+     * <code>uint32 deletion_count = 4;</code>
+     * @param value The deletionCount to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDeletionCount(int value) {
+      
+      deletionCount_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint32 deletion_count = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDeletionCount() {
+      
+      deletionCount_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int implicitNullsCount_ ;
+    /**
+     * <code>uint32 implicit_nulls_count = 5;</code>
+     * @return The implicitNullsCount.
+     */
+    @java.lang.Override
+    public int getImplicitNullsCount() {
+      return implicitNullsCount_;
+    }
+    /**
+     * <code>uint32 implicit_nulls_count = 5;</code>
+     * @param value The implicitNullsCount to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImplicitNullsCount(int value) {
+      
+      implicitNullsCount_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint32 implicit_nulls_count = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearImplicitNullsCount() {
+      
+      implicitNullsCount_ = 0;
       onChanged();
       return this;
     }
 
     private java.lang.Object continuationToken_ = "";
     /**
-     * <code>string continuation_token = 4;</code>
+     * <code>string continuation_token = 6;</code>
      * @return The continuationToken.
      */
     public java.lang.String getContinuationToken() {
@@ -752,7 +843,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string continuation_token = 4;</code>
+     * <code>string continuation_token = 6;</code>
      * @return The bytes for continuationToken.
      */
     public com.google.protobuf.ByteString
@@ -769,7 +860,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string continuation_token = 4;</code>
+     * <code>string continuation_token = 6;</code>
      * @param value The continuationToken to set.
      * @return This builder for chaining.
      */
@@ -784,7 +875,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string continuation_token = 4;</code>
+     * <code>string continuation_token = 6;</code>
      * @return This builder for chaining.
      */
     public Builder clearContinuationToken() {
@@ -794,7 +885,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string continuation_token = 4;</code>
+     * <code>string continuation_token = 6;</code>
      * @param value The bytes for continuationToken to set.
      * @return This builder for chaining.
      */
@@ -806,37 +897,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       continuationToken_ = value;
-      onChanged();
-      return this;
-    }
-
-    private int rowCount_ ;
-    /**
-     * <code>uint32 row_count = 5;</code>
-     * @return The rowCount.
-     */
-    @java.lang.Override
-    public int getRowCount() {
-      return rowCount_;
-    }
-    /**
-     * <code>uint32 row_count = 5;</code>
-     * @param value The rowCount to set.
-     * @return This builder for chaining.
-     */
-    public Builder setRowCount(int value) {
-      
-      rowCount_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint32 row_count = 5;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearRowCount() {
-      
-      rowCount_ = 0;
       onChanged();
       return this;
     }

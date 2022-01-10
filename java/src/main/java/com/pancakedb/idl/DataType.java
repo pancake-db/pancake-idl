@@ -13,25 +13,29 @@ public enum DataType
    */
   STRING(0),
   /**
-   * <code>INT64 = 1;</code>
+   * <code>BOOL = 1;</code>
    */
-  INT64(1),
+  BOOL(1),
   /**
-   * <code>BOOL = 2;</code>
+   * <code>BYTES = 2;</code>
    */
-  BOOL(2),
+  BYTES(2),
   /**
-   * <code>BYTES = 3;</code>
+   * <code>INT64 = 3;</code>
    */
-  BYTES(3),
+  INT64(3),
   /**
-   * <code>FLOAT64 = 4;</code>
+   * <code>FLOAT32 = 4;</code>
    */
-  FLOAT64(4),
+  FLOAT32(4),
   /**
-   * <code>TIMESTAMP_MICROS = 5;</code>
+   * <code>FLOAT64 = 5;</code>
    */
-  TIMESTAMP_MICROS(5),
+  FLOAT64(5),
+  /**
+   * <code>TIMESTAMP_MICROS = 6;</code>
+   */
+  TIMESTAMP_MICROS(6),
   UNRECOGNIZED(-1),
   ;
 
@@ -40,25 +44,29 @@ public enum DataType
    */
   public static final int STRING_VALUE = 0;
   /**
-   * <code>INT64 = 1;</code>
+   * <code>BOOL = 1;</code>
    */
-  public static final int INT64_VALUE = 1;
+  public static final int BOOL_VALUE = 1;
   /**
-   * <code>BOOL = 2;</code>
+   * <code>BYTES = 2;</code>
    */
-  public static final int BOOL_VALUE = 2;
+  public static final int BYTES_VALUE = 2;
   /**
-   * <code>BYTES = 3;</code>
+   * <code>INT64 = 3;</code>
    */
-  public static final int BYTES_VALUE = 3;
+  public static final int INT64_VALUE = 3;
   /**
-   * <code>FLOAT64 = 4;</code>
+   * <code>FLOAT32 = 4;</code>
    */
-  public static final int FLOAT64_VALUE = 4;
+  public static final int FLOAT32_VALUE = 4;
   /**
-   * <code>TIMESTAMP_MICROS = 5;</code>
+   * <code>FLOAT64 = 5;</code>
    */
-  public static final int TIMESTAMP_MICROS_VALUE = 5;
+  public static final int FLOAT64_VALUE = 5;
+  /**
+   * <code>TIMESTAMP_MICROS = 6;</code>
+   */
+  public static final int TIMESTAMP_MICROS_VALUE = 6;
 
 
   public final int getNumber() {
@@ -86,11 +94,12 @@ public enum DataType
   public static DataType forNumber(int value) {
     switch (value) {
       case 0: return STRING;
-      case 1: return INT64;
-      case 2: return BOOL;
-      case 3: return BYTES;
-      case 4: return FLOAT64;
-      case 5: return TIMESTAMP_MICROS;
+      case 1: return BOOL;
+      case 2: return BYTES;
+      case 3: return INT64;
+      case 4: return FLOAT32;
+      case 5: return FLOAT64;
+      case 6: return TIMESTAMP_MICROS;
       default: return null;
     }
   }

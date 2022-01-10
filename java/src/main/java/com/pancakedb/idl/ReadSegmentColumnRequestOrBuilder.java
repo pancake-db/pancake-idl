@@ -20,28 +20,38 @@ public interface ReadSegmentColumnRequestOrBuilder extends
       getTableNameBytes();
 
   /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-   */
-  java.util.List<com.pancakedb.idl.PartitionField> 
-      getPartitionList();
-  /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
-   */
-  com.pancakedb.idl.PartitionField getPartition(int index);
-  /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
    */
   int getPartitionCount();
   /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
    */
-  java.util.List<? extends com.pancakedb.idl.PartitionFieldOrBuilder> 
-      getPartitionOrBuilderList();
+  boolean containsPartition(
+      java.lang.String key);
   /**
-   * <code>repeated .protos.dml.PartitionField partition = 2;</code>
+   * Use {@link #getPartitionMap()} instead.
    */
-  com.pancakedb.idl.PartitionFieldOrBuilder getPartitionOrBuilder(
-      int index);
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+  getPartition();
+  /**
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
+   */
+  java.util.Map<java.lang.String, com.pancakedb.idl.PartitionFieldValue>
+  getPartitionMap();
+  /**
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
+   */
+
+  com.pancakedb.idl.PartitionFieldValue getPartitionOrDefault(
+      java.lang.String key,
+      com.pancakedb.idl.PartitionFieldValue defaultValue);
+  /**
+   * <code>map&lt;string, .protos.dml.PartitionFieldValue&gt; partition = 2;</code>
+   */
+
+  com.pancakedb.idl.PartitionFieldValue getPartitionOrThrow(
+      java.lang.String key);
 
   /**
    * <code>string segment_id = 3;</code>
@@ -68,12 +78,24 @@ public interface ReadSegmentColumnRequestOrBuilder extends
       getColumnNameBytes();
 
   /**
-   * <code>string continuation_token = 5;</code>
+   * <code>string correlation_id = 5;</code>
+   * @return The correlationId.
+   */
+  java.lang.String getCorrelationId();
+  /**
+   * <code>string correlation_id = 5;</code>
+   * @return The bytes for correlationId.
+   */
+  com.google.protobuf.ByteString
+      getCorrelationIdBytes();
+
+  /**
+   * <code>string continuation_token = 6;</code>
    * @return The continuationToken.
    */
   java.lang.String getContinuationToken();
   /**
-   * <code>string continuation_token = 5;</code>
+   * <code>string continuation_token = 6;</code>
    * @return The bytes for continuationToken.
    */
   com.google.protobuf.ByteString

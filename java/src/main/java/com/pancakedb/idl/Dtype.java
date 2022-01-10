@@ -23,10 +23,11 @@ public final class Dtype {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013dtype.proto\022\014protos.dtype*Y\n\010DataType\022" +
-      "\n\n\006STRING\020\000\022\t\n\005INT64\020\001\022\010\n\004BOOL\020\002\022\t\n\005BYTE" +
-      "S\020\003\022\013\n\007FLOAT64\020\004\022\024\n\020TIMESTAMP_MICROS\020\005B\025" +
-      "\n\021com.pancakedb.idlP\001b\006proto3"
+      "\n\013dtype.proto\022\014protos.dtype*f\n\010DataType\022" +
+      "\n\n\006STRING\020\000\022\010\n\004BOOL\020\001\022\t\n\005BYTES\020\002\022\t\n\005INT6" +
+      "4\020\003\022\013\n\007FLOAT32\020\004\022\013\n\007FLOAT64\020\005\022\024\n\020TIMESTA" +
+      "MP_MICROS\020\006B\025\n\021com.pancakedb.idlP\001b\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

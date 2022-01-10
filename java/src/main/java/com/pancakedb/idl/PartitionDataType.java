@@ -13,13 +13,13 @@ public enum PartitionDataType
    */
   STRING(0),
   /**
-   * <code>INT64 = 1;</code>
+   * <code>BOOL = 1;</code>
    */
-  INT64(1),
+  BOOL(1),
   /**
-   * <code>BOOL = 2;</code>
+   * <code>INT64 = 2;</code>
    */
-  BOOL(2),
+  INT64(2),
   /**
    * <code>TIMESTAMP_MINUTE = 3;</code>
    */
@@ -32,13 +32,13 @@ public enum PartitionDataType
    */
   public static final int STRING_VALUE = 0;
   /**
-   * <code>INT64 = 1;</code>
+   * <code>BOOL = 1;</code>
    */
-  public static final int INT64_VALUE = 1;
+  public static final int BOOL_VALUE = 1;
   /**
-   * <code>BOOL = 2;</code>
+   * <code>INT64 = 2;</code>
    */
-  public static final int BOOL_VALUE = 2;
+  public static final int INT64_VALUE = 2;
   /**
    * <code>TIMESTAMP_MINUTE = 3;</code>
    */
@@ -70,8 +70,8 @@ public enum PartitionDataType
   public static PartitionDataType forNumber(int value) {
     switch (value) {
       case 0: return STRING;
-      case 1: return INT64;
-      case 2: return BOOL;
+      case 1: return BOOL;
+      case 2: return INT64;
       case 3: return TIMESTAMP_MINUTE;
       default: return null;
     }

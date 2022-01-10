@@ -40,61 +40,72 @@ public interface FieldValueOrBuilder extends
       getStringValBytes();
 
   /**
-   * <code>int64 int64_val = 3;</code>
-   * @return Whether the int64Val field is set.
-   */
-  boolean hasInt64Val();
-  /**
-   * <code>int64 int64_val = 3;</code>
-   * @return The int64Val.
-   */
-  long getInt64Val();
-
-  /**
-   * <code>bool bool_val = 4;</code>
+   * <code>bool bool_val = 3;</code>
    * @return Whether the boolVal field is set.
    */
   boolean hasBoolVal();
   /**
-   * <code>bool bool_val = 4;</code>
+   * <code>bool bool_val = 3;</code>
    * @return The boolVal.
    */
   boolean getBoolVal();
 
   /**
-   * <code>bytes bytes_val = 5;</code>
+   * <code>bytes bytes_val = 4;</code>
    * @return Whether the bytesVal field is set.
    */
   boolean hasBytesVal();
   /**
-   * <code>bytes bytes_val = 5;</code>
+   * <code>bytes bytes_val = 4;</code>
    * @return The bytesVal.
    */
   com.google.protobuf.ByteString getBytesVal();
 
   /**
-   * <code>double float64_val = 6;</code>
+   * <code>int64 int64_val = 5;</code>
+   * @return Whether the int64Val field is set.
+   */
+  boolean hasInt64Val();
+  /**
+   * <code>int64 int64_val = 5;</code>
+   * @return The int64Val.
+   */
+  long getInt64Val();
+
+  /**
+   * <code>float float32_val = 6;</code>
+   * @return Whether the float32Val field is set.
+   */
+  boolean hasFloat32Val();
+  /**
+   * <code>float float32_val = 6;</code>
+   * @return The float32Val.
+   */
+  float getFloat32Val();
+
+  /**
+   * <code>double float64_val = 7;</code>
    * @return Whether the float64Val field is set.
    */
   boolean hasFloat64Val();
   /**
-   * <code>double float64_val = 6;</code>
+   * <code>double float64_val = 7;</code>
    * @return The float64Val.
    */
   double getFloat64Val();
 
   /**
-   * <code>.google.protobuf.Timestamp timestamp_val = 7;</code>
+   * <code>.google.protobuf.Timestamp timestamp_val = 8;</code>
    * @return Whether the timestampVal field is set.
    */
   boolean hasTimestampVal();
   /**
-   * <code>.google.protobuf.Timestamp timestamp_val = 7;</code>
+   * <code>.google.protobuf.Timestamp timestamp_val = 8;</code>
    * @return The timestampVal.
    */
   com.google.protobuf.Timestamp getTimestampVal();
   /**
-   * <code>.google.protobuf.Timestamp timestamp_val = 7;</code>
+   * <code>.google.protobuf.Timestamp timestamp_val = 8;</code>
    */
   com.google.protobuf.TimestampOrBuilder getTimestampValOrBuilder();
 
