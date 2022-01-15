@@ -89,7 +89,7 @@ request body format:
       ...
     }
   },
-  "schemaMode": "FAIL_IF_EXISTS" | "OK_IF_EXACT" | "ADD_NEW_COLUMNS"
+  "mode": "FAIL_IF_EXISTS" | "OK_IF_EXACT" | "ADD_NEW_COLUMNS"
 }
 ```
 
@@ -104,7 +104,7 @@ response body format:
 The keys in the partitioning and columns objects are column names.
 
 This will ensure a table exists following the behavior requested by
-`schema_mode`:
+`mode`:
 * `FAIL_IF_EXISTS` works like most other databases' create table commands,
 returning an error if the table already exists.
 * `OK_IF_EXACT` will not give an error if the table already exists, as long as
