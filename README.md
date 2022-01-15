@@ -24,7 +24,7 @@ that it will respond to with reliably fast response times, and it
 expects to receive a **few giant reads per second** that it will respond to
 with high throughput.
 
-<div style="text-align:center">
+<div align="center">
 <img src="./res/data_architecture_before.svg" height="200px">
 <img src="./res/data_architecture_after.svg" height="200px">
 </div>
