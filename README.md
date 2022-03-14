@@ -375,7 +375,7 @@ response body format:
 }
 ```
 
-This lists all segments (chunks of data typically containing up to 1 million
+This lists all segments (large groups of rows
 rows) in the table, matching all the partition filters specified.
 Additional metadata about each segment will only be returned if requested,
 because retrieving the metadata is a bit slower.
