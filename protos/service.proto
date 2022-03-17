@@ -1,5 +1,5 @@
 syntax = "proto3";
-package protos.service;
+package service;
 
 import "ddl.proto";
 import "dml.proto";
@@ -8,13 +8,15 @@ option java_multiple_files = true;
 option java_package = "com.pancakedb.idl";
 
 service PancakeDb {
-  //DDL
+  rpc AlterTable (ddl.AlterTableRequest) returns (ddl.AlterTableResponse);
   rpc CreateTable (ddl.CreateTableRequest) returns (ddl.CreateTableResponse);
   rpc DropTable (ddl.DropTableRequest) returns (ddl.DropTableResponse);
   rpc GetSchema (ddl.GetSchemaRequest) returns (ddl.GetSchemaResponse);
+  rpc ListTables (ddl.ListTablesRequest) returns (ddl.ListTablesResponse);
 
-  //DML
-  rpc WriteToPartition (dml.WriteToPartitionRequest) returns (dml.WriteToPartitionResponse);
+  rpc DeleteFromSegment (dml.DeleteFromSegmentRequest) returns (dml.DeleteFromSegmentResponse);
   rpc ListSegments (dml.ListSegmentsRequest) returns (dml.ListSegmentsResponse);
   rpc ReadSegmentColumn (dml.ReadSegmentColumnRequest) returns (dml.ReadSegmentColumnResponse);
+  rpc ReadSegmentDeletions (dml.ReadSegmentDeletionsRequest) returns (dml.ReadSegmentDeletionsResponse);
+  rpc WriteToPartition (dml.WriteToPartitionRequest) returns (dml.WriteToPartitionResponse);
 }

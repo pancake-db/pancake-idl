@@ -1,5 +1,5 @@
 syntax = "proto3";
-package protos.ddl;
+package ddl;
 
 import "schema.proto";
 
