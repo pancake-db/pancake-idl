@@ -1,9 +1,6 @@
 use std::fs;
 use std::path::Path;
 
-// use protoc_rust::Codegen;
-// use std::path::Path;
-
 fn main() {
   let out_dir = "../rust/src";
 
@@ -22,7 +19,6 @@ fn main() {
 
   tonic_build::configure()
     .out_dir(out_dir)
-    // .include_file("lib.rs")
     .compile(
       &proto_files,
       &["../protos"],
