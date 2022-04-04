@@ -162,8 +162,10 @@ pub mod pancake_db_client {
         pub async fn read_segment_column(
             &mut self,
             request: impl tonic::IntoRequest<super::super::dml::ReadSegmentColumnRequest>,
-        ) -> Result<tonic::Response<super::super::dml::ReadSegmentColumnResponse>, tonic::Status>
-        {
+        ) -> Result<
+            tonic::Response<tonic::codec::Streaming<super::super::dml::ReadSegmentColumnResponse>>,
+            tonic::Status,
+        > {
             self.inner.ready().await.map_err(|e| {
                 tonic::Status::new(
                     tonic::Code::Unknown,
@@ -172,7 +174,9 @@ pub mod pancake_db_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/service.PancakeDb/ReadSegmentColumn");
-            self.inner.unary(request.into_request(), path, codec).await
+            self.inner
+                .server_streaming(request.into_request(), path, codec)
+                .await
         }
         pub async fn read_segment_deletions(
             &mut self,
@@ -242,10 +246,15 @@ pub mod pancake_db_server {
             &self,
             request: tonic::Request<super::super::dml::ListSegmentsRequest>,
         ) -> Result<tonic::Response<super::super::dml::ListSegmentsResponse>, tonic::Status>;
+        #[doc = "Server streaming response type for the ReadSegmentColumn method."]
+        type ReadSegmentColumnStream: futures_core::Stream<
+                Item = Result<super::super::dml::ReadSegmentColumnResponse, tonic::Status>,
+            > + Send
+            + 'static;
         async fn read_segment_column(
             &self,
             request: tonic::Request<super::super::dml::ReadSegmentColumnRequest>,
-        ) -> Result<tonic::Response<super::super::dml::ReadSegmentColumnResponse>, tonic::Status>;
+        ) -> Result<tonic::Response<Self::ReadSegmentColumnStream>, tonic::Status>;
         async fn read_segment_deletions(
             &self,
             request: tonic::Request<super::super::dml::ReadSegmentDeletionsRequest>,
@@ -536,11 +545,14 @@ pub mod pancake_db_server {
                     #[allow(non_camel_case_types)]
                     struct ReadSegmentColumnSvc<T: PancakeDb>(pub Arc<T>);
                     impl<T: PancakeDb>
-                        tonic::server::UnaryService<super::super::dml::ReadSegmentColumnRequest>
-                        for ReadSegmentColumnSvc<T>
+                        tonic::server::ServerStreamingService<
+                            super::super::dml::ReadSegmentColumnRequest,
+                        > for ReadSegmentColumnSvc<T>
                     {
                         type Response = super::super::dml::ReadSegmentColumnResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type ResponseStream = T::ReadSegmentColumnStream;
+                        type Future =
+                            BoxFuture<tonic::Response<Self::ResponseStream>, tonic::Status>;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::super::dml::ReadSegmentColumnRequest>,
@@ -561,7 +573,7 @@ pub mod pancake_db_server {
                             accept_compression_encodings,
                             send_compression_encodings,
                         );
-                        let res = grpc.unary(method, req).await;
+                        let res = grpc.server_streaming(method, req).await;
                         Ok(res)
                     };
                     Box::pin(fut)

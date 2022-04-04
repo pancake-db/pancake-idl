@@ -16,7 +16,7 @@ service PancakeDb {
 
   rpc DeleteFromSegment (dml.DeleteFromSegmentRequest) returns (dml.DeleteFromSegmentResponse);
   rpc ListSegments (dml.ListSegmentsRequest) returns (dml.ListSegmentsResponse);
-  rpc ReadSegmentColumn (dml.ReadSegmentColumnRequest) returns (dml.ReadSegmentColumnResponse);
+  rpc ReadSegmentColumn (dml.ReadSegmentColumnRequest) returns (stream dml.ReadSegmentColumnResponse);
   rpc ReadSegmentDeletions (dml.ReadSegmentDeletionsRequest) returns (dml.ReadSegmentDeletionsResponse);
   rpc WriteToPartition (dml.WriteToPartitionRequest) returns (dml.WriteToPartitionResponse);
 }

@@ -93,7 +93,6 @@ message ReadSegmentColumnRequest {
   string segment_id = 3;
   string column_name = 4;
   string correlation_id = 5;
-  string continuation_token = 6;
 }
 
 message ReadSegmentColumnResponse {
@@ -102,7 +101,6 @@ message ReadSegmentColumnResponse {
   uint32 row_count = 3;
   uint32 deletion_count = 4;
   uint32 implicit_nulls_count = 5;
-  string continuation_token = 6;
 }
 
 //READING DELETIONS

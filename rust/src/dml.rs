@@ -142,8 +142,6 @@ pub struct ReadSegmentColumnRequest {
     pub column_name: ::prost::alloc::string::String,
     #[prost(string, tag = "5")]
     pub correlation_id: ::prost::alloc::string::String,
-    #[prost(string, tag = "6")]
-    pub continuation_token: ::prost::alloc::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ReadSegmentColumnResponse {
@@ -157,8 +155,6 @@ pub struct ReadSegmentColumnResponse {
     pub deletion_count: u32,
     #[prost(uint32, tag = "5")]
     pub implicit_nulls_count: u32,
-    #[prost(string, tag = "6")]
-    pub continuation_token: ::prost::alloc::string::String,
 }
 ///READING DELETIONS
 #[derive(Clone, PartialEq, ::prost::Message)]
