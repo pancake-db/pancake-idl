@@ -1,5 +1,5 @@
 syntax = "proto3";
-package protos.schema;
+package schema;
 
 import "dtype.proto";
 import "partition_dtype.proto";

@@ -1,2 +1,2 @@
-sh generate_java.sh && \
-  cd rust_builder && cargo run;
+cd java && mvn clean install && \
+  cd ../rust_builder && cargo run;
