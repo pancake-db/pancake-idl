@@ -72,8 +72,19 @@ message ListSegmentsRequest {
   bool include_metadata = 3;
 }
 
+message S3Coordinates {
+  string endpoint = 1;
+  string bucket = 2;
+  string key = 3;
+}
+
 message SegmentMetadata {
   uint32 row_count = 1;
+  uint64 read_version = 2;
+  uint64 deletion_version = 3;
+  oneof object_store_coordinates {
+    S3Coordinates s3_coordinates = 4;
+  }
 }
 
 message Segment {
