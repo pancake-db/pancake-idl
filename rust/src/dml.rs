@@ -111,9 +111,32 @@ pub struct ListSegmentsRequest {
     pub include_metadata: bool,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct S3Coordinates {
+    #[prost(string, tag = "1")]
+    pub endpoint: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub bucket: ::prost::alloc::string::String,
+    #[prost(string, tag = "3")]
+    pub key: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SegmentMetadata {
     #[prost(uint32, tag = "1")]
     pub row_count: u32,
+    #[prost(uint64, tag = "2")]
+    pub read_version: u64,
+    #[prost(uint64, tag = "3")]
+    pub deletion_version: u64,
+    #[prost(oneof = "segment_metadata::ObjectStoreCoordinates", tags = "4")]
+    pub object_store_coordinates: ::core::option::Option<segment_metadata::ObjectStoreCoordinates>,
+}
+/// Nested message and enum types in `SegmentMetadata`.
+pub mod segment_metadata {
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum ObjectStoreCoordinates {
+        #[prost(message, tag = "4")]
+        S3Coordinates(super::S3Coordinates),
+    }
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Segment {
